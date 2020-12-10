@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  div(class="container-fluid menwomen")
+    div(class="split left")
+      h1 &#9792;
+    div(class="split right")
+      h1 &#9794;
+  div.mainbody  
+    div(class="ascent")
+      span 𝒶𝓈𝒸𝑒𝓃𝓉
+    div(class="featured")
+      .rows.container
+        .row
+          .image
+          .info
+            h4.title Top Quality
+            span Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
+        .row
+          .image
+          .info
+            h4.title Top Quality
+            span Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
+    .footer
+      .container
+        span Contact Us
+        form(action="")
+          label(for="email") Email
+          input(type='email' name="email" placeholder="email")
+          label(for="email") Message
+          textarea(cols="30", rows="10" name="email" placeholder="message")
+          input.btn(type="submit")
+    script(src='../javascripts/mwui.js')

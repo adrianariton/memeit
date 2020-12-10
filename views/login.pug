@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    
+    .form-container.login
+        .modal-form(style='z-index: 2;')
+            .content
+                a.brand-logo(href='../')
+                    img(src='../images/logo.svg')
+                form(method='post', action='/users/login', enctype='urlencoded')
+                    .form-group
+                        label Username
+                        input.form-control(name='username', type='text', placeholder='username')
+                    .form-group
+                        label Password
+                        input.form-control(name='password', type='password',
+                         placeholder='password')
+                    input.btn.btn-prymary(type='submit', name ='submit', value='Login')
+            .msgs
+             != messages()

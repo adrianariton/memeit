@@ -1,0 +1,420 @@
+:root {
+    --container-bg-color: #333;
+    --left-bg-color: rgba(223, 39, 39, 0.7);
+    --left-button-hover-color: rgba(161, 11, 11, 0.3);
+    --right-bg-color: rgba(43, 43, 43, 0.8);
+    --right-button-hover-color: rgba(92, 92, 92, 0.3);
+    --hover-width: 75%;
+    --other-width: 25%;
+    --speed: 700ms;
+}
+body::-webkit-scrollbar {
+    display: none !important;
+}
+h1,h2,h3,h4,h5,h6,h7,h8,h9{
+    overflow: visible !important;
+}
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900);
+*{
+    font-family: "Raleway", Helvetica, Arial, sans-serif !important;
+    overflow-x: hidden !important;
+}
+@mixin min-width($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+@mixin max-width($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+@mixin min-height($width) {
+  @media screen and (max-height: $width) {
+    @content;
+  }
+}
+@mixin max-height($width) {
+  @media screen and (min-height: $width) {
+    @content;
+  }
+}
+@mixin flex-row {
+    
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@mixin flex-column {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-row{
+  @include flex-row();
+  &.jcenter{
+    justify-content: center;
+  }
+  &.jstart{
+    justify-content: flex-start;
+  }
+  &.jend{
+    justify-content: flex-end;
+  }
+  &.jspace-between{
+    justify-content: space-between;
+  }
+  &.jspace-around{
+    justify-content: space-around;
+  }
+  &.jspace-evenly{
+    justify-self: space-evenly;
+  }
+
+}
+.flex-column{
+  @include flex-column();
+  &.jcenter{
+    justify-content: center;
+  }
+  &.jstart{
+    justify-content: flex-start;
+  }
+  &.jend{
+    justify-content: flex-end;
+  }
+  &.jspace-between{
+    justify-content: space-between;
+  }
+  &.jspace-around{
+    justify-content: space-around;
+  }
+  &.jspace-evenly{
+    justify-self: space-evenly;
+  }
+}
+html, body {
+  padding:0;
+  margin:0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  overflow: visible !important;
+  padding: 0 !important;
+  font-size: 2em !important;
+  font-weight: 600;
+  margin: 0 0 0 0 !important;
+}
+
+
+.mainbody{
+    position: relative;
+    top: 260px !important;
+  //  min-height: 150vh;
+    background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.container-fluid {
+  position: fixed;
+  width: 100% !important;
+  height: 195px !important;
+  top: 65px !important;
+
+  background: var(--container-bg-color);
+  &::before{
+      content:'';
+      z-index: 3;
+      position: absolute;
+      height: 50%;
+      width: 100%;
+      top:0;
+      right: 0;
+      background: linear-gradient(#000000, #00000000);
+  }
+}
+
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split.left {
+  left:0;
+  background: url('https://image.ibb.co/m56Czw/designer.jpg') center center no-repeat;
+  background-size: cover;
+  @include flex-row();
+  justify-content: center !important;
+}
+
+.split.left:before {
+  position:absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--left-bg-color);
+}
+
+.split.right {
+  right:0;
+  background: url(../images/1.jpg) center center no-repeat;
+  background-size: cover;
+  @include flex-row();
+  justify-content: center !important;
+}
+
+.split.right:before {
+  position:absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--right-bg-color);
+}
+
+.split.left, .split.right, .split.right:before, .split.left:before {
+  transition: var(--speed) all ease-in-out;
+}
+
+.hover-left .left {
+  width: var(--hover-width);
+}
+
+.hover-left .right {
+  width: var(--other-width);
+}
+
+.hover-left .right:before {
+  z-index: 2;
+}
+
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+
+.hover-right .left {
+  width: var(--other-width);
+}
+
+.hover-right .left:before {
+  z-index: 2;
+}
+
+@media(max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .button {
+    width: 12rem;
+  }
+}
+
+@media(max-height: 700px) {
+  .button {
+    top: 70%;
+  }
+}
+.material-icons{
+    font-family: "Material Icons" !important;
+}
+.navbar{
+    width: 100%;
+    position: fixed;
+    height: 65px !important;
+    z-index: 1000;
+    background-color: #000000;
+    @include flex-row();
+    *{
+        font-size: large;
+        color: #fff !important;
+    }
+    justify-content: space-between;
+    .navbar-header{
+        .navbar-brand{
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    }
+    .nav{
+        @include flex-row();
+        li{
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    }
+    .menu{
+        @include flex-column();
+        justify-content: center;
+        cursor: pointer;
+        
+    }
+}
+
+.ascent{
+    width: 100%;
+    @include flex-row();
+    justify-content: center;
+    span{
+        font-size: 4em;
+        color: whitesmoke !important;
+        letter-spacing: 0.5rem;
+        font-weight: 600;
+    }
+}
+
+.featured{
+    width: 100%;
+    .row{
+        @include flex-row();
+        flex-wrap: wrap;
+        &:nth-child(even){
+            @include flex-row();
+            flex-direction: row-reverse !important;
+        }
+
+        justify-content: center;
+
+        .image{
+            height: 20em;
+            width: 20em;
+            min-width: 20em;
+            min-height: 20em;
+            background-color: var(--container-bg-color);
+        }
+        .info{
+            min-width: 20em;
+            min-height: 20em;
+            *{
+                color: white !important;
+            }
+            span{
+                color: white !important;
+                
+            }
+            padding-left: .5em;
+                padding-right: .5em;
+            margin: 3em !important;
+            height: 20em;
+            width: 20em;
+            max-height: 20em;
+            min-height: 20em;
+            overflow-y: hidden;
+            
+        }
+    }
+    @include min-width(60em){
+        @include flex-column();
+    }
+}
+
+
+.sidenav{
+    position: absolute;
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    transform: translateX(-100vw);
+    right:0;
+    transition: transform 0.3s ease;
+    .content{
+        position: relative;
+        top: 65px !important;
+    }
+    li{
+        list-style: none;
+        a{
+            color: white !important;
+
+        }
+    }
+    &.active{
+        transform: translateX(0vw);
+    }
+    background-color: #000;
+}
+
+.msgs{ 
+      
+
+    #messages{
+        .error{
+            background-color: rgba(255, 24, 24, 0.438);
+            
+            
+            color: white;
+        }
+        .succes{
+            background-color: rgba(70, 255, 24, 0.452);
+            
+            
+            color: white;
+
+        }
+    }
+}
+
+/*login register*/
+
+.form-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    @include min-height(500px){
+        height: 150%;
+    }
+    &.register{
+        @include min-height(500px){
+            height: 200%;
+        }
+    }
+    @include flex-column();
+    justify-content: center;
+    background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+
+    .content{
+        form{
+            input{
+                background-color: rgb(12, 12, 12);
+                color: white !important;
+            }
+        }
+    }
+}
+.error-content{
+    margin-top: 5px;
+    background-color: rgba(255, 24, 24, 0.438);
+ 
+    color: white !important;
+}
+.footer{
+    padding-bottom: 100px;
+    padding-top: 100px;
+    @include flex-column();
+    justify-content: center;
+    background-color: transparent;
+    span{
+        color: white !important;
+        font-size: large;
+    }
+    form{
+        input{
+            background-color: rgb(12, 12, 12);
+            color: white !important;
+        }
+        input[type="submit"]{
+            background-color: var(--left-bg-color) !important;
+            border: none !important;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    .msgs
+     != messages()
+    .form-container.register
+        .modal-form(style='z-index: 2;')
+            .content
+                a.brand-logo(href='../') 
+                    img(src='../images/logo.svg')
+                form(method='post', action='/users/register', enctype='multipart/form-data')
+                    .form-group
+                        label Name
+                        input.form-control(name='name', type='text', placeholder='name')
+                    .form-group
+                        label Email
+                        input.form-control(name='email', type='email', placeholder='email')
+                    .form-group
+                        label Username
+                        input.form-control(name='username', type='text', placeholder='usrname')
+                    .form-group
+                        label Password
+                        input.form-control(name='password', type='password',
+                     placeholder='password')
+                    .form-group
+                        label Confirm Password
+                        input.form-control(name='password2', type='password',
+                     placeholder='check pwd')
+                    .form-group.imageupload
+                        label Profile Image
+                        input.form-control(name='profileimage', type='file')
+                    input.btn.btn-prymary(type='submit', name ='submit', value='Register')
+            .error-content
+                if errors
+                    div.alert.alert-danger #{errors[0].msg}
