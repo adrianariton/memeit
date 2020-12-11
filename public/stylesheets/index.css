@@ -306,9 +306,35 @@ h1 {
   color: #fff !important;
 }
 
+.navbar .navbar-header {
+  z-index: 2;
+}
+
 .navbar .navbar-header .navbar-brand {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.navbar .navbar-center {
+  position: absolute;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar .navbar-body {
+  z-index: 2;
 }
 
 .navbar .nav {
@@ -370,12 +396,39 @@ h1 {
   font-weight: 600;
 }
 
+.firstimage {
+  height: 20em;
+  min-width: 100vw;
+  min-height: 20em;
+  background-color: var(--container-bg-color);
+}
+
+.rows {
+  width: 100vw !important;
+  margin: 0 0 0 0 !important;
+}
+
+@media screen and (max-width: 600px) {
+  .rows {
+    width: unset !important;
+    margin: unset !important;
+  }
+}
+
 .featured {
   width: 100%;
   margin-top: 20px;
 }
 
 .featured .row {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  height: 100vh;
+  width: 100vw !important;
+  margin: 0 0 0 0 !important;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,11 +439,27 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .featured .row {
+    height: unset;
+    width: unset !important;
+    margin: unset !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .featured .row {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
+  }
 }
 
 .featured .row:nth-child(even) {
@@ -409,16 +478,30 @@ h1 {
 }
 
 .featured .row .image {
-  height: 20em;
-  width: 20em;
-  min-width: 20em;
+  height: 100%;
+  width: auto;
+  -webkit-box-flex: 6;
+      -ms-flex-positive: 6;
+          flex-grow: 6;
   min-height: 20em;
   background-color: var(--container-bg-color);
+}
+
+@media screen and (max-width: 600px) {
+  .featured .row .image {
+    height: 20em;
+    width: 20em !important;
+    margin: unset !important;
+  }
 }
 
 .featured .row .info {
   min-width: 20em;
   min-height: 20em;
+  height: auto;
+  -webkit-box-flex: 5;
+      -ms-flex-positive: 5;
+          flex-grow: 5;
   padding-left: .5em;
   padding-right: .5em;
   margin: 3em !important;
@@ -442,6 +525,7 @@ h1 {
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  margin: 2em;
 }
 
 .featured .row .more:hover {
@@ -575,6 +659,10 @@ h1 {
   font-size: large;
 }
 
+.footer form {
+  max-width: 20em;
+}
+
 .footer form input {
   background-color: #0c0c0c;
   color: white !important;
@@ -599,20 +687,100 @@ h1 {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1em;
+  margin-top: 7em;
   margin-bottom: 50px;
 }
 
+@media screen and (max-width: 412px) {
+  .steps {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.steps .step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.steps .step .text {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.steps .step .text span {
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+}
+
 .steps .step .image {
-  width: 10em;
-  height: 10em;
-  margin: 2em;
   background-color: var(--container-bg-color);
+}
+
+@media screen and (min-width: 412px) {
+  .steps .step .image {
+    width: 25em;
+    height: 25em;
+    margin: 1em;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .steps .step .image {
+    width: 80vw;
+    height: 80vw;
+    margin: 10vw;
+  }
 }
 
 .ascentsteps {
   border-bottom: #333 solid 1px;
+}
+
+@media screen and (max-width: 550px) {
+  .hideon-sw {
+    display: none !important;
+  }
 }
 /*# sourceMappingURL=index.css.map */

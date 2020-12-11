@@ -249,6 +249,17 @@ h1 {
             padding-left: 1em;
             padding-right: 1em;
         }
+        z-index: 2;
+    }
+    .navbar-center{
+      position: absolute;
+      width: 100%;
+      @include flex-row();
+      justify-content: center;
+    }
+    .navbar-body{
+      z-index: 2;
+
     }
     .nav{
         @include flex-row();
@@ -276,13 +287,41 @@ h1 {
         font-weight: 600;
     }
 }
-
+.firstimage{
+  height: 20em;
+  min-width: 100vw;
+  min-height: 20em;
+  background-color: var(--container-bg-color);
+}
+.rows{
+  width: 100vw !important;
+        margin: 0 0 0 0 !important;
+        @include min-width(600px){
+          width: unset !important;
+          margin: unset !important
+        }
+}
 .featured{
     width: 100%;
     margin-top: 20px;
     .row{
-        @include flex-row();
+        min-height: fit-content;
+        height: 100vh;
+        width: 100vw !important;
+        margin: 0 0 0 0 !important;
+        @include min-width(600px){
+          height: unset;
+          width: unset !important;
+          margin: unset !important
+        }
         flex-wrap: wrap;
+
+        @include max-width(800px){
+          flex-wrap: nowrap !important;
+
+        }
+        @include flex-row();
+        justify-content: stretch;
         &:nth-child(even){
             @include flex-row();
             flex-direction: row-reverse !important;
@@ -291,15 +330,22 @@ h1 {
         justify-content: center;
 
         .image{
-            height: 20em;
-            width: 20em;
-            min-width: 20em;
+            height: 100%;
+            width: auto;
+            flex-grow: 6;
+            @include min-width(600px){
+              height: 20em;
+              width: 20em !important;
+              margin: unset !important
+            }
             min-height: 20em;
             background-color: var(--container-bg-color);
         }
         .info{
             min-width: 20em;
             min-height: 20em;
+            height: auto;
+            flex-grow: 5;
             *{
                 color: white !important;
             }
@@ -321,6 +367,7 @@ h1 {
           color: white !important;
           cursor: pointer;
           transition: all 0.3s ease;
+          margin: 2em;
           &:hover{
             font-size: large;
           }
@@ -410,6 +457,7 @@ h1 {
  
     color: white !important;
 }
+
 .footer{
     padding-bottom: 100px;
     padding-top: 100px;
@@ -421,6 +469,7 @@ h1 {
         font-size: large;
     }
     form{
+      max-width: 20em;
         input{
             background-color: rgb(12, 12, 12);
             color: white !important;
@@ -434,12 +483,40 @@ h1 {
 .steps{
   @include flex-row();
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-top: 1em;
+  margin-top: 7em;
+  @include min-width(412px){
+    @include flex-column();
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
   .step{
+    @include flex-column();
+    justify-content: space-between;
+    .text{
+      margin-top: 1em;
+      @include flex-row();
+      justify-content: center;
+      span{
+        color: #fff;
+        font-size: 2em;
+        text-align: center;
+      }
+    }
     .image{
-      width: 10em;
-      height: 10em;
-      margin: 2em;
+      @include max-width(412px){
+        width: 25em;
+        height: 25em;
+        margin: 1em;
+      }
+      @include min-width(412px){
+        width: 80vw;
+        height: 80vw;
+        margin: 10vw;
+      }
+      
+
       background-color: var(--container-bg-color);
     }
   }
@@ -448,4 +525,10 @@ h1 {
 
 .ascentsteps{
   border-bottom: #333 solid 1px;
+}
+
+@include min-width(550px){
+  .hideon-sw{
+    display: none !important;
+  }
 }

@@ -21,21 +21,28 @@ html
       .navbar-header
         a.navbar-brand(href='../')
           img(src='/images/logo.svg')
+      .navbar-center
+        span 𝒶𝓈𝒸𝑒𝓃𝓉
       .navbar-body
         ul.nav.navbar-nav
           if !user
-            li(class =(title == 'Register' ? 'active' : ''))
+            li.hideon-sw.register(class =(title == 'Register' ? 'active' : ''))
               a(href='/users/register') register
-            li.login(class =(title == 'Login' ? 'active' : ''))
+            li.login.hideon-sw(class =(title == 'Login' ? 'active' : ''))
               a(href='/users/login') login
           else
             if user
-              li
+              li.hideon-sw
                 a(href='/users/logout') logout
           li.menu
               i(class='material-icons') menu
     .sidenav
       .content
+        if !user
+          li.register(class =(title == 'Register' ? 'active' : ''))
+            a(href='/users/register') register
+          li.login(class =(title == 'Login' ? 'active' : ''))
+            a(href='/users/login') login
         if user
           li
             a(href='/') my account
