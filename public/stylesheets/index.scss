@@ -532,3 +532,27 @@ h1 {
     display: none !important;
   }
 }
+
+.footer-copyright{
+  width: 100%;
+  @include flex-row();
+  justify-content: space-between;
+ 
+  flex-wrap: wrap;
+}
+footer{
+  padding: 0 0 0 0 !important;
+  .followus{
+    @include flex-row();
+    justify-content: flex-start;
+    a{
+      margin-right: .5em;
+      i{
+        cursor: pointer;
+      }
+    }
+  }
+}
+.fa{
+  font-family: "FontAwesome" !important;
+}

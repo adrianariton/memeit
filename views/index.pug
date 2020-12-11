@@ -37,13 +37,31 @@ block content
             h4.title Top Quality
             span Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
           a.more &#8594;
-    .footer
-      .container
-        span Contact Us
-        form(action="")
-          label(for="email") Email
-          input(type='email' name="email" placeholder="email")
-          label(for="email") Message
-          textarea(cols="30", rows="10" name="email" placeholder="message")
-          input.btn(type="submit")
+    footer(class="page-footer footer")
+      div.container
+        div.row
+          div(class="col l6 s12")
+            h5(class="white-text") Contact Us!
+            form(action="")
+              label(for="email") Email
+              input(type='email' name="email" placeholder="email")
+              label(for="email") Message
+              textarea(cols="30", rows="10" name="email" placeholder="message")
+              input.btn(type="submit")
+          div(class="col l4 offset-l2 s12")
+            h5 Follow Us!
+            ul
+              li.followus
+                a(class="grey-text text-lighten-3" href="#!") <i class="fa fa-instagram"></i>
+                a(class="grey-text text-lighten-3" href="#!") <i class="fa fa-facebook"></i>
+              li
+                a(class="grey-text text-lighten-3" href="#aboutus") About Us
+              li
+                a(class="grey-text text-lighten-3" href="#!help") Help
+              li
+                a(class="grey-text text-lighten-3" href="#!invite") Invite friend!
+      div.footer-copyright
+        div.container © 2020 Ascent Romania
+          a(class="grey-text text-lighten-4 right" href="#!") Privacy Policy
+    
     script(src='../javascripts/mwui.js')
