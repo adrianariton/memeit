@@ -173,6 +173,11 @@ h1 {
   overflow: hidden;
 }
 
+.split h1 {
+  font-size: 4em !important;
+  font-weight: 900;
+}
+
 .split.left {
   left: 0;
   background: url("https://image.ibb.co/m56Czw/designer.jpg") center center no-repeat;
@@ -367,6 +372,7 @@ h1 {
 
 .featured {
   width: 100%;
+  margin-top: 20px;
 }
 
 .featured .row {
@@ -429,6 +435,17 @@ h1 {
 
 .featured .row .info span {
   color: white !important;
+}
+
+.featured .row .more {
+  color: white !important;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.featured .row .more:hover {
+  font-size: large;
 }
 
 @media screen and (max-width: 60em) {
@@ -564,7 +581,38 @@ h1 {
 }
 
 .footer form input[type="submit"] {
-  background-color: var(--left-bg-color) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
+  background: linear-gradient(var(--left-bg-color), #000) !important;
   border: none !important;
+}
+
+.steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 50px;
+}
+
+.steps .step .image {
+  width: 10em;
+  height: 10em;
+  margin: 2em;
+  background-color: var(--container-bg-color);
+}
+
+.ascentsteps {
+  border-bottom: #333 solid 1px;
 }
 /*# sourceMappingURL=index.css.map */

@@ -147,6 +147,10 @@ h1 {
   width: 50%;
   height: 100%;
   overflow: hidden;
+  h1{
+    font-size: 4em !important;
+    font-weight: 900;
+  }
 }
 
 .split.left {
@@ -275,6 +279,7 @@ h1 {
 
 .featured{
     width: 100%;
+    margin-top: 20px;
     .row{
         @include flex-row();
         flex-wrap: wrap;
@@ -311,6 +316,14 @@ h1 {
             min-height: 20em;
             overflow-y: hidden;
             
+        }
+        .more{
+          color: white !important;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover{
+            font-size: large;
+          }
         }
     }
     @include min-width(60em){
@@ -413,8 +426,26 @@ h1 {
             color: white !important;
         }
         input[type="submit"]{
-            background-color: var(--left-bg-color) !important;
+            background: linear-gradient(var(--left-bg-color), #000)  !important;
             border: none !important;
         }
     }
+}
+.steps{
+  @include flex-row();
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  .step{
+    .image{
+      width: 10em;
+      height: 10em;
+      margin: 2em;
+      background-color: var(--container-bg-color);
+    }
+  }
+  margin-bottom: 50px;
+}
+
+.ascentsteps{
+  border-bottom: #333 solid 1px;
 }
