@@ -451,6 +451,10 @@ h1 {
                 background-color: rgb(12, 12, 12);
                 color: white !important;
             }
+            input[type='submit']{
+              background: linear-gradient(var(--left-bg-color), #000)  !important;
+
+            }
         }
     }
 }
