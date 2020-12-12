@@ -333,6 +333,10 @@ h1 {
           justify-content: center;
 }
 
+.navbar .navbar-center span {
+  font-size: 2em !important;
+}
+
 .navbar .navbar-body {
   z-index: 2;
 }

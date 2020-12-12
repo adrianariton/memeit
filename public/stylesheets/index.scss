@@ -256,6 +256,9 @@ h1 {
       width: 100%;
       @include flex-row();
       justify-content: center;
+      span{
+        font-size: 2em !important;
+      }
     }
     .navbar-body{
       z-index: 2;
