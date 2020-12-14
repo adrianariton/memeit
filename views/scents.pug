@@ -1,0 +1,76 @@
+extends layout
+
+block content
+  .scentsbody
+    h1 #{input}
+    .buddy
+      for i in [0,2]
+        .row.container
+          .card
+            .imaromas
+              .col
+                div.b1.b
+                span.a1 #{scents[i].aromas[0]}
+                div.b2.b
+                span.a2 #{scents[i].aromas[0]}
+                div.b3.b
+                span.a3 #{scents[i].aromas[0]}
+              img.image(src='/images/1.jpg')
+              .col
+                div.b1.b
+                span.a1 #{scents[i].aromas[1]}
+                div.b2.b
+                span.a2 #{scents[i].aromas[1]}
+                div.b3.b
+                span.a3 #{scents[i].aromas[1]}
+            h1.name #{scents[i].name}
+            span.desc #{scents[i].description.substr(0, 200)}
+            span Read More
+          .card
+            .imaromas
+              .col
+                div.b1.b
+                span.a1 #{scents[i+1].aromas[0]}
+                div.b2.b
+                span.a2 #{scents[i+1].aromas[0]}
+                div.b3.b
+                span.a3 #{scents[i+1].aromas[0]}
+              img.image(src='/images/1.jpg')
+              .col
+                div.b1.b
+                span.a1 #{scents[i+1].aromas[1]}
+                div.b2.b
+                span.a2 #{scents[i+1].aromas[1]}
+                div.b3.b
+                span.a3 #{scents[i+1].aromas[1]}
+            h1.name #{scents[i+1].name}
+            span.desc #{scents[i+1].description.substr(0, 200)}
+            span Read More
+      .row.container
+        .card
+          .imaromas
+            .col
+              div.b1.b
+              span.a1 #{scents[4].aromas[0]}
+              div.b2.b
+              span.a2 #{scents[4].aromas[0]}
+              div.b3.b
+              span.a3 #{scents[4].aromas[0]}
+            img.image(src='/images/1.jpg')
+            .col
+              div.b1.b
+              span.a1 #{scents[4].aromas[1]}
+              div.b2.b
+              span.a2 #{scents[4].aromas[1]}
+              div.b3.b
+              span.a3 #{scents[4].aromas[1]}
+          h1.name #{scents[4].name}
+          span.desc #{scents[4].description.substr(0, 200)}
+          span Read More
+        .card
+          .imaromas
+            img.image(src='/images/1.jpg')
+          h1.name Suggest Scent!
+          form
+            input(type="text" placeholder='name')
+            input(type="submit")

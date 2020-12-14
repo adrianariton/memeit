@@ -147,9 +147,11 @@ h1 {
   width: 50%;
   height: 100%;
   overflow: hidden;
-  h1{
+  h1,a{
+    color: white !important;
     font-size: 4em !important;
     font-weight: 900;
+    z-index: 2;
   }
 }
 
@@ -258,6 +260,7 @@ h1 {
       justify-content: center;
       span{
         font-size: 2em !important;
+        font-style: italic;
       }
     }
     .navbar-body{
@@ -562,4 +565,80 @@ footer{
 }
 .fa{
   font-family: "FontAwesome" !important;
+}
+
+
+
+/* scents */
+.scentsbody{
+  min-height: max-content !important;
+  overflow-y: hidden !important;
+  @include flex-column();
+  justify-content: center;
+  &::-webkit-scrollbar{
+    display: none !important;
+  }
+  position: relative;
+  top: 65px !important;
+  .buddy{
+    position: relative;
+  }
+  h1{
+    position: relative;
+    overflow: visible !important;
+    margin-bottom: 30px !important;
+    margin-top: 30px !important;
+  }
+  .card{
+    background-color: transparent !important;
+    min-height: 100%;
+    padding: 10px;
+    @include max-width(700px){
+      width: 40% !important;
+
+    }
+  }
+  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  .row{
+    align-items: flex-start;
+    span, h1{
+      text-align: center !important;
+      color: white !important;
+    }
+    @include flex-row();
+    justify-content: space-around;
+    @include min-width(700px){
+      flex-direction: column;
+      justify-content: space-between;
+
+    }
+    
+    .card{
+      @include flex-column();
+      justify-content: center;
+      .imaromas{
+        @include flex-row();
+        justify-content: space-around;
+        .col{
+          @include flex-column();
+      justify-content: center;
+        }
+        img{
+          max-width: 70% !important;
+        }
+      }
+      form{
+        @include flex-column();
+      justify-content: center;
+      }
+      .b{
+        width: 2em;
+        height: 2em;
+        border-radius: 1em;
+        padding-top: 3px;
+        background: linear-gradient(var(--left-bg-color), #000)  !important;
+
+      }
+    }
+  }
 }

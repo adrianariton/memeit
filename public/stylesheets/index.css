@@ -173,9 +173,11 @@ h1 {
   overflow: hidden;
 }
 
-.split h1 {
+.split h1, .split a {
+  color: white !important;
   font-size: 4em !important;
   font-weight: 900;
+  z-index: 2;
 }
 
 .split.left {
@@ -335,6 +337,7 @@ h1 {
 
 .navbar .navbar-center span {
   font-size: 2em !important;
+  font-style: italic;
 }
 
 .navbar .navbar-body {
@@ -842,5 +845,168 @@ footer .followus a i {
 
 .fa {
   font-family: "FontAwesome" !important;
+}
+
+/* scents */
+.scentsbody {
+  min-height: -webkit-max-content !important;
+  min-height: -moz-max-content !important;
+  min-height: max-content !important;
+  overflow-y: hidden !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: 65px !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+}
+
+.scentsbody::-webkit-scrollbar {
+  display: none !important;
+}
+
+.scentsbody .buddy {
+  position: relative;
+}
+
+.scentsbody h1 {
+  position: relative;
+  overflow: visible !important;
+  margin-bottom: 30px !important;
+  margin-top: 30px !important;
+}
+
+.scentsbody .card {
+  background-color: transparent !important;
+  min-height: 100%;
+  padding: 10px;
+}
+
+@media screen and (min-width: 700px) {
+  .scentsbody .card {
+    width: 40% !important;
+  }
+}
+
+.scentsbody .row {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.scentsbody .row span, .scentsbody .row h1 {
+  text-align: center !important;
+  color: white !important;
+}
+
+@media screen and (max-width: 700px) {
+  .scentsbody .row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.scentsbody .row .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.scentsbody .row .card .imaromas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.scentsbody .row .card .imaromas .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.scentsbody .row .card .imaromas img {
+  max-width: 70% !important;
+}
+
+.scentsbody .row .card form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.scentsbody .row .card .b {
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  padding-top: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
+  background: linear-gradient(var(--left-bg-color), #000) !important;
 }
 /*# sourceMappingURL=index.css.map */
