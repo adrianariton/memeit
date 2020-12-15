@@ -872,6 +872,18 @@ footer .followus a i {
   background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
 }
 
+.scentsbody .wh {
+  display: none !important;
+}
+
+.scentsbody .readmore-active .wh {
+  display: block !important;
+}
+
+.scentsbody .readmore-active .desc {
+  display: none !important;
+}
+
 .scentsbody::-webkit-scrollbar {
   display: none !important;
 }

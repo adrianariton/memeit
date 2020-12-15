@@ -26,6 +26,7 @@ block content
             div.name 
               h1 #{scents[i].name}
             span.desc #{scents[i].description.substr(0, 200)}...
+            span.wh #{scents[i].description}
             span.readmore Read More
           .card
             .imaromas
@@ -47,6 +48,7 @@ block content
             div.name  
               h1 #{scents[i+1].name}
             span.desc #{scents[i+1].description.substr(0, 200)}...
+            span.wh #{scents[i+1].description}
             span.readmore Read More
       .row.container
         .card
@@ -69,6 +71,7 @@ block content
           div.name 
             h1 #{scents[4].name}
           span.desc #{scents[4].description.substr(0, 200)}...
+          span.wh #{scents[4].description}
           span.readmore Read More
         .card
           .imaromas

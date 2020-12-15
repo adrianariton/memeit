@@ -574,6 +574,17 @@ footer{
   min-height: max-content !important;
   overflow-y: hidden !important;
   @include flex-column();
+  .wh{
+    display: none !important;
+  }
+  .readmore-active{
+    .wh{
+      display: block !important;
+    }
+    .desc{
+      display: none !important;
+    }
+  }
   justify-content: center;
   &::-webkit-scrollbar{
     display: none !important;
