@@ -876,6 +876,10 @@ footer .followus a i {
   display: none !important;
 }
 
+.scentsbody .input {
+  text-transform: capitalize;
+}
+
 .scentsbody .buddy {
   position: relative;
 }
@@ -899,6 +903,10 @@ footer .followus a i {
   }
 }
 
+.scentsbody .card .comingsoon {
+  position: absolute;
+}
+
 .scentsbody .row {
   -webkit-box-align: start;
       -ms-flex-align: start;
@@ -913,8 +921,9 @@ footer .followus a i {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .scentsbody .row span, .scentsbody .row h1 {
@@ -935,6 +944,7 @@ footer .followus a i {
 }
 
 .scentsbody .row .card {
+  margin: 20px !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1001,6 +1011,57 @@ footer .followus a i {
           justify-content: center;
 }
 
+.scentsbody .row .card div.name {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  cursor: pointer !important;
+}
+
+.scentsbody .row .card div.name h1 {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.scentsbody .row .card div.name::before {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  content: '';
+  height: calc(100% - 60px);
+  width: 0%;
+  display: block;
+  position: absolute;
+  background-color: white;
+}
+
+.scentsbody .row .card div.name:hover::before {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  content: '';
+  height: calc(100% - 60px);
+  width: 1000%;
+  background-color: white;
+}
+
+.scentsbody .row .card div.name:hover h1 {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: black !important;
+}
+
 .scentsbody .row .card .b {
   width: 2em;
   height: 2em;
@@ -1008,5 +1069,19 @@ footer .followus a i {
   padding-top: 3px;
   background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
   background: linear-gradient(var(--left-bg-color), #000) !important;
+}
+
+.scentsbody .row .card .readmore {
+  padding: 3px;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.scentsbody .row .card .readmore:hover {
+  background: #fff;
+  color: #000 !important;
 }
 /*# sourceMappingURL=index.css.map */

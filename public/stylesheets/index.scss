@@ -578,6 +578,9 @@ footer{
   &::-webkit-scrollbar{
     display: none !important;
   }
+  .input{
+    text-transform: capitalize;
+  }
   position: relative;
   top: 65px !important;
   .buddy{
@@ -597,6 +600,9 @@ footer{
       width: 40% !important;
 
     }
+    .comingsoon{
+      position: absolute;
+    }
   }
   background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
   .row{
@@ -606,7 +612,7 @@ footer{
       color: white !important;
     }
     @include flex-row();
-    justify-content: space-around;
+    justify-content: center;
     @include min-width(700px){
       flex-direction: column;
       justify-content: space-between;
@@ -614,6 +620,7 @@ footer{
     }
     
     .card{
+      margin: 20px !important;
       @include flex-column();
       justify-content: center;
       .imaromas{
@@ -631,6 +638,42 @@ footer{
         @include flex-column();
       justify-content: center;
       }
+      div.name{
+        position: relative;
+        @include flex-column();
+      justify-content: center;
+        transition: all 0.7s ease;
+        h1{
+          transition: all 0.5s ease;
+
+        }
+        &::before{
+          transition: all 0.7s ease;
+          content: '';
+          height: calc(100% - 60px);
+          width: 0%;
+          display: block;
+          position: absolute;
+          background-color: white;
+        }
+        cursor: pointer !important;
+        &:hover{
+          &::before{
+            transition: all 0.7s ease;
+            content: '';
+            height: calc(100% - 60px);
+
+            width: 1000%;
+            background-color: white;
+          }
+          h1{
+            transition: all 0.5s ease;
+
+          color: black !important;
+
+          }
+        }
+      }
       .b{
         width: 2em;
         height: 2em;
@@ -638,6 +681,17 @@ footer{
         padding-top: 3px;
         background: linear-gradient(var(--left-bg-color), #000)  !important;
 
+      }
+      .readmore{
+        padding: 3px;
+        cursor: pointer;
+        background: transparent;
+        color: white;
+        transition: all 0.3s ease;
+        &:hover{
+          background: #fff;
+          color: #000 !important;
+        }
       }
     }
   }
