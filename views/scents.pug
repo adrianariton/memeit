@@ -87,8 +87,13 @@ block content
           form
             input(type="text" placeholder='name')
             input(type="submit")
-  script(type='text/javascript').
-    const currentuser = '#{user.username}'
-    const scents = JSON.parse('#{scents}')
-  script(type='text/javascript' src='/javascripts/dot.js')
+  if user
+    script(type='text/javascript').
+      const currentuser = '#{user.username}'
+      const scents = `#{scents}`
+  else 
+    script(type='text/javascript').
+      const currentuser = null
+      const scents = `#{scents}`
   script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
+  script(src='/javascripts/dot.js')

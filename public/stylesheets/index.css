@@ -919,6 +919,10 @@ footer .followus a i {
   position: absolute;
 }
 
+.scentsbody .card .addtocart {
+  cursor: pointer !important;
+}
+
 .scentsbody .row {
   -webkit-box-align: start;
       -ms-flex-align: start;
