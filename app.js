@@ -32,7 +32,7 @@ mongoose.connection.on('connected', ()=>{
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var scentsRouter = require('./routes/scents');
+var scentsRouter = require('./routes/scents')(app.io);
 
 //var chatsRouter = require('./routes/chat')(app.io);
 

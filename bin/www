@@ -7,7 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('ascent:server');
 var http = require('http');
-
+const mongoc = require('mongodb').MongoClient;
+const socketio = require('socket.io');
 /**
  * Get port from environment and store in Express.
  */
@@ -19,7 +20,9 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var io = app.io;  
+var server = http.createServer(app);  
+io.attach(server);  
 
 /**
  * Listen on provided port, on all network interfaces.
