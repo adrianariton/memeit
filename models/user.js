@@ -56,7 +56,7 @@ module.exports.createUser = function(newUser, callback){
 
 module.exports.addToCart = function(username, parfume, callback){
     User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
-        callback(res)
+        callback(res, parfume)
     })
     //{ $addToSet: { colors: "c" } }
 }
@@ -64,7 +64,7 @@ module.exports.addToCart = function(username, parfume, callback){
 module.exports.removeFromCart = function(username, parfume, callback){
     User.update({username: username}, { $pull: { cart: parfume } },
         { multi: true }).then(res =>{
-            console.log(res)
+            console.log(res, parfume)
         callback(res)
     })
     //{ $addToSet: { colors: "c" } }
