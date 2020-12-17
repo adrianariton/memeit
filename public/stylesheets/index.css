@@ -171,6 +171,7 @@ h1 {
   width: 50%;
   height: 100%;
   overflow: hidden;
+  cursor: pointer !important;
 }
 
 .split h1, .split a {
@@ -178,6 +179,10 @@ h1 {
   font-size: 4em !important;
   font-weight: 900;
   z-index: 2;
+}
+
+.bl {
+  display: block !important;
 }
 
 .split.left {
@@ -335,7 +340,7 @@ h1 {
           justify-content: center;
 }
 
-.navbar .navbar-center span {
+.navbar .navbar-center a {
   font-size: 2em !important;
   font-style: italic;
 }
@@ -360,6 +365,10 @@ h1 {
 .navbar .nav li {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.navbar .nav li:hover a {
+  color: #bbbbbb !important;
 }
 
 .navbar .menu {
@@ -554,35 +563,73 @@ h1 {
   }
 }
 
-.sidenav {
+.customsidenav {
   position: absolute;
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
-  -webkit-transform: translateX(-100vw);
-          transform: translateX(-100vw);
-  right: 0;
+  width: 300px;
+  top: 0;
+  margin: 0;
+  -webkit-transform: translateX(100vw);
+          transform: translateX(100vw);
+  right: 0 !important;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  z-index: 9;
   background-color: #000;
 }
 
-.sidenav .content {
+.customsidenav .content {
   position: relative;
   top: 65px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 2em;
 }
 
-.sidenav li {
+.customsidenav .content li {
+  padding-top: .2em;
+  padding-bottom: .2em;
+}
+
+.customsidenav .content li:hover a {
+  color: #bbbbbb !important;
+}
+
+.customsidenav .content li a {
+  font-size: larger;
+}
+
+.customsidenav .content li a:hover {
+  color: #bbbbbb !important;
+}
+
+.customsidenav li {
   list-style: none;
 }
 
-.sidenav li a {
+.customsidenav li a {
   color: white !important;
 }
 
-.sidenav.active {
+.customsidenav.active {
   -webkit-transform: translateX(0vw);
           transform: translateX(0vw);
 }
@@ -921,6 +968,7 @@ footer .followus a i {
 
 .scentsbody .card .addtocart {
   cursor: pointer !important;
+  margin-top: 20px;
 }
 
 .scentsbody .row {
@@ -974,6 +1022,17 @@ footer .followus a i {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (min-width: 900px) {
+  .scentsbody .row .card:nth-child(odd) {
+    -webkit-transform: translateX(-60px);
+            transform: translateX(-60px);
+  }
+  .scentsbody .row .card:nth-child(even) {
+    -webkit-transform: translateX(60px);
+            transform: translateX(60px);
+  }
 }
 
 .scentsbody .row .card .imaromas {

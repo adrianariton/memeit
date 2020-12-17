@@ -1,6 +1,6 @@
 
 const menu = document.querySelector(".menu")
-const sidenav = document.querySelector(".sidenav")
+const sidenav = document.querySelector(".customsidenav")
 
 
 
@@ -14,3 +14,8 @@ $(".card .readmore").click((ev)=>{
     
 
 })
+
+$(".split").click(function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+});

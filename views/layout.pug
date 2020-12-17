@@ -22,7 +22,7 @@ html
         a.navbar-brand(href='../')
           img(src='/images/logo.svg')
       .navbar-center
-        span(style='font-weight: 700 !important;') Ascent
+        a(style='font-weight: 700 !important;' href='../') Ascent
       .navbar-body
         ul.nav.navbar-nav
           if !user
@@ -36,8 +36,8 @@ html
                 a(href='/users/logout') logout
           li.menu
               i(class='material-icons') menu
-    .sidenav
-      .content
+    .customsidenav
+      .content.container
         if !user
           li.register(class =(title == 'Register' ? 'active' : ''))
             a(href='/users/register') register
@@ -49,9 +49,9 @@ html
         li
           a(href='/') gifts
         li
-          a(href='/') men
+          a(href='/scents/men') men
         li
-          a(href='/') women
+          a(href='/scents/women') women
         if user
           li
             a(href='/') quiz!

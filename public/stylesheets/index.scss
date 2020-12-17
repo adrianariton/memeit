@@ -153,8 +153,11 @@ h1 {
     font-weight: 900;
     z-index: 2;
   }
+  cursor: pointer !important;
 }
-
+.bl{
+  display: block !important;
+}
 .split.left {
   left:0;
   background: url('https://image.ibb.co/m56Czw/designer.jpg') center center no-repeat;
@@ -258,7 +261,7 @@ h1 {
       width: 100%;
       @include flex-row();
       justify-content: center;
-      span{
+      a{
         font-size: 2em !important;
         font-style: italic;
       }
@@ -272,6 +275,11 @@ h1 {
         li{
             padding-left: 1em;
             padding-right: 1em;
+            &:hover{
+              a{
+                color: rgb(187, 187, 187) !important;
+              }
+            }
         }
     }
     .menu{
@@ -385,17 +393,40 @@ h1 {
 }
 
 
-.sidenav{
+.customsidenav{
     position: absolute;
     height: 100vh;
     max-height: 100vh;
     min-height: 100vh;
-    transform: translateX(-100vw);
-    right:0;
+    width: 300px;
+    top: 0;
+    margin: 0;
+    transform: translateX(100vw);
+    right:0 !important;
     transition: transform 0.3s ease;
+    z-index: 9;
     .content{
         position: relative;
         top: 65px !important;
+        @include flex-column();
+        align-items: flex-end;
+        justify-content: center;
+        padding-top: 2em;
+        li{
+          padding-top: .2em;
+          padding-bottom: .2em;
+          &:hover{
+            a{
+              color: rgb(187, 187, 187) !important;
+            }
+          }
+          a{
+            font-size: larger;
+            &:hover{
+              color: rgb(187, 187, 187) !important;
+            }
+          }
+        }
     }
     li{
         list-style: none;
@@ -616,6 +647,7 @@ footer{
     }
     .addtocart{
       cursor: pointer !important;
+      margin-top: 20px;
     }
   }
   background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
@@ -637,6 +669,14 @@ footer{
       margin: 20px !important;
       @include flex-column();
       justify-content: center;
+      @include max-width(900px){
+        &:nth-child(odd){
+          transform: translateX(-60px);
+        }
+        &:nth-child(even){
+          transform: translateX(60px);
+        }
+      }
       .imaromas{
         @include flex-row();
         justify-content: space-around;

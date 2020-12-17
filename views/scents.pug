@@ -25,7 +25,7 @@ block content
                 span.a3 #{scents[i].aromas[1]}
             div.name 
               h1 #{scents[i].name}
-            span.desc #{scents[i].description.substr(0, 200)}...
+            span.desc #{scents[i].description.substr(0, 30)}...
             span.wh #{scents[i].description}
             span.addtocart(class=user? (user.cart.includes(scents[i].name) ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.cart.includes(scents[i].name) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
@@ -49,7 +49,7 @@ block content
                 span.a3 #{scents[i+1].aromas[1]}
             div.name  
               h1 #{scents[i+1].name}
-            span.desc #{scents[i+1].description.substr(0, 200)}...
+            span.desc #{scents[i+1].description.substr(0, 30)}...
             span.wh #{scents[i+1].description}
             span.addtocart(class=user? (user.cart.includes(scents[i+1].name) ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.cart.includes(scents[i+1].name) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
@@ -74,7 +74,7 @@ block content
               span.a3 #{scents[4].aromas[1]}
           div.name 
             h1 #{scents[4].name}
-          span.desc #{scents[4].description.substr(0, 200)}...
+          span.desc #{scents[4].description.substr(0, 30)}...
           span.wh #{scents[4].description}
           span.addtocart(class=user? (user.cart.includes(scents[4].name) ? 'removefromcart': '') : '')
             i(class='material-icons') #{user? (user.cart.includes(scents[4].name) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
