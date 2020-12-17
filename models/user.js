@@ -61,3 +61,12 @@ module.exports.addToCart = function(username, parfume, callback){
     //{ $addToSet: { colors: "c" } }
 }
 
+module.exports.removeFromCart = function(username, parfume, callback){
+    User.update({username: username}, { $pull: { cart: parfume } },
+        { multi: true }).then(res =>{
+            console.log(res)
+        callback(res)
+    })
+    //{ $addToSet: { colors: "c" } }
+}
+

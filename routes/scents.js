@@ -41,6 +41,12 @@ module.exports = function(io){
           console.log(res)
         })
       })
+      socket.on('remove-from-cart',(user, parfume) =>{
+        console.log('steau e numai unaa /n/n')
+        User.removeFromCart(user, parfume, (res)=>{
+          console.log(res)
+        })
+      })
     })
   })
   
