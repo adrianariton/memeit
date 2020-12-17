@@ -27,7 +27,7 @@ block content
               h1 #{scents[i].name}
             span.desc #{scents[i].description.substr(0, 200)}...
             span.wh #{scents[i].description}
-            span.addtocart
+            span.addtocart(class=user.cart.contains(scents[i].name) ? 'removefromcart': '')
               i(class='material-icons') add_shopping_cart
             span.readmore Read More
           .card
