@@ -22,6 +22,9 @@ var UserSchema = mongoose.Schema({
     },
     profileimage: {
         type: String
+    },
+    cart: {
+        type: [String]
     }
 })
 
@@ -50,3 +53,11 @@ module.exports.createUser = function(newUser, callback){
         })
     })
 }
+
+module.exports.addToCart = function(username, parfume, callback){
+    User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
+        callback(res)
+    })
+    //{ $addToSet: { colors: "c" } }
+}
+
