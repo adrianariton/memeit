@@ -1,8 +1,6 @@
 extends layout
 
 block content
-    .msgs
-     != messages()
     .form-container.register
         .modal-form(style='z-index: 2;')
             .content.container
@@ -10,26 +8,37 @@ block content
                     img(src='../images/logo.svg')
                 form(method='post', action='/users/register', enctype='multipart/form-data')
                     .form-group
-                        label Name
-                        input.form-control(name='name', type='text', placeholder='name')
+                        label Nume
+                        input.form-control(name='name', type='text', placeholder='Nume')
                     .form-group
-                        label Email
-                        input.form-control(name='email', type='email', placeholder='email')
+                        label Prenume
+                        input.form-control(name='vorname', type='text', placeholder='Prenume')
+                    .form-group
+                        label Data Nasterii
+                        input.form-control(name='birthdate', type='text', class="datepicker", placeholder='Data Nasterii')
+                    .form-group
+                        label E-mail
+                        input.form-control(name='email', type='email', placeholder='E-mail')
                     .form-group
                         label Username
-                        input.form-control(name='username', type='text', placeholder='usrname')
+                        input.form-control(name='username', type='text', placeholder='Username')
                     .form-group
-                        label Password
+                        label Parola
                         input.form-control(name='password', type='password',
-                     placeholder='password')
+                     placeholder='parola')
                     .form-group
-                        label Confirm Password
+                        label Verificati Parola
                         input.form-control(name='password2', type='password',
-                     placeholder='check pwd')
+                     placeholder='parola')
                     .form-group.imageupload(style='display: none !important;')
                         label Profile Image
                         input.form-control(name='profileimage', type='file')
-                    input.btn.btn-prymary(type='submit', name ='submit', value='Register')
+                    input.btn.btn-prymary(type='submit', name ='submit', value='Creeaza cont')
+                    .msgs
+                     != messages()
+                    .loginre
+                        span Esti deja membru?
+                        a(href='/users/login') Autentificare
             .error-content
                 if errors
                     div.alert.alert-danger #{errors[0].msg}

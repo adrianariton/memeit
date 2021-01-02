@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    script(src="https://checkout.stripe.com/checkout.js")
+    if user
+        script(defer).
+            var stripePublicKey = "#{stripePublicKey}"
+            var cart = [!{cart}]
+        script(src='../javascripts/cart.js')
+        script(src="https://checkout.stripe.com/checkout.js")
+    if user
+        .cartbody
+            .container.cartcont(style='top: 65px !important; position: relative;')
+                h2
+                    i(class="large material-icons") shopping_bag
+                h7 #{user.username}'s shopping cart:
+                - var i = 0
+                while i <= cart.length-1
+                    .r(data-item-id = user.cart[i])
+                        span ##{i+1}.
+                        img.image(src='/images/1.jpg')
+                        span #{cart[i].name}
+                        input.q(type="number" name="quantity" min="1" max="100" value='1')
+                    - i++
+                button.buybutton.ndcolor.btn.largebtn(onclick = 'purchaseClicked()') PURCHASE

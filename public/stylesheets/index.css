@@ -645,6 +645,27 @@ h1 {
 }
 
 /*login register*/
+.loginre {
+  padding: .4em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loginre span {
+  color: white;
+}
+
 .form-container {
   position: relative;
   height: 100%;
@@ -680,7 +701,8 @@ h1 {
 
 .form-container .content form input {
   background-color: #0c0c0c;
-  color: white !important;
+  color: white;
+  width: 100% !important;
 }
 
 .form-container .content form input[type='submit'] {
@@ -1158,5 +1180,77 @@ footer .followus a i {
 .scentsbody .row .card .readmore:hover {
   background: #fff;
   color: #000 !important;
+}
+
+.datepicker-date-display span {
+  overflow: visible !important;
+}
+
+.select-wrapper * {
+  background: transparent !important;
+}
+
+.select-wrapper input {
+  color: black !important;
+  color: black !important;
+}
+
+.ndcolor {
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
+  background: linear-gradient(var(--left-bg-color), #000) !important;
+}
+
+.cartbody {
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  min-height: 100vh;
+}
+
+.cartbody * {
+  color: white !important;
+}
+
+.cartcont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.cartcont .r {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+
+.cartcont .r input {
+  display: block;
+  max-width: 50px;
+  border: white 1px solid;
+  text-align: center;
+  margin-left: auto;
+  border-radius: 5px;
+}
+
+.cartcont .r img {
+  max-width: 10vmin;
 }
 /*# sourceMappingURL=index.css.map */

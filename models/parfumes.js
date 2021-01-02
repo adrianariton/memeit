@@ -19,7 +19,7 @@ var ParfumesSchema = mongoose.Schema({
         type: [String]
     },
     price: {
-        type: String
+        type: Number
     },
     image: {
         type: String
@@ -31,7 +31,7 @@ var ParfumesSchema = mongoose.Schema({
 
 var Parfumes = module.exports = mongoose.model('Parfumes', ParfumesSchema);
 
-module.exports.getUserById = function(id, callback){
+module.exports.getParfumeById = function(id, callback){
     Parfumes.findById(id, callback);
 }
 module.exports.getParfumeByName = function(name, callback){

@@ -80,6 +80,8 @@ passport.use(new LocalStrategy({
 
 router.post('/register',upload.single('profileimage') , function(req, res, next) {
   var name = req.body.name;
+  var vorname = req.body.vorname;
+  var birthdate = req.body.birthdate;
   var email = req.body.email;
   var username= req.body.username;
   var password = req.body.password;
@@ -96,7 +98,9 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
   // Form Validation
 
-  req.checkBody('name', 'Name field is required').notEmpty();
+  req.checkBody('name', 'Introduceti numele dvs.').notEmpty();
+  req.checkBody('vorname', 'Introduceti prenumele dvs.').notEmpty();
+  req.checkBody('birthdate', 'Introduceti data nasterii').notEmpty();
   req.checkBody('email', 'Email field is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('username', 'Username is required').notEmpty();
@@ -114,6 +118,8 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
   } else {
     var newUser = new User({
       name: name,
+      vorname: vorname,
+      birthdate: birthdate,
       email: email,
       username: username,
       password: password,
@@ -123,14 +129,25 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
     User.getUserByUsername(username, (err, fuser)=>{
       if(err) throw err;
       if(!fuser) {
-        User.createUser(newUser, (err, user)=>{
-          if(err) throw err
-          console.log(user)
-        })
-        req.flash('succes', 'You are now registered and can login')
-
-        res.location('/')
+        User.getUserByEmail(email, (err2, euser)=>{
+          if(err2) throw err2;
+          if(!euser){
+            User.createUser(newUser, (err3, user)=>{
+              if(err3) throw err3
+              console.log(user)
+            })
+            req.flash('succes', 'You are now registered and can login')
+            res.location('/')
         res.redirect('/')
+          } else {
+            req.flash('error', 'Email is already in use')
+            res.location('/users/register')
+            res.redirect('/users/register')
+          }
+        })
+        
+
+        
       } else {
         req.flash('error', 'Username exists')
         res.location('/users/register')

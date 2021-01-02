@@ -33,6 +33,7 @@ mongoose.connection.on('connected', ()=>{
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var scentsRouter = require('./routes/scents')(app.io);
+var verifyRouter = require('./routes/verify');
 
 //var chatsRouter = require('./routes/chat')(app.io);
 
@@ -105,6 +106,7 @@ app.get('*', function(req,res,next){
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/scents', scentsRouter);
+app.use('/verify', verifyRouter);
 
 //app.use('/chat', chatsRouter);
 // catch 404 and forward to error handler

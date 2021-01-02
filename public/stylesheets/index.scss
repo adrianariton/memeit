@@ -462,7 +462,14 @@ h1 {
 }
 
 /*login register*/
-
+.loginre{
+  padding: .4em;
+  @include flex-column();
+  justify-content: center;
+  span{
+    color: white;
+  }
+}
 .form-container{
     position: relative;
     height: 100%;
@@ -483,7 +490,8 @@ h1 {
         form{
             input{
                 background-color: rgb(12, 12, 12);
-                color: white !important;
+                color: white;
+                width: 100% !important;
             }
             input[type='submit']{
               background: linear-gradient(var(--left-bg-color), #000)  !important;
@@ -747,6 +755,54 @@ footer{
           color: #000 !important;
         }
       }
+    }
+  }
+}
+
+.datepicker-date-display{
+  span{
+    overflow: visible !important;
+  }
+}
+.select-wrapper{
+  *{
+    background: transparent !important;
+    
+  }
+  input{
+    color: black !important;
+    color: black !important;
+
+  }
+}
+.ndcolor{
+  background: linear-gradient(var(--left-bg-color), #000)  !important;
+}
+.cartbody{
+  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  min-height: 100vh;
+  *{
+  color: white !important;
+  }
+}
+.cartcont{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  .r{
+    @include flex-row();
+    flex-wrap: wrap;
+    justify-content: center !important;
+    input{
+      display: block;
+      max-width: 50px;
+      border: white 1px solid;
+      text-align: center;
+      margin-left: auto;
+      border-radius: 5px;
+    }
+    img{
+      max-width: 10vmin;
     }
   }
 }

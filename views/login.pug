@@ -10,11 +10,14 @@ block content
                 form(method='post', action='/users/login', enctype='urlencoded')
                     .form-group
                         label Username
-                        input.form-control(name='username', type='text', placeholder='username')
+                        input.form-control(name='username', type='text', placeholder='Username')
                     .form-group
                         label Password
                         input.form-control(name='password', type='password',
-                         placeholder='password')
-                    input.btn.btn-prymary(type='submit', name ='submit', value='Login')
+                         placeholder='Parola')
+                    input.btn.btn-prymary(type='submit', name ='submit', value='Autentificare')
+                    .loginre
+                        span Client nou?
+                        a(href='/users/login') Creeaza cont
             .msgs
              != messages()
