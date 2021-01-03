@@ -8,10 +8,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var expressValidator = require('express-validator');
 
-var sslRedirect = require('heroku-ssl-redirect');
- 
-// enable ssl redirect
-
 if(process.env.NODE_ENV !=='production'){
   require('dotenv').config()
 }
@@ -19,7 +15,6 @@ var app = express();
 
 app.io = require('socket.io')(); // initialize io, attach server in www
 // use socket events here
-app.use(sslRedirect());
 
 var multer = require('multer');
 var upload = multer({dest:'./uploads'});
