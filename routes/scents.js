@@ -53,6 +53,7 @@ module.exports = function(io){
   router.post('/purchase', function(req,res,next){
     if(req.user){
       console.log('purchase')
+      console.log(stripePublicKey, stripeSecretKey)
       let total = 0
       let cartids = []
       var qs = {}
