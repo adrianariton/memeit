@@ -51,6 +51,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
+}
 app.use(express.static(path.join(__dirname, 'public')));
 const mongoc = require('mongodb').MongoClient;
 
@@ -116,14 +124,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-if(process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`)
-    else
-      next()
-  })
-}
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
