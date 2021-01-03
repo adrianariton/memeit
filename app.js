@@ -8,7 +8,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var expressValidator = require('express-validator');
 
-
+if(process.env.NODE_ENV !=='production'){
+  require('dotenv').config()
+}
 var app = express();
 
 app.io = require('socket.io')(); // initialize io, attach server in www
@@ -114,6 +116,14 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
+}
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
