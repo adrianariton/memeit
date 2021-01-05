@@ -10,6 +10,7 @@
 }
 body::-webkit-scrollbar {
     display: none !important;
+    background-color: black !important;
 }
 h1,h2,h3,h4,h5,h6,h7,h8,h9{
     overflow: visible !important;
@@ -451,7 +452,7 @@ h1 {
             
             color: white;
         }
-        .succes{
+        .success{
             background-color: rgba(70, 255, 24, 0.452);
             
             
@@ -460,7 +461,31 @@ h1 {
         }
     }
 }
+.messages{ 
+      
+  z-index: 1000;
+  top: 70px;
+  width: 100% !important;
+  @include flex-column();
+  justify-content: center;
+  margin: auto;
+  position: absolute;
+  #messages{
+      .error{
+          background-color: rgba(255, 24, 24, 0.438);
+          
+          
+          color: white;
+      }
+      .success{
+          background-color: rgba(70, 255, 24, 0.452);
+          
+          
+          color: white;
 
+      }
+  }
+}
 /*login register*/
 .loginre{
   padding: .4em;

@@ -12,6 +12,7 @@
 
 body::-webkit-scrollbar {
   display: none !important;
+  background-color: black !important;
 }
 
 h1, h2, h3, h4, h5, h6, h7, h8, h9 {
@@ -639,7 +640,38 @@ h1 {
   color: white;
 }
 
-.msgs #messages .succes {
+.msgs #messages .success {
+  background-color: rgba(70, 255, 24, 0.452);
+  color: white;
+}
+
+.messages {
+  z-index: 1000;
+  top: 70px;
+  width: 100% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+  position: absolute;
+}
+
+.messages #messages .error {
+  background-color: rgba(255, 24, 24, 0.438);
+  color: white;
+}
+
+.messages #messages .success {
   background-color: rgba(70, 255, 24, 0.452);
   color: white;
 }
