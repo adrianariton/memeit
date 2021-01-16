@@ -5,7 +5,7 @@ var SecretCode = require('../models/secretcodes')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    if(req.user){
+    if(req.user && req.user.status !='verified'){
         SecretCode.sendSecretUrlToUser(req.user._id, req.user.email, req, (err)=>{
             console.log('HEYO')
             if(err){

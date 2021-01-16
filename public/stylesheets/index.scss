@@ -15,6 +15,15 @@ body::-webkit-scrollbar {
 h1,h2,h3,h4,h5,h6,h7,h8,h9{
     overflow: visible !important;
 }
+.logoimg{
+  max-height: 55px;
+  max-width: 55px;
+}
+
+.verify{
+  text-decoration: underline !important;
+  color: white !important;
+}
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900);
 *{
     font-family: "Raleway", Helvetica, Arial, sans-serif !important;

@@ -19,6 +19,16 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9 {
   overflow: visible !important;
 }
 
+.logoimg {
+  max-height: 55px;
+  max-width: 55px;
+}
+
+.verify {
+  text-decoration: underline !important;
+  color: white !important;
+}
+
 * {
   font-family: "Raleway", Helvetica, Arial, sans-serif !important;
   overflow-x: hidden !important;

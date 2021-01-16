@@ -8,7 +8,7 @@ html
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-    link(rel="icon" href="../images/logo.svg")
+    link(rel="icon" href="../images/logo.png")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
@@ -20,7 +20,7 @@ html
     .navbar
       .navbar-header
         a.navbar-brand(href='../')
-          img(src='/images/logo.svg')
+          img.logoimg(src='/images/logo.png')
       .navbar-center
         a(style='font-weight: 700 !important;' href='../') Ascent
       .navbar-body
@@ -58,12 +58,21 @@ html
         if user
           li
             a(href='/users/logout') logout
+        if user
+          if user.status != 'verified'
+            li
+              a.verify(href='/verify') verify account
+
     if user
       div.fixed-action-btn
         a(class="btn-floating btn-large ndcolor" href='/scents/cart')
           i(class="large material-icons") shopping_bag
     .messages(style='position: absolute;')
       != messages()
+      if user
+        if user.status != 'verified'
+          li(style='  list-style: none !important;')
+            a.verify(href='/verify') Verify your account!
     block content
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
