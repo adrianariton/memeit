@@ -136,7 +136,7 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
               if(err3) throw err3
               console.log(user)
             })
-            req.flash('succes', 'You are now registered and can login')
+            req.flash('success', 'You are now registered and can login')
             res.location('/')
         res.redirect('/')
           } else {
