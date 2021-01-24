@@ -10,13 +10,15 @@ mongoose.connection.on('connected', ()=>{
 var UserSchema = mongoose.Schema({
     username: {
         type: String,
-        index: true
+        index: true,
+        unique: true
     },
     password: {
         type: String
     },
     email: {
-        type: String
+        type: String,
+        unique: true
     },
     name: {
         type: String
@@ -39,6 +41,10 @@ var UserSchema = mongoose.Schema({
     },
     marketprocessing: {
         type: Boolean
+    },
+    dateCreated: {
+        type: Date,
+        default: Date.now()
     }
 })
 
@@ -55,6 +61,13 @@ module.exports.getUserByEmail = function(email, callback){
     var query = {email: email};
     User.findOne(query, callback)
 }
+
+module.exports.changeEmail = function(username, newmail, callback){
+    User.updateOne({username: username}, {
+        $set: {email: newmail, status: 'pending'}
+    }).then(callback)
+}
+
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, function(err, ismatch){
       callback(null, ismatch)

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .mainmyacc
+        .container.myacc
+            .header
+                .header-head
+                    img(src='/images/user-alt.png')
+                    .uinfo
+                        span.name #{user.name} #{user.vorname}
+                        span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
+            .body
+                .section
+                    .title Personal Data
+                    .content
+                        .form-group
+                            label Nume
+                            input.form-control(disabled name='name', type='text', placeholder='Nume', value=user.name)
+                        .form-group
+                            label Prenume
+                            input.form-control(disabled name='vorname', type='text', placeholder='Prenume', value= user.vorname)
+                        .form-group
+                            label Data Nasterii
+                            input.form-control(disabled name='birthdate', type='text', class="datepicker", placeholder='Data Nasterii', value = user.birthdate)
+                        .form-group
+                            label Username
+                            input.form-control(disabled name='username', type='text', placeholder='Username', value = user.username)
+                        form(method='post', action='/users/change', enctype='multipart/form-data')
+                            .form-group
+                                label E-mail
+                                input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
+                            input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+

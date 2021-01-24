@@ -161,6 +161,16 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
 });
 
+router.post('/change', function(req, res){
+  if(req.user){
+    User.changeEmail(req.user.username,req.body.email, (err, result)=>{
+      console.log(err, result);
+      res.flash('success', 'Email address changed! Please reverify your account.')
+      res.redirect('/')
+    })
+  }
+})
+
 router.get('/logout', function(req, res){
   req.logOut();
   //req.flash('success', 'You are now logged out');

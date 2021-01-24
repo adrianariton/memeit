@@ -862,3 +862,80 @@ footer{
     }
   }
 }
+body{
+  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+.mainmyacc{
+  
+  min-height: 100vh;
+}
+.datepicker-container{
+  color: initial !important;
+}
+tbody *{
+  color: black !important;
+}
+.myacc{
+  margin-top: 65px !important;
+  position: relative;
+  padding: 5px;
+  span{
+    color:white !important;
+  }
+  top: 65px;
+  .header, .section{
+    border: 1px solid grey;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  .section{
+    padding: 15px;
+    @include max-width(600px){
+      @include flex-row();
+      justify-content: stretch;
+      .content{
+        flex-grow: 2;
+      }
+    }
+  }
+  .header-head{
+    @include flex-row();
+    img{
+      height: 40px;
+    }
+    .uinfo{
+      @include flex-column();
+      align-items: flex-start !important;
+      margin-left: 5px;
+      .name{
+        font-size: 1.4em;
+      }
+      .datecreated{
+        font-size: .8em;
+        transform: translateY(-.4em);
+      }
+    }
+  }
+  .body{
+    *{
+      color: white;
+    }
+    input{
+      color: white !important;
+    }
+    input[type="submit"]{
+      background: linear-gradient(var(--left-bg-color), #000)  !important;
+      border: none !important;
+    }
+    .section{
+      font-size: large;
+      .content{
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+}

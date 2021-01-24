@@ -1329,4 +1329,135 @@ footer .followus a i {
 .cartcont .r img {
   max-width: 10vmin;
 }
+
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.mainmyacc {
+  min-height: 100vh;
+}
+
+.datepicker-container {
+  color: initial !important;
+}
+
+tbody * {
+  color: black !important;
+}
+
+.myacc {
+  margin-top: 65px !important;
+  position: relative;
+  padding: 5px;
+  top: 65px;
+}
+
+.myacc span {
+  color: white !important;
+}
+
+.myacc .header, .myacc .section {
+  border: 1px solid grey;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.myacc .section {
+  padding: 15px;
+}
+
+@media screen and (min-width: 600px) {
+  .myacc .section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: stretch;
+        -ms-flex-pack: stretch;
+            justify-content: stretch;
+  }
+  .myacc .section .content {
+    -webkit-box-flex: 2;
+        -ms-flex-positive: 2;
+            flex-grow: 2;
+  }
+}
+
+.myacc .header-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.myacc .header-head img {
+  height: 40px;
+}
+
+.myacc .header-head .uinfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start !important;
+      -ms-flex-align: start !important;
+          align-items: flex-start !important;
+  margin-left: 5px;
+}
+
+.myacc .header-head .uinfo .name {
+  font-size: 1.4em;
+}
+
+.myacc .header-head .uinfo .datecreated {
+  font-size: .8em;
+  -webkit-transform: translateY(-0.4em);
+          transform: translateY(-0.4em);
+}
+
+.myacc .body * {
+  color: white;
+}
+
+.myacc .body input {
+  color: white !important;
+}
+
+.myacc .body input[type="submit"] {
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
+  background: linear-gradient(var(--left-bg-color), #000) !important;
+  border: none !important;
+}
+
+.myacc .body .section {
+  font-size: large;
+}
+
+.myacc .body .section .content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 /*# sourceMappingURL=index.css.map */
