@@ -39,9 +39,7 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
     console.log({user: process.env.EMAIL_NAME,
       pass: process.env.EMAIL_PASS})
     var transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, 
+        service: 'Yahoo',
         auth: {
           user: process.env.EMAIL_NAME,
           pass: process.env.EMAIL_PASS
