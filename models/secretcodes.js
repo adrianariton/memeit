@@ -36,6 +36,8 @@ module.exports.getEmailCode = function(email, callback){
 }
 module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
     var secretcode = crypto.randomBytes(20).toString('hex')
+    console.log({user: process.env.EMAIL_NAME,
+      pass: process.env.EMAIL_PASS})
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
