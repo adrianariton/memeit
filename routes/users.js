@@ -161,9 +161,9 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
 });
 
-router.post('/change', function(req, res){
+router.post('/change',upload.single('profileimage') , function(req, res, next){
   if(req.user){
-    console.log(req.body, req.body.email)
+    console.log(req, req.body.email)
     User.changeEmail(req.user.username,req.body.email, (err, result)=>{
       console.log(err, result);
       req.flash('success', 'Email address changed! Please reverify your account.')
