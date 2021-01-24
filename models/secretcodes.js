@@ -58,13 +58,21 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
         email: email,
         code: secretcode
     })
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-        callback(error)
+    SecretCode.getEmailCode(sc=>{
+      if(sc == null){
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+            callback(error)
+          } else {
+            console.log('Email sent: ' + info.response);
+            dbcodeobj.save(callback)
+          }
+        });
       } else {
-        console.log('Email sent: ' + info.response);
-        dbcodeobj.save(callback)
+        console.log('/n/n/n already sent <3 /n/n')
+        callback('already sent')
       }
-    });
+    })
+    
 }

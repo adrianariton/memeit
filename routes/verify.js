@@ -8,13 +8,17 @@ router.get('/', function(req, res, next) {
     if(req.user && req.user.status !='verified'){
         SecretCode.sendSecretUrlToUser(req.user._id, req.user.email, req, (err)=>{
             console.log('HEYO')
-            if(err){
+            if(err == 'already sent'){
+                req.flash('error', `Already sent verification mail to ${req.user.email}. Wait 2 minutes for it to arrive!`)
+
+                res.redirect('/');
+            } else if(err){
                 req.flash('error', `Failed to send verification mail to ${req.user.email}`)
 
                 res.redirect('/');
 
             } else {
-                req.flash( 'success',  `Sent verification mail to ${req.user.email}`)
+                req.flash( 'success',  `Sent verification mail to ${req.user.email}. <br> It may take 2 minutes for it to arrive!`)
                 res.redirect('/');
 
 
