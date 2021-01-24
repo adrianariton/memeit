@@ -1,7 +1,7 @@
 
 $(document).ready(()=>{
     if(currentuser){
-        const url = 'https://ascentromania.herokuapp.com/'
+        const url = 'https://ascentro.herokuapp.com/'
         const socket = io.connect(url);
         $(".card .addtocart").click((ev)=>{
             console.log('dhw')
