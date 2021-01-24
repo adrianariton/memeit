@@ -58,7 +58,7 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
         email: email,
         code: secretcode
     })
-    SecretCode.getEmailCode(email, sc=>{
+    SecretCode.findOne({email: email}, (err2,sc)=>{
       console.log('doccccccc\n\n\n\n')
       console.log(sc)
       if(sc == null){
