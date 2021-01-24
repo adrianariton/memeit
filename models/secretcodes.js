@@ -58,7 +58,7 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
         email: email,
         code: secretcode
     })
-    SecretCode.getEmailCode(sc=>{
+    SecretCode.getEmailCode(email, sc=>{
       if(sc == null){
         transporter.sendMail(mailOptions, function(error, info){
           if (error) {
@@ -70,7 +70,7 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
           }
         });
       } else {
-        console.log('/n/n/n already sent <3 /n/n')
+        console.log('/n/already sent <3 /n/n')
         callback('already sent')
       }
     })
