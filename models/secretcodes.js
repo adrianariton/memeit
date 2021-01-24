@@ -59,6 +59,8 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
         code: secretcode
     })
     SecretCode.getEmailCode(email, sc=>{
+      console.log('doccccccc\n\n\n\n')
+      console.log(sc)
       if(sc == null){
         transporter.sendMail(mailOptions, function(error, info){
           if (error) {
