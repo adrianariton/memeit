@@ -45,7 +45,7 @@ router.post('/login',
     failureFlash: 'Invalid username or password'}),
   function(req, res) {
     //succesfull req.user is the current user
-    req.flash('success', 'You are loggedin')
+    //req.flash('success', 'You are loggedin')
     res.redirect('/')
   }
 )
@@ -163,7 +163,7 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
 router.get('/logout', function(req, res){
   req.logOut();
-  req.flash('success', 'You are now logged out');
+  //req.flash('success', 'You are now logged out');
   res.redirect('/users/login')
 })
 module.exports = router;
