@@ -205,9 +205,8 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
         var errors = req.validationErrors();
 
         if(errors) {
-          res.render('myaccount', {
-            errors: errors
-          })
+          req.flash('error', errors)
+          res.redirect('/myaccount')
         } else {
           User.addAddress(req, (result, err)=>{
             console.log(err, result);
