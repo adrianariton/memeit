@@ -195,7 +195,7 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
       console.log('lkfhfohe')
       console.log('lkfhfohe')
       console.log(req.body)
-      if(req.body.street){
+      if(req.body){
         console.log('lkfhfohe')
         req.checkBody('street', 'Street field cannot be empty!').notEmpty();
         req.checkBody('city', 'City field cannot be empty!').notEmpty();

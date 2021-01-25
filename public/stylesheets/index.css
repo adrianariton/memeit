@@ -1339,7 +1339,11 @@ body {
 }
 
 .mainmyacc {
+  display: unset;
   min-height: 100vh;
+  height: -webkit-max-content !important;
+  height: -moz-max-content !important;
+  height: max-content !important;
 }
 
 .datepicker-container {
@@ -1352,6 +1356,7 @@ tbody * {
 
 .myacc {
   margin-top: 65px !important;
+  padding-bottom: 65px !important;
   position: relative;
   padding: 5px;
   top: 65px;
@@ -1362,7 +1367,7 @@ tbody * {
 }
 
 .myacc .header, .myacc .section {
-  border: 1px solid grey;
+  border-top: 1px solid grey;
   padding: 5px;
   margin-bottom: 5px;
 }
@@ -1456,7 +1461,12 @@ tbody * {
   font-size: large;
 }
 
+.myacc .body .section .title {
+  margin-right: 15px;
+}
+
 .myacc .body .section .content {
+  border-left: 1px solid grey;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -1466,36 +1476,44 @@ tbody * {
   background-color: transparent !important;
 }
 
+@media screen and (min-width: 600px) {
+  .addressform .form-control {
+    float: left;
+  }
+  .addressform #inputStreet {
+    width: 100%;
+  }
+  .addressform #inputCity {
+    width: 50%;
+  }
+  .addressform #inputState {
+    width: 15%;
+  }
+  .addressform #inputZip {
+    width: 28%;
+  }
+  .addressform #inputCounty {
+    width: 45%;
+  }
+  .addressform #inputCountry {
+    width: 50%;
+  }
+}
+
 .addressform .form-group {
-  margin: 30px auto;
   width: 450px;
 }
 
-.addressform .form-control {
-  float: left;
+.addressform input:not([type='submit']) {
+  margin: 7.5px !important;
+  padding-left: 5px;
 }
 
-.addressform #inputStreet {
-  width: 100%;
+.addressform input.btn {
+  display: block;
 }
 
-.addressform #inputCity {
-  width: 50%;
-}
-
-.addressform #inputState {
-  width: 15%;
-}
-
-.addressform #inputZip {
-  width: 28%;
-}
-
-.addressform #inputCounty {
-  width: 45%;
-}
-
-.addressform #inputCountry {
-  width: 50%;
+.addresscontainer {
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=index.css.map */

@@ -869,8 +869,9 @@ body{
   min-height: 100vh;
 }
 .mainmyacc{
-  
+  display: unset;
   min-height: 100vh;
+  height: max-content !important;
 }
 .datepicker-container{
   color: initial !important;
@@ -880,6 +881,7 @@ tbody *{
 }
 .myacc{
   margin-top: 65px !important;
+  padding-bottom: 65px !important;
   position: relative;
   padding: 5px;
   span{
@@ -887,7 +889,7 @@ tbody *{
   }
   top: 65px;
   .header, .section{
-    border: 1px solid grey;
+    border-top: 1px solid grey;
     padding: 5px;
     margin-bottom: 5px;
   }
@@ -932,7 +934,12 @@ tbody *{
     }
     .section{
       font-size: large;
+      .title{
+        margin-right: 15px;
+      }
       .content{
+        border-left: 1px solid grey;
+
         padding-left: 15px;
         padding-right: 15px;
       }
@@ -945,38 +952,52 @@ tbody *{
     margin: 5px 5px;
     background-color: transparent !important;
   }
-  
+  @include max-width(600px){
+    .form-control {
+      float: left;
+    }
+    
+    #inputStreet {
+      width: 100%;
+    }
+    
+    #inputCity {
+      width: 50%;
+    }
+    
+    #inputState {
+      width: 15%;
+    }
+    
+    #inputZip {
+      width: 28%;
+    }
+    
+    #inputCounty {
+      width: 45%;
+    }
+    
+    #inputCountry {
+      width: 50%;
+    }
+  }
   .form-group {
-    margin: 30px auto;
+  //  margin: 30px auto;
     width: 450px;
   }
   
-  .form-control {
-    float: left;
-  }
   
-  #inputStreet {
-    width: 100%;
+  input:not([type='submit']){
+    margin: 7.5px !important;
+    padding-left: 5px;
   }
-  
-  #inputCity {
-    width: 50%;
+  input.btn{
+ //   margin: 30px auto;
+
+    display: block;
   }
-  
-  #inputState {
-    width: 15%;
-  }
-  
-  #inputZip {
-    width: 28%;
-  }
-  
-  #inputCounty {
-    width: 45%;
-  }
-  
-  #inputCountry {
-    width: 50%;
-  }
-  
+}
+
+.addresscontainer{
+  margin-bottom: 20px;
 }
