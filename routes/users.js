@@ -161,14 +161,100 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
 });
 
-router.post('/change',upload.single('profileimage') , function(req, res, next){
+router.post('/myaccount',upload.single('profileimage') , function(req, res, next){
   if(req.user){
-    console.log(req, req.body.email)
-    User.changeEmail(req.user.username,req.body.email, (err, result)=>{
+    console.log(req.body, req.body.email)
+    if(req.body.email){
+      req.checkBody('email', 'Email field is required').notEmpty();
+      req.checkBody('email', 'Email is not valid').isEmail();
+
+      var errors = req.validationErrors();
+
+      if(errors) {
+        res.render('myaccount', {
+          errors: errors
+        })
+      } else {
+        User.changeEmail(req.user.username,req.body.email, (result, err)=>{
+          console.log(err, result);
+          if(err){
+            req.flash('error', 'Something went wrong!')
+            res.redirect('/myaccount')
+
+          } else {
+            req.flash('success', 'Email address changed! Please reverify your account.')
+            res.redirect('/myaccount')
+          }
+          
+        })
+      }
+
+      
+    } else {
+      console.log('lkfhfohe')
+      console.log('lkfhfohe')
+      console.log('lkfhfohe')
+      console.log(req.body)
+      if(req.body.street){
+        console.log('lkfhfohe')
+        req.checkBody('street', 'Street field cannot be empty!').notEmpty();
+        req.checkBody('city', 'City field cannot be empty!').notEmpty();
+        req.checkBody('zip', 'Zip field cannot be empty!').notEmpty();
+        req.checkBody('country', 'Country field is required!').notEmpty();
+
+        var errors = req.validationErrors();
+
+        if(errors) {
+          res.render('myaccount', {
+            errors: errors
+          })
+        } else {
+          User.addAddress(req, (result, err)=>{
+            console.log(err, result);
+            if(err){
+              req.flash('error', 'Something went wrong!')
+              res.redirect('/users/myaccount')
+  
+            } else {
+              req.flash('success', 'Address added!')
+              res.redirect('/myaccount')
+            }
+          })
+        }
+
+      } else {
+        req.flash('error', 'Something went wrong!')
+        res.redirect('/myaccount')
+      }
+    }
+    
+  } else {
+    res.redirect('/')
+  }
+})
+
+router.post('/removeaddress',upload.single('profileimage') , function(req, res, next){
+  if(req.user){
+  //console.log(req.body, req.body.email)
+    
+    User.removeAddress(req, (result, err)=>{
       console.log(err, result);
-      req.flash('success', 'Email address changed! Please reverify your account.')
-      res.redirect('/')
+      if(err){
+        req.flash('error', 'Something went wrong!')
+        res.redirect('/myaccount')
+
+      } else {
+        req.flash('success', 'Adress removed!')
+        res.redirect('/myaccount')
+      }
+      
     })
+    
+
+    
+  } else {
+    res.redirect('/')
+
   }
 })
 

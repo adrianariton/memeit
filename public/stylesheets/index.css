@@ -1460,4 +1460,42 @@ tbody * {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.addressform input, .addressform label {
+  margin: 5px 5px;
+  background-color: transparent !important;
+}
+
+.addressform .form-group {
+  margin: 30px auto;
+  width: 450px;
+}
+
+.addressform .form-control {
+  float: left;
+}
+
+.addressform #inputStreet {
+  width: 100%;
+}
+
+.addressform #inputCity {
+  width: 50%;
+}
+
+.addressform #inputState {
+  width: 15%;
+}
+
+.addressform #inputZip {
+  width: 28%;
+}
+
+.addressform #inputCounty {
+  width: 45%;
+}
+
+.addressform #inputCountry {
+  width: 50%;
+}
 /*# sourceMappingURL=index.css.map */

@@ -1,11 +1,16 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var Parfumes = require('../models/parfumes')
+//var crypto = require("crypto");
+//var algorithm = "aes-192-cbc"; //algorithm to use
+//var password = process.env.CRYPTO_PASS;
+//const key = crypto.scryptSync(password, 'salt', 24); //create key
 
 mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
 })
 //User schema
+
 
 var UserSchema = mongoose.Schema({
     username: {
@@ -45,6 +50,10 @@ var UserSchema = mongoose.Schema({
     dateCreated: {
         type: Date,
         default: Date.now()
+    },
+    addresses: {
+        type: [String],
+        default: []
     }
 })
 
@@ -68,6 +77,42 @@ module.exports.changeEmail = function(username, newmail, callback){
     }).then(callback)
 }
 
+module.exports.addAddress = function(req, callback){
+    var street = req.body.street;
+    var city = req.body.city;
+    var state = req.body.state;
+    var zip = req.body.zip;
+    var county = req.body.county;
+    var country = req.body.country;
+
+    var address = {
+        street: street,
+        city: city,
+        state: state,
+        zip: zip,
+        county: county,
+        country: country
+    }
+
+    var addressStr = JSON.stringify(address);
+
+    console.log(addressStr)
+
+    User.updateOne({username: req.user.username}, {
+        $addToSet: {addresses: addressStr}
+    }).then(callback)
+
+}
+module.exports.removeAddress = function(req, callback){
+    var addressStr = req.body.toremove;
+    console.log('body')
+    console.log(req.body)
+    console.log(addressStr)
+    User.updateOne({username: req.user.username}, {
+        $pull: {addresses: {$in: [ addressStr, addressStr ]}}
+    }).then(callback)
+
+}
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, function(err, ismatch){
       callback(null, ismatch)
