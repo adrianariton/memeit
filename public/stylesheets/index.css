@@ -1397,6 +1397,10 @@ tbody * {
         -ms-flex-positive: 2;
             flex-grow: 2;
   }
+  .myacc .section .title {
+    width: 117px !important;
+    text-align: center !important;
+  }
 }
 
 .myacc .header-head {
@@ -1515,5 +1519,10 @@ tbody * {
 
 .addresscontainer {
   margin-bottom: 20px;
+}
+
+.remove-cart-item {
+  background-color: transparent !important;
+  overflow: visible !important;
 }
 /*# sourceMappingURL=index.css.map */

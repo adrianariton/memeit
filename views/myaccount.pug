@@ -33,43 +33,60 @@ block content
                                 input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
                     .section
                         .title My Addresses
-                        .content
-                            - var i = 0
-                            for address in user.addresses
-                                - i++;
-                                .addresscontainer
-                                    form.removeaddressform(method='post', action='/users/removeaddress', enctype='multipart/form-data')
-                                        .form-group
-                                            label Address #{i}
-                                            input.form-control(disabled, id=user.addresses[i-1] name='Address #{i}', type='text', placeholder='Address #{i}', value=JSON.parse(user.addresses[i-1]).street +", "+JSON.parse(user.addresses[i-1]).city+ ", "+JSON.parse(user.addresses[i-1]).county+ ", "+JSON.parse(user.addresses[i-1]).country+ ", Zip Code: " + JSON.parse(user.addresses[i-1]).zip)
-                                        .form-group(style='display: none !important;')
-                                            input.form-control(name='toremove', type='text', value=user.addresses[i-1])
-                                        input.btn.btn-prymary(type='submit', name ='submit', value='Remove')
-                            form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
-                                .form-group
-                                    input(type="text" 
-                                            class="form-control" 
-                                            id="autocomplete" 
-                                            placeholder="Street" name='street')
-                                    input(type="text" 
-                                            class="form-control" 
-                                            id="inputCity" 
-                                            placeholder="City" name='city')                               
-                                    input(type="text" 
-                                            class="form-control" 
-                                            id="inputState" 
-                                            placeholder="State" name='state')                               
-                                    input(type="text" 
-                                            class="form-control" 
-                                            id="inputZip" 
-                                            placeholder="Zip" name='zip')                              
-                                    input(type="text" 
-                                            class="form-control" 
-                                            id="inputCounty" 
-                                            placeholder="County" name='county')                              
-                                    input(type="text" 
-                                            class="form-control" 
-                                            id="inputCountry" 
-                                            placeholder="Country" name='country')
-                                input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
+                        if user.status == 'verified'
+                            .content
+                                - var i = 0
+                                for address in user.addresses
+                                    - i++;
+                                    .addresscontainer
+                                        form.removeaddressform(method='post', action='/users/removeaddress', enctype='multipart/form-data')
+                                            .form-group
+                                                label Address #{i}
+                                                input.form-control(disabled, id=user.addresses[i-1] name='Address #{i}', type='text', placeholder='Address #{i}', value=JSON.parse(user.addresses[i-1]).street +", "+JSON.parse(user.addresses[i-1]).city+ ", "+JSON.parse(user.addresses[i-1]).county+ ", "+JSON.parse(user.addresses[i-1]).country+ ", Zip Code: " + JSON.parse(user.addresses[i-1]).zip)
+                                            .form-group(style='display: none !important;')
+                                                input.form-control(name='toremove', type='text', value=user.addresses[i-1])
+                                            input.btn.btn-prymary(type='submit', name ='submit', value='Remove')
+                                form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
+                                    .form-group
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="autocomplete" 
+                                                placeholder="Street" name='street')
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputCity" 
+                                                placeholder="City" name='city')                               
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputState" 
+                                                placeholder="State" name='state')                               
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputZip" 
+                                                placeholder="Zip" name='zip')                              
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputCounty" 
+                                                placeholder="County" name='county')                              
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputCountry" 
+                                                placeholder="Country" name='country')
+                                    input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
+                        else
+                            .content
+                                .verif You need to verify your account!
+                    
+                    .section
+                        .title Other
+                        if user.status == 'verified'
+                            .content
+                                form(method='post', action='/users/password', enctype='multipart/form-data')
+                                    .form-group
+                                        label 
+                                        input.form-control(name='password', type='password', placeholder='Change Password')
+                                    input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                        else
+                            .content
+                                .verif You need to verify your account!
             script(src='/javascripts/address.js')

@@ -901,6 +901,10 @@ tbody *{
       .content{
         flex-grow: 2;
       }
+      .title{
+        width: 117px !important;
+        text-align: center !important;
+      }
     }
   }
   .header-head{
@@ -1000,4 +1004,9 @@ tbody *{
 
 .addresscontainer{
   margin-bottom: 20px;
+}
+
+.remove-cart-item{
+  background-color: transparent !important;
+  overflow: visible !important;
 }

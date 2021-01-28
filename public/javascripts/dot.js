@@ -17,7 +17,15 @@ $(document).ready(()=>{
             
         
         })
-
+        $(".remove-cart-item i").click((ev)=>{
+            console.log('dhw')
+    
+            socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
+        
+            console.log($(ev.target).parent().parent().data('item-id').trim())
+            $(ev.target).parent().parent().remove()
+        
+        })
     }
     
 })

@@ -16,10 +16,17 @@ block content
                 h7 #{user.username}'s shopping cart:
                 - var i = 0
                 while i <= cart.length-1
-                    .r(data-item-id = user.cart[i])
+                    .r(data-item-id = ids[i])
                         span ##{i+1}.
                         img.image(src='/images/1.jpg')
                         span #{cart[i].name}
                         input.q(type="number" name="quantity" min="1" max="100" value='1')
+                        .btn.btn-prymary.remove-cart-item
+                            i.material-icons.large remove_circle
                     - i++
                 button.buybutton.ndcolor.btn.largebtn(onclick = 'purchaseClicked()') PURCHASE
+        script.
+            currentuser = '#{user.username}'
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
+
+        script(src='../javascripts/dot.js')
