@@ -139,6 +139,7 @@ h1 {
     position: relative;
     top: 260px !important;
   //  min-height: 150vh;
+    width: 100vw !important;
     background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
     background-position: center;
     background-size: cover;
@@ -666,6 +667,8 @@ footer{
 
 /* scents */
 .scentsbody{
+  width: 100vw !important;
+
   min-height: max-content !important;
   overflow-y: hidden !important;
   @include flex-column();

@@ -21,7 +21,7 @@ html
       .navbar-header.flex
         a.navbar-brand(href='../').flex
           img.logoimg(src='/images/logo.png')
-      .navbar-center.hideon-sw
+      .navbar-center
         a(style='font-weight: 700 !important;' href='../') Ascent
       .navbar-body
         ul.nav.navbar-nav
@@ -33,7 +33,7 @@ html
             if user
               li.hideon-sw
                 a(href='/users/logout') logout
-              li.flex
+              li.flex.hideon-sw
                 a(href='/scents/cart').flex
                   i(class="material-icons") shopping_bag
           li.menu
@@ -53,6 +53,9 @@ html
         li
           a(href='/scents/women') women
         if user
+          li.flex.showon-sw
+            a(href='/scents/cart').flex
+                i(class="material-icons") shopping_bag
           li.showon-sw
             a(href='/users/logout') logout
         if user
