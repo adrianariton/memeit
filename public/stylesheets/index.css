@@ -175,6 +175,8 @@ h1 {
   position: relative;
   top: 260px !important;
   width: 100vw !important;
+  overflow: hidden;
+  overflow-y: auto;
   background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
   background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
   background-position: center;
@@ -1010,7 +1012,8 @@ body {
 /* scents */
 .scentsbody {
   width: 100vw !important;
-  overflow-x: hidden !important;
+  overflow: hidden;
+  overflow-y: auto;
   min-height: -webkit-max-content !important;
   min-height: -moz-max-content !important;
   min-height: max-content !important;

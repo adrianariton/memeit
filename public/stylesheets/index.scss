@@ -140,6 +140,8 @@ h1 {
     top: 260px !important;
   //  min-height: 150vh;
     width: 100vw !important;
+    overflow: hidden;
+  overflow-y: auto;
     background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
     background-position: center;
     background-size: cover;
@@ -680,8 +682,9 @@ body{
 /* scents */
 .scentsbody{
   width: 100vw !important;
-  overflow-x: hidden !important;
-
+ // overflow-x: hidden !important;
+  overflow: hidden;
+  overflow-y: auto;
   min-height: max-content !important;
   overflow-y: hidden !important;
   @include flex-column();
