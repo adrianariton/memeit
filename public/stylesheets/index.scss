@@ -277,6 +277,7 @@ h1 {
         }
         z-index: 2;
     }
+    
     .navbar-center{
       position: absolute;
       width: 100%;
@@ -302,7 +303,12 @@ h1 {
                 color: rgb(187, 187, 187) !important;
               }
             }
+            @include min-width(600px){
+              padding-left: 0.3em !important;
+              padding-right: 1em !important;
+            }
         }
+        
     }
     .menu{
         @include flex-column();
@@ -664,11 +670,12 @@ footer{
 }
 
 
-body, body *{
+body{
   min-width: 100vw !important;
   max-width: 100vw !important;
-  overflow-x: hidden !important;
-  -webkit-overflow-scrolling: auto !important;
+//overflow-x: hidden !important;
+  overflow: hidden;
+  overflow-y: auto;
 }
 /* scents */
 .scentsbody{
