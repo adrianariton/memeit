@@ -993,7 +993,7 @@ footer .followus a i {
   font-family: "FontAwesome" !important;
 }
 
-body {
+body, body * {
   min-width: 100vw !important;
   max-width: 100vw !important;
   overflow-x: hidden !important;
