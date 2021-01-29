@@ -185,6 +185,7 @@ h1 {
 
 html, body {
   overflow-x: hidden;
+  position: relative;
 }
 
 .container-fluid {
