@@ -994,6 +994,7 @@ footer .followus a i {
 }
 
 body {
+  min-width: 100vw !important;
   max-width: 100vw !important;
   overflow-x: hidden !important;
 }
@@ -1001,6 +1002,7 @@ body {
 /* scents */
 .scentsbody {
   width: 100vw !important;
+  overflow-x: hidden !important;
   min-height: -webkit-max-content !important;
   min-height: -moz-max-content !important;
   min-height: max-content !important;

@@ -665,12 +665,14 @@ footer{
 
 
 body{
+  min-width: 100vw !important;
   max-width: 100vw !important;
   overflow-x: hidden !important;
 }
 /* scents */
 .scentsbody{
   width: 100vw !important;
+  overflow-x: hidden !important;
 
   min-height: max-content !important;
   overflow-y: hidden !important;
