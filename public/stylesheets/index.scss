@@ -146,6 +146,7 @@ h1 {
     background-position: center;
     background-size: cover;
 }
+html, body { overflow-x: hidden } 
 .container-fluid {
   position: fixed;
   width: 100% !important;
