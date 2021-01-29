@@ -20,11 +20,14 @@ block content
                         span ##{i+1}.
                         img.image(src='/images/1.jpg')
                         span #{cart[i].name}
+                        label(for='quantity') Quantity
                         input.q(type="number" name="quantity" min="1" max="100" value='1')
                         .btn.btn-prymary.remove-cart-item
                             i.material-icons.large remove_circle
                     - i++
                 button.buybutton.ndcolor.btn.largebtn(onclick = 'purchaseClicked()') PURCHASE
+                br
+                br
         script.
             currentuser = '#{user.username}'
         script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")

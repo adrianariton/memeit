@@ -8,6 +8,7 @@
     --other-width: 25%;
     --speed: 700ms;
 }
+//new pwd 4 Radianeleven: Adiadi
 body::-webkit-scrollbar {
     display: none !important;
     background-color: black !important;
@@ -428,7 +429,7 @@ html, body {
 
 
 .customsidenav{
-    position: absolute;
+    position: fixed;
     height: 100vh;
     max-height: 100vh;
     min-height: 100vh;
@@ -863,6 +864,8 @@ body{
   *{
   color: white !important;
   }
+  display: unset;
+  height: fit-content !important;
 }
 .cartcont{
   display: flex;
@@ -872,16 +875,41 @@ body{
     @include flex-row();
     flex-wrap: wrap;
     justify-content: center !important;
+    @include min-width(600px){
+      border-top: 1px grey solid;
+      margin-top: 10px;
+      padding-top: 10px;
+      label{
+        transform: translateY(.5em);
+      }
+    }
+    @include max-width(600px){
+      label{
+        display: none;
+      }
+      
+    }
     input{
       display: block;
       max-width: 50px;
       border: white 1px solid;
       text-align: center;
-      margin-left: auto;
+      @include max-width(600px){
+        margin-left: auto;
+        
+      }
+      @include min-width(600px){
+        margin-top: 5px;
+      }
       border-radius: 5px;
     }
     img{
       max-width: 10vmin;
+    }
+    @include min-width(600px){
+      @include flex-column();
+      flex-wrap: wrap;
+      justify-content: center !important;
     }
   }
 }

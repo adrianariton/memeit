@@ -613,7 +613,7 @@ html, body {
 }
 
 .customsidenav {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
@@ -1305,6 +1305,10 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
   background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
   min-height: 100vh;
+  display: unset;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
 }
 
 .cartbody * {
@@ -1342,17 +1346,66 @@ body {
           justify-content: center !important;
 }
 
+@media screen and (max-width: 600px) {
+  .cartcont .r {
+    border-top: 1px grey solid;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .cartcont .r label {
+    -webkit-transform: translateY(0.5em);
+            transform: translateY(0.5em);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .cartcont .r label {
+    display: none;
+  }
+}
+
 .cartcont .r input {
   display: block;
   max-width: 50px;
   border: white 1px solid;
   text-align: center;
-  margin-left: auto;
   border-radius: 5px;
+}
+
+@media screen and (min-width: 600px) {
+  .cartcont .r input {
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cartcont .r input {
+    margin-top: 5px;
+  }
 }
 
 .cartcont .r img {
   max-width: 10vmin;
+}
+
+@media screen and (max-width: 600px) {
+  .cartcont .r {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
 }
 
 body {
