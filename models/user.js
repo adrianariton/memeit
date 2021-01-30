@@ -54,6 +54,10 @@ var UserSchema = mongoose.Schema({
     addresses: {
         type: [String],
         default: []
+    },
+    stripeCustomerID: {
+        type: String,
+        default: null
     }
 })
 

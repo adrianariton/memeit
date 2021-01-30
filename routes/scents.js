@@ -46,7 +46,7 @@ module.exports = function(io){
           }
         })
     } else {
-      res.render('youneedlogin', {input: 'add to cart'})
+      res.redirect('/users/login')
     }
    
   });
@@ -69,18 +69,62 @@ module.exports = function(io){
         parfumes.forEach(doc=>{
           total+=doc.price * qs[doc._id];
         })
-        stripe.charges.create({
-          amount: total,
-          source: req.body.stripeTokenId,
-          currency: 'usd'
-        }).then(()=>{
-          console.log('Charge Succesfull')
-          res.json({message:'Successfully purchased'})
-          //add to db
-        }).catch(()=>{
-          console.log('Charge Failed')
-          res.status(500).end()
-        })
+        const chargeMe = ()=>{
+          console.log(req.body.stripeTokenId)
+          stripe.customers.createSource(req.user.stripeCustomerID, {
+            source: req.body.stripeTokenId
+          }).then(s=>{
+            
+            stripe.paymentIntents.create({
+              amount: total,
+              currency: 'usd',
+              customer: req.user.stripeCustomerID,
+              receipt_email: req.user.email,
+              confirm: true,
+              shipping: {
+                address: {
+                  line1: JSON.parse(req.user.addresses[0]).street,
+                  city: JSON.parse(req.user.addresses[0]).city,
+                  country: JSON.parse(req.user.addresses[0]).country,
+                  postal_code: JSON.parse(req.user.addresses[0]).zip,
+                  state: JSON.parse(req.user.addresses[0]).state ? JSON.parse(req.user.addresses[0]).state: JSON.parse(req.user.addresses[0]).county
+                },
+                name: `${req.user.name} ${req.user.vorname}`
+              }
+            }).then(()=>{
+              console.log('Charge Succesfull')
+              res.json({message:'Successfully purchased!'})
+              
+              //add to db
+            }).catch((err)=>{
+              console.log(err)
+              console.log('Charge Failed')
+              res.json({message:'Something went wrong!'})
+    
+              //res.status(500).end()
+            })
+          }).catch((err)=>{
+            console.log(err)
+            console.log('Source Failed')
+            res.json({message:'Something went wrong!'})
+  
+            //res.status(500).end()
+          })
+        }
+        if(req.user){
+          if(!req.user.stripeCustomerID){
+            //customer not reqistered
+            //const customer = await stripe.customers.create({email: req.user.email});
+            stripe.customers.create({email: req.user.email}).then((customer)=>{
+              User.updateOne({username: req.user.username}, {
+                $set: {stripeCustomerID: customer.id}
+              }).then((err,res)=>{
+                chargeMe()
+              })
+            })
+          }
+        }
+        chargeMe()
       })
     }else {
       res.render('youneedlogin', {input: 'purchase'})
