@@ -25,6 +25,10 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9 {
   max-width: 55px;
 }
 
+.swal2-icon {
+  overflow: visible !important;
+}
+
 .verify {
   text-decoration: underline !important;
   color: white !important;
@@ -1602,5 +1606,11 @@ tbody * {
 .remove-cart-item {
   background-color: transparent !important;
   overflow: visible !important;
+}
+
+.cardinfo * {
+  color: white !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=index.css.map */

@@ -57,6 +57,7 @@ module.exports = function(io){
       let total = 0
       let cartids = []
       var qs = {}
+      console.log(req.body)
       req.body.items.forEach(item=>{
         cartids.push(item.id)
         qs[item.id] = item.quantity;
@@ -71,42 +72,31 @@ module.exports = function(io){
         })
         const chargeMe = ()=>{
           console.log(req.body.stripeTokenId)
-          stripe.customers.createSource(req.user.stripeCustomerID, {
-            source: req.body.stripeTokenId
-          }).then(s=>{
-            
-            stripe.paymentIntents.create({
-              amount: total,
-              currency: 'usd',
-              customer: req.user.stripeCustomerID,
-              receipt_email: req.user.email,
-              confirm: true,
-              shipping: {
-                address: {
-                  line1: JSON.parse(req.user.addresses[0]).street,
-                  city: JSON.parse(req.user.addresses[0]).city,
-                  country: JSON.parse(req.user.addresses[0]).country,
-                  postal_code: JSON.parse(req.user.addresses[0]).zip,
-                  state: JSON.parse(req.user.addresses[0]).state ? JSON.parse(req.user.addresses[0]).state: JSON.parse(req.user.addresses[0]).county
-                },
-                name: `${req.user.name} ${req.user.vorname}`
-              }
-            }).then(()=>{
-              console.log('Charge Succesfull')
-              res.json({message:'Successfully purchased!'})
-              
-              //add to db
-            }).catch((err)=>{
-              console.log(err)
-              console.log('Charge Failed')
-              res.json({message:'Something went wrong!'})
-    
-              //res.status(500).end()
-            })
+          stripe.paymentIntents.create({
+            amount: total,
+            currency: 'usd',
+            customer: req.user.stripeCustomerID,
+            receipt_email: req.user.email,
+            shipping: {
+              address: {
+                line1: JSON.parse(req.user.addresses[0]).street,
+                city: JSON.parse(req.user.addresses[0]).city,
+                country: JSON.parse(req.user.addresses[0]).country,
+                postal_code: JSON.parse(req.user.addresses[0]).zip,
+                state: JSON.parse(req.user.addresses[0]).state ? JSON.parse(req.user.addresses[0]).state: JSON.parse(req.user.addresses[0]).county
+              },
+              name: `${req.user.name} ${req.user.vorname}`
+            }
+          }).then((intent)=>{
+            console.log('Charge Succesfull ' + intent.client_secret)
+            console.log(intent)
+            res.json({error: false, message:'Successfully purchased!', client_secret: intent.client_secret, customerID: req.user.stripeCustomerID})
+           
+            //add to db
           }).catch((err)=>{
             console.log(err)
-            console.log('Source Failed')
-            res.json({message:'Something went wrong!'})
+            console.log('Charge Failed')
+            res.json({message:'Something went wrong!', error: true})
   
             //res.status(500).end()
           })

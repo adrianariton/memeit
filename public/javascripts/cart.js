@@ -1,40 +1,18 @@
-
-var stripeHandler = StripeCheckout.configure({
-    key: stripePublicKey,
-    locale: 'auto',
-    token: function(token) {
-        var items = []
-        var cartcontainer = document.querySelector('.cartcont')
-        var cartelems = document.querySelectorAll('.r')
-        cartelems.forEach(r =>{
-            var quantity = r.getElementsByClassName('q')[0].value
-            var id = $(r).data('item-id')
-            items.push({
-                id:id,
-                quantity: quantity
-            })
-        })
-
-        fetch('/scents/purchase', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                stripeTokenId: token.id,
-                items: items
-            })
-        }).then((res)=>{
-            return res.json()
-        }).then(data=>{
-            alert(data.message)
-        }).catch(err=>{
-            console.error(err)
-        })
+ 
+var stripe = Stripe(stripePublicKey)
+var elements = stripe.elements();
+var card = elements.create('card', {
+    'style': {
+      'base': {
+        'fontFamily': 'Arial, sans-serif',
+        'fontSize': '24px',
+        'color': 'white',
+      },
+      'invalid': {
+        'color': 'red',
+      },
     }
-})
-console.log(cart)
+});
 function purchaseClicked() {
     var totalprice = 0;
     var i=0
@@ -44,7 +22,75 @@ function purchaseClicked() {
     })
     var price = totalprice
     console.log(totalprice)
-    stripeHandler.open({
-        amount: price
+    var items = []
+    var cartcontainer = document.querySelector('.cartcont')
+    var cartelems = document.querySelectorAll('.r')
+    cartelems.forEach(r =>{
+        var quantity = r.getElementsByClassName('q')[0].value
+        var id = $(r).data('item-id')
+        items.push({
+            id:id,
+            quantity: quantity
+        })
+    })
+
+    fetch('/scents/purchase', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            items: items
+        })
+    }).then((res)=>{
+        
+        return res.json()
+    }).then(data=>{
+        if(data.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Payment could not be initiated!',
+                footer: '<a href>Contact us!</a>'
+            })
+        } else {
+            var clientSecret = data.client_secret;
+            stripe.confirmCardPayment(clientSecret,{
+                payment_method: {card: card}
+            }).then((result)=>{
+                console.log(result)
+                if(result.error){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! Please enter your info correctly!',
+                        footer: '<a href>Contact us!</a>'
+                    })
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+        }
+        
+        
+    }).catch(err=>{
+        console.error(err)
     })
 }
+$(document).ready(()=>{
+
+    // Add an instance of the card UI component into the `card-element` <div>
+    card.mount('#card-element');
+        
+  
+    console.log(cart)
+    
+
+})
