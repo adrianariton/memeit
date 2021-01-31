@@ -26,15 +26,19 @@ block content
                         .btn.btn-prymary.remove-cart-item
                             i.material-icons.large remove_circle
                     - i++
-                .cardinfo
-                    <form action="/scents/purchase" method="post" id="payment-form">
-                        <div class="form-row">
-                            <label for="card-element">Credit or debit card</label>
-                            <div id="card-element"></div>
-                            <div id="card-errors" role="alert"></div>
-                        </div>
-                    </form>
-                    .btn.buybutton.ndcolor.btn.largebtn(onclick = 'purchaseClicked()') Start Payment
+                if user.status == 'verified' && user.addresses
+                    .cardinfo
+                        <form action="/scents/purchase" method="post" id="payment-form">
+                            <div class="form-row">
+                                <label for="card-element">Credit or debit card</label>
+                                <div id="card-element"></div>
+                                <div id="card-errors" role="alert"></div>
+                            </div>
+                        </form>
+                        .btn.buybutton.ndcolor.btn.largebtn(onclick = 'purchaseClicked()') Start Payment
+                else
+                    .content
+                        .verif You need to verify your account and add a <a href='/myaccount' style='color: lime !important; text-decoration: underline;'>delivery address</a> to be able to purchase!
                 br
                 br
         script.
