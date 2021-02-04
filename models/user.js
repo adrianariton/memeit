@@ -58,6 +58,14 @@ var UserSchema = mongoose.Schema({
     stripeCustomerID: {
         type: String,
         default: null
+    },
+    emailAliases:{
+        type: [String],
+        default: null
+    },
+    stripeCustomerIDAliases: {
+        type: [String],
+        default: null
     }
 })
 
@@ -75,9 +83,11 @@ module.exports.getUserByEmail = function(email, callback){
     User.findOne(query, callback)
 }
 
-module.exports.changeEmail = function(username, newmail, callback){
+module.exports.changeEmail = function(username, newmail,req, callback){
+    var reqcopy = req;
     User.updateOne({username: username}, {
-        $set: {email: newmail, status: 'pending'}
+        $set: {email: newmail, status: 'pending', stripeCustomerID: null},
+        $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
     }).then(callback)
 }
 

@@ -175,7 +175,7 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
           errors: errors
         })
       } else {
-        User.changeEmail(req.user.username,req.body.email, (result, err)=>{
+        User.changeEmail(req.user.username,req.body.email,req, (result, err)=>{
           console.log(err, result);
           if(err){
             req.flash('error', 'Something went wrong!')
