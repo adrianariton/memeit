@@ -17,10 +17,9 @@ block content
                 h7 #{user.username}'s shopping cart:
                 - var i = 0
                 while i <= cart.length-1
-                    .r(data-item-id = ids[i])
+                    .r(data-item-id = ids[i] data-stripe-id = stripe.find(element => element.name == cart[i].name).id)
                         span ##{i+1}.
-                        img.image(src='/images/1.jpg')
-                        span #{cart[i].name}
+                        a.name(href='/scents/'+cart[i].mw) #{cart[i].name}
                         label(for='quantity') Quantity
                         input.q(type="number" name="quantity" min="1" max="100" value='1')
                         .btn.btn-prymary.remove-cart-item

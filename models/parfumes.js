@@ -26,6 +26,10 @@ var ParfumesSchema = mongoose.Schema({
     },
     mw: {
         type: String
+    },
+    prod_id: {
+        type: String,
+        default: ""
     }
 })
 

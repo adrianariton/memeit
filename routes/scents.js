@@ -10,7 +10,7 @@ if(process.env.NODE_ENV !=='production'){
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 const stripe = require('stripe')(stripeSecretKey)
-
+const product_number = 10;
 module.exports = function(io){
   /* GET home page. */
   router.get('/', function(req, res, next) {
@@ -39,7 +39,12 @@ module.exports = function(io){
               parfarrnoid.push(cop)
             })
             console.log(parfarrnoid, parfarr)
-            res.render('cart', { stripePublicKey: stripePublicKey, cart: parfarr, ids: ids});
+            stripe.products.list({
+              limit: product_number,
+            }).then(data_stripe => {
+              res.render('cart', { stripePublicKey: stripePublicKey, cart: parfarr, ids: ids, stripe: data_stripe.data});
+  
+            })
 
           } else {
             res.status(500).end()
@@ -86,6 +91,9 @@ module.exports = function(io){
                 state: JSON.parse(req.user.addresses[0]).state ? JSON.parse(req.user.addresses[0]).state: JSON.parse(req.user.addresses[0]).county
               },
               name: `${req.user.name} ${req.user.vorname}`
+            },
+            metadata: {
+              products: JSON.stringify(req.body.items)
             }
           }).then((intent)=>{
             console.log('Charge Succesfull ' + intent.client_secret)
@@ -129,7 +137,13 @@ module.exports = function(io){
           men = data
           console.log('MEEEEN')
           console.log(JSON.stringify(men))
-          res.render('scents', { input: req.params.query, title: 'Men', scents: men});
+          stripe.products.list({
+            limit: product_number,
+          }).then(data_stripe => {
+            console.log(data_stripe)
+            res.render('scents', { input: req.params.query, title: 'Men', scents: men, stripe: data_stripe.data});
+
+          });
 
         })
         
@@ -138,7 +152,12 @@ module.exports = function(io){
         var women;
         Parfumes.getWomen((err, data)=>{
           women = data
-          res.render('scents', { input: req.params.query, title: 'Women', scents: women});
+          stripe.products.list({
+            limit: product_number,
+          }).then(data_stripe => {
+            res.render('scents', { input: req.params.query, title: 'Women', scents: women, stripe: data_stripe.data});
+
+          })
 
         })
         

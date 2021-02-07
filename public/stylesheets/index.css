@@ -1070,6 +1070,10 @@ body {
   position: relative;
 }
 
+.scentsbody .buddy .row img {
+  mix-blend-mode: overlay !important;
+}
+
 .scentsbody h1 {
   position: relative;
   overflow: visible !important;
@@ -1365,6 +1369,9 @@ body {
 @media screen and (min-width: 600px) {
   .cartcont .r label {
     display: none;
+  }
+  .cartcont .r .name {
+    margin-left: 5px;
   }
 }
 

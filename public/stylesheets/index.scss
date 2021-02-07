@@ -717,6 +717,11 @@ body{
   top: 65px !important;
   .buddy{
     position: relative;
+    .row{
+      img{
+        mix-blend-mode: overlay !important;
+      }
+    }
   }
   h1{
     position: relative;
@@ -884,12 +889,15 @@ body{
       label{
         transform: translateY(.5em);
       }
+      
     }
     @include max-width(600px){
       label{
         display: none;
       }
-      
+      .name{
+        margin-left: 5px;
+      }
     }
     input{
       display: block;
