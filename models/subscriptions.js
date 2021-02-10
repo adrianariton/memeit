@@ -24,13 +24,11 @@ var SubscriptionsSchema = mongoose.Schema({
         expires: 600,
     },
     parfumes: {
-        type: [ObjectID]
+        type: []
     },
-    price: {
-        type: Number
-    },
-    image: {
-        type: String
+    status:{ //not delivered/ delivered/ canceled
+        type: String,
+        default:'not delivered'
     }
 })
 

@@ -9,6 +9,7 @@ var ObjectId = require('mongodb').ObjectID
 var Orders = require('../models/orders');
 const { response } = require('express');
 const abonaments = require('../models/abonaments');
+const { ObjectID } = require('mongodb');
 if(process.env.NODE_ENV !=='production'){
   require('dotenv').config()
 }
@@ -26,8 +27,8 @@ module.exports = function(io){
    // console.log('\n\n\n\n');
     if(req.user){
       var ids = []
-        User.getCart(req.user.username, ( parfarr)=>{
-          var parfarrnoid = []
+      var abids = []
+        User.getCart(req.user.username, ( parfarr, abarr)=>{
           if(true){
             console.log('\n\n\n\n\n\n pfar')
             parfarr.forEach(el=>{
@@ -41,13 +42,28 @@ module.exports = function(io){
               }
               console.log('\N\N\NNO ID:')
               console.log(cop)
-              parfarrnoid.push(cop)
+              
             })
-            console.log(parfarrnoid, parfarr)
+            abarr.forEach(el=>{
+              var cop = {};
+              abids.push(el._id)
+              delete el._doc._id
+              for (const [key, value] of Object.entries(el._doc)) {
+                if(key !== '_id'){
+                  cop[key] = value
+                }
+              }
+              console.log('\N\N\NNO ID:')
+              console.log(cop)
+            })
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
-              res.render('cart', { stripePublicKey: stripePublicKey, cart: parfarr, ids: ids, stripe: data_stripe.data});
+              Parfumes.find({}, (err, allparfumes)=>{
+                console.log(allparfumes)
+                res.render('cart', {allscents: allparfumes, stripePublicKey: stripePublicKey, cart: parfarr,abids: abids, ids: ids, stripe: data_stripe.data, abcart: abarr});
+
+              })
   
             })
 
@@ -63,7 +79,8 @@ module.exports = function(io){
 
   router.post('/done', function(req,res,next){
     if(req.user){
-      console.log('done')
+      console.log('BODY')
+      console.log(req.body)
       //console.log(stripePublicKey, stripeSecretKey)
       let total = 0
       let cartids = []
@@ -83,6 +100,23 @@ module.exports = function(io){
         })
         const chargeMe = ()=>{
           console.log(req.body.stripeTokenId)
+          var objIds = []
+          var i=0;
+          req.body.abonamentsIds.forEach(abid=>{
+            objIds[i]=new ObjectID()
+            i++;
+          })
+          i=-1;
+          req.body.abonamentsIds.forEach(abid=>{
+            i++;
+            Subscriptions.create(new Subscriptions({
+              _id: objIds[i],
+              userID: req.user._id,
+              abonamentID: abid,
+              parfumes: req.body.parfumeChoices[abid]
+            }))
+          })
+          
           Orders.create(new Orders({
             amount: total,
             currency: 'usd',
@@ -100,7 +134,8 @@ module.exports = function(io){
             },
             products: req.body.items,
             status: 'sent',
-            deliverymethod: req.body.deliverymethod
+            deliverymethod: req.body.deliverymethod,
+            subscriptionsId: objIds
             
           }),(err,result)=>{
             console.log(err)
@@ -119,6 +154,9 @@ module.exports = function(io){
           })
         }
         if(req.user){
+          chargeMe()
+
+          /*
           if(!req.user.stripeCustomerID){
             //customer not reqistered
             //const customer = await stripe.customers.create({email: req.user.email});
@@ -133,6 +171,7 @@ module.exports = function(io){
             chargeMe()
 
           }
+          */
         } 
 
         

@@ -34,7 +34,6 @@ $(document).ready(()=>{
             console.log('dhw')
             
             if($(ev.target).text().trim() == 'add_shopping_cart'){
-                console.log('dav')
                 $(ev.target).text('remove_shopping_cart')
                 socket.emit('add-to-cart-abonament', currentuser, $(ev.target).parent().parent().data('item-id').trim())
             } else if($(ev.target).text().trim() == 'remove_shopping_cart'){

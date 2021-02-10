@@ -14,7 +14,7 @@ block content
             .container.cartcont(style='top: 65px !important; position: relative;')
                 .cart-q
                     h2
-                        i(class="large material-icons") shopping_bag
+                        i(class="large material-icons") shopping_cart
                     h7 #{user.username}'s shopping cart:
                     - var i = 0
                     while i <= cart.length-1
@@ -26,6 +26,19 @@ block content
                             .btn.btn-prymary.remove-cart-item
                                 i.material-icons.large remove_circle
                         - i++
+                    - i=0
+                    br
+                    br
+                    br
+                    h7 #{user.username}'s subscriptions:
+                    while i <= abcart.length-1
+                        .r2(data-item-id = abids[i])
+                            span ##{i+1}.
+                            a.name(href='/scents/'+abcart[i].mw) #{abcart[i].name}
+                        - i++
+                    br
+                    br
+                    br
                     if false
                         if user.status == 'verified' && user.addresses != []
                             .cardinfo
@@ -51,18 +64,32 @@ block content
                         <form action="/scents/done" method="post" id="payment-form">
                             <div class="form-row">
                                 <label for="deliverymethod">Choose a delivery method:</label>
-                                <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
-                                    <option value="postro">Posta Romana</option>
-                                    <option value="curier">Curier</option>
-                                </select>
+                                .custom-select2
+                                    <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
+                                        <option value="postro">Posta Romana</option>
+                                        <option value="curier">Curier</option>
+                                    </select>
                                 <label for="addressnr">Choose address:</label>
-                                <select  class='custom-select' id="addressnr" name="addressnr" style='display: block;'>
-                                    - var i=0
-                                    for address in user.addresses 
-                                        option(value=i) Address #{i+1}
-                                        - i++
-                                </select>
+                                .custom-select2
+                                    <select  id="addressnr" name="addressnr" style='display: block;'>
+                                        - var i=0
+                                        for address in user.addresses 
+                                            option(value=i) Address #{i+1}
+                                            - i++
+                                    </select>
                             </div>
+                            - i=0
+                            while i <= abcart.length-1
+                                .form-row
+                                    h4 #{abcart[i].name}
+                                    label(for=abids[i]) Choose #{abcart[i].parfumeChoices} perfumes:
+                                    .custom-select
+                                        select.r3(class='custom-select2' multiple='multiple' id=abids[i] name="choices" style='display: block;')
+                                            - var k=0
+                                            while k<10
+                                                option(value=allscents[k]._id) #{allscents[k].name}
+                                                -k++
+                                - i++
                         </form>
                         .footer-a
                             span.total 
@@ -73,7 +100,7 @@ block content
                         span You have to be verified and to add an address to order! Go to <a href='/myaccount'> My Account</a>!
         script(src='/javascripts/select.js')
         script.
-            currentuser = '#{user.username}'
+            const currentuser = '#{user.username}'
         script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
 
         script(src='../javascripts/dot.js')

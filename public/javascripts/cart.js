@@ -55,7 +55,15 @@ function doneClicked() {
         })
     
     })
-
+    var idarray=[]
+    var parfchobj = {}
+    document.querySelectorAll('.r3').forEach(el=>{
+        console.log(el.id, el)
+        idarray.push(el.id)
+        parfchobj[el.id] = $(`#${el.id}`).val()
+    })
+   
+    console.log(idarray, parfchobj)
     console.log( $('#deliverymethod').val(), $('#addressnr').val())
     if($('#deliverymethod').val() != null &&  $('#addressnr').val() != null) {
         fetch('/scents/done', {
@@ -67,7 +75,9 @@ function doneClicked() {
             body: JSON.stringify({
                 items: items,
                 deliverymethod: $('#deliverymethod').val(),
-                addressnr: $('#addressnr').val()
+                addressnr: $('#addressnr').val(),
+                abonamentsIds: idarray,
+                parfumeChoices: parfchobj
             })
         }).then((res)=>{
             

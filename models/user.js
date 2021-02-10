@@ -6,6 +6,8 @@ var Parfumes = require('../models/parfumes')
 //var password = process.env.CRYPTO_PASS;
 //const key = crypto.scryptSync(password, 'salt', 24); //create key
 
+var Abonaments = require('../models/abonaments')
+var Subscriptions = require('../models/subscriptions')
 mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
 })
@@ -206,16 +208,27 @@ module.exports.getCart = function(username, callback){
             console.log('\n\n\n\n\n\n cart:')
             console.log(user.cart)
             const ids = [];
+            var abonids =[]
             user.cart.forEach(id => {
                 ids.push(id)
+            })
+            user.abonamentsCart.forEach(id => {
+                abonids.push(id)
             })
             Parfumes.find({ _id : { $in: ids } },(err2, parfumes)=>{
                 if(err2) throw err2
                 console.log('\nParfumes: ')
-                console.log(parfumes)
-                if(parfumes){
-                    callback(parfumes)
-                } 
+                Abonaments.find({ _id : { $in: abonids } },(err3, abons)=>{
+                    if(err3) throw err3
+                    console.log('\nAbons: ')
+                    
+                    console.log(abons)
+                    console.log(parfumes)
+                    if(parfumes){
+                        callback(parfumes, abons)
+                    } 
+                })
+                
             })
             
         }
