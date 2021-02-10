@@ -4,6 +4,7 @@ var Parfumes = require('../models/parfumes')
 var User = require('../models/user')
 const mongoc = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID
+var Orders = require('../models/orders')
 if(process.env.NODE_ENV !=='production'){
   require('dotenv').config()
 }
@@ -55,6 +56,89 @@ module.exports = function(io){
     }
    
   });
+
+  router.post('/done', function(req,res,next){
+    if(req.user){
+      console.log('done')
+      //console.log(stripePublicKey, stripeSecretKey)
+      let total = 0
+      let cartids = []
+      var qs = {}
+      console.log(req.body)
+      req.body.items.forEach(item=>{
+        cartids.push(item.id)
+        qs[item.id] = item.quantity;
+      })
+      Parfumes.find({ _id : { $in: cartids } },(err, parfumes)=>{
+        if(err) throw err
+        console.log('\nParfumes: ')
+        console.log(parfumes)
+        var i = 0
+        parfumes.forEach(doc=>{
+          total+=doc.price * qs[doc._id];
+        })
+        const chargeMe = ()=>{
+          console.log(req.body.stripeTokenId)
+          Orders.create(new Orders({
+            amount: total,
+            currency: 'usd',
+            userID: req.user._id,
+            email: req.user.email,
+            shipping: {
+              address: {
+                line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
+                city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
+                country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
+                postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
+                state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
+              },
+              name: `${req.user.name} ${req.user.vorname}`
+            },
+            products: req.body.items,
+            status: 'sent',
+            deliverymethod: req.body.deliverymethod
+            
+          }),(err,result)=>{
+            console.log(err)
+            if(!err){
+              console.log('Charge Succesfull ')
+              console.log(result)
+              res.json({error: false, message:'Successfully ordered! Price will be ' + total/100 +' lei!'})
+            } else {
+              console.log('Charge Failed ')
+              console.log(result)
+              res.json({error: false, message:'Something went wrong!'})
+            }
+     
+           
+            //add to db
+          })
+        }
+        if(req.user){
+          if(!req.user.stripeCustomerID){
+            //customer not reqistered
+            //const customer = await stripe.customers.create({email: req.user.email});
+            stripe.customers.create({email: req.user.email}).then((customer)=>{
+              User.updateOne({username: req.user.username}, {
+                $set: {stripeCustomerID: customer.id}
+              }).then((err,res)=>{
+                chargeMe()
+              })
+            })
+          } else {
+            chargeMe()
+
+          }
+        } 
+
+        
+      })
+    }else {
+      res.render('youneedlogin', {input: 'purchase'})
+    }
+    
+  })
+
   router.post('/purchase', function(req,res,next){
     if(req.user){
       console.log('purchase')
