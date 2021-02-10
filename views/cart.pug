@@ -27,7 +27,7 @@ block content
                                 i.material-icons.large remove_circle
                         - i++
                     if false
-                        if user.status == 'verified' && user.addresses
+                        if user.status == 'verified' && user.addresses != []
                             .cardinfo
                                 <form action="/scents/purchase" method="post" id="payment-form">
                                     <div class="form-row">
@@ -47,7 +47,7 @@ block content
                         .btn.cbutton.ndcolor.btn.largebtn(onclick = 'cClicked()') Start Order
 
                 .cart-a
-                    if user.status == 'verified' && user.addresses
+                    if user.status == 'verified' && user.addresses != []
                         <form action="/scents/done" method="post" id="payment-form">
                             <div class="form-row">
                                 <label for="deliverymethod">Choose a delivery method:</label>

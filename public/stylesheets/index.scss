@@ -366,7 +366,7 @@ html, body {
           margin: unset !important
         }
         flex-wrap: wrap;
-
+        
         @include max-width(800px){
           flex-wrap: nowrap !important;
 
@@ -405,7 +405,7 @@ html, body {
                 
             }
             padding-left: .5em;
-                padding-right: .5em;
+            padding-right: .5em;
             margin: 3em !important;
             height: 20em;
             width: 20em;
@@ -910,6 +910,20 @@ body{
           background: #fff;
           color: #000 !important;
         }
+      }
+    }
+    &.last{
+      @include flex-column();
+      justify-self: center !important;
+      .card{
+       
+          &:nth-child(odd){
+            transform: translateX(0px) !important;
+          }
+          &:nth-child(even){
+            transform: translateX(0px) !important;
+          }
+        
       }
     }
   }

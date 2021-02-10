@@ -40,6 +40,10 @@ var UserSchema = mongoose.Schema({
     cart: {
         type: [String]
     },
+    abonamentsCart: {
+        type: [String],
+        default: []
+    },
     status: {
         type: String,
         default: "pending",
@@ -165,6 +169,24 @@ module.exports.addToCart = function(username, parfume, callback){
 module.exports.removeFromCart = function(username, parfume, callback){
     console.log(parfume)
     User.update({username: username}, { $pull: { cart: parfume } },
+        { multi: true }).then(res =>{
+            console.log(res)
+        callback(res)
+    })
+    //{ $addToSet: { colors: "c" } }
+}
+module.exports.addToAbonCart = function(username, parfume, callback){
+    console.log(parfume)
+    
+    User.update({username: username}, { $addToSet: { abonamentsCart: parfume } }).then(res =>{
+        callback(res, parfume)
+    })
+    //{ $addToSet: { colors: "c" } }
+}
+
+module.exports.removeFromAbonCart = function(username, parfume, callback){
+    console.log(parfume)
+    User.update({username: username}, { $pull: { abonamentsCart: parfume } },
         { multi: true }).then(res =>{
             console.log(res)
         callback(res)

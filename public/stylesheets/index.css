@@ -1376,6 +1376,30 @@ body {
   color: #000 !important;
 }
 
+.scentsbody .row.last {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: center !important;
+}
+
+.scentsbody .row.last .card:nth-child(odd) {
+  -webkit-transform: translateX(0px) !important;
+          transform: translateX(0px) !important;
+}
+
+.scentsbody .row.last .card:nth-child(even) {
+  -webkit-transform: translateX(0px) !important;
+          transform: translateX(0px) !important;
+}
+
 .datepicker-date-display span {
   overflow: visible !important;
 }

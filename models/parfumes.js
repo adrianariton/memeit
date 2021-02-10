@@ -39,7 +39,7 @@ module.exports.getParfumeById = function(id, callback){
     Parfumes.findById(id, callback);
 }
 module.exports.getParfumeByName = function(name, callback){
-    var query = {name: username};
+    var query = {name: name};
     Parfumes.findOne(query, callback)
 }
 module.exports.getMen = function(callback){

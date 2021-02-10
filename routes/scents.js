@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var Parfumes = require('../models/parfumes')
+var Abonaments = require('../models/abonaments')
+var Subscriptions = require('../models/subscriptions')
 var User = require('../models/user')
 const mongoc = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID
-var Orders = require('../models/orders')
+var Orders = require('../models/orders');
+const { response } = require('express');
+const abonaments = require('../models/abonaments');
 if(process.env.NODE_ENV !=='production'){
   require('dotenv').config()
 }
@@ -245,10 +249,33 @@ module.exports = function(io){
 
         })
         
+      } else if(req.params.query == 'abonaments'){
+          var scents
+          
+          Parfumes.find({},(err, data)=>{
+            scents = data
+            stripe.products.list({
+              limit: product_number,
+            }).then(data_stripe => {
+              Abonaments.find({}, (err2, data_abonaments)=>{
+                if(err || err2){
+                  res.render('404')
+                } else {
+                  console.log('----ABONAMENTS----')
+                  console.log(data_abonaments)
+                  res.render('abonaments', { input: req.params.query, title: 'Abonaments', scents: scents, abonaments: data_abonaments, stripe: data_stripe.data});
+
+                }
+              })
+
+            })
+
+          })
       }
   });
   mongoc.connect('mongodb+srv://root:Adrianecelmaiboss@cluster0-6ijeg.mongodb.net/ascent?retryWrites=true&w=majority', function(err, db){
     io.on('connection', socket =>{
+      console.log('wfefgqrgwe')
       socket.on('add-to-cart',(user, parfume) =>{
         console.log('steau e numai unaa /n/n')
         User.addToCart(user, parfume, (res)=>{
@@ -258,6 +285,18 @@ module.exports = function(io){
       socket.on('remove-from-cart',(user, parfume) =>{
         console.log('steau e numai unaa /n/n')
         User.removeFromCart(user, parfume, (res)=>{
+          console.log(res)
+        })
+      })
+      socket.on('add-to-cart-abonament',(user, parfume) =>{
+        console.log('steau e numai unaa /n/n')
+        User.addToAbonCart(user, parfume, (res)=>{
+          console.log(res)
+        })
+      })
+      socket.on('remove-from-cart-abonament',(user, parfume) =>{
+        console.log('steau e numai unaa /n/n')
+        User.removeFromAbonCart(user, parfume, (res)=>{
           console.log(res)
         })
       })
