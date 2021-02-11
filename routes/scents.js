@@ -102,20 +102,23 @@ module.exports = function(io){
           console.log(req.body.stripeTokenId)
           var objIds = []
           var i=0;
-          req.body.abonamentsIds.forEach(abid=>{
-            objIds[i]=new ObjectID()
-            i++;
-          })
-          i=-1;
-          req.body.abonamentsIds.forEach(abid=>{
-            i++;
-            Subscriptions.create(new Subscriptions({
-              _id: objIds[i],
-              userID: req.user._id,
-              abonamentID: abid,
-              parfumes: req.body.parfumeChoices[abid]
-            }))
-          })
+          if(req.body.abonamentsIds != []){
+            req.body.abonamentsIds.forEach(abid=>{
+              objIds[i]=new ObjectID()
+              i++;
+            })
+            i=-1;
+            req.body.abonamentsIds.forEach(abid=>{
+              i++;
+              Subscriptions.create(new Subscriptions({
+                _id: objIds[i],
+                userID: req.user._id,
+                abonamentID: abid,
+                parfumes: req.body.parfumeChoices[abid]
+              }))
+            })
+          }
+          
           
           Orders.create(new Orders({
             amount: total,
