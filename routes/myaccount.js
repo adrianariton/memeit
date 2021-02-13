@@ -10,5 +10,11 @@ router.get('/', function(req, res, next) {
         res.redirect('/')
     }
 });
-
+router.get('/orders', function(req, res, next) {
+    if(req.user){
+        res.render('orders', { title: 'My Orders' });
+    } else {
+        res.redirect('/')
+    }
+});
 module.exports = router;

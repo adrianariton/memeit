@@ -18,11 +18,7 @@ var SubscriptionsSchema = mongoose.Schema({
     abonamentName:{
         type: String
     },
-    dateCreated: {
-        type: Date,
-        default: Date.now(),
-        expires: 2628000000,
-    },
+    createdAt: { type: Date, expires: 2628000000, default: Date.now },
     parfumes: {
         type: []
     },

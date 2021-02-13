@@ -22,9 +22,18 @@ function cClicked() {
         totalprice += el.price * document.querySelectorAll('.q')[i].value
         i++;
     })
+    var abprice = 0
+    i=0
+    abcart.forEach(el=>{
+        abprice += el.price;
+        i++;
+    })
     var cartelems = document.querySelectorAll('.r')
-    
-    $('span.total').text('Total: ' + totalprice/100 + ' Lei')
+    console.log(1.0/3)
+    $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
+    $('span.subs').text('Subscriptions: ' + Math.round(abprice*100.0)/10000 + ' Lei')
+    $('span.total').text('Total: ' + Math.round((abprice+totalprice)*100.0)/10000 + ' Lei')
+
     $('.cart-a').fadeIn()
 }
 function backClicked() {

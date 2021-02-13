@@ -682,15 +682,35 @@ footer{
   @include flex-column();
 }
 .cart-a{
+  margin-top: 40px !important;
   select, option{
     background-color: transparent !important;
     
+  }
+  select{
+    position: relative;
+  }
+  option{
+    background-color: rgb(24, 24, 24) !important;
+    color: white !important;
+    font-size: large !important;
+  }
+  .r3{
+    min-height: 100px;
   }
   .custom-select {
     position: relative;
     font-family: Arial;
   }
-  
+  .form-row{
+    padding: 7px;
+    background-color: rgb(24, 24, 24);
+    margin-bottom: 10px;
+    margin-top: 4px;
+    h4{
+      margin-top: 0 !important;
+    }
+  }
   .custom-select select {
     display: none; /*hide original SELECT element:*/
   }
@@ -787,7 +807,7 @@ body{
     .row{
       img{
        // mix-blend-mode: overlay !important;
-       box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.3), 0 6px 20px 0 rgba(255, 255, 255, 0.19) !important;
+       //box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.3), 0 6px 20px 0 rgba(255, 255, 255, 0.19) !important;
 
       }
     }
@@ -958,13 +978,17 @@ body{
   height: fit-content !important;
 }
 .cartcont{
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  .r{
+  .r, .r2{
     @include flex-row();
     flex-wrap: wrap;
-    justify-content: center !important;
+    &.r{
+          justify-content: center !important;
+
+    }
     @include min-width(600px){
       border-top: 1px grey solid;
       margin-top: 10px;
@@ -997,7 +1021,20 @@ body{
       border-radius: 5px;
     }
     img{
-      max-width: 10vmin;
+
+      min-width: 100%;
+      min-height: 100%;
+    }
+    .image-cropper {
+      width: 10vmin;
+      height: 10vmin;
+      display: flex;
+      @include flex-column();
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 5px;
     }
     @include min-width(600px){
       @include flex-column();
@@ -1156,6 +1193,8 @@ tbody *{
 }
 
 .cardinfo{
+  margin-top: 40px;
+
   *{
     color: white !important;
     margin-top: 10px;

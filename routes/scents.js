@@ -117,44 +117,51 @@ module.exports = function(io){
                 parfumes: req.body.parfumeChoices[abid]
               }))
             })
-          }
-          
-          
-          Orders.create(new Orders({
-            amount: total,
-            currency: 'usd',
-            userID: req.user._id,
-            email: req.user.email,
-            shipping: {
-              address: {
-                line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
-                city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
-                country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
-                postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
-                state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
-              },
-              name: `${req.user.name} ${req.user.vorname}`
-            },
-            products: req.body.items,
-            status: 'sent',
-            deliverymethod: req.body.deliverymethod,
-            subscriptionsId: objIds
             
-          }),(err,result)=>{
-            console.log(err)
-            if(!err){
-              console.log('Charge Succesfull ')
-              console.log(result)
-              res.json({error: false, message:'Successfully ordered! Price will be ' + total/100 +' lei!'})
-            } else {
-              console.log('Charge Failed ')
-              console.log(result)
-              res.json({error: false, message:'Something went wrong!'})
-            }
-     
-           
-            //add to db
+          }
+          Abonaments.find({_id:{$in:req.body.abonamentsIds}}, (err, docs)=>{
+            var abonamentprice = 0
+            docs.forEach(d=>{
+              abonamentprice+=d.price
+            })
+            Orders.create(new Orders({
+              amount: total+abonamentprice,
+              currency: 'usd',
+              userID: req.user._id,
+              email: req.user.email,
+              shipping: {
+                address: {
+                  line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
+                  city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
+                  country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
+                  postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
+                  state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
+                },
+                name: `${req.user.name} ${req.user.vorname}`
+              },
+              products: req.body.items,
+              status: 'sent',
+              deliverymethod: req.body.deliverymethod,
+              subscriptionsId: objIds
+              
+            }),(err,result)=>{
+              console.log(err)
+              if(!err){
+                console.log('Charge Succesfull ')
+                console.log(result)
+                res.json({error: false, message:'Successfully ordered! Price will be ' + total/100 +' lei!'})
+              } else {
+                console.log('Charge Failed ')
+                console.log(result)
+                res.json({error: false, message:'Something went wrong!'})
+              }
+       
+             
+              //add to db
+            })
           })
+          
+          
         }
         if(req.user){
           chargeMe()
@@ -255,7 +262,7 @@ module.exports = function(io){
         chargeMe()
       })
     }else {
-      res.render('youneedlogin', {input: 'purchase'})
+      res.redirect('/')
     }
     
   })

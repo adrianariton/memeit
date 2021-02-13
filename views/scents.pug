@@ -4,7 +4,63 @@ block content
   .scentsbody
     h1.input #{input}
     .buddy
-      for i in [0,2]
+      - var i = 0
+      for scent in scents
+        if i%2==0 && scents[i+1]
+          .row.container
+            .card(data-item-id=scents[i]._id)
+              .imaromas
+                .col
+                  div.b1.b
+                  span.a1 #{scents[i].aromas[0]}
+                  div.b2.b
+                  span.a2 #{scents[i].aromas[0]}
+                  div.b3.b
+                  span.a3 #{scents[i].aromas[0]}
+                img.image(src='/images/'+scents[i].image)
+                .col
+                  div.b1.b
+                  span.a1 #{scents[i].aromas[1]}
+                  div.b2.b
+                  span.a2 #{scents[i].aromas[1]}
+                  div.b3.b
+                  span.a3 #{scents[i].aromas[1]}
+              div.name 
+                h1 #{scents[i].name}
+              span.desc #{scents[i].description.substr(0, 30)}...
+              span.wh #{scents[i].description}
+              span.price $#{(scents[i].price/100).toFixed(2)} 
+              span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
+                i(class='material-icons') #{user? (user.cart.includes(scents[i]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
+              span.readmore Read More
+            .card(data-item-id=scents[i+1]._id)
+              .imaromas
+                .col
+                  div.b1.b
+                  span.a1 #{scents[i+1].aromas[0]}
+                  div.b2.b
+                  span.a2 #{scents[i+1].aromas[0]}
+                  div.b3.b
+                  span.a3 #{scents[i+1].aromas[0]}
+                img.image(src='/images/'+scents[i+1].image)
+                .col
+                  div.b1.b
+                  span.a1 #{scents[i+1].aromas[1]}
+                  div.b2.b
+                  span.a2 #{scents[i+1].aromas[1]}
+                  div.b3.b
+                  span.a3 #{scents[i+1].aromas[1]}
+              div.name  
+                h1 #{scents[i+1].name}
+              span.desc #{scents[i+1].description.substr(0, 30)}...
+              span.wh #{scents[i+1].description}
+              span.price $#{(scents[i+1].price/100).toFixed(2)} 
+              span.addtocart(class=user? (user.cart.includes(scents[i+1]._id) ? 'removefromcart': '') : '')
+                i(class='material-icons') #{user? (user.cart.includes(scents[i+1]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
+              span.readmore Read More
+        - i++
+      - i--
+      if i%2 == 0  
         .row.container
           .card(data-item-id=scents[i]._id)
             .imaromas
@@ -15,7 +71,7 @@ block content
                 span.a2 #{scents[i].aromas[0]}
                 div.b3.b
                 span.a3 #{scents[i].aromas[0]}
-              img.image(src=stripe.find(element => element.name == scents[i].name).images[0])
+              img.image(src='/images/'+scents[i].image)
               .col
                 div.b1.b
                 span.a1 #{scents[i].aromas[1]}
@@ -27,69 +83,18 @@ block content
               h1 #{scents[i].name}
             span.desc #{scents[i].description.substr(0, 30)}...
             span.wh #{scents[i].description}
-            span.price $#{(scents[i].price/100).toFixed(2)} 
+            span.price $#{(scents[i].price/100).toFixed(2)}  
             span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.cart.includes(scents[i]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
             span.readmore Read More
-          .card(data-item-id=scents[i+1]._id)
+          .card
             .imaromas
-              .col
-                div.b1.b
-                span.a1 #{scents[i+1].aromas[0]}
-                div.b2.b
-                span.a2 #{scents[i+1].aromas[0]}
-                div.b3.b
-                span.a3 #{scents[i+1].aromas[0]}
-              img.image(src=stripe.find(element => element.name == scents[i+1].name).images[0])
-              .col
-                div.b1.b
-                span.a1 #{scents[i+1].aromas[1]}
-                div.b2.b
-                span.a2 #{scents[i+1].aromas[1]}
-                div.b3.b
-                span.a3 #{scents[i+1].aromas[1]}
-            div.name  
-              h1 #{scents[i+1].name}
-            span.desc #{scents[i+1].description.substr(0, 30)}...
-            span.wh #{scents[i+1].description}
-            span.price $#{(scents[i+1].price/100).toFixed(2)} 
-            span.addtocart(class=user? (user.cart.includes(scents[i+1]._id) ? 'removefromcart': '') : '')
-              i(class='material-icons') #{user? (user.cart.includes(scents[i+1]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
-            span.readmore Read More
-      .row.container
-        .card(data-item-id=scents[4]._id)
-          .imaromas
-            .col
-              div.b1.b
-              span.a1 #{scents[4].aromas[0]}
-              div.b2.b
-              span.a2 #{scents[4].aromas[0]}
-              div.b3.b
-              span.a3 #{scents[4].aromas[0]}
-            img.image(src=stripe.find(element => element.name == scents[4].name).images[0])
-            .col
-              div.b1.b
-              span.a1 #{scents[4].aromas[1]}
-              div.b2.b
-              span.a2 #{scents[4].aromas[1]}
-              div.b3.b
-              span.a3 #{scents[4].aromas[1]}
-          div.name 
-            h1 #{scents[4].name}
-          span.desc #{scents[4].description.substr(0, 30)}...
-          span.wh #{scents[4].description}
-          span.price $#{(scents[4].price/100).toFixed(2)}  
-          span.addtocart(class=user? (user.cart.includes(scents[4]._id) ? 'removefromcart': '') : '')
-            i(class='material-icons') #{user? (user.cart.includes(scents[4]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
-          span.readmore Read More
-        .card
-          .imaromas
-            img.image(src='/images/1.jpg')
-            span.comingsoon Coming Soon!
-          h1.name Sugerati-ne parfumuri!
-          form
-            input(type="text" placeholder='name')
-            input(type="submit")
+              img.image(src='/images/1.jpg')
+              span.comingsoon Coming Soon!
+            h1.name Sugerati-ne parfumuri!
+            form
+              input(type="text" placeholder='name')
+              input(type="submit")
   if user
     script(type='text/javascript').
       const currentuser = '#{user.username}'
