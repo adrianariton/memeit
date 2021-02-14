@@ -156,16 +156,19 @@ module.exports = function(io){
               subscriptionsId: objIds
               
             }),(err,result)=>{
-              console.log(err)
-              if(!err){
-                console.log('Charge Succesfull ')
-                console.log(result)
-                res.json({error: false, message:'Successfully ordered!'})
-              } else {
-                console.log('Charge Failed ')
-                console.log(result)
-                res.json({error: false, message:'Something went wrong!'})
-              }
+              User.emptyCart(req.user.username, (err2, result)=>{
+                console.log(err)
+                if(!err){
+                  console.log('Charge Succesfull ')
+                  console.log(result)
+                  res.json({error: false, message:'Successfully ordered!'})
+                } else {
+                  console.log('Charge Failed ')
+                  console.log(result)
+                  res.json({error: false, message:'Something went wrong!'})
+                }
+              })
+              
        
              
               //add to db

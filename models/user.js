@@ -96,6 +96,11 @@ module.exports.changeEmail = function(username, newmail,req, callback){
         $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
     }).then(callback)
 }
+module.exports.emptyCart = function(username, callback){
+    User.updateOne({username: username}, {
+        $set: {cart: []}
+    }).then(callback)
+}
 
 module.exports.addAddress = function(req, callback){
     var street = req.body.street;
