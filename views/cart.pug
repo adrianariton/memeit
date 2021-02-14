@@ -62,7 +62,9 @@ block content
                         br
                     else 
                         .btn.cbutton.ndcolor.btn.largebtn(onclick = 'cClicked()') Start Order
-
+                        br
+                        br
+                        br
                 .cart-a
                     if user.status == 'verified' && user.addresses != []
                         h7 Fill in your delivery info!
@@ -107,6 +109,9 @@ block content
                             .btn.backbutton.ndcolor.btn.largebtn(onclick = 'backClicked()') Back
                     else 
                         span You have to be verified and to add an address to order! Go to <a href='/myaccount'> My Account</a>!
+                    br
+                    br
+                    br
         script(src='/javascripts/select.js')
         script.
             const currentuser = '#{user.username}'

@@ -1,5 +1,25 @@
 extends layout
 
 block content
-    h1 My Orders
-    h2 Work in progress
+    .mainmyacc
+        .container.myacc
+            .header
+                .header-head
+                    img(src='/images/user-alt.png')
+                    .uinfo
+                        span.name #{user.name} #{user.vorname}
+                        span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
+            .body
+                .section
+                    .title Orders 
+                    .content.ordersid
+                        for order in orders
+                            .ab-group
+                                a.gotoorder(href='/myorders/'+order.id style='color: lime !important; text-decoration: underline !important;') Click here to view order info!
+                                .title2 Email: #{order.email}
+                                .date #{order.dateCreated}
+                                if order.status == 'sent'
+                                    .other1 Order will be delivered in 2-3 days after ordered!
+                                else 
+                                    .other1 Order has been delivered!
+                                .subid Order id: #{order.id}

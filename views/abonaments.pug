@@ -37,7 +37,7 @@ block content
               h1 #{abonaments[2].name}
             span.desc #{abonaments[2].description.substr(0, 30)}...
             span.wh #{abonaments[2].description}
-            span.price $#{(abonaments[2].price/100).toFixed(2)} 
+            span.price Lei#{(abonaments[2].price/100).toFixed(2)} 
             span.addtocart(class=user? (user.abonamentsCart.includes(abonaments[2]._id) ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.abonamentsCart.includes(abonaments[2]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
             span.readmore Read More

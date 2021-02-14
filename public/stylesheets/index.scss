@@ -1043,6 +1043,22 @@ body{
     }
   }
 }
+.image-cropper {
+  width: 10vmin;
+  height: 10vmin;
+  display: flex;
+  @include flex-column();
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 5px;
+  img{
+
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
 body{
   background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
   background-position: center;
@@ -1199,5 +1215,52 @@ tbody *{
     color: white !important;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+}
+
+.ordersid{
+  display: flex;
+  flex-direction: column-reverse !important;
+}
+.ab-group{
+  
+  border-bottom: 1px solid gray;
+  padding-bottom: 7px;
+  .title2{
+    @include max-width(700px){
+      font-weight: bolder;
+
+    }
+    font-size: large;
+    margin: 0 !important;
+    text-align: left !important;
+  }
+  .date{
+    font-size: small;
+    font-weight: bolder;
+
+   // color: gray;
+    transform: translateY(-5px) !important;
+  }
+  .quan{
+    font-size: small;
+    @include flex-row();
+    justify-content: space-between !important;
+  }
+  .subid{
+
+  }
+  .titleimg{
+    @include flex-row();
+    flex-direction: row-reverse !important;
+    img{
+      padding: 7px;
+    }
+  }
+  .titleimg-n{
+    @include flex-row();
+    img{
+      padding: 7px;
+    }
   }
 }

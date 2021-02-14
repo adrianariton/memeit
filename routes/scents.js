@@ -109,13 +109,24 @@ module.exports = function(io){
             })
             i=-1;
             req.body.abonamentsIds.forEach(abid=>{
-              i++;
-              Subscriptions.create(new Subscriptions({
-                _id: objIds[i],
-                userID: req.user._id,
-                abonamentID: abid,
-                parfumes: req.body.parfumeChoices[abid]
-              }))
+              
+              console.log('IDS:')
+              console.log(objIds[i])
+              Abonaments.findById( abid, (err, abon)=>{
+                i++;
+                console.log(err, abon)
+                console.log('AAAAAAAAAAAAAAAAAAAAAAAA')
+                console.log(i)
+                Subscriptions.create(new Subscriptions({
+                  _id: objIds[i],
+                  userID: req.user._id,
+                  abonamentID: abid,
+                  parfumes: req.body.parfumeChoices[abid].slice(0, abon.parfumeChoices)
+                }), (err2, result)=>{
+                  console.log(err2, result)
+                })
+              })
+              
             })
             
           }
@@ -149,7 +160,7 @@ module.exports = function(io){
               if(!err){
                 console.log('Charge Succesfull ')
                 console.log(result)
-                res.json({error: false, message:'Successfully ordered! Price will be ' + total/100 +' lei!'})
+                res.json({error: false, message:'Successfully ordered!'})
               } else {
                 console.log('Charge Failed ')
                 console.log(result)
@@ -193,7 +204,7 @@ module.exports = function(io){
   })
 
   router.post('/purchase', function(req,res,next){
-    if(req.user){
+    if(false){
       console.log('purchase')
       console.log(stripePublicKey, stripeSecretKey)
       let total = 0
@@ -273,7 +284,7 @@ module.exports = function(io){
         Parfumes.getMen((err, data)=>{
           men = data
           console.log('MEEEEN')
-          console.log(JSON.stringify(men))
+          console.log(men)
           stripe.products.list({
             limit: product_number,
           }).then(data_stripe => {

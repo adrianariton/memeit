@@ -1,0 +1,67 @@
+extends layout
+
+block content
+    .mainmyacc
+        .container.myacc
+            .header
+                .header-head
+                    img(src='/images/user-alt.png')
+                    .uinfo
+                        span.name Order: #{order.id}
+                        span.datecreated Ordered #{order.dateCreated}
+            .body
+                .section
+                    .title User Info
+                    .content 
+                        .title2 User: #{user.name} #{user.vorname}
+                        .title2 Email: #{order.email}
+                .section
+                    .title Shipping Info
+                    .content 
+                        .title2 #{order.shipping.name}
+                        .title2 Address: #{order.shipping.address.line1}, #{order.shipping.address.city}, #{order.shipping.address.state}, #{order.shipping.address.country}
+                        .title2 Postal Code: #{order.shipping.address.postal_code}
+                        .title2 Delivery Method: #{order.deliverymethod == 'postro' ? 'Posta Romana': 'Curier' }
+                - var totalprod = 0
+                - var totalabon = 0
+                .section 
+                    .title Ordered Products
+                    .content
+                        for prod in order.products
+                            .ab-group
+                                .titleimg
+                                    .title2 #{productArr.find(el => el.id == prod.id).name}
+                                    .image-cropper
+                                        img(src = '/images/'+ productArr.find(el => el.id == prod.id).image style='border-radius: 50% !important; margin: 5px;')
+                                .quan 
+                                    span Quantity #{prod.quantity}
+                                    - totalprod+=prod.quantity*productArr.find(el => el.id == prod.id).price/100
+                                    span Price #{prod.quantity} x #{productArr.find(el => el.id == prod.id).price/100}=Lei#{prod.quantity*productArr.find(el => el.id == prod.id).price/100}
+                .section
+                    .title Ordered Subscriptions
+                    .content
+                        if order.subscriptionsId
+                            for subid in order.subscriptionsId
+                                .ab-group
+                                    .titleimg
+                                        .title2 #{abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).name}
+                                        .image-cropper
+                                            img(src = '/images/'+ abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).image style='border-radius: 50% !important; margin: 5px;')
+                                    .perfumechoices
+                                        span &nbsp;&nbsp;&nbsp;&nbsp;Perfumes:
+                                        for perfid in subsArr.find(el=> el.id == subid).parfumes
+                                            .titleimg-n
+                                                .image-cropper
+                                                    img(src = '/images/'+ productArr.find(el2=> el2.id == perfid).image style='border-radius: 50% !important; margin: 5px;')
+                                                .title2 #{productArr.find(el2=> el2.id == perfid).name}
+                                    .quan 
+                                        span id: #{subid}
+                                        - totalabon+=abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).price/100
+                                        span Price Lei#{abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).price/100}
+                .section 
+                    .title 
+                    .content 
+                        .ab-group 
+                            .quan 
+                                span 
+                                span Total Lei#{(totalprod+totalabon)}

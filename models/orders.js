@@ -41,6 +41,10 @@ var OrdersSchema = mongoose.Schema({
     subscriptionsId: {
         type: [],
         default: []
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
 })
 
