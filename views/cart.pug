@@ -94,7 +94,7 @@ block content
                                         h4 #{abcart[i].name}
                                         label(for=abids[i]) Choose #{abcart[i].parfumeChoices} perfumes:
                                         .custom-select
-                                            select.r3(class='custom-select2' multiple='multiple' id=abids[i] name="choices" style='display: block;')
+                                            select.r3.nicescroll(class='custom-select2' multiple='multiple' id=abids[i] name="choices" style='display: block;')
                                                 - var k=0
                                                 while k<10
                                                     option(value=allscents[k]._id) #{allscents[k].name}

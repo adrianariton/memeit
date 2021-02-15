@@ -91,12 +91,18 @@ block content
                             .content
                                 .verif You need to verify your account!
                     .section
-                        .title Abonaments
+                        .title Subscriptions
                         .content
-                            for sub in subs
-                                .ab-group
-                                    .title2 #{abons.find(element => element.id==sub.abonamentID).name}
-                                    .date #{sub.createdAt}
-                                    .subid Subscription id: #{sub.id}
-                            .info Subscription id is used to identify your subscription if you have any problem with it.
+                            .btn.togglesubs Show Subscriptions
+                            .subs#subs
+                                for sub in subs
+                                    .ab-group
+                                        .title2 #{abons.find(element => element.id==sub.abonamentID).name}
+                                        .date #{sub.createdAt}
+                                        .subid Subscription id: #{sub.id}
+                                .info Subscription id is used to identify your subscription if you have any problem with it.
+                    .section
+                        .title My Orders
+                        .content
+                            a.btn.gotoorders(href='/myaccount/orders') Go to my orders
             script(src='/javascripts/address.js')

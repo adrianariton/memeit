@@ -71,3 +71,14 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+$(document).ready(e=>{
+  $('#subs').hide()
+})
+
+$('.togglesubs').click(e=>{
+  $('#subs').toggle()
+  if(  $('.togglesubs').text()=='Hide Subscriptions'  )
+    $('.togglesubs').text('Show Subscriptions')
+  else 
+    $('.togglesubs').text('Hide Subscriptions')
+})

@@ -1264,3 +1264,18 @@ tbody *{
     }
   }
 }
+
+.togglesubs{
+  margin-bottom: 10px;
+  background-color: gray !important;
+}
+.gotoorders{
+  background-color: gray !important;
+ 
+}
+.nicescroll{
+  &::-webkit-scrollbar {
+    background-color: black !important;
+    width: 5px !important;
+  }
+}
