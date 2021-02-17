@@ -2,23 +2,28 @@ extends layout
 
 block content
   link(rel='stylesheet', href='/stylesheets/index.css')
-  div(class="container-fluid menwomen")
-    div(class="split left")
-      a(href='/scents/women') &#9792;
-    div(class="split right")
-      a(href='/scents/men') &#9794;
+  
   div.mainbody
     .firstimage
+      .gradbottom
+      .mw
+        div(class="women split left")
+          a(href='/scents/women') &#9792;
+        .separe
+        div(class="men split right")
+          a(href='/scents/men') &#9794;
+      .gradtop
     .ascentsteps
       .steps
         .step
           .text
             span 1. Alege parfumul
-          .image
+          img(src='images/site/pas1.jpg')
         .step
           .text
             span 2. Activeaza abonamentul
-          .image
+          img(src='images/site/pas2.jpg')
+          a(href='/scents/subscriptions').gobuynow Buy now!
         .step
           .text
             span 3. Bucura-te de parfum
@@ -26,42 +31,17 @@ block content
     div(class="featured")
       .rows
         .row
-          .image
+          img(src='images/site/topq1.jpg')
           .info
-            h4.title Top Quality
+            h4.title Our Story
             span Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
           a.more &#8594;
         .row
-          .image
+          img(src='images/site/topq2.jpg')
           .info
             h4.title Top Quality
             span Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500
           a.more &#8594;
-    footer(class="page-footer footer")
-      div.container
-        div.row
-          div(class="col l6 s12")
-            h5(class="white-text") Contact Us!
-            form(action="")
-              label(for="email") Email
-              input(type='email' name="email" placeholder="email")
-              label(for="email") Message
-              textarea(cols="30", rows="10" name="email" placeholder="message")
-              input.btn(type="submit")
-          div(class="col l4 offset-l2 s12")
-            h5 Follow Us!
-            ul
-              li.followus
-                a(class="grey-text text-lighten-3" href="#!") <i class="fa fa-instagram"></i>
-                a(class="grey-text text-lighten-3" href="#!") <i class="fa fa-facebook"></i>
-              li
-                a(class="grey-text text-lighten-3" href="#aboutus") About Us
-              li
-                a(class="grey-text text-lighten-3" href="#!help") Help
-              li
-                a(class="grey-text text-lighten-3" href="#!invite") Invite friend!
-      div.footer-copyright
-        div.container © 2020 Ascent Romania
-          a(class="grey-text text-lighten-4 right" href="#!") Privacy Policy
+    
     
     script(src='../javascripts/mwui.js')

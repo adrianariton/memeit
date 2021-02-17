@@ -114,8 +114,15 @@ block content
                         br
                         br
                 else 
-                    span Please add at least one item to your cart, and at least one perfume! 
-        script(src='/javascripts/select.js')
+                    .con
+                        span Please add at least one item to your cart, and at least one perfume! 
+                        .mw
+                            div(class="women split left")
+                                a(href='/scents/women') &#9792;
+                            .separe
+                            div(class="men split right")
+                                a(href='/scents/men') &#9794;
+        script(src='/javascripts/mwui.js')
         script.
             const currentuser = '#{user.username}'
         script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")

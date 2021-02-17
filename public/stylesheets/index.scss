@@ -4,9 +4,9 @@
     --left-button-hover-color: rgba(161, 11, 11, 0.3);
     --right-bg-color: rgba(43, 43, 43, 0.8);
     --right-button-hover-color: rgba(92, 92, 92, 0.3);
-    --hover-width: 75%;
-    --other-width: 25%;
-    --speed: 700ms;
+    --hover-width: 10em;
+    --other-width: 0em;
+    --speed: 300ms;
 }
 //new pwd 4 Radianeleven: Adiadi
 body::-webkit-scrollbar {
@@ -52,6 +52,11 @@ h1,h2,h3,h4,h5,h6,h7,h8,h9{
   @media screen and (min-height: $width) {
     @content;
   }
+}
+@mixin bcg {
+  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+    background-position: center;
+    background-size: cover;
 }
 @mixin flex-row {
     
@@ -140,20 +145,20 @@ h1 {
 
 .mainbody{
     position: relative;
-    top: 260px !important;
+//top: 260px !important; IFF
+  top: 65px !important;
   //  min-height: 150vh;
     width: 100vw !important;
     overflow: hidden;
   overflow-y: auto;
-    background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
-    background-position: center;
-    background-size: cover;
+    @include bcg;
 }
 html, body { 
   overflow-x: hidden;
   position: relative
 } 
-.container-fluid {
+.container-fluid.menwomen {
+  display: none !important; //IFF
   position: fixed;
   width: 100% !important;
   height: 195px !important;
@@ -172,82 +177,16 @@ html, body {
   }
 }
 
-.split {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  h1,a{
-    color: white !important;
-    font-size: 4em !important;
-    font-weight: 900;
-    z-index: 2;
-  }
-  cursor: pointer !important;
-}
 .bl{
   display: block !important;
 }
-.split.left {
-  left:0;
-  background: url('https://image.ibb.co/m56Czw/designer.jpg') center center no-repeat;
-  background-size: cover;
-  @include flex-row();
-  justify-content: center !important;
-}
-
-.split.left:before {
-  position:absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: var(--left-bg-color);
-}
-
-.split.right {
-  right:0;
-  background: url(../images/1.jpg) center center no-repeat;
-  background-size: cover;
-  @include flex-row();
-  justify-content: center !important;
-}
-
-.split.right:before {
-  position:absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: var(--right-bg-color);
-}
-
-.split.left, .split.right, .split.right:before, .split.left:before {
-  transition: var(--speed) all ease-in-out;
-}
-
-.hover-left .left {
-  width: var(--hover-width);
-}
-
-.hover-left .right {
-  width: var(--other-width);
-}
-
-.hover-left .right:before {
-  z-index: 2;
+.split {
+  min-width: 0em; 
+  cursor: pointer !important;
 }
 
 
-.hover-right .right {
-  width: var(--hover-width);
-}
 
-.hover-right .left {
-  width: var(--other-width);
-}
-
-.hover-right .left:before {
-  z-index: 2;
-}
 
 @media(max-width: 800px) {
   h1 {
@@ -339,11 +278,95 @@ html, body {
     }
 }
 .firstimage{
-  height: 20em;
+  position: relative;
+  height: 40em !important;
   min-width: 100vw;
-  min-height: 20em;
-  background-color: var(--container-bg-color);
+  background: url(../images/site/submf.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
+.gradbottom{
+  background: linear-gradient(transparent, #000000);
+  height: 10em !important;
+  position: absolute;
+  min-width: 100%;
+  bottom: 0 !important;
+}
+.cartbody{
+  .con{
+    height: 40em;
+    width: 100%;
+    @include flex-column();
+    justify-content: center;
+  }
+}
+.mw{
+  position: absolute;
+  z-index: 2 !important;
+  width: 100%;
+  height: fit-content !important;
+  @include flex-row();
+  justify-content: center;
+  bottom: 10em !important;
+  a{
+    font-size: 3em !important;
+    color: white !important;
+    font-weight: bold;
+    padding: 1em;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    
+  }
+  .right{
+    @include flex-row();
+    justify-content: flex-end;
+  }
+  
+  @media(min-height: 700px) {
+    .left, .right{
+      min-width: 0em;
+      transition: var(--speed) all ease-in-out;
+  
+    }
+    
+    &.hover-left .left {
+      min-width: var(--hover-width);
+      a{
+        color: rgb(187, 187, 187) !important;
+
+      }
+    } 
+    &.hover-left .right {
+      min-width: var(--other-width);
+    }
+    
+    &.hover-right .right {
+      min-width: var(--hover-width);
+      a{
+        color: rgb(187, 187, 187) !important;
+
+      }
+    }
+    &.hover-right .left {
+      min-width: var(--other-width);
+    }
+  }
+  .separe{
+    width: 1px;
+    height: 3em;
+    background-color: white;
+  }
+}
+.gradtop{
+  background: linear-gradient(#000000, transparent);
+  height: 10em !important;
+  position: absolute;
+  min-width: 100%;
+  top: 0 !important;
+}
+
 .rows{
   width: 100vw !important;
         margin: 0 0 0 0 !important;
@@ -380,17 +403,17 @@ html, body {
 
         justify-content: center;
 
-        .image{
-            height: 100%;
-            width: auto;
-            flex-grow: 6;
-            @include min-width(600px){
-              height: 20em;
-              width: 20em !important;
-              margin: unset !important
-            }
-            min-height: 20em;
-            background-color: var(--container-bg-color);
+        
+        img{
+          height: 100%;
+          width: auto;
+          @include min-width(600px){
+            //height: 20em;
+            width: 20em !important;
+            margin: unset !important
+          }
+          min-height: 20em;
+          background-color: var(--container-bg-color);
         }
         .info{
             min-width: 20em;
@@ -552,8 +575,7 @@ html, body {
     }
     @include flex-column();
     justify-content: center;
-    background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
-
+    @include bcg;
     .content{
         form{
             input{
@@ -600,7 +622,7 @@ html, body {
 .steps{
   @include flex-row();
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 1em;
   margin-top: 7em;
   @include min-width(412px){
@@ -609,6 +631,7 @@ html, body {
     justify-content: center;
   }
   .step{
+    position: relative;
     @include flex-column();
     justify-content: space-between;
     .text{
@@ -621,20 +644,38 @@ html, body {
         text-align: center;
       }
     }
-    .image{
+    img{
       @include max-width(412px){
         width: 25em;
-        height: 25em;
         margin: 1em;
       }
       @include min-width(412px){
         width: 80vw;
-        height: 80vw;
         margin: 10vw;
       }
       
 
-      background-color: var(--container-bg-color);
+    }
+    .gobuynow{
+      @include max-width(412px){
+        width: 25em;
+        margin: 1em;
+        transform: translateY(-2em);
+
+      }
+      @include min-width(412px){
+        width: 80vw;
+        margin: 10vw;
+        transform: translateY(-20vw);
+
+      }
+      background-color: var(--left-bg-color)  !important;
+      color: white !important;
+      padding: 10px;
+      transition: all 0.2s ease-in-out;
+      &:hover{
+        padding-left: 15px;
+      }
     }
   }
   margin-bottom: 50px;
@@ -834,7 +875,7 @@ body{
       margin-top: 20px;
     }
   }
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  @include bcg;
   .row{
     align-items: flex-start;
     span, h1{
@@ -974,13 +1015,13 @@ body{
   background: linear-gradient(var(--left-bg-color), #000)  !important;
 }
 .cartbody{
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
-  min-height: 100vh;
+  @include bcg;
   *{
   color: white !important;
   }
-  display: unset;
-  height: fit-content !important;
+ 
+  min-height: 100vh !important;
+  overflow: hidden !important;
 }
 .cartcont{
   margin-top: 40px;
@@ -1065,7 +1106,7 @@ body{
   }
 }
 body{
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  @include bcg;
   background-position: center;
   background-size: cover;
   min-height: 100vh;
@@ -1289,4 +1330,24 @@ tbody *{
   @include flex-row();
   flex-direction: row-reverse !important;
 
+}
+
+.logintobuy{
+  *{
+    color: white;
+  }
+  a{
+    color: lime;
+    text-decoration: underline !important;
+  }
+}
+footer{
+  margin-top: 65px !important;
+  bottom: 0 !important;
+  position: relative;
+
+}
+body{
+  min-height: 100vh !important;
+  position: relative;
 }

@@ -324,7 +324,7 @@ module.exports = function(io){
 
         })
         
-      } else if(req.params.query == 'abonaments'){
+      } else if(req.params.query == 'subscriptions'){
           var scents
           
           Parfumes.find({},(err, data)=>{

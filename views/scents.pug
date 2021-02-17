@@ -3,6 +3,11 @@ extends layout
 block content
   .scentsbody
     h1.input #{input}
+    if !user
+      .logintobuy 
+        span You need to&nbsp;
+        a(href='/users/login') Log in
+        span &nbsp;to add items to cart!
     .buddy
       - var i = 0
       for scent in scents

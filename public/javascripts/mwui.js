@@ -1,6 +1,7 @@
-const left = document.querySelector(".left");
+$(document).ready(()=>{
+  const left = document.querySelector(".left");
 const right = document.querySelector(".right");
-const container = document.querySelector(".container-fluid");
+const container = document.querySelector(".mw");
 left.addEventListener("mouseenter", () => {
     container.classList.add("hover-left");
   });
@@ -16,3 +17,4 @@ left.addEventListener("mouseenter", () => {
   right.addEventListener("mouseleave", () => {
     container.classList.remove("hover-right");
   });
+})

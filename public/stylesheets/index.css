@@ -6,9 +6,9 @@
   --left-button-hover-color: rgba(161, 11, 11, 0.3);
   --right-bg-color: rgba(43, 43, 43, 0.8);
   --right-button-hover-color: rgba(92, 92, 92, 0.3);
-  --hover-width: 75%;
-  --other-width: 25%;
-  --speed: 700ms;
+  --hover-width: 10em;
+  --other-width: 0em;
+  --speed: 300ms;
 }
 
 body::-webkit-scrollbar {
@@ -177,12 +177,12 @@ h1 {
 
 .mainbody {
   position: relative;
-  top: 260px !important;
+  top: 65px !important;
   width: 100vw !important;
   overflow: hidden;
   overflow-y: auto;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -192,7 +192,8 @@ html, body {
   position: relative;
 }
 
-.container-fluid {
+.container-fluid.menwomen {
+  display: none !important;
   position: fixed;
   width: 100% !important;
   height: 195px !important;
@@ -200,7 +201,7 @@ html, body {
   background: var(--container-bg-color);
 }
 
-.container-fluid::before {
+.container-fluid.menwomen::before {
   content: '';
   z-index: 3;
   position: absolute;
@@ -212,106 +213,13 @@ html, body {
   background: linear-gradient(#000000, #00000000);
 }
 
-.split {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  cursor: pointer !important;
-}
-
-.split h1, .split a {
-  color: white !important;
-  font-size: 4em !important;
-  font-weight: 900;
-  z-index: 2;
-}
-
 .bl {
   display: block !important;
 }
 
-.split.left {
-  left: 0;
-  background: url("https://image.ibb.co/m56Czw/designer.jpg") center center no-repeat;
-  background-size: cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center !important;
-      -ms-flex-pack: center !important;
-          justify-content: center !important;
-}
-
-.split.left:before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: var(--left-bg-color);
-}
-
-.split.right {
-  right: 0;
-  background: url(../images/1.jpg) center center no-repeat;
-  background-size: cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center !important;
-      -ms-flex-pack: center !important;
-          justify-content: center !important;
-}
-
-.split.right:before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: var(--right-bg-color);
-}
-
-.split.left, .split.right, .split.right:before, .split.left:before {
-  -webkit-transition: var(--speed) all ease-in-out;
-  transition: var(--speed) all ease-in-out;
-}
-
-.hover-left .left {
-  width: var(--hover-width);
-}
-
-.hover-left .right {
-  width: var(--other-width);
-}
-
-.hover-left .right:before {
-  z-index: 2;
-}
-
-.hover-right .right {
-  width: var(--hover-width);
-}
-
-.hover-right .left {
-  width: var(--other-width);
-}
-
-.hover-right .left:before {
-  z-index: 2;
+.split {
+  min-width: 0em;
+  cursor: pointer !important;
 }
 
 @media (max-width: 800px) {
@@ -466,10 +374,130 @@ html, body {
 }
 
 .firstimage {
-  height: 20em;
+  position: relative;
+  height: 40em !important;
   min-width: 100vw;
-  min-height: 20em;
-  background-color: var(--container-bg-color);
+  background: url(../images/site/submf.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.gradbottom {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000000));
+  background: linear-gradient(transparent, #000000);
+  height: 10em !important;
+  position: absolute;
+  min-width: 100%;
+  bottom: 0 !important;
+}
+
+.cartbody .con {
+  height: 40em;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mw {
+  position: absolute;
+  z-index: 2 !important;
+  width: 100%;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 10em !important;
+}
+
+.mw a {
+  font-size: 3em !important;
+  color: white !important;
+  font-weight: bold;
+  padding: 1em;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.mw .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+@media (min-height: 700px) {
+  .mw .left, .mw .right {
+    min-width: 0em;
+    -webkit-transition: var(--speed) all ease-in-out;
+    transition: var(--speed) all ease-in-out;
+  }
+  .mw.hover-left .left {
+    min-width: var(--hover-width);
+  }
+  .mw.hover-left .left a {
+    color: #bbbbbb !important;
+  }
+  .mw.hover-left .right {
+    min-width: var(--other-width);
+  }
+  .mw.hover-right .right {
+    min-width: var(--hover-width);
+  }
+  .mw.hover-right .right a {
+    color: #bbbbbb !important;
+  }
+  .mw.hover-right .left {
+    min-width: var(--other-width);
+  }
+}
+
+.mw .separe {
+  width: 1px;
+  height: 3em;
+  background-color: white;
+}
+
+.gradtop {
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(transparent));
+  background: linear-gradient(#000000, transparent);
+  height: 10em !important;
+  position: absolute;
+  min-width: 100%;
+  top: 0 !important;
 }
 
 .rows {
@@ -546,19 +574,15 @@ html, body {
       flex-direction: row-reverse !important;
 }
 
-.featured .row .image {
+.featured .row img {
   height: 100%;
   width: auto;
-  -webkit-box-flex: 6;
-      -ms-flex-positive: 6;
-          flex-grow: 6;
   min-height: 20em;
   background-color: var(--container-bg-color);
 }
 
 @media screen and (max-width: 600px) {
-  .featured .row .image {
-    height: 20em;
+  .featured .row img {
     width: 20em !important;
     margin: unset !important;
   }
@@ -772,8 +796,10 @@ html, body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 @media screen and (max-height: 500px) {
@@ -857,9 +883,8 @@ html, body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   margin-top: 1em;
   margin-top: 7em;
   margin-bottom: 50px;
@@ -886,6 +911,7 @@ html, body {
 }
 
 .steps .step {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -924,24 +950,48 @@ html, body {
   text-align: center;
 }
 
-.steps .step .image {
-  background-color: var(--container-bg-color);
-}
-
 @media screen and (min-width: 412px) {
-  .steps .step .image {
+  .steps .step img {
     width: 25em;
-    height: 25em;
     margin: 1em;
   }
 }
 
 @media screen and (max-width: 412px) {
-  .steps .step .image {
+  .steps .step img {
     width: 80vw;
-    height: 80vw;
     margin: 10vw;
   }
+}
+
+.steps .step .gobuynow {
+  background-color: var(--left-bg-color) !important;
+  color: white !important;
+  padding: 10px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+@media screen and (min-width: 412px) {
+  .steps .step .gobuynow {
+    width: 25em;
+    margin: 1em;
+    -webkit-transform: translateY(-2em);
+            transform: translateY(-2em);
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .steps .step .gobuynow {
+    width: 80vw;
+    margin: 10vw;
+    -webkit-transform: translateY(-20vw);
+            transform: translateY(-20vw);
+  }
+}
+
+.steps .step .gobuynow:hover {
+  padding-left: 15px;
 }
 
 .ascentsteps {
@@ -1152,8 +1202,10 @@ body {
           justify-content: center;
   position: relative;
   top: 65px !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .scentsbody .wh {
@@ -1454,13 +1506,12 @@ body {
 }
 
 .cartbody {
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
-  min-height: 100vh;
-  display: unset;
-  height: -webkit-fit-content !important;
-  height: -moz-fit-content !important;
-  height: fit-content !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh !important;
+  overflow: hidden !important;
 }
 
 .cartbody * {
@@ -1620,8 +1671,10 @@ body {
 }
 
 body {
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000f3), to(#000000fd)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000f3, #000000fd), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background-position: center;
+  background-size: cover;
   background-position: center;
   background-size: cover;
   min-height: 100vh;
@@ -1943,5 +1996,25 @@ tbody * {
           align-items: center;
   -ms-flex-direction: row-reverse !important;
       flex-direction: row-reverse !important;
+}
+
+.logintobuy * {
+  color: white;
+}
+
+.logintobuy a {
+  color: lime;
+  text-decoration: underline !important;
+}
+
+footer {
+  margin-top: 65px !important;
+  bottom: 0 !important;
+  position: relative;
+}
+
+body {
+  min-height: 100vh !important;
+  position: relative;
 }
 /*# sourceMappingURL=index.css.map */

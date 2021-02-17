@@ -4,6 +4,11 @@ block content
   .scentsbody
     h1.input #{input}
     .buddy.abon
+    if !user
+      .logintobuy 
+        span You need to&nbsp;
+        a(href='/users/login') Log in
+        span &nbsp;to add items to cart!
     .abonaments 
       for i in [0]
         .row.container
