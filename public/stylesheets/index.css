@@ -1276,10 +1276,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1287,7 +1287,23 @@ body {
       justify-content: space-around;
 }
 
-.scentsbody .row .card .imaromas .col {
+.scentsbody .row .card .imaromas .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.scentsbody .row .card .imaromas .row .bb {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1298,9 +1314,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .scentsbody .row .card .imaromas img {
@@ -1375,10 +1388,11 @@ body {
 }
 
 .scentsbody .row .card .b {
-  width: 2em;
-  height: 2em;
+  width: 3em;
+  height: 3em;
   border-radius: 1em;
-  padding-top: 3px;
+  margin: 0.5em;
+  margin-top: 1em !important;
   background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
   background: linear-gradient(var(--left-bg-color), #000) !important;
 }
@@ -1845,7 +1859,7 @@ tbody * {
           transform: translateY(-5px) !important;
 }
 
-.ab-group .quan {
+.ab-group .quan, .ab-group .other1 {
   font-size: small;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1860,6 +1874,10 @@ tbody * {
   -webkit-box-pack: justify !important;
       -ms-flex-pack: justify !important;
           justify-content: space-between !important;
+}
+
+.ab-group .subid {
+  font-size: small;
 }
 
 .ab-group .titleimg {
@@ -1910,5 +1928,20 @@ tbody * {
 .nicescroll::-webkit-scrollbar {
   background-color: black !important;
   width: 5px !important;
+}
+
+.rowreverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: row-reverse !important;
+      flex-direction: row-reverse !important;
 }
 /*# sourceMappingURL=index.css.map */

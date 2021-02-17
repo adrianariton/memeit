@@ -135,44 +135,56 @@ module.exports = function(io){
             docs.forEach(d=>{
               abonamentprice+=d.price
             })
-            Orders.create(new Orders({
-              amount: total+abonamentprice,
-              currency: 'usd',
-              userID: req.user._id,
-              email: req.user.email,
-              shipping: {
-                address: {
-                  line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
-                  city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
-                  country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
-                  postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
-                  state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
-                },
-                name: `${req.user.name} ${req.user.vorname}`
-              },
-              products: req.body.items,
-              status: 'sent',
-              deliverymethod: req.body.deliverymethod,
-              subscriptionsId: objIds
-              
-            }),(err,result)=>{
-              User.emptyCart(req.user.username, (err2, result)=>{
-                console.log(err)
-                if(!err){
-                  console.log('Charge Succesfull ')
-                  console.log(result)
-                  res.json({error: false, message:'Successfully ordered!'})
-                } else {
-                  console.log('Charge Failed ')
-                  console.log(result)
-                  res.json({error: false, message:'Something went wrong!'})
-                }
+            var items = []
+            Parfumes.find({}, (error, parfumes)=>{
+              req.body.items.forEach(item=>{
+                items.push({
+                  id: item.id,
+                  quantity: item.quantity,
+                  price: parfumes.find(el => el._id == item.id).price
+                })
               })
-              
-       
-             
-              //add to db
+              console.log(items)
+              Orders.create(new Orders({
+                amount: total+abonamentprice,
+                currency: 'usd',
+                userID: req.user._id,
+                email: req.user.email,
+                shipping: {
+                  address: {
+                    line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
+                    city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
+                    country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
+                    postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
+                    state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
+                  },
+                  name: `${req.user.name} ${req.user.vorname}`
+                },
+                products: items,
+                status: 'sent',
+                deliverymethod: req.body.deliverymethod,
+                subscriptionsId: objIds
+                
+              }),(err,ordercr)=>{
+                User.emptyCart(req.user.username, (err2, result)=>{
+                  console.log(err)
+                  if(!err){
+                    console.log('Charge Succesfull ')
+                    console.log(result)
+                    res.json({error: false, message:'Successfully ordered!', order: ordercr})
+                  } else {
+                    console.log('Charge Failed ')
+                    console.log(result)
+                    res.json({error: false, message:'Something went wrong!'})
+                  }
+                })
+                
+         
+               
+                //add to db
+              })
             })
+           
           })
           
           

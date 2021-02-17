@@ -18,7 +18,6 @@ router.get('/', function(req, res, next) {
 router.get('/:orderid', function(req, res, next) {
     if(req.user){
         Orders.findOne({_id: req.params.orderid}, (err, order)=>{
-            console.log(`"${req.user._id}"`, `"${order.userID}"`)
             if(order){
                 if(`"${req.user._id}"`==`"${order.userID}"`){
                     var productsids = []

@@ -7,7 +7,7 @@ block content
                 .header-head
                     img(src='/images/user-alt.png')
                     .uinfo
-                        span.name #{user.name} #{user.vorname}
+                        span.name #{user.name} #{user.vorname}'s orders
                         span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
             .body
                 .section
@@ -16,10 +16,11 @@ block content
                         for order in orders
                             .ab-group
                                 a.gotoorder(href='/myorders/'+order.id style='color: lime !important; text-decoration: underline !important;') Click here to view order info!
-                                .title2 Email: #{order.email}
-                                .date #{order.dateCreated}
+                                .title2.rowreverse Email: #{order.email}
+                                .date.rowreverse #{order.dateCreated}
+                                .subid.rowreverse Order id: #{order.id}
                                 if order.status == 'sent'
                                     .other1 Order will be delivered in 2-3 days after ordered!
                                 else 
                                     .other1 Order has been delivered!
-                                .subid Order id: #{order.id}
+                                

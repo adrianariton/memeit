@@ -100,10 +100,12 @@ function doneClicked() {
                     footer: '<a href>Contact us!</a>'
                 })
             } else {
+                console.log(data.order)
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: data.message
+                    title: data.message,
+                    footer: `<a href='/myorders/${data.order._id}'>View my order!</a>`
                 })
             }
             

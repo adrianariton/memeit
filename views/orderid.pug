@@ -34,9 +34,14 @@ block content
                                     .image-cropper
                                         img(src = '/images/'+ productArr.find(el => el.id == prod.id).image style='border-radius: 50% !important; margin: 5px;')
                                 .quan 
+                                    - var price = 0
+                                    if order.products[0].price
+                                        - price = order.products.find(el => el.id == prod.id).price
+                                    else 
+                                        - price = productArr.find(el => el.id == prod.id).price
                                     span Quantity #{prod.quantity}
-                                    - totalprod+=prod.quantity*productArr.find(el => el.id == prod.id).price/100
-                                    span Price #{prod.quantity} x #{productArr.find(el => el.id == prod.id).price/100}=Lei#{prod.quantity*productArr.find(el => el.id == prod.id).price/100}
+                                    - totalprod+=prod.quantity*price/100
+                                    span Price #{prod.quantity} x #{price/100}=Lei#{prod.quantity*price/100}
                 .section
                     .title Ordered Subscriptions
                     .content
@@ -64,4 +69,4 @@ block content
                         .ab-group 
                             .quan 
                                 span 
-                                span Total Lei#{(totalprod+totalabon)}
+                                span Total Lei#{order.amount/100}

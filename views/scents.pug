@@ -10,21 +10,20 @@ block content
           .row.container
             .card(data-item-id=scents[i]._id)
               .imaromas
-                .col
-                  div.b1.b
-                  span.a1 #{scents[i].aromas[0]}
-                  div.b2.b
-                  span.a2 #{scents[i].aromas[0]}
-                  div.b3.b
-                  span.a3 #{scents[i].aromas[0]}
                 img.image(src='/images/'+scents[i].image)
-                .col
-                  div.b1.b
-                  span.a1 #{scents[i].aromas[1]}
-                  div.b2.b
-                  span.a2 #{scents[i].aromas[1]}
-                  div.b3.b
-                  span.a3 #{scents[i].aromas[1]}
+                .row
+                  .bb
+                    div.b1.b
+                    span.a1 #{scents[i].aromas[0]}
+                  .bb
+                    div.b2.b
+                    span.a2 #{scents[i].aromas[0]}
+                  .bb
+                    div.b3.b
+                    span.a3 #{scents[i].aromas[1]}
+                  .bb
+                    div.b4.b
+                    span.a4 #{scents[i].aromas[1]}
               div.name 
                 h1 #{scents[i].name}
               span.desc #{scents[i].description.substr(0, 30)}...
@@ -35,21 +34,20 @@ block content
               span.readmore Read More
             .card(data-item-id=scents[i+1]._id)
               .imaromas
-                .col
-                  div.b1.b
-                  span.a1 #{scents[i+1].aromas[0]}
-                  div.b2.b
-                  span.a2 #{scents[i+1].aromas[0]}
-                  div.b3.b
-                  span.a3 #{scents[i+1].aromas[0]}
                 img.image(src='/images/'+scents[i+1].image)
-                .col
-                  div.b1.b
-                  span.a1 #{scents[i+1].aromas[1]}
-                  div.b2.b
-                  span.a2 #{scents[i+1].aromas[1]}
-                  div.b3.b
-                  span.a3 #{scents[i+1].aromas[1]}
+                .row
+                  .bb
+                    div.b1.b
+                    span.a1 #{scents[i+1].aromas[0]}
+                  .bb
+                    div.b2.b
+                    span.a2 #{scents[i+1].aromas[0]}
+                  .bb
+                    div.b3.b
+                    span.a3 #{scents[i+1].aromas[1]}
+                  .bb
+                    div.b4.b
+                    span.a4 #{scents[i+1].aromas[1]}
               div.name  
                 h1 #{scents[i+1].name}
               span.desc #{scents[i+1].description.substr(0, 30)}...
@@ -64,21 +62,20 @@ block content
         .row.container
           .card(data-item-id=scents[i]._id)
             .imaromas
-              .col
-                div.b1.b
-                span.a1 #{scents[i].aromas[0]}
-                div.b2.b
-                span.a2 #{scents[i].aromas[0]}
-                div.b3.b
-                span.a3 #{scents[i].aromas[0]}
               img.image(src='/images/'+scents[i].image)
-              .col
-                div.b1.b
-                span.a1 #{scents[i].aromas[1]}
-                div.b2.b
-                span.a2 #{scents[i].aromas[1]}
-                div.b3.b
-                span.a3 #{scents[i].aromas[1]}
+              .row
+                .bb
+                  div.b1.b
+                  span.a1 #{scents[i].aromas[0]}
+                .bb
+                  div.b2.b
+                  span.a2 #{scents[i].aromas[0]}
+                .bb
+                  div.b3.b
+                  span.a3 #{scents[i].aromas[1]}
+                .bb
+                  div.b4.b
+                  span.a4 #{scents[i].aromas[1]}
             div.name 
               h1 #{scents[i].name}
             span.desc #{scents[i].description.substr(0, 30)}...
