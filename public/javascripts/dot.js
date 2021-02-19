@@ -4,7 +4,9 @@ $(document).ready(()=>{
         const url = 'https://ascentro.herokuapp.com/'
         const socket = io.connect(url);
         $('.modal').modal();
-
+        socket.on('cart-msg', msg=>{
+            window.alert(msg)
+        })
         $(".buddy .card .addtocart").click((ev)=>{
             console.log('dhw')
             
@@ -42,16 +44,17 @@ $(document).ready(()=>{
             }
             console.log($(ev.target).parent().parent().data('item-id').trim())
             */
+           console.log($(ev.target).parent().parent())
            if($(ev.target).text().trim() == 'add_shopping_cart'){
-                $('.abonaments .card .addtocart').text('add_shopping_cart')
+                $('.abonaments .card .addtocart i').text('add_shopping_cart')
                 $(ev.target).text('remove_shopping_cart')
                 socket.emit('set-abonament', currentuser, $(ev.target).parent().parent().data('item-id').trim())
             } else if($(ev.target).text().trim() == 'remove_shopping_cart'){
-                $('.abonaments .card .addtocart').text('add_shopping_cart')
+                $('.abonaments .card .addtocart i').text('add_shopping_cart')
                 $(ev.target).text('add_shopping_cart')
                 socket.emit('set-abonament', currentuser, null)
             }
-            console.log($(ev.target).parent().parent().data('item-id').trim())
+            console.log($(ev.target).parent().parent().data('item-id'))
         
         })
 

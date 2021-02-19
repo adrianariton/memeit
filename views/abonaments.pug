@@ -21,7 +21,7 @@ block content
             span.wh #{abonaments[i].description}
             span.price $#{(abonaments[i].price/100).toFixed(2)} 
             span.addtocart(class=user? (user.m_abonamentCart == abonaments[i]._id ? 'removefromcart': '') : '')
-              i(class='material-icons') #{user.m_abonamentCart == abonaments[i]._id ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
+              i(class='material-icons') #{user? (user.m_abonamentCart == abonaments[i]._id ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
             span.readmore Read More
           .card(data-item-id=abonaments[i+1]._id)
             .imaromas

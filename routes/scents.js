@@ -300,7 +300,7 @@ module.exports = function(io){
           men = data
           console.log('MEEEEN')
           console.log(men)
-          Subscriptions.findOne({userID: req.user._id}, (error, usersub)=>{
+          Subscriptions.findOne({userID: req.user? req.user._id: null}, (error, usersub)=>{
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
@@ -317,7 +317,7 @@ module.exports = function(io){
         var women;
         Parfumes.getWomen((err, data)=>{
           women = data
-          Subscriptions.findOne({userID: req.user._id}, (error, usersub)=>{
+          Subscriptions.findOne({userID: req.user? req.user._id: null}, (error, usersub)=>{
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
@@ -334,7 +334,7 @@ module.exports = function(io){
           
           Parfumes.find({},(err, data)=>{
             scents = data
-            Subscriptions.findOne({userID: req.user._id}, (error, usersub)=>{
+            Subscriptions.findOne({userID: req.user? req.user._id: null}, (error, usersub)=>{
               stripe.products.list({
                 limit: product_number,
               }).then(data_stripe => {
@@ -363,6 +363,8 @@ module.exports = function(io){
         console.log('steau e numai unaa /n/n')
         User.addToCart(user, parfume, (res)=>{
           console.log(res)
+        },/*cartfull*/ (userdoc, abon)=>{
+          socket.emit('cart-msg', `You reached the maximum limit of perfumes (${abon.parfumeChoices}) you can by using your ${abon.name} subscription! You can go to <a href='/scents/subscriptions'>Subscriptions Page</a> and choose another subscription if you'd like.`)
         })
       })
       socket.on('remove-from-cart',(user, parfume) =>{

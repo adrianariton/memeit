@@ -168,12 +168,21 @@ module.exports.changePwd = function(req, callback){
     })
 }
 
-module.exports.addToCart = function(username, parfume, callback){
+module.exports.addToCart = function(username, parfume, callback, cartfull){
+    User.findOne({username: username}, (err, doc)=>{
+        Abonaments.findById(doc.m_abonamentCart, (err2, abon)=>{
+            if(doc.cart.length < abon.parfumeChoices){    
+                User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
+                    callback(res, parfume)
+                })
+            } else {
+                cartfull(doc, abon)
+            }
+        })
+    })
     console.log(parfume)
 
-    User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
-        callback(res, parfume)
-    })
+    
     //{ $addToSet: { colors: "c" } }
 }
 
