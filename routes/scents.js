@@ -300,13 +300,15 @@ module.exports = function(io){
           men = data
           console.log('MEEEEN')
           console.log(men)
-          stripe.products.list({
-            limit: product_number,
-          }).then(data_stripe => {
-            console.log(data_stripe)
-            res.render('scents', { input: req.params.query, title: 'Men', scents: men, stripe: data_stripe.data});
-
-          });
+          Subscriptions.findOne({userID: req.user._id}, (error, usersub)=>{
+            stripe.products.list({
+              limit: product_number,
+            }).then(data_stripe => {
+              console.log(data_stripe)
+              res.render('scents', { subscription: usersub, input: req.params.query, title: 'Men', scents: men, stripe: data_stripe.data});
+  
+            });
+          })
 
         })
         
@@ -315,12 +317,15 @@ module.exports = function(io){
         var women;
         Parfumes.getWomen((err, data)=>{
           women = data
-          stripe.products.list({
-            limit: product_number,
-          }).then(data_stripe => {
-            res.render('scents', { input: req.params.query, title: 'Women', scents: women, stripe: data_stripe.data});
-
+          Subscriptions.findOne({userID: req.user._id}, (error, usersub)=>{
+            stripe.products.list({
+              limit: product_number,
+            }).then(data_stripe => {
+              res.render('scents', {subscription: usersub, input: req.params.query, title: 'Women', scents: women, stripe: data_stripe.data});
+  
+            })
           })
+
 
         })
         
@@ -329,21 +334,24 @@ module.exports = function(io){
           
           Parfumes.find({},(err, data)=>{
             scents = data
-            stripe.products.list({
-              limit: product_number,
-            }).then(data_stripe => {
-              Abonaments.find({}, (err2, data_abonaments)=>{
-                if(err || err2){
-                  res.render('404')
-                } else {
-                  console.log('----ABONAMENTS----')
-                  console.log(data_abonaments)
-                  res.render('abonaments', { input: req.params.query, title: 'Abonaments', scents: scents, abonaments: data_abonaments, stripe: data_stripe.data});
-
-                }
+            Subscriptions.findOne({userID: req.user._id}, (error, usersub)=>{
+              stripe.products.list({
+                limit: product_number,
+              }).then(data_stripe => {
+                Abonaments.find({}, (err2, data_abonaments)=>{
+                  if(err || err2){
+                    res.render('404')
+                  } else {
+                    console.log('----ABONAMENTS----')
+                    console.log(data_abonaments)
+                    res.render('abonaments', { subscription: usersub,input: req.params.query, title: 'Abonaments', scents: scents, abonaments: data_abonaments, stripe: data_stripe.data});
+  
+                  }
+                })
+  
               })
-
             })
+            
 
           })
       }
@@ -363,7 +371,7 @@ module.exports = function(io){
           console.log(res)
         })
       })
-      socket.on('add-to-cart-abonament',(user, parfume) =>{
+      /*socket.on('add-to-cart-abonament',(user, parfume) =>{
         console.log('steau e numai unaa /n/n')
         User.addToAbonCart(user, parfume, (res)=>{
           console.log(res)
@@ -372,6 +380,12 @@ module.exports = function(io){
       socket.on('remove-from-cart-abonament',(user, parfume) =>{
         console.log('steau e numai unaa /n/n')
         User.removeFromAbonCart(user, parfume, (res)=>{
+          console.log(res)
+        })
+      })*/
+      socket.on('set-abonament',(user, parfume) =>{
+        console.log('steau e numai unaa /n/n')
+        User.setAbonCart(user, parfume, (res)=>{
           console.log(res)
         })
       })

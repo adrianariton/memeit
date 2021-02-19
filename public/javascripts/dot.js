@@ -33,7 +33,7 @@ $(document).ready(()=>{
         $(".abonaments .card .addtocart").click((ev)=>{
             console.log('dhw')
             
-            if($(ev.target).text().trim() == 'add_shopping_cart'){
+            /*if($(ev.target).text().trim() == 'add_shopping_cart'){
                 $(ev.target).text('remove_shopping_cart')
                 socket.emit('add-to-cart-abonament', currentuser, $(ev.target).parent().parent().data('item-id').trim())
             } else if($(ev.target).text().trim() == 'remove_shopping_cart'){
@@ -41,7 +41,17 @@ $(document).ready(()=>{
                 socket.emit('remove-from-cart-abonament', currentuser, $(ev.target).parent().parent().data('item-id').trim())
             }
             console.log($(ev.target).parent().parent().data('item-id').trim())
-            
+            */
+           if($(ev.target).text().trim() == 'add_shopping_cart'){
+                $('.abonaments .card .addtocart').text('add_shopping_cart')
+                $(ev.target).text('remove_shopping_cart')
+                socket.emit('set-abonament', currentuser, $(ev.target).parent().parent().data('item-id').trim())
+            } else if($(ev.target).text().trim() == 'remove_shopping_cart'){
+                $('.abonaments .card .addtocart').text('add_shopping_cart')
+                $(ev.target).text('add_shopping_cart')
+                socket.emit('set-abonament', currentuser, null)
+            }
+            console.log($(ev.target).parent().parent().data('item-id').trim())
         
         })
 

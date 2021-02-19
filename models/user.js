@@ -46,6 +46,10 @@ var UserSchema = mongoose.Schema({
         type: [String],
         default: []
     },
+    m_abonamentCart: {
+        type: String,
+        default: null,
+    },
     status: {
         type: String,
         default: "pending",
@@ -182,7 +186,7 @@ module.exports.removeFromCart = function(username, parfume, callback){
     })
     //{ $addToSet: { colors: "c" } }
 }
-module.exports.addToAbonCart = function(username, parfume, callback){
+/*module.exports.addToAbonCart = function(username, parfume, callback){
     console.log(parfume)
     
     User.update({username: username}, { $addToSet: { abonamentsCart: parfume } }).then(res =>{
@@ -199,7 +203,18 @@ module.exports.removeFromAbonCart = function(username, parfume, callback){
         callback(res)
     })
     //{ $addToSet: { colors: "c" } }
+}*/
+
+module.exports.setAbonCart = function(username, parfume, callback){
+    console.log(parfume)
+
+    User.update({username: username}, { $set: { m_abonamentCart: parfume } }).then(res =>{
+        callback(res, parfume)
+    })
+    //{ $addToSet: { colors: "c" } }
 }
+
+
 module.exports.verify = function(uid, callback){
     User.update({_id: uid}, {
         $set: {status: "verified"}

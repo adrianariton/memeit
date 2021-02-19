@@ -10,7 +10,8 @@ mongoose.connection.on('connected', ()=>{
 
 var SubscriptionsSchema = mongoose.Schema({
     userID:{
-        type: ObjectID
+        type: ObjectID,
+        unique: true
     },
     abonamentID:{
         type: ObjectID
