@@ -60,9 +60,12 @@ module.exports = function(io){
               limit: product_number,
             }).then(data_stripe => {
               Parfumes.find({}, (err, allparfumes)=>{
-                console.log(allparfumes)
-                res.render('cart', {allscents: allparfumes, stripePublicKey: stripePublicKey, cart: parfarr,abids: abids, ids: ids, stripe: data_stripe.data, abcart: abarr});
-
+                Abonaments.findById(req.user.m_abonamentCart, (err, uabon)=>{
+                  console.log(allparfumes)
+                  res.render('cart', {abon: uabon, allscents: allparfumes, stripePublicKey: stripePublicKey, cart: parfarr,abids: abids, ids: ids, stripe: data_stripe.data, abcart: abarr});
+  
+                })
+                
               })
   
             })
@@ -76,8 +79,85 @@ module.exports = function(io){
     }
    
   });
-
   router.post('/done', function(req,res,next){
+    if(req.user){
+      console.log('BODY')
+      console.log(req.body)
+      //console.log(stripePublicKey, stripeSecretKey
+      var abid = req.user.m_abonamentCart
+      console.log(abid)
+        const chargeMe = ()=>{
+          //console.log(req.body.stripeTokenId)
+          var Obid = new ObjectID()
+          console.log('HCGSJWBLBPRJ3', Obid)
+          Subscriptions.create(new Subscriptions({
+            _id: Obid,
+            userID: req.user._id,
+            abonamentID: abid,
+            parfumes: req.user.cart
+          }), (err2, result)=>{
+            console.log('err2')
+            console.log(err2, result)
+            console.log('res')
+            Abonaments.findById(abid, (err3, abon)=>{
+              Orders.create(new Orders({
+                amount: abon.price,
+                currency: 'usd',
+                userID: req.user._id,
+                email: req.user.email,
+                shipping: {
+                  address: {
+                    line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
+                    city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
+                    country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
+                    postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
+                    state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
+                  },
+                  name: `${req.user.name} ${req.user.vorname}`
+                },
+                products: [],
+                status: 'sent',
+                deliverymethod: req.body.deliverymethod,
+                subscriptionsId: Obid
+                
+              }),(err,ordercr)=>{
+                User.emptyCart(req.user.username, (err2, result)=>{
+                  console.log(err)
+                  if(!err){
+                    console.log('Charge Succesfull ')
+                    console.log(result)
+                    res.json({error: false, message:'Successfully ordered!', order: ordercr})
+                  } else {
+                    console.log('Charge Failed ')
+                    console.log(result)
+                    res.json({error: false, message:'Something went wrong!'})
+                  }
+                })
+                
+         
+               
+                //add to db
+              })
+            })
+          })
+          
+          
+        }
+        if(req.user){
+          chargeMe()
+
+          //
+          
+          //        
+        } 
+
+        
+      
+    }else {
+      res.render('youneedlogin', {input: 'purchase'})
+    }
+  })
+  /*router.post('/done', function(req,res,next){
     if(req.user){
       console.log('BODY')
       console.log(req.body)
@@ -192,7 +272,7 @@ module.exports = function(io){
         if(req.user){
           chargeMe()
 
-          /*
+          //
           if(!req.user.stripeCustomerID){
             //customer not reqistered
             //const customer = await stripe.customers.create({email: req.user.email});
@@ -207,7 +287,7 @@ module.exports = function(io){
             chargeMe()
 
           }
-          */
+          //        
         } 
 
         
@@ -217,7 +297,7 @@ module.exports = function(io){
     }
     
   })
-
+*/
   router.post('/purchase', function(req,res,next){
     if(false){
       console.log('purchase')

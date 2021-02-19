@@ -46,33 +46,6 @@ function doneClicked() {
     var i=0
     $('.donebutton').hide()
     $('.wariningafterclick').show()
-    cart.forEach(el=>{
-        totalprice += el.price * document.querySelectorAll('.q')[i].value
-        i++;
-    })
-    var price = totalprice
-    console.log(totalprice)
-    var items = []
-    var cartcontainer = document.querySelector('.cartcont')
-    var cartelems = document.querySelectorAll('.r')
-    cartelems.forEach(r =>{
-        var quantity = r.getElementsByClassName('q')[0].value
-        var id = $(r).data('item-id')
-        items.push({
-            id:id,
-            quantity: quantity
-        })
-    
-    })
-    var idarray=[]
-    var parfchobj = {}
-    document.querySelectorAll('.r3').forEach(el=>{
-        console.log(el.id, el)
-        idarray.push(el.id)
-        parfchobj[el.id] = $(`#${el.id}`).val()
-    })
-   
-    console.log(idarray, parfchobj)
     console.log( $('#deliverymethod').val(), $('#addressnr').val())
     if($('#deliverymethod').val() != null &&  $('#addressnr').val() != null) {
         fetch('/scents/done', {
@@ -82,11 +55,8 @@ function doneClicked() {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                items: items,
                 deliverymethod: $('#deliverymethod').val(),
-                addressnr: $('#addressnr').val(),
-                abonamentsIds: idarray,
-                parfumeChoices: parfchobj
+                addressnr: $('#addressnr').val()
             })
         }).then((res)=>{
             
@@ -111,7 +81,7 @@ function doneClicked() {
             
             
         }).catch(err=>{
-            console.error(err)
+            console.log(err)
         })
     } else {
         Swal.fire({

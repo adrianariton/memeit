@@ -5,7 +5,15 @@ $(document).ready(()=>{
         const socket = io.connect(url);
         $('.modal').modal();
         socket.on('cart-msg', msg=>{
-            window.alert(msg)
+        
+            Swal.fire({
+                icon: 'error',
+                title: '',
+                html: msg,
+                footer: '<a href>Contact us!</a>'
+            }).then(res=>{
+                window.location.reload()
+            })
         })
         $(".buddy .card .addtocart").click((ev)=>{
             console.log('dhw')

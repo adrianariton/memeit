@@ -1351,3 +1351,37 @@ body{
   min-height: 100vh !important;
   position: relative;
 }
+.aboncon{
+  position: relative;
+  
+  @include flex-row();
+  justify-content: stretch;
+  .form{
+    flex-grow: 3;
+    padding: 1em;
+    max-width: 60% !important;      
+  }
+  top: 130px !important;
+  .aboncard{
+    background-color: rgb(63, 63, 63);
+    padding-bottom: 1em;
+    img{
+      max-width: 20em;
+    }
+    max-width: 20em !important;
+    .wrt{
+      padding-left: 1em;
+      padding-right: 1em;
+      @include flex-column();
+      align-items: flex-start !important;
+      .prnm{
+        width: 100% !important;
+        @include flex-row();
+        justify-content: space-between;
+      }
+      >*{
+        margin-top: 1em;
+      }
+    }
+  }
+}
