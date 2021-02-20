@@ -218,8 +218,9 @@ module.exports.removeFromAbonCart = function(username, parfume, callback){
 
 module.exports.setAbonCart = function(username, parfume, callback){
     console.log(parfume)
-
-    User.update({username: username}, { $set: { m_abonamentCart: parfume } }).then(res =>{
+    
+    User.update({username: username}, { $set: { m_abonamentCart: parfume,cart: [] } }).then(res =>{
+        console.log(res)
         callback(res, parfume)
     })
     //{ $addToSet: { colors: "c" } }

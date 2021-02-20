@@ -35,8 +35,8 @@ block content
               span.wh #{scents[i].description}
               //span.price Lei#{(scents[i].price/100).toFixed(2)} 
               if user? user.m_abonamentCart: null
-                span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
-                  i(class='material-icons') add
+              span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
+                i(class='material-icons') add
 
               span.readmore Read More
             .card(data-item-id=scents[i+1]._id)
@@ -61,9 +61,9 @@ block content
               span.wh #{scents[i+1].description}
               //span.price Lei#{(scents[i+1].price/100).toFixed(2)} 
               if user? user.m_abonamentCart: null
-                span.addtocart(class=user? (user.cart.includes(scents[i+1]._id) ? 'removefromcart': '') : '')
-                  i(class='material-icons') add
-
+              span.addtocart(class=user? (user.cart.includes(scents[i+1]._id) ? 'removefromcart': '') : '')
+                i(class='material-icons') add
+            
               span.readmore Read More
         - i++
       - i--
@@ -91,8 +91,9 @@ block content
             span.wh #{scents[i].description}
             //span.price Lei#{(scents[i].price/100).toFixed(2)}  
             if user? user.m_abonamentCart: null
-              span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
-                i(class='material-icons') add
+            span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
+              i(class='material-icons') add
+                          
             span.readmore Read More
           .card
             .imaromas
@@ -110,5 +111,11 @@ block content
     script(type='text/javascript').
       const currentuser = null
       const scents = `#{scents}`
+  if user? user.m_abonamentCart: null
+    script(type='text/javascript').
+      const hasabon = 1
+  else
+    script(type='text/javascript').
+      const hasabon = 0
   script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
   script(src='/javascripts/dot.js')
