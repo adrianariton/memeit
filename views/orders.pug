@@ -15,7 +15,7 @@ block content
                     .content.ordersid
                         for order in orders
                             .ab-group
-                                a.gotoorder(href='/myorders/'+order.id style='color: lime !important; text-decoration: underline !important;') Click here to view order info!
+                                a.gotoorder(href='/myorders/'+order.id style='color: gray !important; text-decoration: underline !important;') Click here to view order info!
                                 .title2.rowreverse Email: #{order.email}
                                 .date.rowreverse #{order.dateCreated}
                                 .subid.rowreverse Order id: #{order.id}
