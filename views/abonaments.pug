@@ -20,9 +20,9 @@ block content
             span.desc #{abonaments[i].description.substr(0, 30)}...
             span.wh #{abonaments[i].description}
             span.price $#{(abonaments[i].price/100).toFixed(2)} 
+            span.readmore Read More
             span.addtocart(class=user? (user.m_abonamentCart == abonaments[i]._id ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.m_abonamentCart == abonaments[i]._id ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
-            span.readmore Read More
           .card(data-item-id=abonaments[i+1]._id)
             .imaromas
               img.image(src='/images/'+abonaments[i+1].image)
@@ -31,9 +31,9 @@ block content
             span.desc #{abonaments[i+1].description.substr(0, 30)}...
             span.wh #{abonaments[i+1].description}
             span.price $#{(abonaments[i+1].price/100).toFixed(2)} 
+            span.readmore Read More
             span.addtocart(class=user? (user.m_abonamentCart == abonaments[i+1]._id ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.m_abonamentCart == abonaments[i+1]._id ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
-            span.readmore Read More
         .row.container.last
           .card(data-item-id=abonaments[2]._id)
             .imaromas
@@ -43,9 +43,9 @@ block content
             span.desc #{abonaments[2].description.substr(0, 30)}...
             span.wh #{abonaments[2].description}
             span.price Lei#{(abonaments[2].price/100).toFixed(2)} 
+            span.readmore Read More
             span.addtocart(class=user? (user.m_abonamentCart == abonaments[2]._id ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.m_abonamentCart == abonaments[2]._id ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
-            span.readmore Read More
   if user
     script(type='text/javascript').
       const currentuser = '#{user.username}'
