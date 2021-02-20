@@ -294,14 +294,16 @@ html, body {
   min-width: 100%;
   bottom: 0 !important;
 }
-.cartbody{
   .con{
-    height: 40em;
+    display: flex;
+    color: white !important;
     width: 100%;
     @include flex-column();
     justify-content: center;
+    align-items: center;
+    margin-top: 65px !important;
   }
-}
+
 .mw{
   position: absolute;
   z-index: 2 !important;
@@ -598,8 +600,9 @@ html, body {
 }
 
 .footer{
-    padding-bottom: 100px;
-    padding-top: 100px;
+  bottom: 0 !important;
+  width: 100% !important;
+  position: relative !important;
     @include flex-column();
     justify-content: center;
     background-color: transparent;
@@ -702,7 +705,8 @@ html, body {
  
   flex-wrap: wrap;
 }
-footer{
+.footer{
+  margin-top: 65px !important;
   padding: 0 0 0 0 !important;
   .followus{
     @include flex-row();
@@ -711,6 +715,7 @@ footer{
       margin-right: .5em;
       i{
         cursor: pointer;
+        font-size: x-large;
       }
     }
   }
@@ -718,7 +723,12 @@ footer{
 .fa{
   font-family: "FontAwesome" !important;
 }
-
+input[type="radio"]:not(:checked), [type="radio"]:checked{
+  opacity: 1 !important;
+  position: relative !important;
+  pointer-events: all !important;
+  margin: .4rem;
+}
 .footer-a{
   @include flex-column();
 }
@@ -745,6 +755,10 @@ footer{
   }
   .form-row{
     padding: 7px;
+    *{
+      color: white !important;
+      opacity: 0 !important;
+    }
     background-color: rgb(24, 24, 24);
     margin-bottom: 10px;
     margin-top: 4px;
@@ -1014,15 +1028,7 @@ body{
 .ndcolor{
   background: linear-gradient(var(--left-bg-color), #000)  !important;
 }
-.cartbody{
-  @include bcg;
-  *{
-  color: white !important;
-  }
- 
-  min-height: 100vh !important;
-  overflow: hidden !important;
-}
+
 .cartcont{
   margin-top: 40px;
   display: flex;
@@ -1253,7 +1259,11 @@ tbody *{
   background-color: transparent !important;
   overflow: visible !important;
 }
-
+.removefromcart{
+  i{
+    color: turquoise !important;
+  }
+}
 .cardinfo{
   margin-top: 40px;
 
@@ -1341,9 +1351,8 @@ tbody *{
     text-decoration: underline !important;
   }
 }
-footer{
-  margin-top: 65px !important;
-  bottom: 0 !important;
+.footer{
+  //margin-top: 65px !important;
   position: relative;
 
 }
@@ -1351,15 +1360,87 @@ body{
   min-height: 100vh !important;
   position: relative;
 }
+
+#subs{
+  .perfumes{
+    width: 100%;
+    @include flex-row();
+    justify-content: space-around;
+    .r{
+      @include flex-column();
+      
+    }
+    margin-bottom: 3em;
+    padding-top: 2em;
+  } 
+}
 .aboncon{
+  span, h1,h2,h3,h4,h5{
+    color: white !important;
+  }
+  margin-bottom: 100px !important;
   position: relative;
+  @include max-width(800px){
+    @include flex-row();
+    justify-content: stretch;
+  } 
+  @include min-width(800px){
+    @include flex-column();
+    justify-content: center;
+  }
   
-  @include flex-row();
-  justify-content: stretch;
   .form{
-    flex-grow: 3;
+    @include max-width(800px){
+      flex-grow: 3;
+      max-width: 60% !important;   
+    }
+    @include min-width(800px){
+      margin-top: 2em;
+    }
     padding: 1em;
-    max-width: 60% !important;      
+    position: relative;
+    justify-self: start !important;
+    @include flex-column();
+    align-items: flex-end !important;
+    h4{
+      margin-top: 0 !important;
+    }
+    span{
+      text-align: end;
+    }
+    .perfumes{
+      width: 100%;
+      @include flex-row();
+      justify-content: space-around;
+      .r{
+        @include flex-column();
+        
+      }
+      margin-bottom: 3em;
+      padding-top: 2em;
+    } 
+    form{
+      position: relative;
+      width: 100%;
+      margin-top: 1em;
+      @include flex-column();
+      align-items: flex-end !important;
+      .form-row{
+        width: 100%;
+      }
+      .radio{
+        margin-top: 1em;
+        label{
+          color: white;
+          font-size: medium;
+        }
+        @include flex-row();
+      }
+      
+    } 
+    .footer-a{
+      margin-top: 1em;
+    } 
   }
   top: 130px !important;
   .aboncard{
@@ -1384,4 +1465,7 @@ body{
       }
     }
   }
+}
+.all{
+  @include flex-column();
 }

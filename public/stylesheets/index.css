@@ -393,11 +393,12 @@ html, body {
   bottom: 0 !important;
 }
 
-.cartbody .con {
-  height: 40em;
-  width: 100%;
+.con {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
+  color: white !important;
+  width: 100%;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -409,6 +410,8 @@ html, body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  align-items: center;
+  margin-top: 65px !important;
 }
 
 .mw {
@@ -832,8 +835,9 @@ html, body {
 }
 
 .footer {
-  padding-bottom: 100px;
-  padding-top: 100px;
+  bottom: 0 !important;
+  width: 100% !important;
+  position: relative !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1029,11 +1033,12 @@ html, body {
       flex-wrap: wrap;
 }
 
-footer {
+.footer {
+  margin-top: 65px !important;
   padding: 0 0 0 0 !important;
 }
 
-footer .followus {
+.footer .followus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1049,16 +1054,24 @@ footer .followus {
           justify-content: flex-start;
 }
 
-footer .followus a {
+.footer .followus a {
   margin-right: .5em;
 }
 
-footer .followus a i {
+.footer .followus a i {
   cursor: pointer;
+  font-size: x-large;
 }
 
 .fa {
   font-family: "FontAwesome" !important;
+}
+
+input[type="radio"]:not(:checked), [type="radio"]:checked {
+  opacity: 1 !important;
+  position: relative !important;
+  pointer-events: all !important;
+  margin: .4rem;
 }
 
 .footer-a {
@@ -1111,6 +1124,11 @@ footer .followus a i {
   background-color: #181818;
   margin-bottom: 10px;
   margin-top: 4px;
+}
+
+.cart-a .form-row * {
+  color: white !important;
+  opacity: 0 !important;
 }
 
 .cart-a .form-row h4 {
@@ -1505,19 +1523,6 @@ body {
   background: linear-gradient(var(--left-bg-color), #000) !important;
 }
 
-.cartbody {
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
-  background-position: center;
-  background-size: cover;
-  min-height: 100vh !important;
-  overflow: hidden !important;
-}
-
-.cartbody * {
-  color: white !important;
-}
-
 .cartcont {
   margin-top: 40px;
   display: -webkit-box;
@@ -1868,6 +1873,10 @@ tbody * {
   overflow: visible !important;
 }
 
+.removefromcart i {
+  color: turquoise !important;
+}
+
 .cardinfo {
   margin-top: 40px;
 }
@@ -2007,9 +2016,7 @@ tbody * {
   text-decoration: underline !important;
 }
 
-footer {
-  margin-top: 65px !important;
-  bottom: 0 !important;
+.footer {
   position: relative;
 }
 
@@ -2018,8 +2025,8 @@ body {
   position: relative;
 }
 
-.aboncon {
-  position: relative;
+#subs .perfumes {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2030,18 +2037,188 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 3em;
+  padding-top: 2em;
+}
+
+#subs .perfumes .r {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.aboncon {
+  margin-bottom: 100px !important;
+  position: relative;
   top: 130px !important;
 }
 
+.aboncon span, .aboncon h1, .aboncon h2, .aboncon h3, .aboncon h4, .aboncon h5 {
+  color: white !important;
+}
+
+@media screen and (min-width: 800px) {
+  .aboncon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: stretch;
+        -ms-flex-pack: stretch;
+            justify-content: stretch;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .aboncon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .aboncon .form {
-  -webkit-box-flex: 3;
-      -ms-flex-positive: 3;
-          flex-grow: 3;
   padding: 1em;
-  max-width: 60% !important;
+  position: relative;
+  justify-self: start !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: end !important;
+      -ms-flex-align: end !important;
+          align-items: flex-end !important;
+}
+
+@media screen and (min-width: 800px) {
+  .aboncon .form {
+    -webkit-box-flex: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
+    max-width: 60% !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .aboncon .form {
+    margin-top: 2em;
+  }
+}
+
+.aboncon .form h4 {
+  margin-top: 0 !important;
+}
+
+.aboncon .form span {
+  text-align: end;
+}
+
+.aboncon .form .perfumes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 3em;
+  padding-top: 2em;
+}
+
+.aboncon .form .perfumes .r {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.aboncon .form form {
+  position: relative;
+  width: 100%;
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: end !important;
+      -ms-flex-align: end !important;
+          align-items: flex-end !important;
+}
+
+.aboncon .form form .form-row {
+  width: 100%;
+}
+
+.aboncon .form form .radio {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.aboncon .form form .radio label {
+  color: white;
+  font-size: medium;
+}
+
+.aboncon .form .footer-a {
+  margin-top: 1em;
 }
 
 .aboncon .aboncard {
@@ -2091,5 +2268,18 @@ body {
 
 .aboncon .aboncard .wrt > * {
   margin-top: 1em;
+}
+
+.all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=index.css.map */

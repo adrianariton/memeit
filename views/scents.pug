@@ -36,7 +36,8 @@ block content
               //span.price Lei#{(scents[i].price/100).toFixed(2)} 
               if user? user.m_abonamentCart: null
                 span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
-                  i(class='material-icons') #{user? (user.cart.includes(scents[i]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
+                  i(class='material-icons') add
+
               span.readmore Read More
             .card(data-item-id=scents[i+1]._id)
               .imaromas
@@ -61,7 +62,8 @@ block content
               //span.price Lei#{(scents[i+1].price/100).toFixed(2)} 
               if user? user.m_abonamentCart: null
                 span.addtocart(class=user? (user.cart.includes(scents[i+1]._id) ? 'removefromcart': '') : '')
-                  i(class='material-icons') #{user? (user.cart.includes(scents[i+1]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
+                  i(class='material-icons') add
+
               span.readmore Read More
         - i++
       - i--
@@ -90,7 +92,7 @@ block content
             //span.price Lei#{(scents[i].price/100).toFixed(2)}  
             if user? user.m_abonamentCart: null
               span.addtocart(class=user? (user.cart.includes(scents[i]._id) ? 'removefromcart': '') : '')
-                i(class='material-icons') #{user? (user.cart.includes(scents[i]._id) ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
+                i(class='material-icons') add
             span.readmore Read More
           .card
             .imaromas

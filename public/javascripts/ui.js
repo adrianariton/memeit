@@ -82,3 +82,10 @@ $('.togglesubs').click(e=>{
   else 
     $('.togglesubs').text('Hide Subscriptions')
 })
+
+$(document).ready(function(){
+  $('.tooltipped').tooltip({
+    position: 'bottom'
+  });
+});
+      

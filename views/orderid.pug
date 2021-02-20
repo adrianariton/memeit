@@ -10,6 +10,11 @@ block content
                         span.name Order: #{order.id}
                         span.datecreated Ordered #{order.dateCreated}
             .body
+                if order.status == 'canceled'
+                    .section
+                        .title Status 
+                        .content 
+                            .title2 Order was canceled!
                 .section
                     .title User Info
                     .content 
@@ -70,3 +75,12 @@ block content
                             .quan 
                                 span 
                                 span Total Lei#{order.amount/100}
+                if order.status !='canceled'
+                    .section 
+                        .title Cancel Order
+                        .content 
+                            .ab-group 
+                                a.cancelorder.btn.btn-prymary(href='/scents/cancelorder/'+order.id) Cancel Order
+                                .quan 
+                                    span 
+                                    span Subscriptions you ordered with this order will be canceled too!

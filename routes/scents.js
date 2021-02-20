@@ -88,58 +88,64 @@ module.exports = function(io){
       console.log(abid)
         const chargeMe = ()=>{
           //console.log(req.body.stripeTokenId)
-          var Obid = new ObjectID()
-          console.log('HCGSJWBLBPRJ3', Obid)
-          Subscriptions.create(new Subscriptions({
-            _id: Obid,
-            userID: req.user._id,
-            abonamentID: abid,
-            parfumes: req.user.cart
-          }), (err2, result)=>{
-            console.log('err2')
-            console.log(err2, result)
-            console.log('res')
-            Abonaments.findById(abid, (err3, abon)=>{
-              Orders.create(new Orders({
-                amount: abon.price,
-                currency: 'usd',
-                userID: req.user._id,
-                email: req.user.email,
-                shipping: {
-                  address: {
-                    line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
-                    city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
-                    country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
-                    postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
-                    state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
-                  },
-                  name: `${req.user.name} ${req.user.vorname}`
-                },
-                products: [],
-                status: 'sent',
-                deliverymethod: req.body.deliverymethod,
-                subscriptionsId: Obid
-                
-              }),(err,ordercr)=>{
-                User.emptyCart(req.user.username, (err2, result)=>{
-                  console.log(err)
-                  if(!err){
-                    console.log('Charge Succesfull ')
-                    console.log(result)
-                    res.json({error: false, message:'Successfully ordered!', order: ordercr})
-                  } else {
-                    console.log('Charge Failed ')
-                    console.log(result)
-                    res.json({error: false, message:'Something went wrong!'})
-                  }
-                })
-                
-         
-               
-                //add to db
-              })
+          Abonaments.findById(abid, (err, abon)=>{
+            var Obid = new ObjectID()
+            console.log('HCGSJWBLBPRJ3', Obid)
+            Subscriptions.create(new Subscriptions({
+              _id: Obid,
+              userID: req.user._id,
+              abonamentID: abid,
+              parfumes: req.user.cart.slice(0, abon.parfumeChoices)
+            }), (err2, result)=>{
+              if(err2){
+                console.log('err2')
+                console.log(err2, result)
+                console.log('res')
+                res.json({error: true, message:'You already have an active subscription this month!'})
+
+              } else {
+                  Orders.create(new Orders({
+                    amount: abon.price,
+                    currency: 'usd',
+                    userID: req.user._id,
+                    email: req.user.email,
+                    shipping: {
+                      address: {
+                        line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
+                        city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
+                        country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
+                        postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
+                        state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
+                      },
+                      name: `${req.user.name} ${req.user.vorname}`
+                    },
+                    products: [],
+                    deliverymethod: req.body.deliverymethod,
+                    subscriptionsId: Obid
+                    
+                  }),(err,ordercr)=>{
+                    User.emptyCart(req.user.username, (err2, result)=>{
+                      console.log(err)
+                      if(!err){
+                        console.log('Charge Succesfull ')
+                        console.log(result)
+                        res.json({error: false, message:'Successfully ordered!', order: ordercr})
+                      } else {
+                        console.log('Charge Failed ')
+                        console.log(result)
+                        res.json({error: true, message:'Something went wrong!'})
+                      }
+                    })
+                    
+            
+                  
+                    //add to db
+                  })
+              }
+              
             })
           })
+          
           
           
         }
@@ -372,6 +378,34 @@ module.exports = function(io){
     }
     
   })
+  router.get('/cancelorder/:orderid', function(req,res,next){
+    if(req.user){
+
+    
+      Orders.findById(req.params.orderid, (err, order)=>{
+        console.log(order)
+        if(order){
+          console.log(order.userID, req.user._id)
+          if(`${order.userID}`==`${req.user._id}`){
+            Orders.cancelOrder(req.params.orderid, ()=>{
+              req.flash('success', 'Order canceled!')
+              res.redirect('/myaccount/orders')
+            })
+  
+          } else {
+            req.flash('error', 'Order could not be canceled!')
+            res.redirect('/myaccount/orders')
+          }
+        } else {
+          req.flash('error', 'Order not found!')
+            res.redirect('/myaccount/orders')
+        }
+        
+      })
+    } else {
+      res.redirect('/')
+    }
+  })
   router.get('/:query', function(req, res, next) {
       /* retrieve queryed elems */
       if(req.params.query == 'men'){
@@ -380,7 +414,7 @@ module.exports = function(io){
           men = data
           console.log('MEEEEN')
           console.log(men)
-          Subscriptions.findOne({userID: req.user? req.user._id: null}, (error, usersub)=>{
+          Subscriptions.findOne({userID: req.user? req.user._id: null, status: 'ordered'}, (error, usersub)=>{
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
@@ -397,7 +431,7 @@ module.exports = function(io){
         var women;
         Parfumes.getWomen((err, data)=>{
           women = data
-          Subscriptions.findOne({userID: req.user? req.user._id: null}, (error, usersub)=>{
+          Subscriptions.findOne({userID: req.user? req.user._id: null, status: 'ordered'}, (error, usersub)=>{
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
@@ -414,7 +448,7 @@ module.exports = function(io){
           
           Parfumes.find({},(err, data)=>{
             scents = data
-            Subscriptions.findOne({userID: req.user? req.user._id: null}, (error, usersub)=>{
+            Subscriptions.findOne({userID: req.user? req.user._id: null, status: 'ordered'}, (error, usersub)=>{
               stripe.products.list({
                 limit: product_number,
               }).then(data_stripe => {

@@ -62,11 +62,12 @@ function doneClicked() {
             
             return res.json()
         }).then(data=>{
+            console.log(data)
             if(data.error){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Something went wrong! ' + data.error.message,
+                    text: 'Something went wrong! ' + data.message,
                     footer: '<a href>Contact us!</a>'
                 })
             } else {

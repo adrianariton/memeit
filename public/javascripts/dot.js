@@ -16,20 +16,20 @@ $(document).ready(()=>{
             })
         })
         $(".buddy .card .addtocart").click((ev)=>{
-            console.log('dhw')
-            
-            if($(ev.target).text().trim() == 'add_shopping_cart'){
-                $(ev.target).text('remove_shopping_cart')
+            console.log(!$(ev.target).parent().hasClass('removefromcart'))
+            $(ev.target).parent().toggleClass('aaa')
+            console.log($(ev.target).parent())
+            if(!$(ev.target).parent().hasClass('removefromcart')){
+                $(ev.target).parent().toggleClass('removefromcart')
                 socket.emit('add-to-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
-            } else if($(ev.target).text().trim() == 'remove_shopping_cart'){
-                $(ev.target).text('add_shopping_cart')
+            } else if($(ev.target).parent().hasClass('removefromcart')){
+                $(ev.target).parent().toggleClass('removefromcart')
                 socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
             }
-            console.log($(ev.target).parent().parent().data('item-id').trim())
-            
+             
         
         })
-        $(".remove-cart-item i").click((ev)=>{
+        /*$(".remove-cart-item i").click((ev)=>{
             console.log('dhw')
     
             socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
@@ -38,7 +38,7 @@ $(document).ready(()=>{
             $(ev.target).parent().parent().remove()
             location.reload();
 
-        })
+        })*/
 
         $(".abonaments .card .addtocart").click((ev)=>{
             console.log('dhw')
@@ -64,6 +64,13 @@ $(document).ready(()=>{
             }
             console.log($(ev.target).parent().parent().data('item-id'))
         
+        })
+        $('#addressnr').change(()=>{
+            var addrennr = 1
+            $( "#addressnr option:selected" ).each(function() {
+                addrennr = $( this ).val();
+            });
+            $( "#selectedaddr" ).text(`${addresses[addrennr].street}, ${addresses[addrennr].city}, ${addresses[addrennr].state==''? addresses[addrennr].county: addresses[addrennr].state}, ${addresses[addrennr].country}; Zip: ${addresses[addrennr].zip}`);
         })
 
     }

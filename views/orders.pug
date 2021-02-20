@@ -19,8 +19,10 @@ block content
                                 .title2.rowreverse Email: #{order.email}
                                 .date.rowreverse #{order.dateCreated}
                                 .subid.rowreverse Order id: #{order.id}
-                                if order.status == 'sent'
+                                if order.status == 'ordered'
                                     .other1 Order will be delivered in 2-3 days after ordered!
-                                else 
+                                else if order.status == 'canceled'
+                                    .date.canceled(style='color: red !important;') Canceled
+                                else
                                     .other1 Order has been delivered!
                                 

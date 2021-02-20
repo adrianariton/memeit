@@ -10,8 +10,7 @@ mongoose.connection.on('connected', ()=>{
 
 var SubscriptionsSchema = mongoose.Schema({
     userID:{
-        type: ObjectID,
-        unique: true
+        type: ObjectID
     },
     abonamentID:{
         type: ObjectID
@@ -25,7 +24,7 @@ var SubscriptionsSchema = mongoose.Schema({
     },
     status:{ //not delivered/ delivered/ canceled
         type: String,
-        default:'not delivered'
+        default:'ordered'
     }
 })
 
@@ -43,5 +42,24 @@ module.exports.getSubscriptionsByUID = function(id, callback){
     Subscriptions.find(query, callback)
 }
 module.exports.create = function(newP, callback){
-    newP.save(callback)
+    Subscriptions.findOne({userID: newP.userID, status: 'ordered'} , (err, doc)=>{
+        console.log('DOOOOOOC SUB')
+        console.log(err,doc)
+        console.log('DOOOON')
+        if(doc){
+            callback('Duplicate', null)
+
+
+        } else {
+            newP.save(callback)
+
+        }
+    })
+}
+module.exports.cancelSubscription = function(id, callback){
+    Subscriptions.updateOne({_id: id}, {
+        $set: {status: 'canceled'}
+    }).then((err, res)=>{
+        callback(err,res)
+    })
 }

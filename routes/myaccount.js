@@ -11,7 +11,10 @@ router.get('/', function(req, res, next) {
     if(req.user){
         Subscriptions.find({userID: req.user._id}, (err, subs)=>{
             Abonaments.find({}, (err, abons)=>{
-                res.render('myaccount', { title: 'My Account',abons: abons, subs: subs });
+                Parfumes.find({}, (err3, parfumes)=>{
+                    res.render('myaccount', { title: 'My Account',parfumes: parfumes,abons: abons, subs: subs });
+
+                })
 
             })
 

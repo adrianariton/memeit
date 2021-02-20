@@ -176,7 +176,9 @@ module.exports.addToCart = function(username, parfume, callback, cartfull){
                     callback(res, parfume)
                 })
             } else {
-                cartfull(doc, abon)
+                User.update({username: username}, { $set: { cart: doc.cart.slice(0, abon.parfumeChoices) } }).then(res =>{
+                    cartfull(doc, abon)
+                })
             }
         })
     })

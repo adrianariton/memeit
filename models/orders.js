@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-const { Double } = require('mongodb');
+const { Double, connect } = require('mongodb');
 const { ObjectID } = require('mongodb');
-     
+var Subscriptions = require('../models/subscriptions')
+ 
 mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
 })
@@ -25,8 +26,9 @@ var OrdersSchema = mongoose.Schema({
     shipping: {
         type: Object
     },
-    status: {   //delivered / pending / returned / failed
-        type: String
+    status: {   //delivered / ordered/ failed / canceled
+        type: String,
+        default: 'ordered'
     },
     products: {
         type: Object
@@ -34,7 +36,7 @@ var OrdersSchema = mongoose.Schema({
     deliverymethod: {
         type: String
     },
-    dateCreated: {
+    createdAt: {
         type: Date,
         default: Date.now()
     },
@@ -58,4 +60,20 @@ module.exports.getOrdersByUID = function(id, callback){
 
 module.exports.create = function(newP, callback){
     newP.save(callback)
+}
+
+module.exports.cancelOrder = function(id, callback){
+    Orders.updateOne({_id: id}, {
+        $set: {status: 'canceled'}
+    }).then((err, res)=>{
+        Orders.findById(id, (err, order)=>{
+            order.subscriptionsId.forEach(element => {
+                Subscriptions.cancelSubscription(element, (errsub, result)=>{
+                    console.log(errsub, result)
+                })
+            });
+            callback()
+        })
+    })
+    
 }
