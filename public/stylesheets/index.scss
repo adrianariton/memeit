@@ -645,6 +645,14 @@ html, body {
         color: #fff;
         font-size: 2em;
         text-align: center;
+        @include max-width(412px){
+          max-width: 12em;
+          margin: 1em;
+        }
+        @include min-width(412px){
+          max-width: 80vw;
+          margin: 10vw;
+        }
       }
     }
     img{

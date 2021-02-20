@@ -955,6 +955,20 @@ html, body {
 }
 
 @media screen and (min-width: 412px) {
+  .steps .step .text span {
+    max-width: 12em;
+    margin: 1em;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .steps .step .text span {
+    max-width: 80vw;
+    margin: 10vw;
+  }
+}
+
+@media screen and (min-width: 412px) {
   .steps .step img {
     width: 25em;
     margin: 1em;
