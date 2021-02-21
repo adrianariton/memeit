@@ -5,6 +5,7 @@ var Parfumes = require('../models/parfumes')
 //var algorithm = "aes-192-cbc"; //algorithm to use
 //var password = process.env.CRYPTO_PASS;
 //const key = crypto.scryptSync(password, 'salt', 24); //create key
+var SecretCode = require('../models/secretcodes')
 
 var Abonaments = require('../models/abonaments')
 var Subscriptions = require('../models/subscriptions')
@@ -95,10 +96,13 @@ module.exports.getUserByEmail = function(email, callback){
 
 module.exports.changeEmail = function(username, newmail,req, callback){
     var reqcopy = req;
-    User.updateOne({username: username}, {
-        $set: {email: newmail, status: 'pending', stripeCustomerID: null},
-        $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
-    }).then(callback)
+    SecretCode.remove({email: reqcopy.user.email}).then(()=>{
+        User.updateOne({username: username}, {
+            $set: {email: newmail, status: 'pending', stripeCustomerID: null},
+            $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
+        }).then(callback)
+    })
+    
 }
 module.exports.emptyCart = function(username, callback){
     User.updateOne({username: username}, {
