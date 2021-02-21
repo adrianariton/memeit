@@ -33,7 +33,7 @@ html
           else
             if user
               li.hideon-sw
-                a(href='/users/logout').flex
+                a(href='/myaccount').flex
                   i(class='material-icons') person
               li.flex.hideon-sw
                 a(href='/scents/cart').flex
@@ -62,7 +62,7 @@ html
                 i(class="material-icons") shopping_cart
           li.flex
             a(href='/myaccount/orders') my orders
-          li.showon-sw
+          li
             a(href='/users/logout') logout
         if user
           if user.status != 'verified'

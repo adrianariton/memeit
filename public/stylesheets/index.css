@@ -399,6 +399,7 @@ html, body {
   display: flex;
   color: white !important;
   width: 100%;
+  height: 100% !important;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -412,6 +413,11 @@ html, body {
           justify-content: center;
   align-items: center;
   margin-top: 65px !important;
+}
+
+.con span {
+  text-align: center;
+  padding: 1em;
 }
 
 .mw {
@@ -1887,8 +1893,8 @@ tbody * {
   overflow: visible !important;
 }
 
-.removefromcart i {
-  color: turquoise !important;
+.sc .removefromcart i {
+  color: var(--left-bg-color) !important;
 }
 
 .cardinfo {
@@ -1997,6 +2003,10 @@ tbody * {
   background-color: gray !important;
 }
 
+.cancelorder {
+  background-color: gray !important;
+}
+
 .gotoorders {
   background-color: gray !important;
 }
@@ -2032,6 +2042,15 @@ tbody * {
 
 .footer {
   position: relative;
+}
+
+i {
+  -ms-user-select: none;
+      user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
 body {
