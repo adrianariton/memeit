@@ -31,6 +31,9 @@ router.get('/login',ensureNotAuthenticated, function(req, res, next) {
   res.render('login', {title:'Login'});
 });
 passport.serializeUser((user, done)=>{
+  console.log('\n\n\n\n\n USER DESERIALIZE')
+  console.log(user)
+  console.log('\n\n\n\n\n\n\n')
   done(null, user.id);
 })
 
