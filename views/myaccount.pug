@@ -14,6 +14,9 @@ block content
                     .section
                         .title Personal Data
                         .content
+                            .form-group 
+                                label Login Method 
+                                input.form-control(disabled name='loginmethod', type='text', placeholder='Method', value=user.userType)
                             .form-group
                                 label Nume
                                 input.form-control(disabled name='name', type='text', placeholder='Nume', value=user.name)
@@ -27,10 +30,12 @@ block content
                                 label Username
                                 input.form-control(disabled name='username', type='text', placeholder='Username', value = user.username)
                             form(method='post', action='/users/myaccount', enctype='multipart/form-data')
-                                .form-group
-                                    label E-mail
-                                    input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
-                                input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                                span(style='color: gray !important;') If you use Google to log in, you won't be able to change your email!
+                                if user.userType != 'google'
+                                    .form-group
+                                        label E-mail
+                                        input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
+                                    input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
                     .section
                         .title My Addresses
                         if user.status == 'verified'

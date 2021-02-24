@@ -109,7 +109,7 @@ module.exports.getUserByEmail = function(email, callback){
 module.exports.changeEmail = function(username, newmail,req, callback){
     var reqcopy = req;
     SecretCode.remove({email: reqcopy.user.email}).then(()=>{
-        User.updateOne({username: username}, {
+        User.updateOne({username: username, userType: {$ne: 'google'}}, {
             $set: {email: newmail, status: 'pending', stripeCustomerID: null},
             $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
         }).then(callback)
