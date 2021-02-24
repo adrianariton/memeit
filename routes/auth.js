@@ -49,7 +49,10 @@ router.get('/callback', passport.authenticate('google', {
   failureRedirect:'/users/login',
   failureFlash: 'Invalid username or password'
 }, (req,res)=>{
+  console.log('\n\n\nREQRES\n\n\n\n\n')
   console.log(req, res)
+  res.location('/')
+
   res.redirect('/')
   }
 ))
