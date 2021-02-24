@@ -85,7 +85,7 @@ block content
                     
                     .section
                         .title Other
-                        if user.status == 'verified'
+                        if user.status == 'verified' && user.userType != 'google'
                             .content
                                 form(method='post', action='/users/password', enctype='multipart/form-data')
                                     .form-group
