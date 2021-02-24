@@ -5,7 +5,7 @@ var upload = multer({dest:'./uploads'})
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 if(process.env.NODE_ENV !=='production'){
     require('dotenv').config()
 }
