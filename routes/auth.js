@@ -65,14 +65,18 @@ passport.use(new GoogleStrategy({
         status: 'verified',
         userType: 'google',
         googleId: profile.id
-      }), (err, user)=>{
-        console.log(err,user)
+      }), (err, user2)=>{
+        console.log(err,user2)
+        return done(null, user2)
+
       })
+    } else {
+      return done(null, user)
+
     }
   })
   console.log(profile)
     console.log('/PROFILE')
-    return done(null, profile)
 }))
 router.get('/', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}))
 router.get('/callback', passport.authenticate('google', {
