@@ -79,7 +79,7 @@ var UserSchema = mongoose.Schema({
         default: null
     },
     userType: {
-        type: [String],
+        type: String,
         default: 'default'
     }
 })
@@ -87,7 +87,12 @@ var UserSchema = mongoose.Schema({
 var User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback){
-    User.findById(id, callback);
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+        User.findOne({_id:id}, callback);
+
+    } else {
+        callback(null, null)
+    }
 }
 module.exports.getUserByUsername = function(username, callback){
     var query = {username: username};
@@ -157,13 +162,19 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 }
 
 module.exports.createUser = function(newUser, callback){
-    bcrypt.genSalt(10, (err, salt)=>{
-        bcrypt.hash(newUser.password, salt, (err, hash)=>{
-            newUser.password=hash;
-            newUser.save(callback)
-
+    if(newUser.password && newUser.type != 'google'){
+        bcrypt.genSalt(10, (err, salt)=>{
+            bcrypt.hash(newUser.password, salt, (err, hash)=>{
+                newUser.password=hash;
+                newUser.save(callback)
+    
+            })
         })
-    })
+    } else {
+        newUser.save(callback)
+
+    }
+   
 }
 
 module.exports.changePwd = function(req, callback){

@@ -69,7 +69,8 @@ html
             li
               a.verify(href='/verify') verify account
     .messages(style='position: absolute;')
-      != messages()
+      if false
+        != messages()
       if user
         if user.status != 'verified'
           li(style='  list-style: none !important;')

@@ -9,6 +9,8 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 if(process.env.NODE_ENV !=='production'){
     require('dotenv').config()
 }
+var User = require('../models/user')
+
 function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){
       return next();
@@ -28,9 +30,12 @@ passport.serializeUser((user, done)=>{
 })
 
 passport.deserializeUser((id, done)=>{
-  User.getUserById(id, (err, user)=>{
-    done(err, user)
-  })
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    User.getUserById(id, (err, user)=>{
+      done(err, user)
+    })
+  }
+  
 })
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -39,23 +44,40 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
 }, (request, accessToken, refreshToken, profile, done)=>{
   console.log('/PROFILE')
-  
+  var username = profile.family_name + profile.id
+  console.log(username)
+  User.getUserByUsername(username, function(err, user){
+    console.log(username)
+    console.log(user)
+    if(err) throw err;
+    if(!user) {
+      User.createUser(new User({
+        username: username,
+        email: profile.email,
+        name: profile.family_name,
+        vorname: profile.given_name,
+        status: 'verified',
+        userType: 'google'
+      }), (err, user)=>{
+        console.log(err,user)
+      })
+    }
+  })
   console.log(profile)
     console.log('/PROFILE')
     return done(null, profile)
 }))
-router.get('/', passport.authenticate('google', {scope: ['profile', 'email']}))
+router.get('/', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}))
 router.get('/callback', passport.authenticate('google', {
-  failureRedirect:'/users/login',
-  failureFlash: 'Invalid username or password'
+  failureRedirect:'/users/login'
 }
 ), (req,res)=>{
   console.log('\n\n\nREQRES\n\n\n\n\n')
-  console.log(req, res)
-  //req.flash('success', 'You are loggedin')
+   //req.flash('success', 'You are loggedin')
+   
   res.location('/')
 
   res.redirect('/')
-  })
+})
 module.exports = router
  
