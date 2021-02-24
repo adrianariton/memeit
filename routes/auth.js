@@ -57,6 +57,7 @@ passport.use(new GoogleStrategy({
     console.log(user)
     if(err) throw err;
     if(!user) {
+      console.log(profile.email)
       User.createUser(new User({
         username: username,
         email: profile.email,
