@@ -82,19 +82,19 @@ block content
                         else
                             .content
                                 .verif You need to verify your account!
-                    
-                    .section
-                        .title Other
-                        if user.status == 'verified' && user.userType != 'google'
-                            .content
-                                form(method='post', action='/users/password', enctype='multipart/form-data')
-                                    .form-group
-                                        label 
-                                        input.form-control(name='password', type='password', placeholder='Change Password')
-                                    input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
-                        else
-                            .content
-                                .verif You need to verify your account!
+                    if user.userType != 'google'
+                        .section
+                            .title Other
+                            if user.status == 'verified' 
+                                .content
+                                    form(method='post', action='/users/password', enctype='multipart/form-data')
+                                        .form-group
+                                            label 
+                                            input.form-control(name='password', type='password', placeholder='Change Password')
+                                        input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                            else
+                                .content
+                                    .verif You need to verify your account!
                     .section
                         .title Subscriptions
                         .content
