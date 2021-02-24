@@ -30,6 +30,7 @@ passport.serializeUser((user, done)=>{
 })
 
 passport.deserializeUser((id, done)=>{
+  console.log(id)
   if (id.match(/^[0-9a-fA-F]{24}$/)) {
     User.getUserById(id, (err, user)=>{
       done(err, user)
