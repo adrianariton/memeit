@@ -52,7 +52,7 @@ router.get('/callback', passport.authenticate('google', {
 ), (req,res)=>{
   console.log('\n\n\nREQRES\n\n\n\n\n')
   console.log(req, res)
-  req.flash('success', 'You are loggedin')
+  //req.flash('success', 'You are loggedin')
   res.location('/')
 
   res.redirect('/')
