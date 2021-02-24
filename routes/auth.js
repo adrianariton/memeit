@@ -79,7 +79,7 @@ passport.use(new GoogleStrategy({
   console.log(profile)
     console.log('/PROFILE')
 }))
-router.get('/', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login']}))
+router.get('/', passport.authenticate('google', {scope: ['profile', 'email']}))
 router.get('/callback', passport.authenticate('google', {
   failureRedirect:'/users/login'
 }
