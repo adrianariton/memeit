@@ -35,6 +35,9 @@ passport.serializeUser((user, done)=>{
 })
 
 passport.deserializeUser((id, done)=>{
+  console.log('\n\n\n\n\n\n ID ')
+  console.log(id)
+  console.log('\n\n\n\n\n\n\n')
   User.getUserById(id, (err, user)=>{
     done(err, user)
   })
