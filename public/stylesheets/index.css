@@ -2011,6 +2011,14 @@ tbody * {
   background-color: gray !important;
 }
 
+.oauth-container {
+  margin-top: 2em;
+}
+
+.oauth-container * {
+  color: black !important;
+}
+
 .nicescroll::-webkit-scrollbar {
   background-color: black !important;
   width: 5px !important;

@@ -1347,6 +1347,13 @@ tbody *{
   background-color: gray !important;
  
 }
+.oauth-container{
+  margin-top: 2em;
+  *{
+    color: black !important;
+  
+  }
+}
 .nicescroll{
   &::-webkit-scrollbar {
     background-color: black !important;
