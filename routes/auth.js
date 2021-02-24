@@ -28,7 +28,7 @@ function ensureAuthenticated(req, res, next){
 passport.serializeUser((user, done)=>{
   console.log('\n\n\n\n\n USER DESERIALIZE')
   console.log(user)
-  console.log('\n\n\n\n\n\n\n')
+  console.log('\n\n\n\nUSER^^\n\n\n')
   done(null, user.id);
 })
 
