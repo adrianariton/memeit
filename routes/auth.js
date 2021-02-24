@@ -57,7 +57,8 @@ passport.use(new GoogleStrategy({
         name: profile.family_name,
         vorname: profile.given_name,
         status: 'verified',
-        userType: 'google'
+        userType: 'google',
+        googleId: profile.id
       }), (err, user)=>{
         console.log(err,user)
       })

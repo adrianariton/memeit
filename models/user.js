@@ -81,6 +81,9 @@ var UserSchema = mongoose.Schema({
     userType: {
         type: String,
         default: 'default'
+    },
+    googleId: {
+        type: String
     }
 })
 
