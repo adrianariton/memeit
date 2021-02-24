@@ -46,7 +46,7 @@ passport.use(new GoogleStrategy({
   console.log('/PROFILE')
   var username = profile.family_name + profile.id
   console.log(username)
-  User.getUserByUsername(username, function(err, user){
+  User.getUserByEmail(profile.email, function(err, user){
     console.log(username)
     console.log(user)
     if(err) throw err;
