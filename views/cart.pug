@@ -148,7 +148,7 @@ block content
                                             img.tooltipped(data-position="bottom" data-tooltip=cart[i].name src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
                                     - i++
                             - i=0
-                            if user.status == 'verified' && user.addresses != []
+                            if user.status == 'verified' && user.addresses != [] && user.addresses!='' && user.addresses!=' '
                                 - var addresses = JSON.parse(user.addresses[0])
                                 - var addrennr = 0
                                 span#selectedaddr #{addresses.street}, #{addresses.city}, #{addresses.state==''? addresses.county: addresses.state}, #{addresses.country}; Zip: #{addresses.zip}
