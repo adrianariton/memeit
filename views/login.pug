@@ -19,7 +19,6 @@ block content
                     .loginre
                         span Client nou?
                         a(href='/users/register') Creeaza cont
-                        form(method='get', action='/google', enctype='urlencoded')
-                            input(type='submit' value='Google')
+                        a(href='/google') Google
             .msgs
              != messages()
