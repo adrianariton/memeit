@@ -77,6 +77,10 @@ var UserSchema = mongoose.Schema({
     stripeCustomerIDAliases: {
         type: [String],
         default: null
+    },
+    userType: {
+        type: [String],
+        default: 'default'
     }
 })
 
@@ -163,13 +167,18 @@ module.exports.createUser = function(newUser, callback){
 }
 
 module.exports.changePwd = function(req, callback){
-    bcrypt.genSalt(10, (err, salt)=>{
-        bcrypt.hash(req.body.password, salt, (err, hash)=>{
-            User.updateOne({username: req.user.username}, {
-                $set: {password: hash}
-            }).then(callback)
+    if(req.user.type != 'google'){
+        bcrypt.genSalt(10, (err, salt)=>{
+            bcrypt.hash(req.body.password, salt, (err, hash)=>{
+                User.updateOne({username: req.user.username}, {
+                    $set: {password: hash}
+                }).then(callback)
+            })
         })
-    })
+    } else {
+        callback()
+    }
+    
 }
 
 module.exports.addToCart = function(username, parfume, callback, cartfull){
