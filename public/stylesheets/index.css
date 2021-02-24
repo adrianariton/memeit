@@ -3,6 +3,7 @@
 :root {
   --container-bg-color: #333;
   --left-bg-color: rgba(223, 39, 39, 0.7);
+  --left-bg-color-clean: rgba(223, 39, 39);
   --left-button-hover-color: rgba(161, 11, 11, 0.3);
   --right-bg-color: rgba(43, 43, 43, 0.8);
   --right-button-hover-color: rgba(92, 92, 92, 0.3);
@@ -958,6 +959,7 @@ html, body {
   color: #fff;
   font-size: 2em;
   text-align: center;
+  font-size: medium !important;
 }
 
 @media screen and (min-width: 412px) {
@@ -989,6 +991,8 @@ html, body {
 }
 
 .steps .step .gobuynow {
+  position: absolute;
+  text-align: center;
   background-color: var(--left-bg-color) !important;
   color: white !important;
   padding: 10px;
@@ -1000,8 +1004,7 @@ html, body {
   .steps .step .gobuynow {
     width: 25em;
     margin: 1em;
-    -webkit-transform: translateY(-2em);
-            transform: translateY(-2em);
+    top: calc(18.75em - 41px) !important;
   }
 }
 
@@ -1009,13 +1012,12 @@ html, body {
   .steps .step .gobuynow {
     width: 80vw;
     margin: 10vw;
-    -webkit-transform: translateY(-20vw);
-            transform: translateY(-20vw);
+    top: calc(60vw - 41px) !important;
   }
 }
 
 .steps .step .gobuynow:hover {
-  padding-left: 15px;
+  background-color: var(--left-bg-color-clean) !important;
 }
 
 .ascentsteps {
@@ -1894,7 +1896,7 @@ tbody * {
 }
 
 .sc .removefromcart i {
-  color: var(--left-bg-color) !important;
+  color: var(--left-bg-color-clean) !important;
 }
 
 .cardinfo {
