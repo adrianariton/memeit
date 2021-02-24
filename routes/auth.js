@@ -44,8 +44,8 @@ passport.use(new GoogleStrategy({
     console.log('/PROFILE')
     return done(null, profile)
 }))
-router.get('/', passport.authenticate('google', {scope: ['profile', 'email']}))
-router.get('/callback', passport.authenticate('google', {
+router.post('/', passport.authenticate('google', {scope: ['profile', 'email']}))
+router.post('/callback', passport.authenticate('google', {
   failureRedirect:'/users/login',
   failureFlash: 'Invalid username or password'
 }, (req,res)=>{
