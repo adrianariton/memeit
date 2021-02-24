@@ -126,29 +126,30 @@ block content
         else
             if user.m_abonamentCart 
                 if cart && cart!=[] && cart!=''
-                    .aboncon.container 
-                        .aboncard 
-                            img(src='/images'+abon.image)
-                            .wrt 
-                                .prnm 
-                                    span #{abon.name}
-                                    span Lei#{abon.price/100}
-                                span Transport Gratuit 
-                                span Taxe: Lei0.00 
-                                span Total: Lei#{abon.price/100}
+                    .aboncon.container
+                        if user.status == 'verified' && user.addresses != [] && user.addresses!='' && user.addresses!=''
+                            .aboncard 
+                                img(src='/images'+abon.image)
+                                .wrt 
+                                    .prnm 
+                                        span #{abon.name}
+                                        span Lei#{abon.price/100}
+                                    span Transport Gratuit 
+                                    span Taxe: Lei0.00 
+                                    span Total: Lei#{abon.price/100}
                         .form 
-                            h4 #{abon.name}
-                            span #{abon.description}
-                            - var i = 0
-                            .perfumes
-                                while i <= cart.length-1
-                                    //data-stripe-id = stripe.find(element => element.name == cart[i].name).id
-                                    .r(data-item-id = ids[i] )
-                                        .image-cropper
-                                            img.tooltipped(data-position="bottom" data-tooltip=cart[i].name src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
-                                    - i++
-                            - i=0
-                            if user.status == 'verified' && user.addresses != [] && user.addresses!='' && user.addresses!=' '
+                            if user.status == 'verified' && user.addresses != [] && user.addresses!='' && user.addresses!=''
+                                h4 #{abon.name}
+                                span #{abon.description}
+                                - var i = 0
+                                .perfumes
+                                    while i <= cart.length-1
+                                        //data-stripe-id = stripe.find(element => element.name == cart[i].name).id
+                                        .r(data-item-id = ids[i] )
+                                            .image-cropper
+                                                img.tooltipped(data-position="bottom" data-tooltip=cart[i].name src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
+                                        - i++
+                                - i=0
                                 - var addresses = JSON.parse(user.addresses[0])
                                 - var addrennr = 0
                                 span#selectedaddr #{addresses.street}, #{addresses.city}, #{addresses.state==''? addresses.county: addresses.state}, #{addresses.country}; Zip: #{addresses.zip}
