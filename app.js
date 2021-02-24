@@ -38,7 +38,9 @@ var scentsRouter = require('./routes/scents')(app.io);
 var verifyRouter = require('./routes/verify');
 var myaccountRouter = require('./routes/myaccount');
 var ordersRouter = require('./routes/orders');
+var googleAuthRouter = require('./routes/auth');
 
+console.log(googleAuthRouter)
 //var chatsRouter = require('./routes/chat')(app.io);
 
 
@@ -121,7 +123,7 @@ app.use('/scents', scentsRouter);
 app.use('/verify', verifyRouter);
 app.use('/myaccount', myaccountRouter);
 app.use('/myorders', ordersRouter);
-
+app.use('/google', googleAuthRouter);
 //app.use('/chat', chatsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

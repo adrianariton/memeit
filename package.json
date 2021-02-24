@@ -32,6 +32,8 @@
     "nodemailer": "^6.4.17",
     "openssl": "^1.1.0",
     "passport": "*",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-http": "*",
     "passport-local": "*",
     "passport.socketio": "^3.7.0",

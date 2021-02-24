@@ -8,7 +8,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user')
  /* GET users listing. */
- function ensureAuthenticated(req, res, next){
+function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
     return next();
   }
