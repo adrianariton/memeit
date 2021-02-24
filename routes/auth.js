@@ -50,8 +50,6 @@ router.get('/callback', passport.authenticate('google', {
   failureFlash: 'Invalid username or password'
 }, (req,res)=>{
   console.log(req, res)
-  req.flash('success', 'You are loggedin')
-    res.redirect('/')
   }
 ))
 module.exports = router
