@@ -40,7 +40,7 @@ block content
                         span Esti deja membru?
                         a(href='/users/login') Autentificare
                         form(method='post', action='/google', enctype='urlencoded')
-                            input(type='submit') Google
+                            input(type='submit' value='Google')
             .error-content
                 if errors
                     div.alert.alert-danger #{errors[0].msg}
