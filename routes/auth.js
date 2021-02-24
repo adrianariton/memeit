@@ -26,11 +26,14 @@ function ensureAuthenticated(req, res, next){
   }
   
 passport.serializeUser((user, done)=>{
+  console.log('\n\n\n\n\n USER DESERIALIZE')
+  console.log(user)
+  console.log('\n\n\n\n\n\n\n')
   done(null, user.id);
 })
 
 passport.deserializeUser((id, done)=>{
-  console.log('\n\n\n\n\n\n ID ')
+  console.log('\n\n\n\n\n\n IDd ')
   console.log(id)
   console.log('\n\n\n\n\n\n\n')
   if (id.match(/^[0-9a-fA-F]{24}$/)) {
