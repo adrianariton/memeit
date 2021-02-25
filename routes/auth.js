@@ -81,12 +81,12 @@ passport.use(new GoogleStrategy({
 }))
 router.get('/', passport.authenticate('google', {scope: ['profile', 'email']}))
 router.get('/callback', passport.authenticate('google', {
-  failureRedirect:'/users/login',
-  failureFlash: 'Invalid username or password'
-}, (req,res)=>{
-  console.log(req, res)
+  failureRedirect:'/users/login'
+}
+), (req,res)=>{
+  console.log('\n\n\nREQRES\n\n\n\n\n')
+   //req.flash('success', 'You are loggedin')
   res.redirect('/')
-  }
-))
+})
 module.exports = router
  

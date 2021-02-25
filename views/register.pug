@@ -43,8 +43,6 @@ block content
                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png")
                             span Login with &nbsp;
 
-                        form(method='post', action='/google', enctype='urlencoded')
-                            input(type='submit' value='Google')
             .error-content
                 if errors
                     div.alert.alert-danger #{errors[0].msg}
