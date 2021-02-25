@@ -80,7 +80,6 @@ passport.use(new GoogleStrategy({
     console.log('/PROFILE')
 }))
 router.get('/', passport.authenticate('google', {scope: ['profile', 'email']}))
-<<<<<<< HEAD
 router.get('/callback', passport.authenticate('google', {
   failureRedirect:'/users/login'
 }
@@ -89,16 +88,5 @@ router.get('/callback', passport.authenticate('google', {
    //req.flash('success', 'You are loggedin')
   res.redirect('/')
 })
-=======
-router.post('/callback', passport.authenticate('google', {
-  failureRedirect:'/users/login',
-  failureFlash: 'Invalid username or password'
-}, (req,res)=>{
-  console.log(req, res)
-  req.flash('success', 'You are loggedin')
-    res.redirect('/')
-  }
-))
->>>>>>> d315f1c... re3
 module.exports = router
  
