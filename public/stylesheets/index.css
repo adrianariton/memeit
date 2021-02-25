@@ -806,7 +806,7 @@ html, body {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 2em;
-  width: calc(100% + 10px) !important;
+  width: calc(100% + 40px) !important;
 }
 
 .loginre .oauth-container .left {
