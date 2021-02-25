@@ -1746,6 +1746,15 @@ tbody * {
   padding: 15px;
 }
 
+.myacc .section .title2 {
+  cursor: pointer !important;
+  color: gray !important;
+}
+
+.myacc .section .title2.active {
+  color: white !important;
+}
+
 @media screen and (min-width: 600px) {
   .myacc .section {
     display: -webkit-box;
@@ -1770,13 +1779,6 @@ tbody * {
   .myacc .section .title {
     width: 117px !important;
     text-align: center !important;
-  }
-  .myacc .section .title .title2 {
-    cursor: pointer !important;
-    color: gray !important;
-  }
-  .myacc .section .title .title2.active {
-    color: white !important;
   }
 }
 
