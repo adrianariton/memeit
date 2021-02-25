@@ -824,10 +824,27 @@ html, body {
   }
 }
 
+.form-container .content form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .form-container .content form input {
   background-color: #0c0c0c;
   color: white;
-  width: 100% !important;
+  padding-left: 10px !important;
+  width: calc(100% - 10px) !important;
 }
 
 .form-container .content form input[type='submit'] {
