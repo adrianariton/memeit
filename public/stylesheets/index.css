@@ -1771,6 +1771,13 @@ tbody * {
     width: 117px !important;
     text-align: center !important;
   }
+  .myacc .section .title .title2 {
+    cursor: pointer !important;
+    color: gray !important;
+  }
+  .myacc .section .title .title2.active {
+    color: white !important;
+  }
 }
 
 .myacc .header-head {

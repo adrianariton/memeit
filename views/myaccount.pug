@@ -11,9 +11,13 @@ block content
                             span.name #{user.name} #{user.vorname}
                             span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
                 .body
-                    .section
-                        .title Personal Data
-                        .content
+                    .section.main 
+                        .title 
+                            .title2#personal-data Personal Data 
+                            .title2#my-addresses My Addresses 
+                            .title2#other Other 
+                            .title2#my-orders My Orders
+                        .content.personal-data
                             .form-group 
                                 label Login Method 
                                 input.form-control(disabled name='loginmethod', type='text', placeholder='Method', value=user.userType)
@@ -36,10 +40,8 @@ block content
                                         label E-mail
                                         input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
                                     input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
-                    .section
-                        .title My Addresses
-                        if user.status == 'verified'
-                            .content
+                        .content.my-addresses
+                            if user.status == 'verified'
                                 - var i = 0
                                 for address in user.addresses
                                     - i++;
@@ -79,25 +81,20 @@ block content
                                                 id="inputCountry" 
                                                 placeholder="Country" name='country')
                                     input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
-                        else
-                            .content
+                            else
                                 .verif You need to verify your account!
-                    if user.userType != 'google'
-                        .section
-                            .title Other
-                            if user.status == 'verified' 
-                                .content
+                        .content.other
+                            if user.userType != 'google'
+                                if user.status == 'verified'
                                     form(method='post', action='/users/password', enctype='multipart/form-data')
                                         .form-group
                                             label 
                                             input.form-control(name='password', type='password', placeholder='Change Password')
                                         input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
-                            else
-                                .content
+                                else
                                     .verif You need to verify your account!
-                    .section
-                        .title Subscriptions
-                        .content
+                        if false 
+                            .content
                             .btn.togglesubs Show Subscriptions
                             .subs#subs
                                 for sub in subs
@@ -116,8 +113,6 @@ block content
                                                         img(src = '/images/'+ parfumes.find(el=>el.id==cart[i]).image style='border-radius: 50% !important; margin: 5px; position: relative;')
                                                 - i++
                                 .info Subscription id is used to identify your subscription if you have any problem with it.
-                    .section
-                        .title My Orders
-                        .content
+                        .content.my-orders
                             a.btn.gotoorders(href='/myaccount/orders') Go to my orders
             script(src='/javascripts/address.js')

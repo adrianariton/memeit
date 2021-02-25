@@ -1171,6 +1171,13 @@ tbody *{
       .title{
         width: 117px !important;
         text-align: center !important;
+        .title2{
+          cursor:  pointer !important;
+          color: gray !important;
+          &.active{
+            color: white !important;
+          }
+        }
       }
     }
   }
