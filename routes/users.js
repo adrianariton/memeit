@@ -8,7 +8,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user')
  /* GET users listing. */
- function ensureAuthenticated(req, res, next){
+function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
     return next();
   }
@@ -31,10 +31,16 @@ router.get('/login',ensureNotAuthenticated, function(req, res, next) {
   res.render('login', {title:'Login'});
 });
 passport.serializeUser((user, done)=>{
+  console.log('\n\n\n\n\n USER DESERIALIZE')
+  console.log(user)
+  console.log('\n\n\n\n\nUSER^^\n\n')
   done(null, user.id);
 })
 
 passport.deserializeUser((id, done)=>{
+  console.log('\n\n\n\n\n\n ID ')
+  console.log(id)
+  console.log('\n\n\n\n\n\n\n')
   User.getUserById(id, (err, user)=>{
     done(err, user)
   })

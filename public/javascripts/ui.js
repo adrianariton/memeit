@@ -87,5 +87,21 @@ $(document).ready(function(){
   $('.tooltipped').tooltip({
     position: 'bottom'
   });
+  if($('.section.main')){
+    $('.section.main .content').hide()
+    $('.section.main .personal-data').show()
+    $(`.section.main .title2#personal-data`).toggleClass('active')
+  
+    $('.section.main .title2').click(e=>{
+      var id = $(e.target).attr('id')
+      console.log(id)
+      $('.section.main .content').hide(140)
+      $(`.section.main .title2`).removeClass('active')
+      $(`.section.main .title2#${id}`).addClass('active')
+      $(`.section.main .${id}`).show(140)
+    })
+  
+  }
+
 });
       

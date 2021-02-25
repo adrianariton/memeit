@@ -1,6 +1,7 @@
 :root {
     --container-bg-color: #333;
     --left-bg-color: rgba(223, 39, 39, 0.7);
+    --left-bg-color-clean: rgba(223, 39, 39);
     --left-button-hover-color: rgba(161, 11, 11, 0.3);
     --right-bg-color: rgba(43, 43, 43, 0.8);
     --right-button-hover-color: rgba(92, 92, 92, 0.3);
@@ -650,6 +651,7 @@ html, body {
         color: #fff;
         font-size: 2em;
         text-align: center;
+        font-size: medium !important;
         @include max-width(412px){
           max-width: 12em;
           margin: 1em;
@@ -673,24 +675,27 @@ html, body {
 
     }
     .gobuynow{
+      position: absolute;
+      text-align: center;
+      left: 0 !important;
       @include max-width(412px){
         width: 25em;
         margin: 1em;
-        transform: translateY(-2em);
-
+       // transform: translateY(-2em);
+        top: calc(18.75em - 41px) !important;
       }
       @include min-width(412px){
         width: 80vw;
         margin: 10vw;
-        transform: translateY(-20vw);
-
+        //transform: translateY(-20vw);
+        top: calc(60vw - 41px) !important;
       }
       background-color: var(--left-bg-color)  !important;
       color: white !important;
       padding: 10px;
       transition: all 0.2s ease-in-out;
       &:hover{
-        padding-left: 15px;
+        background-color: var(--left-bg-color-clean)  !important;
       }
     }
   }
@@ -1166,6 +1171,13 @@ tbody *{
       .title{
         width: 117px !important;
         text-align: center !important;
+        .title2{
+          cursor:  pointer !important;
+          color: gray !important;
+          &.active{
+            color: white !important;
+          }
+        }
       }
     }
   }
@@ -1274,7 +1286,7 @@ tbody *{
 }
 .sc .removefromcart{
   i{
-    color: var(--left-bg-color) !important;
+    color: var(--left-bg-color-clean) !important;
   }
 }
 .cardinfo{
@@ -1346,6 +1358,13 @@ tbody *{
 .gotoorders{
   background-color: gray !important;
  
+}
+.oauth-container{
+  margin-top: 2em;
+  *{
+    color: black !important;
+  
+  }
 }
 .nicescroll{
   &::-webkit-scrollbar {

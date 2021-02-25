@@ -77,13 +77,25 @@ var UserSchema = mongoose.Schema({
     stripeCustomerIDAliases: {
         type: [String],
         default: null
+    },
+    userType: {
+        type: String,
+        default: 'default'
+    },
+    googleId: {
+        type: String
     }
 })
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback){
-    User.findById(id, callback);
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+        User.findOne({_id:id}, callback);
+
+    } else {
+        callback(null, null)
+    }
 }
 module.exports.getUserByUsername = function(username, callback){
     var query = {username: username};
@@ -97,7 +109,7 @@ module.exports.getUserByEmail = function(email, callback){
 module.exports.changeEmail = function(username, newmail,req, callback){
     var reqcopy = req;
     SecretCode.remove({email: reqcopy.user.email}).then(()=>{
-        User.updateOne({username: username}, {
+        User.updateOne({username: username, userType: {$ne: 'google'}}, {
             $set: {email: newmail, status: 'pending', stripeCustomerID: null},
             $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
         }).then(callback)
@@ -153,23 +165,34 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 }
 
 module.exports.createUser = function(newUser, callback){
-    bcrypt.genSalt(10, (err, salt)=>{
-        bcrypt.hash(newUser.password, salt, (err, hash)=>{
-            newUser.password=hash;
-            newUser.save(callback)
-
+    if(newUser.password && newUser.type != 'google'){
+        bcrypt.genSalt(10, (err, salt)=>{
+            bcrypt.hash(newUser.password, salt, (err, hash)=>{
+                newUser.password=hash;
+                newUser.save(callback)
+    
+            })
         })
-    })
+    } else {
+        newUser.save(callback)
+
+    }
+   
 }
 
 module.exports.changePwd = function(req, callback){
-    bcrypt.genSalt(10, (err, salt)=>{
-        bcrypt.hash(req.body.password, salt, (err, hash)=>{
-            User.updateOne({username: req.user.username}, {
-                $set: {password: hash}
-            }).then(callback)
+    if(req.user.type != 'google'){
+        bcrypt.genSalt(10, (err, salt)=>{
+            bcrypt.hash(req.body.password, salt, (err, hash)=>{
+                User.updateOne({username: req.user.username}, {
+                    $set: {password: hash}
+                }).then(callback)
+            })
         })
-    })
+    } else {
+        callback()
+    }
+    
 }
 
 module.exports.addToCart = function(username, parfume, callback, cartfull){
