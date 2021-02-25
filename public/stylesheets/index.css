@@ -993,6 +993,7 @@ html, body {
 .steps .step .gobuynow {
   position: absolute;
   text-align: center;
+  left: 0 !important;
   background-color: var(--left-bg-color) !important;
   color: white !important;
   padding: 10px;

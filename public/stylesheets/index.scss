@@ -677,6 +677,7 @@ html, body {
     .gobuynow{
       position: absolute;
       text-align: center;
+      left: 0 !important;
       @include max-width(412px){
         width: 25em;
         margin: 1em;
