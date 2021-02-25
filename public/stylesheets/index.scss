@@ -563,10 +563,30 @@ html, body {
 /*login register*/
 .loginre{
   padding: .4em;
+  position: relative !important;
   @include flex-column();
   justify-content: center;
   span{
     color: white;
+  } 
+  .oauth-container{
+    height: 43px !important;
+    @include flex-row();
+    justify-content: center;
+    .left{
+      @include flex-row();
+      justify-content: center;
+      img{
+        margin: 0 !important;
+        margin-right: 10px !important;
+      }
+    }
+    margin-top: 2em;
+    width: calc(100% + 10px) !important;
+    *{
+      color: black !important;
+    
+    }
   }
 }
 .form-container{
@@ -585,7 +605,7 @@ html, body {
     justify-content: center;
     @include bcg;
     .content{
-      
+     
         form{
           
     @include flex-column();
@@ -597,7 +617,10 @@ html, body {
                 width: calc(100% - 10px) !important;
             }
             input[type='submit']{
-              background: linear-gradient(var(--left-bg-color), #000)  !important;
+              background: linear-gradient(var(--left-bg-color-clean), #000)  !important;
+              width: calc(100% + 10px) !important;
+              margin-top: 1em;
+              height: 43px !important;
 
             }
         }
@@ -1365,13 +1388,7 @@ tbody *{
   background-color: gray !important;
  
 }
-.oauth-container{
-  margin-top: 2em;
-  *{
-    color: black !important;
-  
-  }
-}
+
 .nicescroll{
   &::-webkit-scrollbar {
     background-color: black !important;

@@ -770,6 +770,7 @@ html, body {
 /*login register*/
 .loginre {
   padding: .4em;
+  position: relative !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -787,6 +788,50 @@ html, body {
 
 .loginre span {
   color: white;
+}
+
+.loginre .oauth-container {
+  height: 43px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 2em;
+  width: calc(100% + 10px) !important;
+}
+
+.loginre .oauth-container .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loginre .oauth-container .left img {
+  margin: 0 !important;
+  margin-right: 10px !important;
+}
+
+.loginre .oauth-container * {
+  color: black !important;
 }
 
 .form-container {
@@ -848,8 +893,11 @@ html, body {
 }
 
 .form-container .content form input[type='submit'] {
-  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
-  background: linear-gradient(var(--left-bg-color), #000) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color-clean)), to(#000)) !important;
+  background: linear-gradient(var(--left-bg-color-clean), #000) !important;
+  width: calc(100% + 10px) !important;
+  margin-top: 1em;
+  height: 43px !important;
 }
 
 .error-content {
@@ -2038,14 +2086,6 @@ tbody * {
 
 .gotoorders {
   background-color: gray !important;
-}
-
-.oauth-container {
-  margin-top: 2em;
-}
-
-.oauth-container * {
-  color: black !important;
 }
 
 .nicescroll::-webkit-scrollbar {
