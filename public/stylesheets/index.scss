@@ -1168,7 +1168,7 @@ tbody *{
         color: white !important;
       }
     }
-    padding: 15px;
+    padding: 15px;     
     @include max-width(600px){
       @include flex-row();
       justify-content: stretch;
