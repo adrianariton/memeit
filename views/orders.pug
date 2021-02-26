@@ -15,10 +15,10 @@ block content
                     .content.ordersid
                         for order in orders
                             .ab-group
-                                a.gotoorder(href='/myorders/'+order.id style='color: gray !important; text-decoration: underline !important;') Click here to view order info!
-                                .title2.rowreverse Email: #{order.email}
+                                a.gotoorder(href='/myorders/'+order.id style='word-wrap: break-word; overflow-wrap: break-word; color: blue !important; text-decoration: none !important; color: white !important; background-color: #244891; border-radius: 10px; margin-top: 15px; padding: 5px;') ID: #{order.id}
+                                .title2 Email: #{order.email}
                                 .date.rowreverse #{order.dateCreated}
-                                .subid.rowreverse Order id: #{order.id}
+                                //.subid.rowreverse Order id: #{order.id}
                                 if order.status == 'ordered'
                                     .other1 Order will be delivered in 2-3 days after ordered!
                                 else if order.status == 'canceled'

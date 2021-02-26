@@ -44,30 +44,40 @@ html
       .content.container
         if !user
           li.register(class =(title == 'Register' ? 'active' : ''))
-            a(href='/users/register') register
+            a(href='/users/register') Register
           li.login(class =(title == 'Login' ? 'active' : ''))
-            a(href='/users/login') login
+            a(href='/users/login') Log In
+         
+        span Perfumes
+        li
+          a(href='/scents/men') For men
+        li
+          a(href='/scents/women') For women
+
+        span Shop & Subscriptions
+        li
+          a(href='/scents/subscriptions') Subscriptions
         if user
-          li
-            a(href='/myaccount') my account
-        li
-          a(href='/scents/men') men
-        li
-          a(href='/scents/women') women
-        li
-          a(href='/scents/subscriptions') subscriptions
-        if user
+          
           li.flex.showon-sw
-            a(href='/scents/cart').flex
-                i(class="material-icons") shopping_cart
+            a(href='/scents/cart').flex Shopping Cart
+                //i(class="material-icons") shopping_cart
           li.flex
-            a(href='/myaccount/orders') my orders
+            a(href='/myaccount/orders') My orders
+          
+
+        if user
+          span Account
           li
-            a(href='/users/logout') logout
+            a(href='/myaccount') My account
+          li
+            a(href='/users/logout') Log Out
+        
         if user
           if user.status != 'verified'
+            span Verify your account!
             li
-              a.verify(href='/verify') verify account
+              a.verify(href='/verify') Verify account
     .messages(style='position: absolute;')
       if true
         != messages()

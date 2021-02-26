@@ -155,7 +155,7 @@ block content
                                 span#selectedaddr #{addresses.street}, #{addresses.city}, #{addresses.state==''? addresses.county: addresses.state}, #{addresses.country}; Zip: #{addresses.zip}
                                 <form action="/scents/done" method="post" id="payment-form">
 
-                                    h7 Fill in your delivery info!
+                                    h7(style="color: white;") Fill in your delivery info!
                                     <div class="form-row">
                                         <label for="deliverymethod">Choose a delivery method:</label>
                                         .custom-select2
@@ -165,7 +165,7 @@ block content
                                             </select>
                                         <label for="addressnr">Choose address:</label>
                                         .custom-select2
-                                            <select  id="addressnr" name="addressnr" style='display: block;'>
+                                            <select id="addressnr" name="addressnr" style='display: block;'>
                                                 - var i=0
                                                 for address in user.addresses 
                                                     option(value=i) Address #{i+1}

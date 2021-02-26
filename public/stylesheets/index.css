@@ -37,7 +37,6 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9 {
 
 * {
   font-family: "Raleway", Helvetica, Arial, sans-serif !important;
-  overflow-x: hidden !important;
 }
 
 .flex-row {
@@ -149,6 +148,17 @@ html, body {
   overflow-x: hidden;
 }
 
+.swal2-modal {
+  background-color: rgba(20, 20, 20, 0.7) !important;
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
+  color: white;
+}
+
+.swal2-modal * {
+  color: white;
+}
+
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -182,8 +192,8 @@ h1 {
   width: 100vw !important;
   overflow: hidden;
   overflow-y: auto;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#111111), to(#111111)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#111111, #111111), url(../images/texturepainting.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -247,7 +257,9 @@ html, body {
   position: fixed;
   height: 65px !important;
   z-index: 1000;
-  background-color: #000000;
+  background-color: rgba(30, 30, 30, 0.6) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
+          backdrop-filter: blur(40px) !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -467,6 +479,17 @@ html, body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
+          backdrop-filter: blur(40px) !important;
+  border-radius: 10px;
+}
+
+.mw .left {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
+          backdrop-filter: blur(40px) !important;
+  border-radius: 10px;
 }
 
 @media (min-height: 700px) {
@@ -513,9 +536,22 @@ html, body {
 .rows {
   width: 100vw !important;
   margin: 0 0 0 0 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .rows {
     width: unset !important;
     margin: unset !important;
@@ -523,19 +559,26 @@ html, body {
 }
 
 .featured {
-  width: 100%;
+  width: 100% !important;
   margin-top: 20px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .featured .row {
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  height: 100vh;
+  height: 90vh;
   width: 100vw !important;
+  position: relative;
   margin: 0 0 0 0 !important;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -554,7 +597,7 @@ html, body {
           justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .featured .row {
     height: unset;
     width: unset !important;
@@ -564,8 +607,7 @@ html, body {
 
 @media screen and (min-width: 800px) {
   .featured .row {
-    -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
+    width: 100%;
   }
 }
 
@@ -586,21 +628,33 @@ html, body {
 
 .featured .row img {
   height: 100%;
-  width: auto;
+  width: 20em;
+  -o-object-fit: cover;
+     object-fit: cover;
   min-height: 20em;
   background-color: var(--container-bg-color);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .featured .row img {
-    width: 20em !important;
+    width: 100% !important;
     margin: unset !important;
   }
 }
 
+@media screen and (min-width: 800px) {
+  .featured .row img {
+    border-radius: 10px;
+    margin: 20px;
+  }
+}
+
+.featured .row a {
+  display: none !important;
+}
+
 .featured .row .info {
   min-width: 20em;
-  min-height: 20em;
   height: auto;
   -webkit-box-flex: 5;
       -ms-flex-positive: 5;
@@ -608,10 +662,7 @@ html, body {
   padding-left: .5em;
   padding-right: .5em;
   margin: 3em !important;
-  height: 20em;
   width: 20em;
-  max-height: 20em;
-  min-height: 20em;
   overflow-y: hidden;
 }
 
@@ -621,6 +672,35 @@ html, body {
 
 .featured .row .info span {
   color: white !important;
+}
+
+@media screen and (max-width: 320px) {
+  .featured .row .info {
+    margin: 5px !important;
+    margin-top: 15px !important;
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .featured .row .info {
+    min-height: -webkit-max-content !important;
+    min-height: -moz-max-content !important;
+    min-height: max-content !important;
+    width: 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(8, 8, 8, 0.7);
+    -webkit-backdrop-filter: blur(40px);
+            backdrop-filter: blur(40px);
+    border-radius: 10px;
+    margin: 0;
+    padding: 10px !important;
+  }
+  .featured .row .info span {
+    font-size: 15px;
+  }
 }
 
 .featured .row .more {
@@ -655,6 +735,7 @@ html, body {
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
+  overflow-y: auto;
   width: 300px;
   top: 0;
   margin: 0;
@@ -666,7 +747,10 @@ html, body {
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   z-index: 9;
-  background-color: #000;
+  background-color: rgba(30, 30, 30, 0.6) !important;
+  border-left: 1px solid black !important;
+  -webkit-backdrop-filter: blur(40px) !important;
+          backdrop-filter: blur(40px) !important;
 }
 
 .customsidenav .content {
@@ -682,18 +766,29 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.customsidenav .content span {
+  float: left;
+  color: grey;
+  width: calc(300px - 20px);
+  background-color: rgba(8, 8, 8, 0.3);
+  padding: 3px;
+  padding-left: 1em;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 7px;
 }
 
 .customsidenav .content li {
   padding-top: .2em;
-  padding-bottom: .2em;
+  padding-bottom: .4em;
 }
 
 .customsidenav .content li:hover a {
@@ -710,6 +805,9 @@ html, body {
 
 .customsidenav li {
   list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .customsidenav li a {
@@ -770,7 +868,6 @@ html, body {
 /*login register*/
 .loginre {
   padding: .4em;
-  position: relative !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -790,53 +887,9 @@ html, body {
   color: white;
 }
 
-.loginre .oauth-container {
-  height: 43px !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 2em;
-  width: calc(100% + 40px) !important;
-}
-
-.loginre .oauth-container .left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.loginre .oauth-container .left img {
-  margin: 0 !important;
-  margin-right: 10px !important;
-}
-
-.loginre .oauth-container * {
-  color: black !important;
-}
-
 .form-container {
   position: relative;
-  height: 100%;
+  height: 120%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -851,8 +904,8 @@ html, body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#111111), to(#111111)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#111111, #111111), url(../images/texturepainting.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -869,35 +922,44 @@ html, body {
   }
 }
 
-.form-container .content form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.form-container .content {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.form-container .content form {
+  overflow-x: hidden !important;
 }
 
 .form-container .content form input {
   background-color: #0c0c0c;
   color: white;
-  padding-left: 10px !important;
-  width: calc(100% - 10px) !important;
+  width: 100%;
+  border-bottom: none !important;
 }
 
 .form-container .content form input[type='submit'] {
-  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color-clean)), to(#000)) !important;
-  background: linear-gradient(var(--left-bg-color-clean), #000) !important;
-  width: calc(100% + 10px) !important;
-  margin-top: 1em;
-  height: 43px !important;
+  background: var(--left-bg-color) !important;
+  border-radius: 10px;
+}
+
+.form-container .content form input[type='submit']:hover {
+  background: #1f1f1f !important;
+}
+
+.form-container .content form input.form-control {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  background-color: #0c0c0c !important;
+  border-radius: 10px;
+  border: none !important;
+  border-bottom: none !important;
+  width: calc(100% - 20px) !important;
+  padding-left: 10px !important;
 }
 
 .error-content {
@@ -941,8 +1003,7 @@ html, body {
 }
 
 .footer form input[type="submit"] {
-  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
-  background: linear-gradient(var(--left-bg-color), #000) !important;
+  background: var(--left-bg-color) !important;
   border: none !important;
 }
 
@@ -961,6 +1022,9 @@ html, body {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   margin-top: 1em;
   margin-top: 7em;
   margin-bottom: 50px;
@@ -998,9 +1062,9 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .steps .step .text {
@@ -1041,6 +1105,10 @@ html, body {
   }
 }
 
+.steps .step img {
+  border-radius: 10px !important;
+}
+
 @media screen and (min-width: 412px) {
   .steps .step img {
     width: 25em;
@@ -1059,7 +1127,11 @@ html, body {
   position: absolute;
   text-align: center;
   left: 0 !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: var(--left-bg-color) !important;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
   color: white !important;
   padding: 10px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1087,7 +1159,7 @@ html, body {
 }
 
 .ascentsteps {
-  border-bottom: #333 solid 1px;
+  border-bottom: none;
 }
 
 @media screen and (max-width: 550px) {
@@ -1123,7 +1195,8 @@ html, body {
 
 .footer {
   margin-top: 65px !important;
-  padding: 0 0 0 0 !important;
+  padding: 10px 0 0 0 !important;
+  background-color: #0a0a0a;
 }
 
 .footer .followus {
@@ -1308,8 +1381,8 @@ body {
           justify-content: center;
   position: relative;
   top: 65px !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#111111), to(#111111)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#111111, #111111), url(../images/texturepainting.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -1346,8 +1419,9 @@ body {
 }
 
 .scentsbody .card {
-  background-color: transparent !important;
+  background-color: #1b1b1b !important;
   min-height: 100%;
+  height: 700px !important;
   padding: 10px;
 }
 
@@ -1404,6 +1478,7 @@ body {
 
 .scentsbody .row .card {
   margin: 20px !important;
+  border-radius: 10px !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1414,9 +1489,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 @media screen and (min-width: 900px) {
@@ -1478,6 +1553,21 @@ body {
   max-width: 70% !important;
 }
 
+.scentsbody .row .card .imaromas img.image {
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  width: 700pt;
+  height: 150pt;
+  margin-top: 40pt;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600) {
+  .scentsbody .row .card .imaromas img.image {
+    height: 150pt;
+  }
+}
+
 .scentsbody .row .card form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1535,14 +1625,12 @@ body {
   transition: all 0.7s ease;
   content: '';
   height: calc(100% - 60px);
-  width: 1000%;
-  background-color: white;
 }
 
 .scentsbody .row .card div.name:hover h1 {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  color: black !important;
+  color: gray !important;
 }
 
 .scentsbody .row .card .b {
@@ -1551,8 +1639,7 @@ body {
   border-radius: 1em;
   margin: 0.5em;
   margin-top: 1em !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
-  background: linear-gradient(var(--left-bg-color), #000) !important;
+  background: var(--left-bg-color) !important;
 }
 
 .scentsbody .row .card .readmore {
@@ -1607,8 +1694,8 @@ body {
 }
 
 .ndcolor {
-  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
-  background: linear-gradient(var(--left-bg-color), #000) !important;
+  background: var(--left-bg-color) !important;
+  border-radius: 10px;
 }
 
 .cartcont {
@@ -1648,7 +1735,6 @@ body {
 
 @media screen and (max-width: 600px) {
   .cartcont .r, .cartcont .r2 {
-    border-top: 1px grey solid;
     margin-top: 10px;
     padding-top: 10px;
   }
@@ -1764,8 +1850,8 @@ body {
 }
 
 body {
-  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000fc)), url(../images/texturepainting.jpg);
-  background: linear-gradient(#000000, #000000fc), url(../images/texturepainting.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(#111111), to(#111111)), url(../images/texturepainting.jpg);
+  background: linear-gradient(#111111, #111111), url(../images/texturepainting.jpg);
   background-position: center;
   background-size: cover;
   background-position: center;
@@ -1802,48 +1888,118 @@ tbody * {
 }
 
 .myacc .header, .myacc .section {
-  border-top: 1px solid grey;
   padding: 5px;
   margin-bottom: 5px;
 }
 
 .myacc .section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
   padding: 15px;
 }
 
-.myacc .section .title2 {
-  cursor: pointer !important;
-  color: gray !important;
+.myacc .section .personal-data form .form-group .form-control {
+  float: left;
+  width: calc(100% - 20px) !important;
+  background-color: #0c0c0c !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-.myacc .section .title2.active {
-  color: white !important;
-}
-
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 400px) {
   .myacc .section {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .myacc .section .content {
+    background-color: #131313;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    -webkit-box-flex: 2;
+        -ms-flex-positive: 2;
+            flex-grow: 2;
+  }
+  .myacc .section .personal-data form .form-group .form-control {
+    float: left;
+    width: calc(100% - 20px) !important;
+    background-color: #0c0c0c !important;
+    border-radius: 10px !important;
+    border: none !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .myacc .section .title {
+    padding-bottom: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: stretch;
-        -ms-flex-pack: stretch;
-            justify-content: stretch;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    width: 117px !important;
+    text-align: center !important;
   }
+  .myacc .section .title .title2 {
+    cursor: pointer !important;
+    color: white !important;
+    padding: 10px;
+  }
+  .myacc .section .title .title2.active {
+    color: white !important;
+    background-color: var(--left-bg-color) !important;
+    border-radius: 10px;
+  }
+  .myacc .section .title .title2:hover {
+    background-color: #4d4d4d;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
   .myacc .section .content {
+    background-color: #131313;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     -webkit-box-flex: 2;
         -ms-flex-positive: 2;
             flex-grow: 2;
   }
   .myacc .section .title {
-    width: 117px !important;
+    padding-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    width: 100% !important;
     text-align: center !important;
+  }
+  .myacc .section .title .title2 {
+    cursor: pointer !important;
+    color: white !important;
+    padding: 5px;
+  }
+  .myacc .section .title .title2.active {
+    color: white !important;
+    background-color: var(--left-bg-color) !important;
+    border-radius: 10px;
   }
 }
 
@@ -1883,12 +2039,28 @@ tbody * {
 
 .myacc .header-head .uinfo .name {
   font-size: 1.4em;
+  word-wrap: break-word !important;
+  /* All browsers since IE 5.5+ */
+  overflow-wrap: break-word !important;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 430px) {
+  .myacc .header-head .uinfo .name {
+    max-width: 200px;
+  }
 }
 
 .myacc .header-head .uinfo .datecreated {
   font-size: .8em;
   -webkit-transform: translateY(-0.4em);
           transform: translateY(-0.4em);
+  color: gray !important;
+}
+
+.myacc .body {
+  background-color: #1b1b1b !important;
+  border-radius: 10px;
 }
 
 .myacc .body * {
@@ -1900,9 +2072,9 @@ tbody * {
 }
 
 .myacc .body input[type="submit"] {
-  background: -webkit-gradient(linear, left top, left bottom, from(var(--left-bg-color)), to(#000)) !important;
-  background: linear-gradient(var(--left-bg-color), #000) !important;
+  background: var(--left-bg-color) !important;
   border: none !important;
+  border-radius: 10px !important;
 }
 
 .myacc .body .section {
@@ -1914,19 +2086,68 @@ tbody * {
 }
 
 .myacc .body .section .content {
-  border-left: 1px solid grey;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.addressform input, .addressform label {
+.addressform {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  justify-items: flex-start;
+}
+
+.addressform label {
   margin: 5px 5px;
   background-color: transparent !important;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
   .addressform .form-control {
     float: left;
+  }
+  .addressform .form-group {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .addressform .form-group input.btn.btn-primary {
+    width: 200px !important;
+  }
+  .addressform .form-group span {
+    display: none !important;
+  }
+  .addressform .form-group input[type="text"] {
+    float: left;
+    width: calc(100% - 20px) !important;
+    background-color: #0c0c0c !important;
+    border-radius: 10px !important;
+    border: none !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .addressform .form-group input[type="text"] {
+    float: left;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    background-color: #0c0c0c !important;
+    border-radius: 10px !important;
+    border: none !important;
+    border-bottom: none !important;
+    margin-left: 0 !important;
+    margin-right: 5 !important;
   }
   .addressform #inputStreet {
     width: 100%;
@@ -1995,27 +2216,29 @@ tbody * {
 }
 
 .ab-group {
-  border-bottom: 1px solid gray;
   padding-bottom: 7px;
+  margin-top: 5px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.ab-group:nth-child(even) {
+  background: #1b1b1b !important;
 }
 
 .ab-group .title2 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: gray;
   font-size: large;
   margin: 0 !important;
   text-align: left !important;
-}
-
-@media screen and (min-width: 700px) {
-  .ab-group .title2 {
-    font-weight: bolder;
-  }
+  padding: 10px;
 }
 
 .ab-group .date {
   font-size: small;
   font-weight: bolder;
-  -webkit-transform: translateY(-5px) !important;
-          transform: translateY(-5px) !important;
 }
 
 .ab-group .quan, .ab-group .other1 {
@@ -2050,8 +2273,7 @@ tbody * {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-direction: row-reverse !important;
-      flex-direction: row-reverse !important;
+  flex-direction: row !important;
 }
 
 .ab-group .titleimg img {
@@ -2071,6 +2293,11 @@ tbody * {
           align-items: center;
 }
 
+.ab-group .titleimg-n:nth-child(even) {
+  background: #1b1b1b !important;
+  border-radius: 10px;
+}
+
 .ab-group .titleimg-n img {
   padding: 7px;
 }
@@ -2086,6 +2313,14 @@ tbody * {
 
 .gotoorders {
   background-color: gray !important;
+}
+
+.oauth-container {
+  margin-top: 2em;
+}
+
+.oauth-container * {
+  color: black !important;
 }
 
 .nicescroll::-webkit-scrollbar {
@@ -2226,9 +2461,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-align: end !important;
-      -ms-flex-align: end !important;
-          align-items: flex-end !important;
+  -webkit-box-align: start !important;
+      -ms-flex-align: start !important;
+          align-items: flex-start !important;
 }
 
 @media screen and (min-width: 800px) {
@@ -2248,10 +2483,12 @@ body {
 
 .aboncon .form h4 {
   margin-top: 0 !important;
+  width: 100% !important;
+  font-weight: bold;
 }
 
 .aboncon .form span {
-  text-align: end;
+  text-align: start;
 }
 
 .aboncon .form .perfumes {
@@ -2308,6 +2545,33 @@ body {
   width: 100%;
 }
 
+.aboncon .form form .form-row .custom-select2 #deliverymethod {
+  background-color: rgba(8, 8, 8, 0.7) !important;
+  border: none !important;
+  border-radius: 10px;
+  color: white !important;
+}
+
+.aboncon .form form .form-row .custom-select2 #deliverymethod:active {
+  border: none !important;
+}
+
+.aboncon .form form .form-row .custom-select2 #deliverymethod:focus {
+  border: none !important;
+  text-decoration: none;
+}
+
+.aboncon .form form .form-row .custom-select2 #addressnr {
+  background-color: rgba(8, 8, 8, 0.7) !important;
+  border: none !important;
+  border-radius: 10px;
+  color: white !important;
+}
+
+.aboncon .form form .form-row .custom-select2 #addressnr:active {
+  border: none;
+}
+
 .aboncon .form form .radio {
   margin-top: 1em;
   display: -webkit-box;
@@ -2332,13 +2596,16 @@ body {
 }
 
 .aboncon .aboncard {
-  background-color: #3f3f3f;
+  background-color: #1e1e1e;
+  border-radius: 10px !important;
   padding-bottom: 1em;
   max-width: 20em !important;
 }
 
 .aboncon .aboncard img {
-  max-width: 20em;
+  max-width: 18em;
+  margin: 10px;
+  border-radius: 10px !important;
 }
 
 .aboncon .aboncard .wrt {
