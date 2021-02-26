@@ -412,7 +412,7 @@ html, body {
   display: flex;
   color: white !important;
   width: 100%;
-  height: 100% !important;
+  height: 40em !important;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -1246,6 +1246,11 @@ input[type="radio"]:not(:checked), [type="radio"]:checked {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 1em;
+}
+
+.footer-a .btn {
+  margin-top: 1em !important;
 }
 
 .cart-a {
@@ -1695,6 +1700,11 @@ body {
 
 .ndcolor {
   background: var(--left-bg-color) !important;
+  border-radius: 10px;
+}
+
+.grcolor {
+  background: gray !important;
   border-radius: 10px;
 }
 
@@ -2601,10 +2611,6 @@ body {
 .aboncon .form form .radio label {
   color: white;
   font-size: medium;
-}
-
-.aboncon .form .footer-a {
-  margin-top: 1em;
 }
 
 .aboncon .aboncard {

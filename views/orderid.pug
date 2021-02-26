@@ -30,46 +30,25 @@ block content
                 - var totalprod = 0
                 - var totalabon = 0
                 
-                //- .section 
-                //-     .title Ordered Products
-                //-     .content
-                //-         for prod in order.products
-                //-             .ab-group
-                //-                 .titleimg
-                //-                     .title2 #{productArr.find(el => el.id == prod.id).name}
-                //-                     .image-cropper
-                //-                         img(src = '/images/'+ productArr.find(el => el.id == prod.id).image style='border-radius: 50% !important; margin: 5px;')
-                //-                 .quan 
-                //-                     - var price = 0
-                //-                     if order.products[0].price
-                //-                         - price = order.products.find(el => el.id == prod.id).price
-                //-                     else 
-                //-                         - price = productArr.find(el => el.id == prod.id).price
-                //-                     span Quantity #{prod.quantity}
-                //-                     - totalprod+=prod.quantity*price/100
-                //-                     span Price #{prod.quantity} x #{price/100}=Lei#{prod.quantity*price/100}
-                                    
-                .section
-                    .title Ordered Subscriptions
+                .section 
+                    .title Ordered Products
                     .content
-                        if order.subscriptionsId
-                            for subid in order.subscriptionsId
-                                .ab-group
-                                    .titleimg
-                                        .image-cropper
-                                            img(src = '/images/'+ abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).image style='border-radius: 50% !important; margin: 5px;')
-                                        .title2 #{abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).name}
-                                    .perfumechoices
-                                        span Perfumes:
-                                        for perfid in subsArr.find(el=> el.id == subid).parfumes
-                                            .titleimg-n
-                                                .image-cropper
-                                                    img(src = '/images/'+ productArr.find(el2=> el2.id == perfid).image style='border-radius: 50% !important; margin: 5px;')
-                                                .title2 #{productArr.find(el2=> el2.id == perfid).name}
-                                    .quan 
-                                        span(style='word-wrap: break-word; overflow-wrap: break-word; max-width: 100px') id: #{subid}
-                                        - totalabon+=abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).price/100
-                                        span(style='word-wrap: break-word; overflow-wrap: break-word;') Price Lei#{abons.find(el => el.id == subsArr.find(el2=> el2.id == subid).abonamentID).price/100}
+                        for prod in order.products
+                            .ab-group
+                                .titleimg
+                                    .title2 #{productArr.find(el => el.id == prod.id).name}
+                                    .image-cropper
+                                        img(src = '/images/'+ productArr.find(el => el.id == prod.id).image style='border-radius: 50% !important; margin: 5px;')
+                                .quan 
+                                    - var price = 0
+                                    if order.products[0].price
+                                        - price = order.products.find(el => el.id == prod.id).price
+                                    else 
+                                        - price = productArr.find(el => el.id == prod.id).price
+                                    span Quantity #{prod.quantity}
+                                    - totalprod+=prod.quantity*price/100
+                                    span Price #{prod.quantity} x #{price/100}=Lei#{prod.quantity*price/100}
+                                    
                 .section 
                     .title 
                     .content 

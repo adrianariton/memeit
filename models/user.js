@@ -237,15 +237,7 @@ module.exports.removeFromAbonCart = function(username, parfume, callback){
     //{ $addToSet: { colors: "c" } }
 }*/
 
-module.exports.setAbonCart = function(username, parfume, callback){
-    console.log(parfume)
-    
-    User.update({username: username}, { $set: { m_abonamentCart: parfume,cart: [] } }).then(res =>{
-        console.log(res)
-        callback(res, parfume)
-    })
-    //{ $addToSet: { colors: "c" } }
-}
+
 
 
 module.exports.verify = function(uid, callback){
@@ -271,16 +263,7 @@ module.exports.getCart = function(username, callback){
             Parfumes.find({ _id : { $in: ids } },(err2, parfumes)=>{
                 if(err2) throw err2
                 console.log('\nParfumes: ')
-                Abonaments.find({ _id : { $in: abonids } },(err3, abons)=>{
-                    if(err3) throw err3
-                    console.log('\nAbons: ')
-                    
-                    console.log(abons)
-                    console.log(parfumes)
-                    if(parfumes){
-                        callback(parfumes, abons)
-                    } 
-                })
+                callback(parfumes, null)
                 
             })
             

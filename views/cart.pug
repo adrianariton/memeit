@@ -7,19 +7,18 @@ block content
         script(defer).
             const stripePublicKey = "#{stripePublicKey}"
             const cart = [!{cart}]
-            const abcart = [!{abcart}]
         script(src='../javascripts/cart.js')
         <script src="https://js.stripe.com/v3/"></script>
     if user
         if true
             .container.cartcont(style='top: 65px !important; position: relative;')
                 if cart && cart!=[] && cart!=''
-                    .cart-q
+                    .cart-q.content
                         h7 #{user.username}'s shopping cart:
                         - var i = 0
                         while i <= cart.length-1
                             //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
-                            .r(data-item-id = ids[i] )
+                            .r.ab-group(data-item-id = ids[i] )
                                 span ##{i+1}.
                                 .image-cropper
                                     img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
@@ -65,7 +64,7 @@ block content
                                 span Transport: 0.00 Lei
                                 span.total(style='border-top: 1px solid grey !important;')
                                 .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Finish Order
-                                .btn.backbutton.ndcolor.btn.largebtn(onclick = 'backClicked()') Back
+                                .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Back
                         else 
                             .con
                                 span You have to be verified and to add an address to order! Go to <a href='/myaccount'> My Account</a>!

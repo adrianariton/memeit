@@ -310,7 +310,7 @@ bottom: 0 !important;
   display: flex;
   color: white !important;
   width: 100%;
-  height: 100% !important;
+  height: 40em !important;
   @include flex-column();
   justify-content: center;
   align-items: center;
@@ -860,9 +860,15 @@ position: relative !important;
 pointer-events: all !important;
 margin: .4rem;
 }
+ 
 .footer-a{
-@include flex-column();
-}
+  @include flex-column();
+
+  margin-top: 1em;
+  .btn{
+    margin-top: 1em !important;
+  }
+} 
 .cart-a{
 margin-top: 40px !important;
 select, option{
@@ -1170,7 +1176,10 @@ input{
 background: var(--left-bg-color)  !important;
 border-radius: 10px;
 }
-
+.grcolor{
+  background: gray !important;
+  border-radius: 10px;
+  }
 .cartcont{
 margin-top: 40px;
 display: flex;
@@ -1778,9 +1787,7 @@ position: relative;
     }
     
   } 
-  .footer-a{
-    margin-top: 1em;
-  } 
+
 }
 top: 130px !important;
 .aboncard{

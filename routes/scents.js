@@ -27,7 +27,6 @@ module.exports = function(io){
    // console.log('\n\n\n\n');
     if(req.user){
       var ids = []
-      var abids = []
         User.getCart(req.user.username, ( parfarr, abarr)=>{
           if(true){
             console.log('\n\n\n\n\n\n pfar')
@@ -44,27 +43,14 @@ module.exports = function(io){
               console.log(cop)
               
             })
-            abarr.forEach(el=>{
-              var cop = {};
-              abids.push(el._id)
-              delete el._doc._id
-              for (const [key, value] of Object.entries(el._doc)) {
-                if(key !== '_id'){
-                  cop[key] = value
-                }
-              }
-              console.log('\N\N\NNO ID:')
-              console.log(cop)
-            })
+           
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
               Parfumes.find({}, (err, allparfumes)=>{
-                Abonaments.findById(req.user.m_abonamentCart, (err, uabon)=>{
                   console.log(allparfumes)
-                  res.render('cart', {abon: uabon, allscents: allparfumes, stripePublicKey: stripePublicKey, cart: parfarr,abids: abids, ids: ids, stripe: data_stripe.data, abcart: abarr});
+                  res.render('cart', {allscents: allparfumes, stripePublicKey: stripePublicKey, cart: parfarr,ids: ids, stripe: data_stripe.data});
   
-                })
                 
               })
   
@@ -86,6 +72,7 @@ module.exports = function(io){
       let cartids = []
       var qs = {}
       console.log(req.body)
+      var items = req.body.items
       req.body.items.forEach(item=>{
         cartids.push(item.id)
         qs[item.id] = item.quantity;
@@ -409,15 +396,13 @@ module.exports = function(io){
           men = data
           console.log('MEEEEN')
           console.log(men)
-          Subscriptions.findOne({userID: req.user? req.user._id: null, status: 'ordered'}, (error, usersub)=>{
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
               console.log(data_stripe)
-              res.render('scents', { subscription: usersub, input: req.params.query, title: 'Men', scents: men, stripe: data_stripe.data});
+              res.render('scents', { input: req.params.query, title: 'Men', scents: men, stripe: data_stripe.data});
   
             });
-          })
 
         })
         
@@ -426,14 +411,12 @@ module.exports = function(io){
         var women;
         Parfumes.getWomen((err, data)=>{
           women = data
-          Subscriptions.findOne({userID: req.user? req.user._id: null, status: 'ordered'}, (error, usersub)=>{
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
-              res.render('scents', {subscription: usersub, input: req.params.query, title: 'Women', scents: women, stripe: data_stripe.data});
+              res.render('scents', {input: req.params.query, title: 'Women', scents: women, stripe: data_stripe.data});
   
             })
-          })
 
 
         })
@@ -443,7 +426,6 @@ module.exports = function(io){
           
           Parfumes.find({},(err, data)=>{
             scents = data
-            Subscriptions.findOne({userID: req.user? req.user._id: null, status: 'ordered'}, (error, usersub)=>{
               stripe.products.list({
                 limit: product_number,
               }).then(data_stripe => {
@@ -453,13 +435,12 @@ module.exports = function(io){
                   } else {
                     console.log('----ABONAMENTS----')
                     console.log(data_abonaments)
-                    res.render('abonaments', { subscription: usersub,input: req.params.query, title: 'Abonaments', scents: scents, abonaments: data_abonaments, stripe: data_stripe.data});
+                    res.render('abonaments', { input: req.params.query, title: 'Abonaments', scents: scents, abonaments: data_abonaments, stripe: data_stripe.data});
   
                   }
                 })
   
               })
-            })
             
 
           })
