@@ -82,68 +82,60 @@ module.exports = function(io){
   router.post('/done', function(req,res,next){
     if(req.user){
       console.log('BODY')
+      let total = 0
+      let cartids = []
+      var qs = {}
+      console.log(req.body)
+      req.body.items.forEach(item=>{
+        cartids.push(item.id)
+        qs[item.id] = item.quantity;
+      })
       console.log(req.body)
       //console.log(stripePublicKey, stripeSecretKey
-      var abid = req.user.m_abonamentCart
-      console.log(abid)
+      Parfumes.find({_id: {$in : cartids}}, (err, parfumes)=>{
+        if(err) throw err;
+        var i=0;
+        parfumes.forEach(doc=>{
+          total+=doc.price * qs[doc._id];
+        })
         const chargeMe = ()=>{
           //console.log(req.body.stripeTokenId)
-          Abonaments.findById(abid, (err, abon)=>{
-            var Obid = new ObjectID()
-            console.log('HCGSJWBLBPRJ3', Obid)
-            Subscriptions.create(new Subscriptions({
-              _id: Obid,
-              userID: req.user._id,
-              abonamentID: abid,
-              parfumes: req.user.cart.slice(0, abon.parfumeChoices)
-            }), (err2, result)=>{
-              if(err2){
-                console.log('err2')
-                console.log(err2, result)
-                console.log('res')
-                res.json({error: true, message:'You already have an active subscription this month!'})
-
-              } else {
-                  Orders.create(new Orders({
-                    amount: abon.price,
-                    currency: 'usd',
-                    userID: req.user._id,
-                    email: req.user.email,
-                    shipping: {
-                      address: {
-                        line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
-                        city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
-                        country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
-                        postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
-                        state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
-                      },
-                      name: `${req.user.name} ${req.user.vorname}`
-                    },
-                    products: [],
-                    deliverymethod: req.body.deliverymethod,
-                    subscriptionsId: Obid
-                    
-                  }),(err,ordercr)=>{
-                    User.emptyCart(req.user.username, (err2, result)=>{
-                      console.log(err)
-                      if(!err){
-                        console.log('Charge Succesfull ')
-                        console.log(result)
-                        res.json({error: false, message:'Successfully ordered!', order: ordercr})
-                      } else {
-                        console.log('Charge Failed ')
-                        console.log(result)
-                        res.json({error: true, message:'Something went wrong!'})
-                      }
-                    })
-                    
+          
+          Orders.create(new Orders({
+            amount: total,
+            currency: 'usd',
+            userID: req.user._id,
+            email: req.user.email,
+            shipping: {
+              address: {
+                line1: JSON.parse(req.user.addresses[req.body.addressnr]).street,
+                city: JSON.parse(req.user.addresses[req.body.addressnr]).city,
+                country: JSON.parse(req.user.addresses[req.body.addressnr]).country,
+                postal_code: JSON.parse(req.user.addresses[req.body.addressnr]).zip,
+                state: JSON.parse(req.user.addresses[req.body.addressnr]).state ? JSON.parse(req.user.addresses[req.body.addressnr]).state: JSON.parse(req.user.addresses[req.body.addressnr]).county
+              },
+              name: `${req.user.name} ${req.user.vorname}`
+            },
+            products: items,
+            deliverymethod: req.body.deliverymethod
             
-                  
-                    //add to db
-                  })
+          }),(err,ordercr)=>{
+            User.emptyCart(req.user.username, (err2, result)=>{
+              console.log(err)
+              if(!err){
+                console.log('Charge Succesfull ')
+                console.log(result)
+                res.json({error: false, message:'Successfully ordered!', order: ordercr})
+              } else {
+                console.log('Charge Failed ')
+                console.log(result)
+                res.json({error: true, message:'Something went wrong!'})
               }
-              
             })
+            
+    
+          
+            //add to db
           })
           
           
@@ -156,11 +148,14 @@ module.exports = function(io){
           
           //        
         } 
+      })
+        
+        
 
         
       
     }else {
-      res.render('youneedlogin', {input: 'purchase'})
+      res.redirect('/')
     }
   })
   /*router.post('/done', function(req,res,next){
@@ -477,8 +472,6 @@ module.exports = function(io){
         console.log('steau e numai unaa /n/n')
         User.addToCart(user, parfume, (res)=>{
           console.log(res)
-        },/*cartfull*/ (userdoc, abon)=>{
-          socket.emit('cart-msg', `You reached the maximum limit of perfumes (${abon.parfumeChoices}) you can by using your ${abon.name} subscription! You can go to <a href='/scents/subscriptions'>Subscriptions Page</a> and choose another subscription if you'd like.`)
         })
       })
       socket.on('remove-from-cart',(user, parfume) =>{

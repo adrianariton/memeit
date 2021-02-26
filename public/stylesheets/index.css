@@ -1289,7 +1289,7 @@ input[type="radio"]:not(:checked), [type="radio"]:checked {
 
 .cart-a .form-row * {
   color: white !important;
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
 
 .cart-a .form-row h4 {
@@ -1712,6 +1712,14 @@ body {
           align-items: stretch;
 }
 
+.cartcont * {
+  color: white !important;
+}
+
+.cartcont * {
+  opacity: 1 !important;
+}
+
 .cartcont .r, .cartcont .r2 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1731,6 +1739,10 @@ body {
   -webkit-box-pack: center !important;
       -ms-flex-pack: center !important;
           justify-content: center !important;
+}
+
+.cartcont .r.r *, .cartcont .r2.r * {
+  color: white !important;
 }
 
 @media screen and (max-width: 600px) {

@@ -4,41 +4,20 @@ $(document).ready(()=>{
         const url = 'https://ascentro.herokuapp.com/'
         const socket = io.connect(url);
         $('.modal').modal();
-        if(currentuser){
-            socket.on('cart-msg', msg=>{
         
-                Swal.fire({
-                    icon: 'error',
-                    title: '',
-                    html: msg,
-                    footer: '<a href>Contact us!</a>'
-                }).then(res=>{
-                    window.location.reload()
-                })
-            })
-        }
         
         $(".buddy .card .addtocart").click((ev)=>{
             if(currentuser){
-                if(hasabon == 0){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        html: `You dont have any active subscriptions! Go to <a href='/scents/subscriptions/'>Subscriptions</a>!`,
-                        footer: '<a href>Contact us!</a>'
-                    })
-                } else {
-                    console.log(!$(ev.target).parent().hasClass('removefromcart'))
-                    $(ev.target).parent().toggleClass('aaa')
-                    console.log($(ev.target).parent())
-                    if(!$(ev.target).parent().hasClass('removefromcart')){
-                        $(ev.target).parent().toggleClass('removefromcart')
-                        socket.emit('add-to-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
-                    } else if($(ev.target).parent().hasClass('removefromcart')){
-                        $(ev.target).parent().toggleClass('removefromcart')
-                        socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
-                    }    
-                }
+                console.log(!$(ev.target).parent().hasClass('removefromcart'))
+                $(ev.target).parent().toggleClass('aaa')
+                console.log($(ev.target).parent())
+                if(!$(ev.target).parent().hasClass('removefromcart')){
+                    $(ev.target).parent().toggleClass('removefromcart')
+                    socket.emit('add-to-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
+                } else if($(ev.target).parent().hasClass('removefromcart')){
+                    $(ev.target).parent().toggleClass('removefromcart')
+                    socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
+                }    
             } else {
                 Swal.fire({
                     icon: 'error',

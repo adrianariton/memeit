@@ -22,16 +22,10 @@ function cClicked() {
         totalprice += el.price * document.querySelectorAll('.q')[i].value
         i++;
     })
-    var abprice = 0
-    i=0
-    abcart.forEach(el=>{
-        abprice += el.price;
-        i++;
-    })
+    
     var cartelems = document.querySelectorAll('.r')
     console.log(1.0/3)
     $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
-    $('span.subs').text('Subscriptions: ' + Math.round(abprice*100.0)/10000 + ' Lei')
     $('span.total').text('Total: ' + Math.round((abprice+totalprice)*100.0)/10000 + ' Lei')
 
     $('.cart-a').fadeIn()
@@ -46,7 +40,25 @@ function doneClicked() {
     var i=0
     $('.donebutton').hide()
     $('.wariningafterclick').show()
-    console.log( $('#deliverymethod').val(), $('#addressnr').val())
+    cart.forEach(el=>{
+        totalprice += el.price * document.querySelectorAll('.q')[i].value
+        i++;
+    })
+    var price = totalprice
+    console.log(totalprice)
+    var items = []
+    var cartcontainer = document.querySelector('.cartcont')
+    var cartelems = document.querySelectorAll('.r')
+    cartelems.forEach(r =>{
+        var quantity = r.getElementsByClassName('q')[0].value
+        var id = $(r).data('item-id')
+        items.push({
+            id:id,
+            quantity: quantity
+        })
+    
+    })
+    
     if($('#deliverymethod').val() != null &&  $('#addressnr').val() != null) {
         fetch('/scents/done', {
             method: 'POST',
@@ -55,6 +67,7 @@ function doneClicked() {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
+                items: items,
                 deliverymethod: $('#deliverymethod').val(),
                 addressnr: $('#addressnr').val()
             })
@@ -62,12 +75,11 @@ function doneClicked() {
             
             return res.json()
         }).then(data=>{
-            console.log(data)
             if(data.error){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Something went wrong! ' + data.message,
+                    text: 'Something went wrong! ' + data.error.message,
                     footer: '<a href>Contact us!</a>'
                 })
             } else {
@@ -82,7 +94,7 @@ function doneClicked() {
             
             
         }).catch(err=>{
-            console.log(err)
+            console.error(err)
         })
     } else {
         Swal.fire({

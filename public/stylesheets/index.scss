@@ -888,7 +888,7 @@ option{
   padding: 7px;
   *{
     color: white !important;
-    opacity: 0 !important;
+    opacity: 1 !important;
   }
   background-color: rgb(24, 24, 24);
   margin-bottom: 10px;
@@ -1176,12 +1176,21 @@ margin-top: 40px;
 display: flex;
 flex-direction: column;
 align-items: stretch;
+*{
+  color: white !important;
+}
+*{
+  opacity: 1 !important;
+}
 .r, .r2{
   @include flex-row();
   flex-wrap: wrap;
   &.r{
         justify-content: center !important;
+        *{
+          color: white !important;
 
+        }
   }
   @include min-width(600px){
     //border-top: 1px grey solid;
