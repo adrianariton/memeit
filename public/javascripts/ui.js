@@ -1,5 +1,5 @@
 
-const menu = document.querySelector(".menu")
+const menu = document.querySelector("li.menu")
 const sidenav = document.querySelector(".customsidenav")
 
 
@@ -130,9 +130,9 @@ $(document).ready(function(){
   $(document).mouseup(function(e) 
   {
       var container = $(".customsidenav");
-
+      
       // if the target of the click isn't the container nor a descendant of the container
-      if (!container.is(e.target) && container.has(e.target).length === 0) 
+      if (!container.is(e.target) && !$('li.menu').is(e.target) && container.has(e.target).length === 0 && $('li.menu').has(e.target).length === 0) 
       {
         sidenav.classList.remove("active");
 
