@@ -66,7 +66,10 @@ module.exports = function(io){
    
   });
   router.post('/done', function(req,res,next){
-    if(req.user){
+    console.log(req.get('host'))
+    var cando = process.env.NODE_ENV !=='production' ? true : (req.get('host') == 'www.ascentperfumes.com')
+    console.log(cando)
+    if(req.user && cando){
       console.log('BODY')
       let total = 0
       let cartids = []

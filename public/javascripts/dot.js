@@ -31,7 +31,7 @@ $(document).ready(()=>{
              
         
         })
-        /*$(".remove-cart-item i").click((ev)=>{
+        $(".remove-cart-item i").click((ev)=>{
             console.log('dhw')
     
             socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
@@ -40,7 +40,7 @@ $(document).ready(()=>{
             $(ev.target).parent().parent().remove()
             location.reload();
 
-        })*/
+        })
 
         $(".abonaments .card .addtocart").click((ev)=>{
             console.log('dhw')

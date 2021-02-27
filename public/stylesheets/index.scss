@@ -233,6 +233,7 @@ h1 {
 .andu {
   top: 0 !important;
   padding-top: 65px;
+  min-height: calc(100vh - 130px) !important;
 }
 
 .navbar-unfix {
@@ -895,7 +896,8 @@ background-color: rgb(10, 10, 10);
   @include flex-row();
   justify-content: flex-start;
   a{
-    margin-right: .5em;
+    margin-right: 1em;
+    margin-bottom: 1em;
     i{
       cursor: pointer;
       font-size: x-large;
