@@ -424,7 +424,9 @@ module.exports = function(io){
 
         })
         
-      } else if(req.params.query == 'subscriptions'){
+      } else{
+        res.redirect('/')
+      } /*if(req.params.query == 'subscriptions'){
           var scents
           
           Parfumes.find({},(err, data)=>{
@@ -447,7 +449,7 @@ module.exports = function(io){
             
 
           })
-      }
+      }*/
   });
   mongoc.connect('mongodb+srv://root:Adrianecelmaiboss@cluster0-6ijeg.mongodb.net/ascent?retryWrites=true&w=majority', function(err, db){
     io.on('connection', socket =>{

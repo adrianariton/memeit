@@ -58,16 +58,13 @@ html
         li
           a(href='/scents/women') For women
 
-        span Shop & Subscriptions
-        li
-          a(href='/scents/subscriptions') Subscriptions
         if user
-          
-          li.flex.showon-sw
-            a(href='/scents/cart').flex Shopping Cart
-                //i(class="material-icons") shopping_cart
-          li.flex
-            a(href='/myaccount/orders') My orders
+          span Shop & Subscriptions  
+            li.flex.showon-sw
+              a(href='/scents/cart').flex Shopping Cart
+                  //i(class="material-icons") shopping_cart
+            li.flex
+              a(href='/myaccount/orders') My orders
           
 
         if user
