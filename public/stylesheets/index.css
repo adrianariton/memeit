@@ -188,7 +188,6 @@ h1 {
 
 .mainbody {
   position: relative;
-  top: 65px !important;
   width: 100vw !important;
   overflow: hidden;
   overflow-y: auto;
@@ -233,6 +232,12 @@ html, body {
   cursor: pointer !important;
 }
 
+input.q {
+  border: none !important;
+  background-color: #0a0a0a !important;
+  margin-right: 10px !important;
+}
+
 @media (max-width: 800px) {
   h1 {
     font-size: 2rem;
@@ -253,11 +258,51 @@ html, body {
 }
 
 .navbar {
+  position: fixed !important;
+  background-color: rgba(30, 30, 30, 0.6) !important;
+  top: 0;
+}
+
+.andu-unfix {
+  padding-top: 0px !important;
+}
+
+.andu {
+  top: 0 !important;
+  padding-top: 65px;
+}
+
+.navbar-unfix {
+  position: relative !important;
+  background-color: rgba(30, 30, 30, 0.6) !important;
+}
+
+div.top-oferta {
+  background-color: #141414 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+div.top-oferta span {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--left-bg-color) !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.navbar, .navbar-unfix {
   width: 100%;
-  position: fixed;
   height: 65px !important;
   z-index: 1000;
-  background-color: rgba(30, 30, 30, 0.6) !important;
   -webkit-backdrop-filter: blur(40px) !important;
           backdrop-filter: blur(40px) !important;
   display: -webkit-box;
@@ -275,21 +320,21 @@ html, body {
           justify-content: space-between;
 }
 
-.navbar * {
+.navbar *, .navbar-unfix * {
   font-size: large;
   color: #fff !important;
 }
 
-.navbar .navbar-header {
+.navbar .navbar-header, .navbar-unfix .navbar-header {
   z-index: 2;
 }
 
-.navbar .navbar-header .navbar-brand {
+.navbar .navbar-header .navbar-brand, .navbar-unfix .navbar-header .navbar-brand {
   padding-left: 5px;
   padding-right: 1em;
 }
 
-.navbar .navbar-center {
+.navbar .navbar-center, .navbar-unfix .navbar-center {
   position: absolute;
   width: 100%;
   display: -webkit-box;
@@ -307,16 +352,16 @@ html, body {
           justify-content: center;
 }
 
-.navbar .navbar-center a {
+.navbar .navbar-center a, .navbar-unfix .navbar-center a {
   font-size: 2em !important;
   font-family: "Felix Titling" !important;
 }
 
-.navbar .navbar-body {
+.navbar .navbar-body, .navbar-unfix .navbar-body {
   z-index: 2;
 }
 
-.navbar .nav {
+.navbar .nav, .navbar-unfix .nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -329,23 +374,23 @@ html, body {
           align-items: center;
 }
 
-.navbar .nav li {
+.navbar .nav li, .navbar-unfix .nav li {
   padding-left: 1em;
   padding-right: 1em;
 }
 
-.navbar .nav li:hover a {
+.navbar .nav li:hover a, .navbar-unfix .nav li:hover a {
   color: #bbbbbb !important;
 }
 
 @media screen and (max-width: 600px) {
-  .navbar .nav li {
+  .navbar .nav li, .navbar-unfix .nav li {
     padding-left: 0.3em !important;
     padding-right: 1em !important;
   }
 }
 
-.navbar .menu {
+.navbar .menu, .navbar-unfix .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -479,17 +524,19 @@ html, body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(27, 27, 27, 0.5) !important;
   -webkit-backdrop-filter: blur(40px) !important;
           backdrop-filter: blur(40px) !important;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .mw .left {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(27, 27, 27, 0.5) !important;
   -webkit-backdrop-filter: blur(40px) !important;
           backdrop-filter: blur(40px) !important;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 @media (min-height: 700px) {
@@ -731,7 +778,20 @@ html, body {
 }
 
 .customsidenav {
-  position: fixed;
+  position: fixed !important;
+}
+
+.customsidenav-unfix {
+  position: fixed !important;
+}
+
+.customsidenav-unfix .content {
+  top: 130px !important;
+  -webkit-transition: top 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out;
+}
+
+.customsidenav, .customsidenav-unfix {
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
@@ -753,9 +813,11 @@ html, body {
           backdrop-filter: blur(40px) !important;
 }
 
-.customsidenav .content {
+.customsidenav .content, .customsidenav-unfix .content {
+  -webkit-transition: top 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out;
   position: relative;
-  top: 65px !important;
+  top: 65px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -774,7 +836,7 @@ html, body {
   padding-bottom: 2em;
 }
 
-.customsidenav .content span {
+.customsidenav .content span, .customsidenav-unfix .content span {
   float: left;
   color: grey;
   width: calc(300px - 20px);
@@ -786,35 +848,35 @@ html, body {
   margin-bottom: 7px;
 }
 
-.customsidenav .content li {
+.customsidenav .content li, .customsidenav-unfix .content li {
   padding-top: .2em;
   padding-bottom: .4em;
 }
 
-.customsidenav .content li:hover a {
+.customsidenav .content li:hover a, .customsidenav-unfix .content li:hover a {
   color: #bbbbbb !important;
 }
 
-.customsidenav .content li a {
+.customsidenav .content li a, .customsidenav-unfix .content li a {
   font-size: larger;
 }
 
-.customsidenav .content li a:hover {
+.customsidenav .content li a:hover, .customsidenav-unfix .content li a:hover {
   color: #bbbbbb !important;
 }
 
-.customsidenav li {
+.customsidenav li, .customsidenav-unfix li {
   list-style: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.customsidenav li a {
+.customsidenav li a, .customsidenav-unfix li a {
   color: white !important;
 }
 
-.customsidenav.active {
+.customsidenav.active, .customsidenav-unfix.active {
   -webkit-transform: translateX(0vw);
           transform: translateX(0vw);
 }
@@ -1385,7 +1447,6 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  top: 65px !important;
   background: -webkit-gradient(linear, left top, left bottom, from(#111111), to(#111111)), url(../images/texturepainting.jpg);
   background: linear-gradient(#111111, #111111), url(../images/texturepainting.jpg);
   background-position: center;

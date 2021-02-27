@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    .mainmyacc
+    .mainmyacc.andu.andu-unfix
         .container.myacc
             .header
                 .header-head
@@ -36,9 +36,9 @@ block content
                         for prod in order.products
                             .ab-group
                                 .titleimg
-                                    .title2 #{productArr.find(el => el.id == prod.id).name}
                                     .image-cropper
                                         img(src = '/images/'+ productArr.find(el => el.id == prod.id).image style='border-radius: 50% !important; margin: 5px;')
+                                    .title2 #{productArr.find(el => el.id == prod.id).name}
                                 .quan 
                                     - var price = 0
                                     if order.products[0].price

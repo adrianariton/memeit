@@ -20,7 +20,9 @@ html
 
   body
     link(rel='stylesheet', href='/stylesheets/index.css')
-    .navbar
+    div(style='position: relative !important; z-index: 2000', class='top-oferta')
+      span(style='color: white') Oferta Noua!
+    .navbar-unfix.navbar
       .navbar-header.flex
         a.navbar-brand(href='../').flex
           img.logoimg(src='/images/logo.png')
@@ -42,7 +44,7 @@ html
                   i(class="material-icons") shopping_cart
           li.menu
               i(class='material-icons') menu
-    .customsidenav
+    .customsidenav.customsidenav-unfix
       .content.container
         if !user
           li.register(class =(title == 'Register' ? 'active' : ''))

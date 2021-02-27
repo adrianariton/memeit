@@ -11,75 +11,76 @@ block content
         <script src="https://js.stripe.com/v3/"></script>
     if user
         if true
-            .container.cartcont(style='top: 65px !important; position: relative;')
-                if cart && cart!=[] && cart!=''
-                    .cart-q.content
-                        h7 #{user.username}'s shopping cart:
-                        - var i = 0
-                        while i <= cart.length-1
-                            //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
-                            .r.ab-group(data-item-id = ids[i] )
-                                span ##{i+1}.
-                                .image-cropper
-                                    img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
-                                a.name(href='/scents/'+cart[i].mw) #{cart[i].name}
-                                label(for='quantity') Quantity
-                                input.q(type="number" name="quantity" min="1" max="100" value='1')
-                                .btn.btn-prymary.remove-cart-item
-                                    i.material-icons.large remove_circle
-                            - i++
-                        - i=0
-                        
-                        br
-                        br
-                        br
-                        .btn.cbutton.ndcolor.btn.largebtn(onclick = 'cClicked()') Start Order
-                        br
-                        br
-                        br
-                    .cart-a
-                        if user.status == 'verified' && user.addresses != []
-                            h7 Fill in your delivery info!
-                            <form action="/scents/done" method="post" id="payment-form">
-                                <div class="form-row">
-                                    <label for="deliverymethod">Choose a delivery method:</label>
-                                    .custom-select2
-                                        <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
-                                            <option value="postro">Posta Romana</option>
-                                            <option value="curier">Curier</option>
-                                        </select>
-                                    <label for="addressnr">Choose address:</label>
-                                    .custom-select2
-                                        <select  id="addressnr" name="addressnr" style='display: block;'>
-                                            - var i=0
-                                            for address in user.addresses 
-                                                option(value=i) Address #{i+1}
-                                                - i++
-                                        </select>
-                                </div>
-                            </form>
-                            .footer-a
-                                span.perfumes
-                                span.subs
-                                span Transport: 0.00 Lei
-                                span.total(style='border-top: 1px solid grey !important;')
-                                .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Finish Order
-                                .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Back
-                        else 
-                            .con
-                                span You have to be verified and to add an address to order! Go to <a href='/myaccount'> My Account</a>!
-                        br
-                        br
-                        br
-                else 
-                    .con
-                        span Please add at least one item to your cart, and at least one perfume! 
-                        .mw
-                            div(class="women split left")
-                                a(href='/scents/women') &#9792;
-                            .separe
-                            div(class="men split right")
-                                a(href='/scents/men') &#9794;            
+            .andu.andu-unfix
+                .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
+                    if cart && cart!=[] && cart!=''
+                        .cart-q.content
+                            h5 #{user.username}'s shopping cart:
+                            - var i = 0
+                            while i <= cart.length-1
+                                //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
+                                .r.ab-group(data-item-id = ids[i] )
+                                    span(style="font-weight: bold; padding: 10px") #{i+1}.
+                                    .image-cropper
+                                        img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
+                                    a.name(href='/scents/'+cart[i].mw, style='word-wrap: break-word; overflow-wrap: break-word;') #{cart[i].name}
+                                    label(for='quantity') Quantity
+                                    input.q(type="number" name="quantity" min="1" max="100" value='1')
+                                    .btn.btn-prymary.remove-cart-item
+                                        i.material-icons.large remove_circle
+                                - i++
+                            - i=0
+                            
+                            br
+                            br
+                            br
+                            .btn.cbutton.ndcolor.btn.largebtn(onclick = 'cClicked()') Start Order
+                            br
+                            br
+                            br
+                        .cart-a
+                            if user.status == 'verified' && user.addresses != []
+                                h7 Fill in your delivery info!
+                                <form action="/scents/done" method="post" id="payment-form">
+                                    <div class="form-row">
+                                        <label for="deliverymethod">Choose a delivery method:</label>
+                                        .custom-select2
+                                            <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
+                                                <option value="postro">Posta Romana</option>
+                                                <option value="curier">Curier</option>
+                                            </select>
+                                        <label for="addressnr">Choose address:</label>
+                                        .custom-select2
+                                            <select  id="addressnr" name="addressnr" style='display: block;'>
+                                                - var i=0
+                                                for address in user.addresses 
+                                                    option(value=i) Address #{i+1}
+                                                    - i++
+                                            </select>
+                                    </div>
+                                </form>
+                                .footer-a
+                                    span.perfumes
+                                    span.subs
+                                    span Transport: 0.00 Lei
+                                    span.total(style='border-top: 1px solid grey !important;')
+                                    .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Finish Order
+                                    .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Back
+                            else 
+                                .con
+                                    span You have to be verified and to add an address to order! Go to <a href='/myaccount'> My Account</a>!
+                            br
+                            br
+                            br
+                    else 
+                        .con
+                            span Please add at least one item to your cart, and at least one perfume! 
+                            .mw
+                                div(class="women split left")
+                                    a(href='/scents/women') &#9792;
+                                .separe
+                                div(class="men split right")
+                                    a(href='/scents/men') &#9794;            
         script(src='/javascripts/mwui.js')
         script.
             const currentuser = '#{user.username}'

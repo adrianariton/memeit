@@ -157,7 +157,7 @@ margin: 0 0 0 0 !important;
 .mainbody{
   position: relative;
 //top: 260px !important; IFF
-top: 65px !important;
+//top: 65px !important;
 //  min-height: 150vh;
   width: 100vw !important;
   overflow: hidden;
@@ -196,8 +196,11 @@ min-width: 0em;
 cursor: pointer !important;
 }
 
-
-
+input.q {
+  border: none !important;
+  background-color: rgb(10, 10, 10) !important;
+  margin-right: 10px !important; 
+}
 
 @media(max-width: 800px) {
 h1 {
@@ -217,12 +220,46 @@ h1 {
 .material-icons{
   font-family: "Material Icons" !important;
 }
-.navbar{
+.navbar {
+  position: fixed !important;
+  background-color:rgba(30, 30, 30, 0.6) !important;
+  top: 0;
+}
+
+.andu-unfix {
+  padding-top: 0px !important;
+}
+
+.andu {
+  top: 0 !important;
+  padding-top: 65px;
+}
+
+.navbar-unfix {
+  position: relative !important;
+  background-color:rgba(30, 30, 30, 0.6) !important;
+}
+
+div.top-oferta {
+  background-color: rgb(20, 20, 20) !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  span {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--left-bg-color) !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+.navbar, .navbar-unfix{
   width: 100%;
-  position: fixed;
+//  position: fixed;
   height: 65px !important;
   z-index: 1000;
-  background-color:rgba(30, 30, 30, 0.6) !important;
+  
   backdrop-filter: blur(40px) !important;
   @include flex-row();
   *{
@@ -342,14 +379,16 @@ a{
 .right{
   @include flex-row();
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(27, 27, 27, 0.5) !important;
   backdrop-filter: blur(40px) !important;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .left {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(27, 27, 27, 0.5) !important;
   backdrop-filter: blur(40px) !important;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 @media(min-height: 700px) {
@@ -520,8 +559,20 @@ align-items: center;
 }
 
 
-.customsidenav{
-  position: fixed;
+.customsidenav {
+  position: fixed !important;
+}
+
+.customsidenav-unfix {
+  position: fixed !important;
+  .content {
+    top: 130px !important;
+    transition: top 0.2s ease-in-out;
+  }
+}
+
+.customsidenav, .customsidenav-unfix {
+  
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
@@ -534,8 +585,9 @@ align-items: center;
   transition: transform 0.3s ease;
   z-index: 9;
   .content{
+    transition: top 0.2s ease-in-out;
       position: relative;
-      top: 65px !important;
+      top: 65px;
       @include flex-column();
       align-items: center;
       justify-content: center;
@@ -993,7 +1045,7 @@ justify-content: center;
   text-transform: capitalize;
 }
 position: relative;
-top: 65px !important;
+//top: 65px !important;
 .buddy{
   position: relative;
   .row{
@@ -1181,6 +1233,7 @@ border-radius: 10px;
   border-radius: 10px;
   }
 .cartcont{
+  //background-color: gray !important;
 margin-top: 40px;
 display: flex;
 flex-direction: column;

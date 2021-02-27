@@ -2,117 +2,118 @@ extends layout
 
 block content
     if user
-        .mainmyacc
-            .container.myacc
-                .header
-                    .header-head
-                        img(src='/images/user-alt.png')
-                        .uinfo
-                            span.name #{user.name} #{user.vorname}
-                            span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
-                .body
-                    .section.main 
-                        .title 
-                            .title2#personal-data Data 
-                            .title2#my-addresses Addresses 
-                            .title2#other Other 
-                            .title2#my-orders Orders
-                        .content.personal-data
-                            .form-group 
-                                label Login Method 
-                                input.form-control(disabled name='loginmethod', type='text', placeholder='Method', value=user.userType)
-                            .form-group
-                                label Nume
-                                input.form-control(disabled name='name', type='text', placeholder='Nume', value=user.name)
-                            .form-group
-                                label Prenume
-                                input.form-control(disabled name='vorname', type='text', placeholder='Prenume', value= user.vorname)
-                            .form-group
-                                label Data Nasterii
-                                input.form-control(disabled name='birthdate', type='text', class="datepicker", placeholder='Data Nasterii', value = user.birthdate)
-                            .form-group
-                                label Username
-                                input.form-control(disabled name='username', type='text', placeholder='Username', value = user.username)
-                            form(method='post', action='/users/myaccount', enctype='multipart/form-data')
-                                span(style='color: gray !important;') If you use Google to log in, you won't be able to change your email!
-                                if user.userType != 'google'
-                                    .form-group
-                                        label E-mail
-                                        input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
-                                    input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
-                        .content.my-addresses
-                            if user.status == 'verified'
-                                - var i = 0
-                                for address in user.addresses
-                                    - i++;
-                                    .addresscontainer
-                                        form.removeaddressform(method='post', action='/users/removeaddress', enctype='multipart/form-data')
-                                            .form-group
-                                                label Address #{i}
-                                                input.form-control(disabled, id=user.addresses[i-1] name='Address #{i}', type='text', placeholder='Address #{i}', value=JSON.parse(user.addresses[i-1]).street +", "+JSON.parse(user.addresses[i-1]).city+ ", "+JSON.parse(user.addresses[i-1]).county+ ", "+JSON.parse(user.addresses[i-1]).country+ ", Zip Code: " + JSON.parse(user.addresses[i-1]).zip)
-                                            .form-group(style='display: none !important;')
-                                                input.form-control(name='toremove', type='text', value=user.addresses[i-1])
-                                            input.btn.btn-prymary(type='submit', name ='submit', value='Remove')
-                                form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
-                                    .form-group
-                                        span(style='color: grey !important;') 'Street' field example: 23 Jordan Street
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="autocomplete" 
-                                                placeholder="Street" name='street')
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="inputCity" 
-                                                placeholder="City" name='city')                               
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="inputState" 
-                                                placeholder="State" name='state')                               
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="inputZip" 
-                                                placeholder="Zip" name='zip')                              
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="inputCounty" 
-                                                placeholder="County" name='county')                              
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="inputCountry" 
-                                                placeholder="Country" name='country')
-                                    input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
-                            else
-                                .verif You need to verify your account!
-                        .content.other
-                            if user.userType != 'google'
-                                if user.status == 'verified'
-                                    form(method='post', action='/users/password', enctype='multipart/form-data')
+        .andu.andu-unfix
+            .mainmyacc
+                .container.myacc
+                    .header
+                        .header-head
+                            img(src='/images/user-alt.png')
+                            .uinfo
+                                span.name #{user.name} #{user.vorname}
+                                span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
+                    .body
+                        .section.main 
+                            .title 
+                                .title2#personal-data Data 
+                                .title2#my-addresses Addresses 
+                                .title2#other Other 
+                                .title2#my-orders Orders
+                            .content.personal-data
+                                .form-group 
+                                    label Login Method 
+                                    input.form-control(disabled name='loginmethod', type='text', placeholder='Method', value=user.userType)
+                                .form-group
+                                    label Nume
+                                    input.form-control(disabled name='name', type='text', placeholder='Nume', value=user.name)
+                                .form-group
+                                    label Prenume
+                                    input.form-control(disabled name='vorname', type='text', placeholder='Prenume', value= user.vorname)
+                                .form-group
+                                    label Data Nasterii
+                                    input.form-control(disabled name='birthdate', type='text', class="datepicker", placeholder='Data Nasterii', value = user.birthdate)
+                                .form-group
+                                    label Username
+                                    input.form-control(disabled name='username', type='text', placeholder='Username', value = user.username)
+                                form(method='post', action='/users/myaccount', enctype='multipart/form-data')
+                                    span(style='color: gray !important;') If you use Google to log in, you won't be able to change your email!
+                                    if user.userType != 'google'
                                         .form-group
-                                            label 
-                                            input.form-control(name='password', type='password', placeholder='Change Password', style='background-color: #0c0c0c !important; border: none !important; border-radius: 10px; padding-left: 10px; padding-right: 10px; width: calc(100% - 20px) !important')
+                                            label E-mail
+                                            input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
                                         input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                            .content.my-addresses
+                                if user.status == 'verified'
+                                    - var i = 0
+                                    for address in user.addresses
+                                        - i++;
+                                        .addresscontainer
+                                            form.removeaddressform(method='post', action='/users/removeaddress', enctype='multipart/form-data')
+                                                .form-group
+                                                    label Address #{i}
+                                                    input.form-control(disabled, id=user.addresses[i-1] name='Address #{i}', type='text', placeholder='Address #{i}', value=JSON.parse(user.addresses[i-1]).street +", "+JSON.parse(user.addresses[i-1]).city+ ", "+JSON.parse(user.addresses[i-1]).county+ ", "+JSON.parse(user.addresses[i-1]).country+ ", Zip Code: " + JSON.parse(user.addresses[i-1]).zip)
+                                                .form-group(style='display: none !important;')
+                                                    input.form-control(name='toremove', type='text', value=user.addresses[i-1])
+                                                input.btn.btn-prymary(type='submit', name ='submit', value='Remove')
+                                    form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
+                                        .form-group
+                                            span(style='color: grey !important;') 'Street' field example: 23 Jordan Street
+                                            input(type="text" 
+                                                    class="form-control" 
+                                                    id="autocomplete" 
+                                                    placeholder="Street" name='street')
+                                            input(type="text" 
+                                                    class="form-control" 
+                                                    id="inputCity" 
+                                                    placeholder="City" name='city')                               
+                                            input(type="text" 
+                                                    class="form-control" 
+                                                    id="inputState" 
+                                                    placeholder="State" name='state')                               
+                                            input(type="text" 
+                                                    class="form-control" 
+                                                    id="inputZip" 
+                                                    placeholder="Zip" name='zip')                              
+                                            input(type="text" 
+                                                    class="form-control" 
+                                                    id="inputCounty" 
+                                                    placeholder="County" name='county')                              
+                                            input(type="text" 
+                                                    class="form-control" 
+                                                    id="inputCountry" 
+                                                    placeholder="Country" name='country')
+                                        input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
                                 else
                                     .verif You need to verify your account!
-                        if false 
-                            .content
-                            .btn.togglesubs Show Subscriptions
-                            .subs#subs
-                                for sub in subs
-                                    .ab-group
-                                        .title2 #{abons.find(element => element.id==sub.abonamentID).name}
-                                        .date #{sub.createdAt}
-                                        if sub.status == 'canceled'
-                                            .date.canceled(style='color: red !important;') Canceled
-                                        .subid Subscription id: #{sub.id}
-                                        .perfumes
-                                            - var cart = sub.parfumes
-                                            - var i=0
-                                            while i <= cart.length-1
-                                                .r
-                                                    .image-cropper.tooltipped(data-position="left" data-tooltip=parfumes.find(el=>el.id==cart[i]).name )
-                                                        img(src = '/images/'+ parfumes.find(el=>el.id==cart[i]).image style='border-radius: 50% !important; margin: 5px; position: relative;')
-                                                - i++
-                                .info Subscription id is used to identify your subscription if you have any problem with it.
-                        .content.my-orders
-                            a.btn.gotoorders(href='/myaccount/orders', style='border-radius: 10px;') Go to my orders
+                            .content.other
+                                if user.userType != 'google'
+                                    if user.status == 'verified'
+                                        form(method='post', action='/users/password', enctype='multipart/form-data')
+                                            .form-group
+                                                label 
+                                                input.form-control(name='password', type='password', placeholder='Change Password', style='background-color: #0c0c0c !important; border: none !important; border-radius: 10px; padding-left: 10px; padding-right: 10px; width: calc(100% - 20px) !important')
+                                            input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                                    else
+                                        .verif You need to verify your account!
+                            if false 
+                                .content
+                                .btn.togglesubs Show Subscriptions
+                                .subs#subs
+                                    for sub in subs
+                                        .ab-group
+                                            .title2 #{abons.find(element => element.id==sub.abonamentID).name}
+                                            .date #{sub.createdAt}
+                                            if sub.status == 'canceled'
+                                                .date.canceled(style='color: red !important;') Canceled
+                                            .subid Subscription id: #{sub.id}
+                                            .perfumes
+                                                - var cart = sub.parfumes
+                                                - var i=0
+                                                while i <= cart.length-1
+                                                    .r
+                                                        .image-cropper.tooltipped(data-position="left" data-tooltip=parfumes.find(el=>el.id==cart[i]).name )
+                                                            img(src = '/images/'+ parfumes.find(el=>el.id==cart[i]).image style='border-radius: 50% !important; margin: 5px; position: relative;')
+                                                    - i++
+                                    .info Subscription id is used to identify your subscription if you have any problem with it.
+                            .content.my-orders
+                                a.btn.gotoorders(href='/myaccount/orders', style='border-radius: 10px;') Go to my orders
             script(src='/javascripts/address.js')

@@ -4,6 +4,31 @@ const sidenav = document.querySelector(".customsidenav")
 
 
 
+//window.onscroll = function() {myFunction()};
+
+var navbar = document.querySelector(".navbar");
+var sticky = navbar.offsetTop;
+var andu = document.querySelectorAll(".andu");
+console.log(sticky)
+
+document.body.addEventListener('scroll', () => {
+  
+  console.log(document.body.scrollTop)
+  if (document.body.scrollTop <= sticky) {
+    navbar.classList.add("navbar-unfix")
+    andu.forEach ((x) => {
+      x.classList.add("andu-unfix")
+    })
+    sidenav.classList.add("customsidenav-unfix")
+  } else {
+    navbar.classList.remove("navbar-unfix");
+    andu.forEach ((x) => {
+      x.classList.remove("andu-unfix")
+    })
+    sidenav.classList.remove("customsidenav-unfix")
+  }
+})
+
 menu.addEventListener("click", ()=>{
     sidenav.classList.toggle("active");
 
@@ -102,6 +127,16 @@ $(document).ready(function(){
     })
   
   }
+  $(document).mouseup(function(e) 
+  {
+      var container = $(".customsidenav");
 
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0) 
+      {
+        sidenav.classList.remove("active");
+
+      }
+  });
 });
       
