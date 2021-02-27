@@ -46,6 +46,9 @@ html
               i(class='material-icons') menu
     .customsidenav.customsidenav-unfix
       .content.container
+        span Main
+        li.home
+          a(href='/') Home
         if !user
           li.register(class =(title == 'Register' ? 'active' : ''))
             a(href='/users/register') Register
@@ -59,12 +62,12 @@ html
           a(href='/scents/women') For women
 
         if user
-          span Shop & Subscriptions  
-            li.flex.showon-sw
-              a(href='/scents/cart').flex Shopping Cart
-                  //i(class="material-icons") shopping_cart
-            li.flex
-              a(href='/myaccount/orders') My orders
+          span Shop & Cart
+          li.flex
+            a(href='/scents/cart').flex Shopping Cart
+                //i(class="material-icons") shopping_cart
+          li.flex
+            a(href='/myaccount/orders') My orders 
           
 
         if user

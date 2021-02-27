@@ -20,7 +20,7 @@ const SecretCodeSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    dateCreated: {
+    createdAt: {
         type: Date,
         default: Date.now(),
         expires: 600000,
