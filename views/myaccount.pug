@@ -39,7 +39,7 @@ block content
                                     if user.userType != 'google'
                                         .form-group
                                             label E-mail
-                                            input.form-control(name='email', type='email', placeholder='E-mail', value= user.email)
+                                            input.form-control(required,name='email', type='email', placeholder='E-mail', value= user.email)
                                         input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
                             .content.my-addresses
                                 if user.status == 'verified'
@@ -60,11 +60,11 @@ block content
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="autocomplete" 
-                                                    placeholder="Street" name='street')
+                                                    placeholder="Street" name='street' required)
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputCity" 
-                                                    placeholder="City" name='city')                               
+                                                    placeholder="City" name='city' required)                               
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputState" 
@@ -72,7 +72,7 @@ block content
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputZip" 
-                                                    placeholder="Zip" name='zip')                              
+                                                    placeholder="Zip" name='zip' required)                              
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputCounty" 
@@ -80,7 +80,7 @@ block content
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputCountry" 
-                                                    placeholder="Country" name='country')
+                                                    placeholder="Country" name='country' required)
                                         input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
                                 else
                                     .verif You need to verify your account!
@@ -90,7 +90,7 @@ block content
                                         form(method='post', action='/users/password', enctype='multipart/form-data')
                                             .form-group
                                                 label 
-                                                input.form-control(name='password', type='password', placeholder='Change Password', style='background-color: #0c0c0c !important; border: none !important; border-radius: 10px; padding-left: 10px; padding-right: 10px; width: calc(100% - 20px) !important')
+                                                input.form-control(required,name='password', type='password', placeholder='Change Password', style='background-color: #0c0c0c !important; border: none !important; border-radius: 10px; padding-left: 10px; padding-right: 10px; width: calc(100% - 20px) !important')
                                             input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
                                     else
                                         .verif You need to verify your account!

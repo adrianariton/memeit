@@ -57,6 +57,7 @@ block content
                                                     option(value=i) Address #{i+1}
                                                     - i++
                                             </select>
+                                        h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].state == '' ? user.addresses[0].county : user.addresses[0].state}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
                                     </div>
                                 </form>
                                 .footer-a
@@ -82,6 +83,7 @@ block content
                                 div(class="men split right")
                                     a(href='/scents/men') &#9794;            
         script(src='/javascripts/mwui.js')
+        script(src='/javascripts/addressdisplay.js')
         script.
             const currentuser = '#{user.username}'
             const addresses = [!{user.addresses}]

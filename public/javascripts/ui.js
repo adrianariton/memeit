@@ -140,3 +140,13 @@ $(document).ready(function(){
   });
 });
       
+$(document).ready(function(){
+  $('.fixed-action-btn').floatingActionButton();
+});
+
+$(document).ready(function(){
+  $('.messages').click(()=>{
+    console.log('fh')
+    $('#messages').hide(140)
+  });
+});

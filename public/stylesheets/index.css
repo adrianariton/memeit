@@ -918,7 +918,43 @@ div.top-oferta span {
           justify-content: center;
   margin: auto;
   position: fixed !important;
-  background-color: rgba(255, 24, 24, 0.438);
+  background-color: rgba(27, 27, 27, 0.4);
+  cursor: pointer;
+}
+
+.messages #messages li {
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.messages #messages ul {
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.messages #messages ul::before {
+  z-index: 2;
+  font-weight: 300;
+  left: 10px !important;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  content: '\00d7';
+  display: block;
+  color: white !important;
 }
 
 .messages #messages .error {
@@ -2745,5 +2781,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.btn-floating {
+  background-color: var(--left-bg-color-clean) !important;
 }
 /*# sourceMappingURL=index.css.map */

@@ -100,9 +100,10 @@ block content
               img.image(src='/images/1.jpg')
               span.comingsoon Coming Soon!
             h1.name Sugerati-ne parfumuri!
-            form
-              input(type="text" placeholder='name')
-              input(type="submit")
+            form(method='post', action='/scents/suggest', enctype='urlencoded')
+              input(type="email" placeholder='Your email' name='email' required)
+              input(type="text" placeholder='Suggestion' name='suggestion' required )
+              input.btn.grcolor(type="submit")
   if user
     script(type='text/javascript').
       const currentuser = '#{user.username}'

@@ -676,6 +676,7 @@ background-color: rgba(70, 255, 24, 0.452) !important;
 color: white !important;
 
 }
+
 .messages{ 
     
 z-index: 1;
@@ -686,9 +687,32 @@ width: 100% !important;
 justify-content: center;
 margin: auto;
 position: fixed !important;
-background-color: rgba(255, 24, 24, 0.438);
-
+background-color: rgba(27,27,27,0.4);
+cursor: pointer;
 #messages{
+  li{
+    padding: 10px;
+    border-radius: 15px;
+  }
+  ul{
+    border-radius: 15px;
+    @include flex-column();
+    justify-content: center;
+
+    &::before{
+      
+      z-index: 2;
+      font-weight: 300;
+      left: 10px !important;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px;
+      position: absolute;
+      content: '\00d7';
+      display: block;
+      color: white !important;
+    }
+  }
     .error{
         background-color: rgba(255, 24, 24, 0.438);
         
@@ -1877,4 +1901,7 @@ top: 130px !important;
 }
 .all{
 @include flex-column();
+}
+.btn-floating{
+background-color: var(--left-bg-color-clean) !important;
 }

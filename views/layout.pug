@@ -39,7 +39,7 @@ html
               li.hideon-sw
                 a(href='/myaccount').flex
                   i(class='material-icons') person
-              li.flex.hideon-sw
+              //-li.flex.hideon-sw
                 a(href='/scents/cart').flex
                   i(class="material-icons") shopping_cart
           li.menu
@@ -65,7 +65,7 @@ html
           span Shop & Cart
           li.flex
             a(href='/scents/cart').flex Shopping Cart
-                //i(class="material-icons") shopping_cart
+                //-i(class="material-icons") shopping_cart
           li.flex
             a(href='/myaccount/orders') My orders 
           
@@ -89,7 +89,9 @@ html
         if user.status != 'verified'
           li(style='  list-style: none !important;')
             a.verify(href='/verify') Verify your account!
-    
+    .fixed-action-btn
+      a.btn-floating.btn-large(href='/scents/cart') 
+        i.material-icons shopping_cart
     block content
     div(class="page-footer footer")
       div.container
