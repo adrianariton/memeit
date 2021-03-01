@@ -106,7 +106,12 @@ module.exports = function(io){
         })
         const chargeMe = ()=>{
           //console.log(req.body.stripeTokenId)
-          
+          var discount = 0;
+          if(cartids.length == 2){
+            discount = 10;
+          } else if(cartids.length == 3){
+            discount = 15;
+          }
           Orders.create(new Orders({
             amount: total,
             currency: 'usd',
@@ -123,7 +128,8 @@ module.exports = function(io){
               name: `${req.user.name} ${req.user.vorname}`
             },
             products: items,
-            deliverymethod: req.body.deliverymethod
+            deliverymethod: req.body.deliverymethod,
+            discountPercentage: discount
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{

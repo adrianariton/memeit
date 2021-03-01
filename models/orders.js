@@ -47,6 +47,10 @@ var OrdersSchema = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now()
+    },
+    discountPercentage: {
+        type: Number,
+        default: 0
     }
 })
 

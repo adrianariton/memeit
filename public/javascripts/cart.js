@@ -26,7 +26,7 @@ function cClicked() {
     var cartelems = document.querySelectorAll('.r')
     console.log(1.0/3)
     $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
-    $('span.total').text('Total: ' + Math.round((totalprice)*100.0)/10000 + ' Lei')
+    $('span.total').text('Total: ' + Math.round((100-discount)/100 * (totalprice)*100.0)/10000 + ' Lei')
 
     $('.cart-a').fadeIn()
 }

@@ -14,6 +14,12 @@ block content
             .andu.andu-unfix
                 .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
                     if cart && cart!=[] && cart!=''
+                        if cart.length == 1
+                            .oferteavem 
+                                span Mai adauga un parfum pentru o reducere de 10%!
+                        else if cart.length == 2
+                            .oferteavem 
+                                span Mai adauga un parfum pentru o reducere de 15%!
                         .cart-q.content
                             h5 #{user.username}'s shopping cart:
                             - var i = 0
@@ -64,6 +70,12 @@ block content
                                     span.perfumes
                                     span.subs
                                     span Transport: 0.00 Lei
+                                    - var discount = 0
+                                    if cart.length == 2
+                                        - discount = 10
+                                    else if cart.length == 3
+                                        - discount = 15
+                                    span Discount: #{discount}%
                                     span.total(style='border-top: 1px solid grey !important;')
                                     .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Finish Order
                                     .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Back
@@ -87,5 +99,6 @@ block content
         script.
             const currentuser = '#{user.username}'
             const addresses = [!{user.addresses}]
+            const discount = !{discount}
         script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
         script(src='../javascripts/dot.js')
