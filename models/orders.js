@@ -51,6 +51,9 @@ var OrdersSchema = mongoose.Schema({
     discountPercentage: {
         type: Number,
         default: 0
+    },
+    itemCount: {
+        type: Number
     }
 })
 

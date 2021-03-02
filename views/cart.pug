@@ -45,27 +45,57 @@ block content
                             br
                             br
                         .cart-a
-                            if user.status == 'verified' && user.addresses != []
+                            if user.status == 'verified'
                                 h7 Fill in your delivery info!
-                                <form action="/scents/done" method="post" id="payment-form">
-                                    <div class="form-row">
-                                        <label for="deliverymethod">Choose a delivery method:</label>
-                                        .custom-select2
-                                            <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
-                                                <option value="postro">Posta Romana</option>
-                                                <option value="curier">Curier</option>
-                                            </select>
-                                        <label for="addressnr">Choose address:</label>
-                                        .custom-select2
-                                            <select  id="addressnr" name="addressnr" style='display: block;'>
-                                                - var i=0
-                                                for address in user.addresses 
-                                                    option(value=i) Address #{i+1}
-                                                    - i++
-                                            </select>
-                                        h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].state == '' ? user.addresses[0].county : user.addresses[0].state}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
-                                    </div>
-                                </form>
+                                if user.addresses != '' && user.addresses != [] && user.addresses!=null
+                                    <form action="/scents/done" method="post" id="payment-form">
+                                        <div class="form-row">
+                                            <label for="deliverymethod">Choose a delivery method:</label>
+                                            .custom-select2
+                                                <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
+                                                    <option value="postro">Posta Romana</option>
+                                                    <option value="curier">Curier</option>
+                                                </select>
+                                            <label for="addressnr">Choose address:</label>
+                                            .custom-select2
+                                                <select  id="addressnr" name="addressnr" style='display: block;'>
+                                                    - var i=0
+                                                    for address in user.addresses 
+                                                        option(value=i) Address #{i+1}
+                                                        - i++
+                                                </select>
+                                            h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].state == '' ? user.addresses[0].county : user.addresses[0].state}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
+                                        </div>
+                                    </form>
+                                h7 Or add a new address!
+                                form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
+                                    .form-group
+                                        span(style='color: grey !important;') 'Street' field example: 23 Jordan Street
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="autocomplete" 
+                                                placeholder="Street" name='street' required)
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputCity" 
+                                                placeholder="City" name='city' required)                               
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputState" 
+                                                placeholder="State" name='state')                               
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputZip" 
+                                                placeholder="Zip" name='zip' required)                              
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputCounty" 
+                                                placeholder="County" name='county')                              
+                                        input(type="text" 
+                                                class="form-control" 
+                                                id="inputCountry" 
+                                                placeholder="Country" name='country' required)
+                                    input.btn.grcolor.btn-prymary(type='submit', name ='submit', value='Add address!')
                                 .footer-a
                                     span.perfumes
                                     span.subs
@@ -75,7 +105,7 @@ block content
                                         - discount = 10
                                     else if cart.length == 3
                                         - discount = 15
-                                    span Discount: #{discount}%
+                                    span#discount Discount: #{discount}%
                                     span.total(style='border-top: 1px solid grey !important;')
                                     .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Finish Order
                                     .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Back
@@ -99,6 +129,6 @@ block content
         script.
             const currentuser = '#{user.username}'
             const addresses = [!{user.addresses}]
-            const discount = !{discount}
+            var discount = !{discount}
         script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
         script(src='../javascripts/dot.js')

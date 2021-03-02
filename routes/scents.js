@@ -27,7 +27,13 @@ module.exports = function(io){
     }
     res.redirect('/users/login')
   }
-  
+  function ensureVerified(req, res, next){
+    if(req.isAuthenticated() && req.user.status == 'verified'){
+      return next();
+    }
+    req.flash('Please verify your account!')
+    res.redirect('/')
+  }
   function ensureNotAuthenticated(req, res, next){
     if(!req.isAuthenticated()){
       return next();
@@ -81,7 +87,7 @@ module.exports = function(io){
    
   });
 
-  router.post('/done', function(req,res,next){
+  router.post('/done', ensureVerified, function(req,res,next){
     console.log(req.get('host'))
     var cando = process.env.NODE_ENV !=='production' ? true : (req.get('host') == 'www.ascentperfumes.com')
     console.log(cando)
@@ -92,10 +98,13 @@ module.exports = function(io){
       var qs = {}
       console.log(req.body)
       var items = req.body.items
+      var itemsnumber = 0;
       req.body.items.forEach(item=>{
         cartids.push(item.id)
+        itemsnumber+=Number(item.quantity)
         qs[item.id] = item.quantity;
       })
+      console.log('ITEMCOUNT: '+ itemsnumber)
       console.log(req.body)
       //console.log(stripePublicKey, stripeSecretKey
       Parfumes.find({_id: {$in : cartids}}, (err, parfumes)=>{
@@ -107,9 +116,9 @@ module.exports = function(io){
         const chargeMe = ()=>{
           //console.log(req.body.stripeTokenId)
           var discount = 0;
-          if(cartids.length == 2){
+          if(itemsnumber == 2){
             discount = 10;
-          } else if(cartids.length == 3){
+          } else if(itemsnumber == 3){
             discount = 15;
           }
           Orders.create(new Orders({
@@ -129,7 +138,8 @@ module.exports = function(io){
             },
             products: items,
             deliverymethod: req.body.deliverymethod,
-            discountPercentage: discount
+            discountPercentage: discount,
+            itemCount: itemsnumber
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{
@@ -320,7 +330,7 @@ module.exports = function(io){
       res.redirect('/scents/men')
     })
   })
-  router.get('/cancelorder/:orderid', function(req,res,next){
+  router.get('/cancelorder/:orderid',ensureVerified,  function(req,res,next){
     if(req.user){
 
     

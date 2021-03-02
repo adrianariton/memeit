@@ -13,7 +13,6 @@ console.log(sticky)
 
 document.body.addEventListener('scroll', () => {
   
-  console.log(document.body.scrollTop)
   if (document.body.scrollTop <= sticky) {
     navbar.classList.add("navbar-unfix")
     andu.forEach ((x) => {
@@ -119,7 +118,6 @@ $(document).ready(function(){
   
     $('.section.main .title2').click(e=>{
       var id = $(e.target).attr('id')
-      console.log(id)
       $('.section.main .content').hide(140)
       $(`.section.main .title2`).removeClass('active')
       $(`.section.main .title2#${id}`).addClass('active')
@@ -146,7 +144,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('.messages').click(()=>{
-    console.log('fh')
     $('#messages').hide(140)
   });
 });

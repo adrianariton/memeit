@@ -218,11 +218,12 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
             console.log(err, result);
             if(err){
               req.flash('error', 'Something went wrong!')
-              res.redirect('/users/myaccount')
+              res.redirect(req.get('referer'));
   
             } else {
               req.flash('success', 'Address added!')
-              res.redirect('/myaccount')
+              res.redirect(req.get('referer'));
+
             }
           })
         }

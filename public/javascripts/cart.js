@@ -13,21 +13,28 @@ var card = elements.create('card', {
       },
     }
 });
+const updatePrices = ()=>{
+    if(discount != null){
+        $('span#discount').text(`Discount: ${discount}%`)
+        var totalprice = 0;
+        console.log(totalprice)
+        var i=0
+        cart.forEach(el=>{
+            totalprice += el.price * document.querySelectorAll('.q')[i].value
+            i++;
+        })
+        console.log('Disount: ' + discount)
+        var cartelems = document.querySelectorAll('.r')
+        $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
+        $('span.total').text('Total: ' + Math.round((100-discount)/100 * (totalprice)*100.0)/10000 + ' Lei')
+        
+    }
+    $('.donebutton').show()
+
+}
 function cClicked() {
     $('.cart-q').slideUp()
-    var totalprice = 0;
-    console.log(totalprice)
-    var i=0
-    cart.forEach(el=>{
-        totalprice += el.price * document.querySelectorAll('.q')[i].value
-        i++;
-    })
-    
-    var cartelems = document.querySelectorAll('.r')
-    console.log(1.0/3)
-    $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
-    $('span.total').text('Total: ' + Math.round((100-discount)/100 * (totalprice)*100.0)/10000 + ' Lei')
-
+    updatePrices()
     $('.cart-a').fadeIn()
 }
 function backClicked() {
@@ -106,6 +113,36 @@ function doneClicked() {
     }
     
 }
+
+$(document).ready(()=>{
+    $('.q').change(()=>{
+        console.log('heeef')
+        var itemCount = 0
+        document.querySelectorAll('.q').forEach(q=>{
+            itemCount += parseInt(q.value, 10)
+        })
+        console.log('Itemcount: ' + itemCount)
+        if(itemCount == 2){
+            discount = 10
+        }else if(itemCount == 3){
+            discount = 15
+        } else {
+            discount = 0
+        }
+        if(itemCount == 2){
+            $('.oferteavem span').text('Mai adauga un parfum pentru o reducere de 15%!')
+        } else if(itemCount == 1){
+            $('.oferteavem span').text('Mai adauga un parfum pentru o reducere de 10%!')
+        } else if(itemCount == 3){
+            $('.oferteavem span').text('Reducere 15%!')
+        } else {
+            $('.oferteavem span').text('No discounts available!')
+
+        }
+        console.log(discount)
+        updatePrices()
+    })
+})
 function purchaseClicked() {
     var totalprice = 0;
     var i=0
