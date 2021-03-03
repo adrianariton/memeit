@@ -58,7 +58,8 @@ block content
     
     
     script(src='../javascripts/mwui.js')
-    script.
-      const currentuser = '#{user.username}'
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
-    script(src='../javascripts/dot.js')
+    if user
+      script.
+        const currentuser = '#{user.username}'
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
+      script(src='../javascripts/dot.js')
