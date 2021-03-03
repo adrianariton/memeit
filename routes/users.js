@@ -52,6 +52,7 @@ router.post('/login',
   function(req, res) {
     //succesfull req.user is the current user
     //req.flash('success', 'You are loggedin')
+    
     res.redirect('/')
   }
 )

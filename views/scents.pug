@@ -8,6 +8,8 @@ block content
         span You need to&nbsp;
         a(href='/users/login') Log in
         span &nbsp;to buy!
+      .storage 
+        .grcolor.clearstorage(onclick = 'localStorage.clear();')
     .buddy
       - var i = 0
       for scent in scents

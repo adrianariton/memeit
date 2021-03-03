@@ -196,9 +196,10 @@ module.exports.changePwd = function(req, callback){
 }
 
 module.exports.addToCart = function(username, parfume, callback, cartfull){
+    
     if(Array.isArray(parfume)){
         User.findOne({username: username}, (err, doc)=>{
-            User.update({username: username}, { $addToSet: { cart: {$in: parfume} } }).then(res =>{
+            User.update({username: username}, { $addToSet: { cart: {$each: parfume} } }).then(res =>{
                 callback(res, parfume)
             })
         })
@@ -217,9 +218,8 @@ module.exports.addToCart = function(username, parfume, callback, cartfull){
 }
 
 module.exports.removeFromCart = function(username, parfume, callback){
-    console.log(parfume)
     if(Array.isArray(parfume)){
-        User.update({username: username}, { $pull: { cart: {$in: parfume} } },
+        User.update({username: username}, { $pull: { cart: {$each: parfume} } },
             { multi: true }).then(res =>{
                 console.log(res)
             callback(res)
