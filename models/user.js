@@ -196,13 +196,20 @@ module.exports.changePwd = function(req, callback){
 }
 
 module.exports.addToCart = function(username, parfume, callback, cartfull){
-    User.findOne({username: username}, (err, doc)=>{
-                User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
-                    callback(res, parfume)
-                })
-            
-        
-    })
+    if(Array.isArray(parfume)){
+        User.findOne({username: username}, (err, doc)=>{
+            User.update({username: username}, { $addToSet: { cart: {$in: parfume} } }).then(res =>{
+                callback(res, parfume)
+            })
+        })
+    } else {
+        User.findOne({username: username}, (err, doc)=>{
+            User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
+                callback(res, parfume)
+            })
+        })
+    }
+    
     console.log(parfume)
 
     
@@ -211,11 +218,20 @@ module.exports.addToCart = function(username, parfume, callback, cartfull){
 
 module.exports.removeFromCart = function(username, parfume, callback){
     console.log(parfume)
-    User.update({username: username}, { $pull: { cart: parfume } },
-        { multi: true }).then(res =>{
-            console.log(res)
-        callback(res)
-    })
+    if(Array.isArray(parfume)){
+        User.update({username: username}, { $pull: { cart: {$in: parfume} } },
+            { multi: true }).then(res =>{
+                console.log(res)
+            callback(res)
+        })
+    } else {
+        User.update({username: username}, { $pull: { cart: parfume } },
+            { multi: true }).then(res =>{
+                console.log(res)
+            callback(res)
+        })
+    }
+    
     //{ $addToSet: { colors: "c" } }
 }
 /*module.exports.addToAbonCart = function(username, parfume, callback){

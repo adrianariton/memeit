@@ -19,12 +19,14 @@ $(document).ready(()=>{
                     socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
                 }    
             } else {
-                Swal.fire({
+                var localCart = localStorage.getItem('localcart');
+
+                /*Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     html: `You have to log in! Go to <a href='/users/login/'>Login Page</a>!`,
                     footer: '<a href>Contact us!</a>'
-                })
+                })*/
             }
             
             
