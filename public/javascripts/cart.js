@@ -36,11 +36,16 @@ function cClicked() {
     $('.cart-q').slideUp()
     updatePrices()
     $('.cart-a').fadeIn()
+
 }
 function backClicked() {
+
     $('.cart-q').slideDown()
+
+    
     
     $('.cart-a').fadeOut()
+    
 }
 function doneClicked() {
     var totalprice = 0;

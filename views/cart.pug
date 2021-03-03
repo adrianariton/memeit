@@ -13,6 +13,7 @@ block content
         if true
             .andu.andu-unfix
                 .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
+                    
                     if cart && cart!=[] && cart!=''
                         if cart.length == 1
                             .oferteavem 
@@ -21,6 +22,15 @@ block content
                             .oferteavem 
                                 span Mai adauga un parfum pentru o reducere de 15%!
                         .cart-q.content
+                            .cart-tab-bar 
+                                .tab-item#start-order.highlig
+                                    span Start Order 
+                                .tab-item#put-account-info 
+                                    span Enter Account 
+                                .tab-item#order-info
+                                    span Enter Order Info
+                                .tab-item#finish-order 
+                                    span Finish Order 
                             h5 #{user.username}'s shopping cart:
                             - var i = 0
                             while i <= cart.length-1
@@ -45,20 +55,29 @@ block content
                             br
                             br
                         .cart-a
+                            .cart-tab-bar 
+                                .tab-item#start-order
+                                    span Start Order 
+                                .tab-item#put-account-info 
+                                    span Enter Account 
+                                .tab-item#order-info.highlig
+                                    span Enter Order Info
+                                .tab-item#finish-order 
+                                    span Finish Order 
                             if user.status == 'verified'
                                 h7 Fill in your delivery info!
                                 if user.addresses != '' && user.addresses != [] && user.addresses!=null
                                     <form action="/scents/done" method="post" id="payment-form">
-                                        <div class="form-row">
+                                        <div class="form-row" style="border-radius: 10px !important; padding: 10px">
                                             <label for="deliverymethod">Choose a delivery method:</label>
                                             .custom-select2
-                                                <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block;'>
+                                                <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block; border: none !important; background-color: rgba(10,10,10,1) !important; border-radius: 10px;'>
                                                     <option value="postro">Posta Romana</option>
                                                     <option value="curier">Curier</option>
                                                 </select>
                                             <label for="addressnr">Choose address:</label>
                                             .custom-select2
-                                                <select  id="addressnr" name="addressnr" style='display: block;'>
+                                                <select  id="addressnr" name="addressnr" style='display: block; border: none !important; background-color: rgba(10,10,10,1) !important; border-radius: 10px;'>
                                                     - var i=0
                                                     for address in user.addresses 
                                                         option(value=i) Address #{i+1}

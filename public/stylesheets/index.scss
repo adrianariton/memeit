@@ -957,7 +957,7 @@ input[type="radio"]:not(:checked),
   }
 }
 .cart-a {
-  margin-top: 40px !important;
+  //margin-top: 40px !important;
   select,
   option {
     background-color: transparent !important;
@@ -1258,12 +1258,49 @@ body {
   background: gray !important;
   border-radius: 10px;
 }
+.andu {
+  .cartcont {
+    .cart-q, .cart-a {
+      .cart-tab-bar {
+        position: relative;
+        top: 0;
+        background-color: rgb(27, 27, 27);
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        .tab-item {
+          flex-grow: 4;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          span {
+            text-align: center;
+            color: white !important;
+            padding: 5px;
+            
+          }
+        }
+        .highlig {
+          background-color: var(--left-bg-color) !important;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
 .cartcont {
   //background-color: gray !important;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  
+
   .oferteavem {
     background-color: var(--left-bg-color);
     padding: 10px;
