@@ -82,7 +82,7 @@ $(document).ready(()=>{
             localStorage.setItem('localcart', JSON.stringify([]));
         }
         var localCart = localStorage.getItem('localcart')
-        if(window.location.pathname == '/scents/cart' && currentuser && localCart != [] && localStorage.getItem('localcart')!='null'){
+        if(currentuser && localCart != [] && localStorage.getItem('localcart')!='null'){
             socket.emit('add-to-cart', currentuser, JSON.parse(localCart))
             localStorage.clear()
             
