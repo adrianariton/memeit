@@ -46,13 +46,4 @@ block content
             span.readmore Read More
             span.addtocart(class=user? (user.m_abonamentCart == abonaments[2]._id ? 'removefromcart': '') : '')
               i(class='material-icons') #{user? (user.m_abonamentCart == abonaments[2]._id ? 'remove_shopping_cart': 'add_shopping_cart') : 'add_shopping_cart'}
-  if user
-    script(type='text/javascript').
-      const currentuser = '#{user.username}'
-      const scents = `#{scents}`
-  else 
-    script(type='text/javascript').
-      const currentuser = null
-      const scents = `#{scents}`
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
-  script(src='/javascripts/dot.js')
+  

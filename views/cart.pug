@@ -13,7 +13,6 @@ block content
         if true
             .andu.andu-unfix
                 .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
-                    
                     if cart && cart!=[] && cart!=''
                         if cart.length == 1
                             .oferteavem 
@@ -22,15 +21,13 @@ block content
                             .oferteavem 
                                 span Mai adauga un parfum pentru o reducere de 15%!
                         .cart-q.content
-                            .cart-tab-bar 
+                            .cart-tab-bar
+                                .tab-item#put-account-info 
+                                    span Enter Account
                                 .tab-item#start-order.highlig
                                     span Start Order 
-                                .tab-item#put-account-info 
-                                    span Enter Account 
                                 .tab-item#order-info
                                     span Enter Order Info
-                                .tab-item#finish-order 
-                                    span Finish Order 
                             h5 #{user.username}'s shopping cart:
                             - var i = 0
                             while i <= cart.length-1
@@ -56,14 +53,12 @@ block content
                             br
                         .cart-a
                             .cart-tab-bar 
-                                .tab-item#start-order
-                                    span Start Order 
                                 .tab-item#put-account-info 
-                                    span Enter Account 
+                                    span Enter Account
+                                .tab-item#start-order
+                                    span Start Order  
                                 .tab-item#order-info.highlig
                                     span Enter Order Info
-                                .tab-item#finish-order 
-                                    span Finish Order 
                             if user.status == 'verified'
                                 h7 Fill in your delivery info!
                                 if user.addresses != '' && user.addresses != [] && user.addresses!=null
@@ -146,8 +141,39 @@ block content
         script(src='/javascripts/mwui.js')
         script(src='/javascripts/addressdisplay.js')
         script.
-            const currentuser = '#{user.username}'
             const addresses = [!{user.addresses}]
             var discount = !{discount}
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
-        script(src='../javascripts/dot.js')
+            console.log('DISCOUNT: '+ discount)
+    else 
+        .andu.andu-unfix
+                .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
+                    .cart-l 
+                        .cart-tab-bar 
+                            .tab-item#put-account-info.highlig 
+                                span Enter Account 
+                            .tab-item#start-order
+                                span Start Order 
+                            .tab-item#order-info
+                                span Enter Order Info
+                        a.brand-logo(href='#')
+                            img.logoimg(src='/images/logo.png')
+                        form(method='post', action='/users/login', enctype='urlencoded')
+                            .form-group
+                                label Username
+                                input.form-control(name='username', type='text', placeholder='Username')
+                            .form-group
+                                label Password
+                                input.form-control(name='password', type='password',
+                                    placeholder='Parola')
+                            .form-group(style='display: none !important;')
+                                input.form-control(name='redirect', type='text',
+                                    value='/scents/cart')
+                            input.btn.btn-prymary.ndcolor(type='submit', name ='submit', value='Autentificare')
+                            .loginre
+                                span Client nou?
+                                a(href='/users/register').grcolor.btn Creeaza cont
+                                a(href='/google' class="oauth-container btn darken-4 white black-text" style="text-transform:none; color: black !important; overflow: visible !important;")
+                                    .right
+                                        img(width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png")
+                                    span Login with &nbsp;

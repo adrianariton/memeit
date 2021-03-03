@@ -52,7 +52,9 @@ router.post('/login',
   function(req, res) {
     //succesfull req.user is the current user
     //req.flash('success', 'You are loggedin')
-    
+    if(req.body.redirect == '/scents/cart'){
+      res.redirect('/scents/loggedinfromcart')
+    }
     res.redirect('/')
   }
 )

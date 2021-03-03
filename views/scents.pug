@@ -106,19 +106,6 @@ block content
               input(type="email" placeholder='Your email' name='email' required)
               input(type="text" placeholder='Suggestion' name='suggestion' required )
               input.btn.grcolor(type="submit")
-  if user
-    script(type='text/javascript').
-      const currentuser = '#{user.username}'
-      const scents = `#{scents}`
-  else 
-    script(type='text/javascript').
-      const currentuser = null
-      const scents = `#{scents}`
-  if user? user.m_abonamentCart: null
-    script(type='text/javascript').
-      const hasabon = 1
-  else
-    script(type='text/javascript').
-      const hasabon = 0
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
-  script(src='/javascripts/dot.js')
+
+  script(type='text/javascript').
+    const scents = `#{scents}`

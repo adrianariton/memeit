@@ -43,6 +43,9 @@ module.exports = function(io){
   router.get('/', function(req, res, next) {
     res.render('scents', { input: 'none'});
   });
+  router.get('/loggedinfromcart', function(req, res, next) {
+    res.render('loggedinfromcart', {})
+  });
   router.get('/cart', function(req, res, next) {
    // console.log(stripeSecretKey)
    // console.log('\n\n\n\n');
@@ -82,7 +85,7 @@ module.exports = function(io){
           }
         })
     } else {
-      res.redirect('/users/login')
+      res.render('cart', {});
     }
    
   });

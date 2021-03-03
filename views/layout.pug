@@ -90,7 +90,14 @@ html
     .fixed-action-btn
       a.btn-floating.btn-large(href='/scents/cart') 
         i.material-icons shopping_cart
+    if user 
+      script.
+        const currentuser = '#{user.username}'
+    else 
+      script.
+        const currentuser = null
     block content
+
     div(class="page-footer footer")
       div.container
         div.row
@@ -115,3 +122,6 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
     script(src='/javascripts/ui.js')
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js")
+    script(src='../javascripts/dot.js')

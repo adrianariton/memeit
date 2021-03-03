@@ -5,8 +5,8 @@ block content
     .form-container.login.andu.andu-unfix
         .modal-form(style='z-index: 2;')
             .content.container
-                a.brand-logo(href='../')
-                    img.logoimg(src='../images/logo.png')
+                a.brand-logo(href='/')
+                    img.logoimg(src='/images/logo.png')
                 form(method='post', action='/users/login', enctype='urlencoded')
                     .form-group
                         label Username
@@ -18,7 +18,7 @@ block content
                     input.btn.btn-prymary(type='submit', name ='submit', value='Autentificare')
                     .loginre
                         span Client nou?
-                        a(href='/users/register') Creeaza cont
+                        a(href='/users/register').grcolor.btn Creeaza cont
                         a(href='/google' class="oauth-container btn darken-4 white black-text" style="text-transform:none; color: black !important; overflow: visible !important;")
                             .right
                                 img(width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 

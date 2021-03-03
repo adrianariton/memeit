@@ -82,11 +82,20 @@ $(document).ready(()=>{
             localStorage.setItem('localcart', JSON.stringify([]));
         }
         var localCart = localStorage.getItem('localcart')
-        if(currentuser && localCart != [] && localStorage.getItem('localcart')!='null'){
-            socket.emit('add-to-cart', currentuser, JSON.parse(localCart))
-            localStorage.clear()
-            
-            console.log('CART: ' +localStorage.getItem('localcart'))
+        
+        if(window.location.pathname == '/scents/loggedinfromcart'){
+            console.log('ewg')
+            if(currentuser && localCart != [] && localStorage.getItem('localcart')!='null'){
+                socket.emit('add-to-cart', currentuser, JSON.parse(localCart))
+                
+                console.log('CART: ' +localCart + ' ADDED')
+                //localStorage.clear()
+                setTimeout(() => { 
+                    localStorage.clear()
+                    window.location.pathname = '/scents/cart'
+                }, 500);
+            }
+                        
         }
     }
     

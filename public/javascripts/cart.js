@@ -40,11 +40,10 @@ function cClicked() {
 }
 function backClicked() {
 
-    $('.cart-q').slideDown()
+    $('.cart-a').slideUp()
+    updatePrices()
 
-    
-    
-    $('.cart-a').fadeOut()
+    $('.cart-q').slideDown()
     
 }
 function doneClicked() {
@@ -97,7 +96,6 @@ function doneClicked() {
             } else {
                 console.log(data.order)
                 Swal.fire({
-                    position: 'top-end',
                     icon: 'success',
                     title: data.message,
                     footer: `<a href='/myorders/${data.order._id}'>View my order!</a>`
