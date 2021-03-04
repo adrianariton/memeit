@@ -18,6 +18,9 @@ var ParfumesSchema = mongoose.Schema({
     aromas: {
         type: [String]
     },
+    aromasPics: {
+        type: [String]
+    },
     price: {
         type: Number
     },

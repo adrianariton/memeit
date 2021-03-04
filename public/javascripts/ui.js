@@ -146,4 +146,15 @@ $(document).ready(function(){
   $('.messages').click(()=>{
     $('#messages').hide(140)
   });
+  $('.bb span').fadeOut();
+  $('.bb').mouseover(function(){
+    $(this).addClass('active')
+      $(this).find('span').slideDown()
+    });
+  $('.bb').mouseleave( function(){
+    $(this).removeClass('active');
+    $(this).find('span').slideUp()
+
+  })
+
 });

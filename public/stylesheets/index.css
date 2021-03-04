@@ -1721,6 +1721,60 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.scentsbody .row .card .imaromas .row .bb span {
+  position: absolute;
+  margin-top: .5em !important;
+  z-index: 4;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+
+.scentsbody .row .card .imaromas .row .bb.active img {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+  opacity: 0.8;
+}
+
+.scentsbody .row .card .imaromas .row .bb img {
+  opacity: 1;
+  -webkit-filter: none;
+          filter: none;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.scentsbody .row .card .imaromas .row .bb .b {
+  max-width: 3em;
+  max-height: 3em;
+  border-radius: 1em;
+  margin: 0.5em;
+  margin-top: 1em !important;
+  width: 10vmin;
+  height: 10vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 5px;
 }
 
 .scentsbody .row .card .imaromas img {
@@ -1805,15 +1859,6 @@ body {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   color: gray !important;
-}
-
-.scentsbody .row .card .b {
-  width: 3em;
-  height: 3em;
-  border-radius: 1em;
-  margin: 0.5em;
-  margin-top: 1em !important;
-  background: var(--left-bg-color) !important;
 }
 
 .scentsbody .row .card .readmore {
