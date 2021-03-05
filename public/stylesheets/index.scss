@@ -786,13 +786,14 @@ div.top-oferta {
     color: white !important;
     font-size: large;
   }
-  h5, a{
+  h5, a {
+    font-size: 20px;
     color: white !important;
   }
   a{
-    text-decoration: underline;
+    text-decoration: none;
     &:hover{
-      color: gray !important;
+      color: var(--left-bg-color) !important;
     }
   }
   form {
@@ -858,11 +859,15 @@ div.top-oferta {
         //border-radius: 10px !important;
         @include max-width(412px) {
           width: 25em;
+          height: 17em;
           margin: 1em;
+          object-fit: cover;
         }
         @include min-width(412px) {
           width: 80vw;
+          height: 60vw;
           margin: 10vw;
+          object-fit: cover;
         }
       }
 
@@ -882,6 +887,7 @@ div.top-oferta {
         @include min-width(412px) {
           width: 80vw;
           margin: 10vw;
+          margin-bottom: 5vw !important;
           //transform: translateY(-20vw);
           bottom: 2.5vw !important;
         }
@@ -1144,7 +1150,7 @@ body {
       }
       .imaromas {
         @include flex-column();
-        justify-content: space-around;
+        justify-content: space-evenly;
         .row {
           .bb {
             @include flex-column();
@@ -1159,29 +1165,26 @@ body {
             &.active{
               img{
                 filter: blur(2px);
-                opacity: 0.8;
               }
             }
             img {
               opacity: 1;
-              filter: none ;
+              object-fit: cover;
+              filter: none;
               min-width: 100%;
               min-height: 100%;
             }
             .b {
-              max-width: 3em;
-              max-height: 3em;
-              border-radius: 1em;
+              border-radius: 10px;
               margin: 0.5em;
               margin-top: 1em !important;
-              width: 10vmin;
-              height: 10vmin;
+              width: 3.5em;
+              height: 3.5em;
               display: flex;
               @include flex-column();
               justify-content: center;
               position: relative;
               overflow: hidden;
-              border-radius: 50%;
               margin: 5px;
             }
           }
@@ -1315,6 +1318,13 @@ body {
         .highlig {
           background-color: var(--left-bg-color) !important;
           border-radius: 10px;
+          
+        }
+
+        .done {
+          span::after {
+            content: ' \2713';
+          }
         }
       }
     }
@@ -1333,6 +1343,7 @@ body {
     background-color: var(--left-bg-color);
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 10px;
     span {
       color: white;
     }
@@ -1733,7 +1744,7 @@ tbody * {
 .ab-group {
   padding-bottom: 7px;
   margin-top: 5px;
-  &:nth-child(even) {
+  &:nth-child(odd) {
     background: rgba(27, 27, 27, 1) !important;
   }
   padding: 15px;

@@ -1143,15 +1143,16 @@ div.top-oferta span {
 }
 
 .footer h5, .footer a {
+  font-size: 20px;
   color: white !important;
 }
 
 .footer a {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .footer a:hover {
-  color: gray !important;
+  color: var(--left-bg-color) !important;
 }
 
 .footer form {
@@ -1279,14 +1280,20 @@ div.top-oferta span {
 @media screen and (min-width: 412px) {
   .steps .step div.imagebuy img {
     width: 25em;
+    height: 17em;
     margin: 1em;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }
 
 @media screen and (max-width: 412px) {
   .steps .step div.imagebuy img {
     width: 80vw;
+    height: 60vw;
     margin: 10vw;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }
 
@@ -1315,6 +1322,7 @@ div.top-oferta span {
   .steps .step div.imagebuy .gobuynow {
     width: 80vw;
     margin: 10vw;
+    margin-bottom: 5vw !important;
     bottom: 2.5vw !important;
   }
 }
@@ -1690,8 +1698,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .scentsbody .row .card .imaromas .row {
@@ -1738,11 +1747,12 @@ body {
 .scentsbody .row .card .imaromas .row .bb.active img {
   -webkit-filter: blur(2px);
           filter: blur(2px);
-  opacity: 0.8;
 }
 
 .scentsbody .row .card .imaromas .row .bb img {
   opacity: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
   -webkit-filter: none;
           filter: none;
   min-width: 100%;
@@ -1750,13 +1760,11 @@ body {
 }
 
 .scentsbody .row .card .imaromas .row .bb .b {
-  max-width: 3em;
-  max-height: 3em;
-  border-radius: 1em;
+  border-radius: 10px;
   margin: 0.5em;
   margin-top: 1em !important;
-  width: 10vmin;
-  height: 10vmin;
+  width: 3.5em;
+  height: 3.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1773,7 +1781,6 @@ body {
           justify-content: center;
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
   margin: 5px;
 }
 
@@ -1969,6 +1976,10 @@ body {
   border-radius: 10px;
 }
 
+.andu .cartcont .cart-q .cart-tab-bar .done span::after, .andu .cartcont .cart-a .cart-tab-bar .done span::after, .andu .cartcont .cart-l .cart-tab-bar .done span::after {
+  content: ' \2713';
+}
+
 .cartcont {
   margin-top: 40px;
   display: -webkit-box;
@@ -1987,6 +1998,7 @@ body {
   background-color: var(--left-bg-color);
   padding: 10px;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .cartcont .oferteavem span {
@@ -2547,7 +2559,7 @@ tbody * {
   border-radius: 10px;
 }
 
-.ab-group:nth-child(even) {
+.ab-group:nth-child(odd) {
   background: #1b1b1b !important;
 }
 

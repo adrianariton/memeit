@@ -22,13 +22,13 @@ block content
                                 span Mai adauga un parfum pentru o reducere de 15%!
                         .cart-q.content
                             .cart-tab-bar
-                                .tab-item#put-account-info 
+                                .tab-item#put-account-info.done 
                                     span Enter Account
                                 .tab-item#start-order.highlig
                                     span Start Order 
                                 .tab-item#order-info
-                                    span Enter Order Info
-                            h5 #{user.username}'s shopping cart:
+                                    span Delivery
+                            h5 #{user.username}'s Shopping Cart:
                             - var i = 0
                             while i <= cart.length-1
                                 //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
@@ -53,14 +53,14 @@ block content
                             br
                         .cart-a
                             .cart-tab-bar 
-                                .tab-item#put-account-info 
+                                .tab-item#put-account-info.done
                                     span Enter Account
-                                .tab-item#start-order
+                                .tab-item#start-order.done
                                     span Start Order  
                                 .tab-item#order-info.highlig
-                                    span Enter Order Info
+                                    span Delivery
                             if user.status == 'verified'
-                                h7 Fill in your delivery info!
+                                h5 Fill in your delivery info!
                                 if user.addresses != '' && user.addresses != [] && user.addresses!=null
                                     <form action="/scents/done" method="post" id="payment-form">
                                         <div class="form-row" style="border-radius: 10px !important; padding: 10px">
@@ -81,7 +81,7 @@ block content
                                             h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].state == '' ? user.addresses[0].county : user.addresses[0].state}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
                                         </div>
                                     </form>
-                                h7 Or add a new address!
+                                h5 Or add a new address!
                                 form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
                                     .form-group
                                         span(style='color: grey !important;') 'Street' field example: 23 Jordan Street
@@ -154,7 +154,7 @@ block content
                             .tab-item#start-order
                                 span Start Order 
                             .tab-item#order-info
-                                span Enter Order Info
+                                span Delivery
                         a.brand-logo(href='#')
                             img.logoimg(src='/images/logo.png')
                         form(method='post', action='/users/login', enctype='urlencoded')
