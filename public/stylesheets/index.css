@@ -2559,7 +2559,7 @@ tbody * {
   border-radius: 10px;
 }
 
-.ab-group:nth-child(odd) {
+.ab-group:nth-child(even) {
   background: #1b1b1b !important;
 }
 
@@ -2638,6 +2638,10 @@ tbody * {
 
 .ab-group .titleimg-n img {
   padding: 7px;
+}
+
+.ndcolor .ab-group {
+  background-color: transparent !important;
 }
 
 .togglesubs {

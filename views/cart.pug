@@ -7,7 +7,6 @@ block content
         script(defer).
             const stripePublicKey = "#{stripePublicKey}"
             const cart = [!{cart}]
-        script(src='../javascripts/cart.js')
         <script src="https://js.stripe.com/v3/"></script>
     if user
         if true
@@ -32,7 +31,7 @@ block content
                             - var i = 0
                             while i <= cart.length-1
                                 //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
-                                .r.ab-group(data-item-id = ids[i] )
+                                .r.ab-group(data-item-id = ids[i] data-name = cart[i].name)
                                     span(style="font-weight: bold; padding: 10px") #{i+1}.
                                     .image-cropper
                                         img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
@@ -138,6 +137,7 @@ block content
                                 .separe
                                 div(class="men split right")
                                     a(href='/scents/men') &#9794;            
+        script(src='../javascripts/cart.js')
         script(src='/javascripts/mwui.js')
         script(src='/javascripts/addressdisplay.js')
         script.

@@ -1741,10 +1741,11 @@ tbody * {
   display: flex;
   flex-direction: column-reverse !important;
 }
+
 .ab-group {
   padding-bottom: 7px;
   margin-top: 5px;
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background: rgba(27, 27, 27, 1) !important;
   }
   padding: 15px;
@@ -1791,7 +1792,11 @@ tbody * {
     }
   }
 }
-
+.ndcolor{
+  .ab-group{
+    background-color: transparent !important;
+  }
+}
 .togglesubs {
   margin-bottom: 10px;
   background-color: gray !important;

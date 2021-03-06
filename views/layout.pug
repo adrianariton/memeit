@@ -89,13 +89,20 @@ html
             a.verify(href='/verify') Verify your account!
     .fixed-action-btn
       a.btn-floating.btn-large(href='/scents/cart') 
-        i.material-icons shopping_cart
+        if !user
+          i.material-icons.crt shopping_cart
+        else if user.cart.length>0
+          i.material-icons.crt add_shopping_cart
+        else 
+          i.material-icons.crt shopping_cart
     if user 
       script.
         const currentuser = '#{user.username}'
+        const currentCartLength = !{user.cart.length}
     else 
       script.
         const currentuser = null
+        const currentCartLength = 0
     block content
 
     div(class="page-footer footer")
