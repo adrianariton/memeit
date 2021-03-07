@@ -40,6 +40,7 @@ block content
                                     input.q(type="number" name="quantity" min="1" max="100" value='1')
                                     .btn.btn-prymary.remove-cart-item
                                         i.material-icons.large remove_circle
+                                    span(style="padding: 5px;") #{cart[i].price/100} Lei
                                 - i++
                             - i=0
                             
@@ -157,14 +158,14 @@ block content
                                 span Delivery
                         a.brand-logo(href='#')
                             img.logoimg(src='/images/logo.png')
-                        form(method='post', action='/users/login', enctype='urlencoded')
+                        form(method='post', action='/users/login', enctype='urlencoded', style="margin-right: 10px !important")
                             .form-group
                                 label Username
-                                input.form-control(name='username', type='text', placeholder='Username')
+                                input.form-control(name='username', type='text', placeholder='Username', style="background-color: rgb(10,10,10) !important; border-radius: 10px !important; border: none !important; padding-left: 10px;")
                             .form-group
                                 label Password
                                 input.form-control(name='password', type='password',
-                                    placeholder='Parola')
+                                    placeholder='Parola', style="background-color: rgb(10,10,10) !important; border-radius: 10px !important; border: none !important; padding-left: 10px;")
                             .form-group(style='display: none !important;')
                                 input.form-control(name='redirect', type='text',
                                     value='/scents/cart')

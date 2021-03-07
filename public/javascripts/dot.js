@@ -10,14 +10,20 @@ $(document).ready(()=>{
         var isCart = currentCartLength == 0 ? false : true
         var removed = 0;
         var onceremoved = 0;
-        var totallen = currentCartLength + (false?  sessionCart.length:0 )+ JSON.parse(localStorage.getItem('localcart')).length
+        var lllen = 0;
+        console.log(localStorage.getItem('localcart'))
+        if (`${localStorage.getItem('localcart')}` != "null") {
+            lllen = JSON.parse(localStorage.getItem('localcart')).length
+            
+        }
+        var totallen = currentCartLength + (false?  sessionCart.length:0 )+ lllen;
         $('.crt .before').text(totallen == 0 ? '+':totallen)
         if(totallen==0){
             $('.crt').removeClass('cartnotempty')
         } else {
             $('.crt').addClass('cartnotempty')
         }
-        console.log(currentCartLength, sessionCart.length, JSON.parse(localStorage.getItem('localcart')).length)
+  //      console.log(currentCartLength, sessionCart.length, JSON.parse(localStorage.getItem('localcart')).length)
         if(!currentuser){
             if(localStorage.getItem('localcart') == '' ||localStorage.getItem('localcart') == undefined || localStorage.getItem('localcart') == null){
                 localStorage.setItem('localcart', JSON.stringify([]));
@@ -169,8 +175,13 @@ $(document).ready(()=>{
                     localStorage.setItem('localcart', JSON.stringify([]));
                     window.location.pathname = '/scents/cart'
                 }, 500);
+            } else {
+                setTimeout(() => { 
+                    localStorage.setItem('localcart', JSON.stringify([]));
+                    window.location.pathname = '/scents/cart'
+                }, 500);
             }
-                        
+                     
         }
     }
     
