@@ -1227,6 +1227,7 @@ div.top-oferta span {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  margin-bottom: 3em !important;
 }
 
 .steps .step .title span {
@@ -1250,6 +1251,7 @@ div.top-oferta span {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 0px !important;
+  margin-bottom: 1em !important;
 }
 
 .steps .step .text span {

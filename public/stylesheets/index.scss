@@ -808,6 +808,8 @@ div.top-oferta {
     }
   }
 }
+.step{
+}
 .steps {
   @include flex-row();
   flex-wrap: wrap;
@@ -824,7 +826,7 @@ div.top-oferta {
     position: relative;
     @include flex-column();
     justify-content: flex-start;
-
+    margin-bottom: 3em !important;
     .title {
       span {
         color: white;
@@ -836,6 +838,7 @@ div.top-oferta {
       @include flex-row();
       justify-content: center;
       margin-top: 0px !important;
+      margin-bottom: 1em !important;
       span {
         color: #fff;
         font-size: 2em;
