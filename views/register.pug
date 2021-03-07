@@ -33,7 +33,11 @@ block content
                     .form-group.imageupload(style='display: none !important;')
                         label Profile Image
                         input.form-control(name='profileimage', type='file')
-                    input.btn.btn-prymary(type='submit', name ='submit', value='Creeaza cont')
+                    input.btn.btn-prymary(id="submit" type='submit', name ='submit', value='Creeaza cont')
+                    .form-group#termsagree 
+                        label
+                            input(class='form-control' class="filled-in" type="checkbox" name="terms" id="terms" required onchange="activateButton(this)")  
+                            span(style='color: white !important;') I agree to the <a href='/privacypolicy'>Terms & Conditions</a>
                     .loginre
                         span Esti deja membru?
                         a(href='/users/login').grcolor.btn Autentificare
@@ -46,3 +50,4 @@ block content
             .error-content
                 if errors
                     div.alert.alert-danger #{errors[0].msg}
+        script(src='/javascripts/terms.js')

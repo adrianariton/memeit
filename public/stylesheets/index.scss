@@ -1118,6 +1118,7 @@ body {
     .addtocart {
       cursor: pointer !important;
       margin-top: 20px;
+      
     }
   }
   @include bcg;
@@ -1430,6 +1431,19 @@ body {
     min-height: 100%;
   }
 }
+#termsagree{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+/*
+#termsagree{
+  position: inherit;
+}
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox;
+  opacity: 1 !important;
+}*/
 body {
   @include bcg;
   background-position: center;
@@ -1462,12 +1476,14 @@ tbody * {
     padding: 5px;
     margin-bottom: 5px;
   }
+
   .section {
     display: flex;
     flex-direction: column !important;
     padding: 15px;
     .personal-data {
       form {
+        
         .form-group {
           .form-control {
             float: left;
@@ -1722,11 +1738,12 @@ tbody * {
   background-color: transparent !important;
   overflow: visible !important;
 }
-.sc .removefromcart {
+.sc .addtocart.removefromcart {
   i {
     color: var(--left-bg-color-clean) !important;
   }
 }
+
 .cardinfo {
   margin-top: 40px;
 
@@ -1789,6 +1806,55 @@ tbody * {
     }
     img {
       padding: 7px;
+    }
+  }
+}
+
+.crt{
+  .before{
+      
+    @include flex-row();
+    justify-content: center !important;
+  }
+  @include flex-column();
+  justify-content: center !important;
+  &:not(.cartnotempty){
+    .before{
+      top:0;
+      right: 0;
+      position: absolute;
+      font-size: 28px;
+      width: 20px;
+      height: 20px;
+      line-height: 18px;
+      background-color: var(--left-bg-color-clean) !important;
+      border-bottom: 1px solid black;
+      border-left: 1px solid black;
+  
+      border-radius: 50%;
+  
+      padding: 2px;
+    }
+  }
+  
+  &.cartnotempty{
+    .before{
+      top:0;
+      right: 0;
+      position: absolute;
+      display: inline;
+      display: block !important;
+      font-size: 16px;
+      width: 20px;
+      height: 20px;
+      line-height: 12px;
+      background-color: var(--left-bg-color-clean) !important;
+      border-bottom: 1px solid black;
+      border-left: 1px solid black;
+  
+      border-radius: 50%;
+      text-align: center;
+      padding: 2px;
     }
   }
 }
@@ -1987,4 +2053,5 @@ body {
 }
 .btn-floating {
   background-color: var(--left-bg-color-clean) !important;
+  overflow: visible !important;
 }

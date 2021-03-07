@@ -91,10 +91,13 @@ html
       a.btn-floating.btn-large(href='/scents/cart') 
         if !user
           i.material-icons.crt shopping_cart
+            .before +
         else if user.cart.length>0
-          i.material-icons.crt add_shopping_cart
+          i.material-icons.crt.cartnotempty shopping_cart
+            .before +
         else 
           i.material-icons.crt shopping_cart
+            .before +
     if user 
       script.
         const currentuser = '#{user.username}'

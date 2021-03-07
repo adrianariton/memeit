@@ -1,5 +1,7 @@
 
 $(document).ready(()=>{
+    $('.crt.cartnotempty .before').text('+1')
+
     if(true){
         const url = 'https://ascentro.herokuapp.com/'
         //const url = 'http://localhost:3000/'
@@ -16,7 +18,7 @@ $(document).ready(()=>{
             var localCart =JSON.parse(localStorage.getItem('localcart'));
             if(localCart !=undefined && localCart!=null){
                 localCart.forEach(id=>{
-                    $(`.card*[data-item-id=${id}]`).addClass('removefromcart')
+                    $(`.card*[data-item-id=${id}] .addtocart`).addClass('removefromcart')
                 })
             }
         }
@@ -72,19 +74,26 @@ $(document).ready(()=>{
                     footer: '<a href>Contact us!</a>'
                 })*/
             }
+            var localCart =JSON.parse(localStorage.getItem('localcart'));
 
             if(sessionCart.length >0){
                 isCart = true
             }
-            if(currentCartLength - removed <= 0){
+            if(localCart.length >0){
+                isCart = true
+            }
+            if(currentCartLength + localCart.length- removed <= 0){
                 isCart = false;
             }
+            
             localStorage.setItem('iscart', isCart)
             if(isCart == true){
-                $('.crt').text('add_shopping_cart')
-            } else {
-                $('.crt').text('shopping_cart')
+                $('.crt').addClass('cartnotempty')
+                $('.crt .before').text('+1')
 
+            } else {
+                $('.crt').removeClass('cartnotempty')
+                $('.crt .before').text('+')
             }
             
              
