@@ -54,6 +54,10 @@ var OrdersSchema = mongoose.Schema({
     },
     itemCount: {
         type: Number
+    },
+    capsulesCount: {
+        type: Number,
+        default: 1
     }
 })
 

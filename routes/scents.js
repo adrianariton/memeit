@@ -116,6 +116,10 @@ module.exports = function(io){
         parfumes.forEach(doc=>{
           total+=doc.price * qs[doc._id];
         })
+        console.log(req.body.capsulesNo)
+        if(req.body.capsulesNo>=1){
+          total+=(req.body.capsulesNo-1)*3000
+        }
         const chargeMe = ()=>{
           //console.log(req.body.stripeTokenId)
           var discount = 0;
@@ -142,7 +146,8 @@ module.exports = function(io){
             products: items,
             deliverymethod: req.body.deliverymethod,
             discountPercentage: discount,
-            itemCount: itemsnumber
+            itemCount: itemsnumber,
+            capsulesCount: req.body.capsulesNo
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{

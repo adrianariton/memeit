@@ -137,7 +137,7 @@ $(document).ready(()=>{
             var i=0;
             document.querySelectorAll('.cart-q .r.ab-group').forEach((el)=>{
                 i++;
-                $(el).find('span').text(i+'.')
+                $(el).find('span.index').text(i+'.')
                 
             })
         })

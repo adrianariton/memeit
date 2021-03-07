@@ -32,7 +32,7 @@ block content
                             while i <= cart.length-1
                                 //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
                                 .r.ab-group(data-item-id = ids[i] data-name = cart[i].name)
-                                    span(style="font-weight: bold; padding: 10px") #{i+1}.
+                                    span.index(style="font-weight: bold; padding: 10px") #{i+1}.
                                     .image-cropper
                                         img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
                                     a.name(href='/scents/'+cart[i].mw, style='word-wrap: break-word; overflow-wrap: break-word;') #{cart[i].name}
@@ -43,6 +43,13 @@ block content
                                     span(style="padding: 5px;") #{cart[i].price/100} Lei
                                 - i++
                             - i=0
+                            .r2.ab-group(data-item-id = 'capsula' data-name = 'capsula')
+                                .image-cropper
+                                    img(src = '/images/site/pas1.jpg' style='border-radius: 50% !important; margin: 5px;')
+                                a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula
+                                label(for='quantity') Quantity
+                                input.qcap(type="number" name="quantity" min="1" max="100" value='1')
+                                span(style="padding: 5px;") 30 Lei (Prima Gratis)
                             
                             br
                             br
@@ -112,7 +119,7 @@ block content
                                     input.btn.grcolor.btn-prymary(type='submit', name ='submit', value='Add address!')
                                 .footer-a
                                     span.perfumes
-                                    span.subs
+                                    span.capsules
                                     span Transport: 0.00 Lei
                                     - var discount = 0
                                     if cart.length == 2

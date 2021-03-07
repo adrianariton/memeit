@@ -13,6 +13,33 @@ var card = elements.create('card', {
       },
     }
 });
+var capsulaprice = 0;
+var capsulaCount = 0;
+$('.q').change(()=>{
+    document.querySelectorAll('.q').forEach(q=>{
+        if(q.value==0){
+            q.value=1;
+        }
+    })
+    
+    document.querySelectorAll('.qcap').forEach(q=>{
+        if(q.value==0){
+            q.value=1;
+        }
+    })
+})
+$('.qcap').change(()=>{
+    document.querySelectorAll('.q').forEach(q=>{
+        if(q.value==0){
+            q.value=1;
+        }
+    })
+    document.querySelectorAll('.qcap').forEach(q=>{
+        if(q.value==0){
+            q.value=1;
+        }
+    })
+})
 const updatePrices = ()=>{
     if(discount != null){
         $('span#discount').text(`Discount: ${discount}%`)
@@ -23,9 +50,16 @@ const updatePrices = ()=>{
             totalprice += el.price * document.querySelectorAll('.q')[i].value
             i++;
         })
+        capsulaCount = document.querySelectorAll('.qcap')[0].value
+        capsulaprice = 3000 * (document.querySelectorAll('.qcap')[0].value-1)
         console.log('Disount: ' + discount)
+        if(capsulaprice<0){
+            capsulaprice=0
+        }
         var cartelems = document.querySelectorAll('.r')
         $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
+        $('span.capsules').text('Capsule: ' + Math.round(capsulaprice*100.0)/10000 + ' Lei')
+        totalprice+=capsulaprice
         $('span.total').text('Total: ' + Math.round((100-discount)/100 * (totalprice)*100.0)/10000 + ' Lei')
         
     }
@@ -80,7 +114,9 @@ function doneClicked() {
             body: JSON.stringify({
                 items: items,
                 deliverymethod: $('#deliverymethod').val(),
-                addressnr: $('#addressnr').val()
+                addressnr: $('#addressnr').val(),
+                capsulesNo: capsulaCount
+
             })
         }).then((res)=>{
             
@@ -168,7 +204,7 @@ function purchaseClicked() {
             quantity: quantity
         })
     })
-
+    console.log(capsulaCount +' VALUE')
     fetch('/scents/purchase', {
         method: 'POST',
         headers: {
@@ -176,7 +212,8 @@ function purchaseClicked() {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            items: items
+            items: items,
+            capsulesNo: capsulaCount
         })
     }).then((res)=>{
         

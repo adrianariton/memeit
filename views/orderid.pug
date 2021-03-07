@@ -48,7 +48,18 @@ block content
                                     span Quantity #{prod.quantity}
                                     - totalprod+=prod.quantity*price/100
                                     span Price #{prod.quantity} x #{price/100}=Lei#{prod.quantity*price/100}
-                                    
+                if order.capsulesCount > 0
+                    .section 
+                        .title 
+                        .content 
+                            .ab-group 
+                                .titleimg 
+                                    .image-cropper
+                                        img(src = '/images/site/pas1.jpg' style='border-radius: 50% !important; margin: 5px;')
+                                    .title2 Capsule
+                                .quan 
+                                    span Quantity: #{order.capsulesCount}
+                                    span Price: (#{order.capsulesCount}-1free) x 30=Lei#{(order.capsulesCount-1)*30}  
                 .section 
                     .title 
                     .content 
