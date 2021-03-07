@@ -1236,7 +1236,6 @@ div.top-oferta span {
 }
 
 .steps .step .text {
-  margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1250,6 +1249,7 @@ div.top-oferta span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-top: 0px !important;
 }
 
 .steps .step .text span {
@@ -1262,14 +1262,12 @@ div.top-oferta span {
 @media screen and (min-width: 412px) {
   .steps .step .text span {
     max-width: 12em;
-    margin: 1em;
   }
 }
 
 @media screen and (max-width: 412px) {
   .steps .step .text span {
     max-width: 80vw;
-    margin: 10vw;
   }
 }
 
@@ -1742,11 +1740,6 @@ body {
   z-index: 4;
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
-}
-
-.scentsbody .row .card .imaromas .row .bb.active img {
-  -webkit-filter: blur(2px);
-          filter: blur(2px);
 }
 
 .scentsbody .row .card .imaromas .row .bb img {

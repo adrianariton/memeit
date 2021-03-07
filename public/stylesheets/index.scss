@@ -833,9 +833,9 @@ div.top-oferta {
       }
     }
     .text {
-      margin-top: 1em;
       @include flex-row();
       justify-content: center;
+      margin-top: 0px !important;
       span {
         color: #fff;
         font-size: 2em;
@@ -843,11 +843,11 @@ div.top-oferta {
         font-size: medium !important;
         @include max-width(412px) {
           max-width: 12em;
-          margin: 1em;
+          //margin: 1em;
         }
         @include min-width(412px) {
           max-width: 80vw;
-          margin: 10vw;
+          //margin: 10vw;
         }
       }
     }
@@ -1162,11 +1162,6 @@ body {
               margin-top: .5em !important;
               z-index: 4;
               backdrop-filter: blur(4px);
-            }
-            &.active{
-              img{
-                filter: blur(2px);
-              }
             }
             img {
               opacity: 1;
