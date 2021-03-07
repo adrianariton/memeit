@@ -2693,7 +2693,7 @@ tbody * {
   font-size: 28px;
   width: 20px;
   height: 20px;
-  line-height: 18px;
+  line-height: 12px;
   background-color: var(--left-bg-color-clean) !important;
   border-bottom: 1px solid black;
   border-left: 1px solid black;

@@ -1,7 +1,6 @@
 
 $(document).ready(()=>{
-    $('.crt.cartnotempty .before').text('+1')
-
+    var cartll = currentCartLength
     if(true){
         const url = 'https://ascentro.herokuapp.com/'
         //const url = 'http://localhost:3000/'
@@ -10,6 +9,15 @@ $(document).ready(()=>{
         var sessionCart = []
         var isCart = currentCartLength == 0 ? false : true
         var removed = 0;
+        var onceremoved = 0;
+        var totallen = currentCartLength + (currentuser?  sessionCart.length:0 )+ JSON.parse(localStorage.getItem('localcart')).length
+        $('.crt .before').text(totallen == 0 ? '+':totallen)
+        if(totallen==0){
+            $('.crt').removeClass('cartnotempty')
+        } else {
+            $('.crt').addClass('cartnotempty')
+        }
+        console.log(currentCartLength, sessionCart.length, JSON.parse(localStorage.getItem('localcart')).length)
         if(!currentuser){
             if(localStorage.getItem('localcart') == '' ||localStorage.getItem('localcart') == undefined || localStorage.getItem('localcart') == null){
                 localStorage.setItem('localcart', JSON.stringify([]));
@@ -23,6 +31,7 @@ $(document).ready(()=>{
             }
         }
         $(".buddy .card .addtocart").click((ev)=>{
+
             if(currentuser){
                 console.log(!$(ev.target).parent().hasClass('removefromcart'))
                 console.log($(ev.target).parent())
@@ -38,6 +47,7 @@ $(document).ready(()=>{
                     if (index > -1) {
                         sessionCart.splice(index, 1);
                     }
+                    onceremoved++;
                     removed++;
                 }    
             } else {
@@ -60,6 +70,7 @@ $(document).ready(()=>{
                         localCart.splice(index, 1);
                     }
                     removed++;
+                    onceremoved++;
                     localStorage.setItem('localcart', JSON.stringify(localCart));
                     console.log('Local cart:' + localStorage.getItem('localcart'))
                     const index2 = sessionCart.indexOf(item);
@@ -75,33 +86,32 @@ $(document).ready(()=>{
                 })*/
             }
             var localCart =JSON.parse(localStorage.getItem('localcart'));
+            var totallen = currentCartLength + (false?  sessionCart.length:0) + JSON.parse(localStorage.getItem('localcart')).length -removed
+            $('.crt .before').text(totallen == 0 ? '+':totallen)
+            console.log(currentCartLength,0, JSON.parse(localStorage.getItem('localcart')).length, -removed,totallen)
 
-            if(sessionCart.length >0){
-                isCart = true
-            }
-            if(localCart.length >0){
-                isCart = true
-            }
-            if(currentCartLength + localCart.length- removed <= 0){
-                isCart = false;
-            }
-            
-            localStorage.setItem('iscart', isCart)
-            if(isCart == true){
-                $('.crt').addClass('cartnotempty')
-                $('.crt .before').text('+1')
-
-            } else {
+            if(totallen==0){
                 $('.crt').removeClass('cartnotempty')
-                $('.crt .before').text('+')
+            } else {
+                $('.crt').addClass('cartnotempty')
             }
+            console.log(totallen)
             
              
         
         })
         $(".remove-cart-item i").click((ev)=>{
             console.log('dhw')
-    
+            cartll--;
+            var totallen = cartll
+            $('.crt .before').text(totallen == 0 ? '+':totallen)
+            
+            if(totallen==0){
+                location.reload()
+                $('.crt').removeClass('cartnotempty')
+            } else {
+                $('.crt').addClass('cartnotempty')
+            }
             socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
         
             console.log($(ev.target).parent().parent().data('item-id').trim())
