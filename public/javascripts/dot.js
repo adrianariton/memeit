@@ -10,7 +10,7 @@ $(document).ready(()=>{
         var isCart = currentCartLength == 0 ? false : true
         var removed = 0;
         var onceremoved = 0;
-        var totallen = currentCartLength + (currentuser?  sessionCart.length:0 )+ JSON.parse(localStorage.getItem('localcart')).length
+        var totallen = currentCartLength + (false?  sessionCart.length:0 )+ JSON.parse(localStorage.getItem('localcart')).length
         $('.crt .before').text(totallen == 0 ? '+':totallen)
         if(totallen==0){
             $('.crt').removeClass('cartnotempty')
@@ -86,7 +86,7 @@ $(document).ready(()=>{
                 })*/
             }
             var localCart =JSON.parse(localStorage.getItem('localcart'));
-            var totallen = currentCartLength + (false?  sessionCart.length:0) + JSON.parse(localStorage.getItem('localcart')).length -removed
+            var totallen = currentCartLength + 0 + JSON.parse(localStorage.getItem('localcart')).length -(currentuser ?removed: 0)
             $('.crt .before').text(totallen == 0 ? '+':totallen)
             console.log(currentCartLength,0, JSON.parse(localStorage.getItem('localcart')).length, -removed,totallen)
 
@@ -147,7 +147,13 @@ $(document).ready(()=>{
             localStorage.setItem('localcart', JSON.stringify([]));
         }
         var localCart = localStorage.getItem('localcart')
-        
+        if(window.location.pathname =='/' && currentuser){
+            localStorage.setItem('localcart', JSON.stringify([]));
+
+            var localCart =JSON.parse(localStorage.getItem('localcart'));
+            var totallen = currentCartLength
+            $('.crt .before').text(totallen == 0 ? '+':totallen)
+        }        
         if(window.location.pathname == '/scents/loggedinfromcart'){
             console.log('ewg')
             if(currentuser && localCart != [] && localCart != ''&& localStorage.getItem('localcart')!='null'){
