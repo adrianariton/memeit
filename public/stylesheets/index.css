@@ -1567,15 +1567,7 @@ body {
 }
 
 .scentsbody .wh {
-  display: none !important;
-}
-
-.scentsbody .readmore-active .wh {
   display: block !important;
-}
-
-.scentsbody .readmore-active .desc {
-  display: none !important;
 }
 
 .scentsbody::-webkit-scrollbar {

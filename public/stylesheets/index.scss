@@ -1070,15 +1070,7 @@ body {
   overflow-y: hidden !important;
   @include flex-column();
   .wh {
-    display: none !important;
-  }
-  .readmore-active {
-    .wh {
-      display: block !important;
-    }
-    .desc {
-      display: none !important;
-    }
+    display: block !important;
   }
   justify-content: center;
   &::-webkit-scrollbar {
