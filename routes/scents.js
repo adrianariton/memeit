@@ -341,7 +341,7 @@ module.exports = function(io){
       res.redirect('/scents/men')
     })
   })
-  router.get('/cancelorder/:orderid',ensureVerified,  function(req,res,next){
+  /*router.get('/cancelorder/:orderid',ensureVerified,  function(req,res,next){
     if(req.user){
 
     
@@ -368,7 +368,7 @@ module.exports = function(io){
     } else {
       res.redirect('/')
     }
-  })
+  })*/
   router.get('/:query', function(req, res, next) {
       /* retrieve queryed elems */
       if(req.params.query == 'men'){

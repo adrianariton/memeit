@@ -76,12 +76,3 @@ block content
                             .quan 
                                 span 
                                 span.ndtext Total: Lei#{(100-order.discountPercentage)/100 * order.amount/100}
-                if order.status !='canceled'
-                    .section 
-                        .title Cancel Order
-                        .content 
-                            .ab-group 
-                                a.cancelorder.btn.btn-prymary(href='/scents/cancelorder/'+order.id, style="border-radius: 10px;") Cancel Order
-                                .quan 
-                                    span 
-                                    span Subscriptions you ordered with this order will be canceled too!
