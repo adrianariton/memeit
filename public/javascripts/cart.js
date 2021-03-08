@@ -23,12 +23,85 @@ $('.q').change(()=>{
             q.value=1;
         }
     })
-    
+    var qu = 0;
     document.querySelectorAll('.qcap').forEach(q=>{
+        
+        qu+=Number(q.value)
+    })
+    if(qu==0){
+        document.querySelector('.qcap').value =1
+        document.querySelectorAll('span.pr').forEach(q=>{
+        
+            q.innerHTML = '0 Lei'
+        })
+    } else {
+        var i=0;
+        document.querySelectorAll('.qcap').forEach(q=>{
+            if(q.value == 0 || q.value ==1){
+                document.querySelectorAll('span.pr')[i].innerHTML = '0 Lei'
+
+            } else {
+                document.querySelectorAll('span.pr')[i].innerHTML = '30 Lei'
+
+            }
+            i++;
+        })
+    }
+})
+function refr(){
+    
+    var qu = 0;
+    document.querySelectorAll('.qcap').forEach(q=>{
+        
+        qu+=Number(q.value)
+    })
+    console.log(qu)
+    if(qu==0){
+        document.querySelector('.qcap').value =1
+        document.querySelectorAll('span.pr').forEach(q=>{
+        
+            q.innerHTML = '0 Lei'
+        })
+    } else {
+        var i=0;
+        document.querySelectorAll('.qcap').forEach(q=>{
+            console.log(q.valu)
+            if(q.value == 0 || q.value ==1){
+                document.querySelectorAll('span.pr')[i].innerHTML = '0 Lei'
+
+            } else {
+                document.querySelectorAll('span.pr')[i].innerHTML = '30 Lei'
+
+            }
+            i++;
+        })
+    }
+}
+$('.arrowgroup .up').click((e)=>{
+    var value = $(e.target).parent().parent().parent().find('input').val() 
+    $(e.target).parent().parent().parent().find('input').val(Number(value)+1)
+    console.log($(e.target).parent().parent().parent().attr('class'))
+    
+    var qu = 0;
+    document.querySelectorAll('.qcap').forEach(q=>{
+        
+        qu+=Number(q.value)
+    })
+    refr()
+})
+$('.arrowgroup .down').click((e)=>{
+    var value = $(e.target).parent().parent().parent().find('input').val() 
+    if(value == 0){
+        value =1;
+    }
+    $(e.target).parent().parent().parent().find('input').val(Number(value)-1)
+    document.querySelectorAll('.q').forEach(q=>{
         if(q.value==0){
             q.value=1;
         }
     })
+    refr()
+    console.log($(e.target).parent().parent().parent().attr('class'))
 })
 $('.qcap').change(()=>{
     document.querySelectorAll('.q').forEach(q=>{
@@ -36,11 +109,34 @@ $('.qcap').change(()=>{
             q.value=1;
         }
     })
+    
+    var qu = 0;
     document.querySelectorAll('.qcap').forEach(q=>{
-        if(q.value==0){
-            q.value=1;
-        }
+        
+        qu+=Number(q.value)
     })
+    if(qu==0){
+        document.querySelector('.qcap').value =1
+    }
+    if(qu==0){
+        document.querySelector('.qcap').value =1
+        document.querySelectorAll('span.pr').forEach(q=>{
+        
+            q.innerHTML = '0 Lei'
+        })
+    } else {
+        var i=0;
+        document.querySelectorAll('.qcap').forEach(q=>{
+            if(q.value == 0 || q.value ==1){
+                document.querySelectorAll('span.pr')[i].innerHTML = '0 Lei'
+
+            } else {
+                document.querySelectorAll('span.pr')[i].innerHTML = '30 Lei'
+
+            }
+            i++;
+        })
+    }
 })
 const updatePrices = ()=>{
     if(discount != null){
@@ -55,10 +151,11 @@ const updatePrices = ()=>{
         capsulaRed = document.querySelectorAll('.qcap')[0].value
         capsulaBlack = document.querySelectorAll('.qcap')[1].value
         capsulaCount = Number(capsulaRed)+Number(capsulaBlack)
-        capsulaprice = 3000 * (document.querySelectorAll('.qcap')[0].value-1)
+        capsulaprice = 3000 * (capsulaCount-1)
         console.log('Disount: ' + discount)
         if(capsulaprice<0){
             capsulaprice=0
+            
         }
         var cartelems = document.querySelectorAll('.r')
         $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
@@ -158,7 +255,41 @@ function doneClicked() {
     }
     
 }
+$(document).ready(()=>{
+    document.querySelectorAll('.q').forEach(q=>{
+        if(q.value==0){
+            q.value=1;
+        }
+    })
+    
+    var qu = 0;
+    document.querySelectorAll('.qcap').forEach(q=>{
+        
+        qu+=Number(q.value)
+    })
+    if(qu==0){
+        document.querySelector('.qcap').value =1
+    }
+    if(qu==0){
+        document.querySelector('.qcap').value =1
+        document.querySelectorAll('span.pr').forEach(q=>{
+        
+            q.innerHTML = '0 Lei'
+        })
+    } else {
+        var i=0;
+        document.querySelectorAll('.qcap').forEach(q=>{
+            if(q.value == 0 || q.value ==1){
+                document.querySelectorAll('span.pr')[i].innerHTML = '0 Lei'
 
+            } else {
+                document.querySelectorAll('span.pr')[i].innerHTML = '30 Lei'
+
+            }
+            i++;
+        })
+    }
+})
 $(document).ready(()=>{
     $('.q').change(()=>{
         console.log('heeef')

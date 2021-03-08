@@ -1346,6 +1346,10 @@ body {
     }
   }
 }
+.arrowgroup{
+  @include flex-column();
+  justify-content: center;
+}
 .cartcont {
   //background-color: gray !important;
   margin-top: 40px;
@@ -1396,13 +1400,23 @@ body {
         margin-left: 5px;
       }
     }
+    .arrowgroup{
+      @include max-width(600px) {
+       margin-left: auto;
+       margin-right: 1em;
+      }
+      
+      @include min-width(600px) {
+        margin-top: 5px;
+      }
+    }
     input {
       display: block;
       max-width: 50px;
       border: white 1px solid;
       text-align: center;
       @include max-width(600px) {
-        margin-left: auto;
+        //margin-left: auto;
       }
       @include min-width(600px) {
         margin-top: 5px;

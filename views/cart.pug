@@ -37,6 +37,11 @@ block content
                                         img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
                                     a.name(href='/scents/'+cart[i].mw, style='word-wrap: break-word; overflow-wrap: break-word;') #{cart[i].name}
                                     label(for='quantity') Quantity
+                                    .arrowgroup 
+                                        .up 
+                                            i.material-icons keyboard_arrow_up
+                                        .down
+                                            i.material-icons keyboard_arrow_down
                                     input.q(type="number" name="quantity" min="1" max="100" value='1')
                                     .btn.btn-prymary.remove-cart-item
                                         i.material-icons.large remove_circle
@@ -49,15 +54,26 @@ block content
                                     img(src = '/images/site/ruby.jpg' style='border-radius: 50% !important; margin: 5px;')
                                 a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Rosie
                                 label(for='quantity') Quantity
-                                input.qcap.red(type="number" name="quantity" min="1" max="100" value='1')
-                                span(style="padding: 5px;") 30 Lei
+                                .arrowgroup 
+                                    .up 
+                                        i.material-icons keyboard_arrow_up
+                                    .down
+                                        i.material-icons keyboard_arrow_down
+                                input.qcap.red(type="number" name="quantity" min="0" max="100" value='1' style='background-color: #0a0a0a !important;')
+                                span.pr(style="padding: 5px;") 30 Lei
                             .r2.ab-group(data-item-id = 'capsulaBlack' data-name = 'capsulaBlack')
                                 .image-cropper
                                     img(src = '/images/site/silver.jpg' style='border-radius: 50% !important; margin: 5px;')
                                 a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Neagra
                                 label(for='quantity') Quantity
-                                input.qcap.black(type="number" name="quantity" min="1" max="100" value='1')
-                                span(style="padding: 5px;") 30 Lei
+                                .arrowgroup 
+                                    .up 
+                                        i.material-icons keyboard_arrow_up
+                                    .down
+                                        i.material-icons keyboard_arrow_down
+                                input.qcap.black(type="number" name="quantity" min="0" max="100" value='0'  style='background-color: #0a0a0a !important;')
+                                
+                                span.pr(style="padding: 5px;") 30 Lei
                             
                             br
                             br
