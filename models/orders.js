@@ -9,14 +9,15 @@ mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
 })
 //User schema
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
 function oneMonthFromNow() {
     var d = new Date();
-    var targetMonth = d.getMonth() + 1;
-    d.setMonth(targetMonth);
-    if(d.getMonth() !== targetMonth % 12) {
-        d.setDate(0); // last day of previous month
-    }
-    return d;
+    
+    return addDays(d, 3);
 }
 var OrdersSchema = mongoose.Schema({
     amount: {
