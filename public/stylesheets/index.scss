@@ -192,9 +192,6 @@ body {
     background: linear-gradient(#000000, #00000000);
   }
 }
-.joinus-btn{
-  position: relative;
-}
 .bl {
   display: block !important;
 }
@@ -383,10 +380,11 @@ div.top-oferta {
 
     }
     @include min-width(800px){
-      margin-bottom: 20em;
+      transform: translateY(-10em)
+      
     }
     @include min-height(600px){
-      margin-bottom: 10em;
+      transform: translateY(-5em)
     }
     
   }
@@ -744,13 +742,13 @@ div.top-oferta {
   position: relative;
   //height: 120%;
   width: 100%;
-  @include min-height(500px) {
-    height: 150%;
+  @include min-height(600px) {
+    height: 150vh;
   }
   &.register {
-    height: 120%;
-    @include min-height(500px) {
-      height: 200%;
+    height: 150vh;
+    @include min-height(600px) {
+      height: 200vh;
     }
   }
   @include flex-column();
