@@ -3,12 +3,21 @@ var bcrypt = require('bcryptjs');
 const { Double, connect } = require('mongodb');
 const { ObjectID } = require('mongodb');
 var Subscriptions = require('../models/subscriptions')
- 
+var nodemailer = require('nodemailer');
+
 mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
 })
 //User schema
-
+function oneMonthFromNow() {
+    var d = new Date();
+    var targetMonth = d.getMonth() + 1;
+    d.setMonth(targetMonth);
+    if(d.getMonth() !== targetMonth % 12) {
+        d.setDate(0); // last day of previous month
+    }
+    return d;
+}
 var OrdersSchema = mongoose.Schema({
     amount: {
         type: Number
@@ -47,6 +56,11 @@ var OrdersSchema = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now()
+    },
+    deliveryDate: {
+        type: Date,
+        default: oneMonthFromNow
+
     },
     discountPercentage: {
         type: Number,
@@ -87,4 +101,71 @@ module.exports.cancelOrder = function(id, callback){
         })
     })
     
+}
+
+module.exports.sendThroughMail = function(order, callback){
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.mail.yahoo.com',
+        port: 465,
+        auth: {
+          user: process.env.EMAIL_NAME,
+          pass: process.env.EMAIL_PASS
+        }
+    });
+    var mailOptions = {
+        from: process.env.EMAIL_NAME,
+        to: order.email,
+        subject: `Ati plasat o comanda!`,
+        html:`
+
+        <div style='width: 100% !important;'>
+            
+
+            <div style='width: 100% !important;display:table; flex-direction: column; justify-content: center; align-items: center;'>
+            
+                <h1 style='display:table-row;'>Ati plasat o comanda!</h1>
+                <h2 style='display:table-row;'>Salut ${order.shipping.name}, speram vei mai cumpara de la noi!</h2>
+            </div>
+            <div style='margin-top:5em;width: 100% !important;display:table; flex-direction:row; justify-content: space-between; align-items: center;'>
+                <div style='display:table-cell; flex-direction:column; justify-content: center; align-items: center;'>
+                    
+                    <h3 style='display:table-row;'>Detalii Shipping...</h3>
+                    <span style='display:table-row;'>${order.shipping.address.line1}</span>
+                    <span style='display:table-row;'>${order.shipping.address.city}</span>
+                    <span style='display:table-row;'>${order.shipping.address.state}</span>
+                    <span style='display:table-row;'>${order.shipping.address.country}</span>
+                    <span style='display:table-row;'>Cod Postal: ${order.shipping.address.postal_code}</span>
+
+
+
+                </div>
+                <div style='display:table-cell; flex-direction:column; justify-content: center; align-items: center;'>
+                    <h3 style='display:table-row;'>Unde...</h3>
+                    <span style='display:table-row;'>${order.deliverymethod == 'postro' ? 'Posta Romana':'Curier'}</span>
+                    <span style='display:table-row;'>Comandata la data de ${order.createdAt}</span>
+                    <span style='display:table-row;'>Va fi primita pe sau inainte de ${order.deliveryDate}</span>
+
+                </div>
+        
+            </div>
+            
+            <div style='width: 100%;margin-top:5em;display:table; flex-direction:column; justify-content: center; align-items: center;'>
+                <h3 style='display:table-row;'>Ce ati comandat...</h3>
+                <span style='display:table-row;'>Id-ul comenzii: ${order._id}</span>
+                <a style='display:table-row;' href='https://www.ascentperfumes.com/myorders/${order._id}'>Accesati comanda!</a>
+                <h3 style='display:table-row;'>Puteti anula comanda direct de pe site, daca a trecut mai putin de o ora de cand ati comandat-o!</h3>
+            </div>
+        </div>
+
+        `
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+          callback(error)
+        } else {
+          console.log('Email sent: ' + info.response);
+            callback(null)
+        }
+    });
 }

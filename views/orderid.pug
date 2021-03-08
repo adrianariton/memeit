@@ -8,7 +8,9 @@ block content
                     img(src='/images/user-alt.png')
                     .uinfo
                         span.name Order: #{order.id}
-                        span.datecreated Ordered #{order.dateCreated}
+                        span.datecreated Ordered #{order.createdAt}
+                        span.datedelivered Delivered on or before #{order.deliveryDate}
+                        
             .body
                 if order.status == 'canceled'
                     .section

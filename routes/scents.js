@@ -154,6 +154,9 @@ module.exports = function(io){
               console.log(err)
               if(!err){
                 console.log('Charge Succesfull ')
+                Orders.sendThroughMail(ordercr, (errormail)=>{
+                  console.log(errormail)
+                })
                 console.log(result)
                 res.json({error: false, message:'Successfully ordered!', order: ordercr})
               } else {
