@@ -233,6 +233,10 @@ body {
   background: linear-gradient(#000000, #00000000);
 }
 
+.joinus-btn {
+  position: relative;
+}
+
 .bl {
   display: block !important;
 }
@@ -526,7 +530,35 @@ div.top-oferta span {
   bottom: 10em !important;
 }
 
-.mw a {
+@media screen and (max-height: 600px) {
+  .mw {
+    margin-bottom: 15em;
+  }
+}
+
+.mw .joinus-btn {
+  position: absolute;
+}
+
+@media screen and (min-height: 600px) {
+  .mw .joinus-btn {
+    margin-bottom: 10em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mw .joinus-btn {
+    margin-bottom: 20em;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .mw .joinus-btn {
+    margin-bottom: 10em;
+  }
+}
+
+.mw .split a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1911,6 +1943,26 @@ body {
   border-radius: 10px;
 }
 
+.bordered {
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: transparent !important;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .grcolor {
   background: gray !important;
   border-radius: 10px;
@@ -2105,6 +2157,12 @@ body {
   margin: 5px;
 }
 
+.cartcont .r .image-cropper img,
+.cartcont .r2 .image-cropper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 @media screen and (max-width: 600px) {
   .cartcont .r,
   .cartcont .r2 {
@@ -2150,8 +2208,11 @@ body {
 }
 
 .image-cropper img {
+  -o-object-fit: cover;
+     object-fit: cover;
   min-width: 100%;
   min-height: 100%;
+  height: auto !important;
 }
 
 #termsagree {

@@ -57,10 +57,10 @@ block content
                             .ab-group 
                                 .titleimg 
                                     .image-cropper
-                                        img(src = '/images/site/pas1.jpg' style='border-radius: 50% !important; margin: 5px;')
+                                        img(src = '/images/site/blackdiamond.jpg' style='border-radius: 50% !important; margin: 5px;')
                                     .title2 Capsule
                                 .quan 
-                                    span Quantity: #{order.capsulesCount}
+                                    span Quantity: #{order.capsulesType.red} Red + #{order.capsulesType.black} Black = #{order.capsulesCount} 
                                     span Price: (#{order.capsulesCount}-1free) x 30=Lei#{(order.capsulesCount-1)*30}  
                 .section 
                     .title 

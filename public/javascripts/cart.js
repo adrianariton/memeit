@@ -15,6 +15,8 @@ var card = elements.create('card', {
 });
 var capsulaprice = 0;
 var capsulaCount = 0;
+var capsulaRed= 0;
+var capsulaBlack =0;
 $('.q').change(()=>{
     document.querySelectorAll('.q').forEach(q=>{
         if(q.value==0){
@@ -50,7 +52,9 @@ const updatePrices = ()=>{
             totalprice += el.price * document.querySelectorAll('.q')[i].value
             i++;
         })
-        capsulaCount = document.querySelectorAll('.qcap')[0].value
+        capsulaRed = document.querySelectorAll('.qcap')[0].value
+        capsulaBlack = document.querySelectorAll('.qcap')[1].value
+        capsulaCount = Number(capsulaRed)+Number(capsulaBlack)
         capsulaprice = 3000 * (document.querySelectorAll('.qcap')[0].value-1)
         console.log('Disount: ' + discount)
         if(capsulaprice<0){
@@ -115,7 +119,9 @@ function doneClicked() {
                 items: items,
                 deliverymethod: $('#deliverymethod').val(),
                 addressnr: $('#addressnr').val(),
-                capsulesNo: capsulaCount
+                capsulesNo: capsulaCount,
+                capsulaRed: capsulaRed,
+                capsulaBlack: capsulaBlack
 
             })
         }).then((res)=>{

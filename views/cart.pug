@@ -43,13 +43,21 @@ block content
                                     span(style="padding: 5px;") #{cart[i].price/100} Lei
                                 - i++
                             - i=0
-                            .r2.ab-group(data-item-id = 'capsula' data-name = 'capsula')
+                            span Prima capsula e gratis!
+                            .r2.ab-group(data-item-id = 'capsulaRed' data-name = 'capsulaRed')
                                 .image-cropper
-                                    img(src = '/images/site/pas1.jpg' style='border-radius: 50% !important; margin: 5px;')
-                                a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula
+                                    img(src = '/images/site/ruby.jpg' style='border-radius: 50% !important; margin: 5px;')
+                                a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Rosie
                                 label(for='quantity') Quantity
-                                input.qcap(type="number" name="quantity" min="1" max="100" value='1')
-                                span(style="padding: 5px;") 30 Lei (Prima Gratis)
+                                input.qcap.red(type="number" name="quantity" min="1" max="100" value='1')
+                                span(style="padding: 5px;") 30 Lei
+                            .r2.ab-group(data-item-id = 'capsulaBlack' data-name = 'capsulaBlack')
+                                .image-cropper
+                                    img(src = '/images/site/silver.jpg' style='border-radius: 50% !important; margin: 5px;')
+                                a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Neagra
+                                label(for='quantity') Quantity
+                                input.qcap.black(type="number" name="quantity" min="1" max="100" value='1')
+                                span(style="padding: 5px;") 30 Lei
                             
                             br
                             br

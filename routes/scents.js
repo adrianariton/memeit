@@ -147,7 +147,11 @@ module.exports = function(io){
             deliverymethod: req.body.deliverymethod,
             discountPercentage: discount,
             itemCount: itemsnumber,
-            capsulesCount: req.body.capsulesNo
+            capsulesCount: req.body.capsulesNo,
+            capsulesType: {
+              red: req.body.capsulaRed,
+              black: req.body.capsulaBlack
+            }
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{
