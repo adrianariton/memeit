@@ -120,6 +120,8 @@ module.exports.sendThroughMail = function(order, callback){
         }
     });
     var htm =``
+    var optionsdate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
     var mailOptions = {
         from: process.env.EMAIL_NAME,
         to: order.email,
@@ -150,8 +152,8 @@ module.exports.sendThroughMail = function(order, callback){
                 <div style='display:table-cell; flex-direction:column; justify-content: center; align-items: center;'>
                     <h3 style='display:table-row;'>Cand va fi livrata...</h3>
                     <span style='display:table-row;'>Livrata prin ${order.deliverymethod == 'postro' ? 'Posta Romana':'Curier'}</span>
-                    <span style='display:table-row;'>Comandata la data de ${order.createdAt}</span>
-                    <span style='display:table-row;'>Va fi primita pe sau inainte de ${order.deliveryDate}</span>
+                    <span style='display:table-row;'>Comandata la data de ${order.createdAt.toLocaleDateString("ro", optionsdate)}</span>
+                    <span style='display:table-row;'>Va fi primita pe sau inainte de ${order.deliveryDate.toLocaleDateString("ro", optionsdate)}</span>
 
                 </div>
         
