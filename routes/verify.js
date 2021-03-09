@@ -50,7 +50,7 @@ router.get('/:uid/:secret', function(req, res, next) {
             } else {
                 req.flash('error', `Verificare eșuată.`)
                 //console.log('ERR')
-
+ 
                 res.redirect('/');
             }
             
