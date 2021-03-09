@@ -52,7 +52,9 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
       subject: `Ascent E-mail verification`,
       html: `
         <h2>Ascent-Perfumes</h2>
-      <h3>Verify your email adress: ${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}</h3>`
+        <span>Trebuie sa fii logat pentru a deschide linkul!</span>
+        <h3>Verificati-va adresa: ${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}</h3>`
+      
     };
     var dbcodeobj = new SecretCode({
         email: email,
