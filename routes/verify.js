@@ -31,12 +31,12 @@ router.get('/', function(req, res, next) {
     
 });
 router.get('/:uid/:secret', function(req, res, next) {
-    console.log(req.user._id, req.params.uid)
-    if(req.user && req.user._id == req.params.uid && req.user.status !='verified'){
-        SecretCode.getEmailCode(req.user.email, (err, c)=>{
+    User.getUserById(req.params.uid, (er,usr)=>{
+        
+        SecretCode.getEmailCode(usr.email, (err, c)=>{
             if(c){
                 if(c.code == req.params.secret){
-                    User.verify(req.user._id, ()=>{
+                    User.verify(req.params.uid, ()=>{
                         req.flash( 'success',  `Verificare completă`)
                         res.redirect('/');
                         //console.log('AAAAAA')
@@ -55,11 +55,7 @@ router.get('/:uid/:secret', function(req, res, next) {
             }
             
         })
-    } else {
-        //console.log('MUIE STAEUA')
-        res.redirect('/');
-
-    }
+    })
     
 });
 module.exports = router;
