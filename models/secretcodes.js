@@ -53,7 +53,7 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
       html: `
         <h2>Ascent-Perfumes</h2>
         <span>Trebuie sa fii logat pentru a deschide linkul!</span>
-        <h3>Verificati-va adresa: ${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}</h3>`
+        <a href='${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}'>Verificati-va adresa!</a>`
       
     };
     var dbcodeobj = new SecretCode({
