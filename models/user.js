@@ -27,7 +27,7 @@ var UserSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true
+        unique: true 
     },
     name: {
         type: String
