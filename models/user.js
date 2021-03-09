@@ -152,11 +152,14 @@ module.exports.sendWelcomeMail = function(user, callback){
 }
 module.exports.changeEmail = function(username, newmail,req, callback){
     var reqcopy = req;
-    SecretCode.remove({email: reqcopy.user.email}).then(()=>{
+    SecretCode.deleteMany({email: reqcopy.user.email}).then(()=>{
         User.updateOne({username: username, userType: {$ne: 'google'}}, {
             $set: {email: newmail, status: 'pending', stripeCustomerID: null},
             $addToSet: {emailAliases: reqcopy.user.email, stripeCustomerIDAliases: reqcopy.user.stripeCustomerID}
-        }).then(callback)
+        }).then(callback).catch(eror=>{
+            if(eror)
+            callback(null,eror)
+        })
     })
     
 }
