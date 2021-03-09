@@ -222,7 +222,7 @@ const updatePrices = ()=>{
             
         }
         var cartelems = document.querySelectorAll('.r')
-        $('span.perfumes').text('Perfumes: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
+        $('span.perfumes').text('Parfumuri: ' + Math.round(totalprice*100.0)/10000 + ' Lei')
         $('span.capsules').text('Capsule: ' + Math.round(capsulaprice*100.0)/10000 + ' Lei')
         //totalprice+=capsulaprice
         $('span.total').text('Total: ' + Math.round(((100-discount)/100*totalprice + capsulaprice)*100.0)/10000 + ' Lei')
