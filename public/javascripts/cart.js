@@ -46,7 +46,7 @@ $('#addaddress').click(()=>{
         return res.json()
     }).then(data=>{
         if(data.error){
-            Swal.fire({
+            Swal.fire({ 
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Something went wrong! ' + data.error.message,
