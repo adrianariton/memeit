@@ -5,6 +5,7 @@ var upload = multer({dest:'./uploads'})
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var nodemailer = require('nodemailer');
 
 var User = require('../models/user')
  /* GET users listing. */

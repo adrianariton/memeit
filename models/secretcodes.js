@@ -50,7 +50,9 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
       from: process.env.EMAIL_NAME,
       to: email,
       subject: `Ascent E-mail verification`,
-      text: `Verify your email adress: ${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}`
+      html: `
+        <h2>Ascent-Perfumes</h2>
+      <h3>Verify your email adress: ${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}</h3>`
     };
     var dbcodeobj = new SecretCode({
         email: email,
