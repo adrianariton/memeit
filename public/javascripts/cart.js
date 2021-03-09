@@ -17,6 +17,68 @@ var capsulaprice = 0;
 var capsulaCount = 0;
 var capsulaRed= 0;
 var capsulaBlack =0;
+$('#addaddress').click(()=>{
+    console.log(document.querySelector('#addformcrt'))
+    console.log({
+        street: document.querySelector('#addformcrt')['street'].value,
+        city: document.querySelector('#addformcrt')['city'].value,
+        zip: document.querySelector('#addformcrt')['zip'].value,
+        county: document.querySelector('#addformcrt')['county'].value,
+        country: document.querySelector('#addformcrt')['country'].value,
+
+    })
+    fetch('/users/myaccount', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            street: document.querySelector('#addformcrt')['street'].value,
+            city: document.querySelector('#addformcrt')['city'].value,
+            zip: document.querySelector('#addformcrt')['zip'].value,
+            county: document.querySelector('#addformcrt')['county'].value,
+            country: document.querySelector('#addformcrt')['country'].value,
+            fromcart: true
+        })
+    }).then((res)=>{
+        
+        return res.json()
+    }).then(data=>{
+        if(data.error){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! ' + data.error.message,
+                footer: '<a href>Contact us!</a>'
+            })
+        } else {
+            console.log(data.address)
+            Swal.fire({
+                icon: 'success',
+                title: data.message,
+            })
+            var i = addresses.length
+            addresses.push(data.address)
+            console.log(addresses)
+            console.log(document.querySelector('select#addressnr'))
+            document.querySelector('select#addressnr').innerHTML += `
+            <option value="${i}">Address ${i+1}</option>
+            `
+            document.querySelector('select#addressnr').value=i;
+            disc()
+            refr()
+            if($('#addressnr')){
+                $('#address-display').text(`${addresses[i].street}, ${addresses[i].city}, ${addresses[i].county}, ${addresses[i].country}; Zip: ${addresses[i].zip}`)
+              
+              }
+        }
+        
+        
+    }).catch(err=>{
+        console.log(err)
+    })
+})
 $('.q').change(()=>{
     disc()
     refr()

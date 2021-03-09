@@ -220,14 +220,25 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
         } else {
           User.addAddress(req, (result, err)=>{
             console.log(err, result);
-            if(err){
-              req.flash('error', 'Something went wrong!')
-              res.redirect(req.get('referer'));
-  
-            } else {
-              req.flash('success', 'Address added!')
-              res.redirect(req.get('referer'));
+            console.log(req.body.fromcart)
+            if(req.body.fromcart){
+              if(err){
+                res.json({error: true, message:'Something went wrong!'})
 
+              } else {
+                res.json({error: false, message:'Successfully added!', address: req.body})
+
+              }
+            } else {
+              if(err){
+                req.flash('error', 'Something went wrong!')
+                res.redirect(req.get('referer'));
+    
+              } else {
+                req.flash('success', 'Address added!')
+                res.redirect(req.get('referer'));
+  
+              }
             }
           })
         }

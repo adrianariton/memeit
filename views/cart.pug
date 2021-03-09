@@ -116,7 +116,7 @@ block content
                                         </div>
                                     </form>
                                 h5 Or add a new address!
-                                form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
+                                form.addressform#addformcrt
                                     .form-group
                                         span(style='color: grey !important;') Exemplu: 23 Jordan Str.
                                         input(type="text" 
@@ -139,7 +139,7 @@ block content
                                                 class="form-control" 
                                                 id="inputCountry" 
                                                 placeholder="Tara" name='country' value="Romania" required)
-                                    input.grcolor.btn.btn-prymary(type='submit', name ='submit', value='Adauga adresa!')
+                                    input.grcolor.btn.btn-prymary#addaddress(value='Adauga adresa!')
                                 .footer-a
                                     span.perfumes
                                     span.capsules
@@ -172,7 +172,7 @@ block content
         script(src='/javascripts/mwui.js')
         script(src='/javascripts/addressdisplay.js')
         script.
-            const addresses = [!{user.addresses}]
+            var addresses = [!{user.addresses}]
             var discount = !{discount}
             console.log('DISCOUNT: '+ discount)
     else 
