@@ -141,7 +141,7 @@ $(document).ready(()=>{
                 
             })
         })
-        
+         
         if(localStorage.getItem('localcart') == ''||localStorage.getItem('localcart') == undefined || localStorage.getItem('localcart') == null){
             localStorage.setItem('localcart', JSON.stringify([]));
         }
