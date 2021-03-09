@@ -31,7 +31,7 @@ module.exports = function(io){
     if(req.isAuthenticated() && req.user.status == 'verified'){
       return next();
     }
-    req.flash('Please verify your account!')
+    req.flash('Verificați-vă contul!')
     res.redirect('/')
   }
   function ensureNotAuthenticated(req, res, next){
@@ -164,11 +164,11 @@ module.exports = function(io){
                   console.log(errormail)
                 })
                 console.log(result)
-                res.json({error: false, message:'Successfully ordered!', order: ordercr})
+                res.json({error: false, message:'Comanda a fost procesată cu succes!', order: ordercr})
               } else {
                 console.log('Charge Failed ')
                 console.log(result)
-                res.json({error: true, message:'Something went wrong!'})
+                res.json({error: true, message:'Ceva a mers rău!'})
               }
             })
             
@@ -343,7 +343,7 @@ module.exports = function(io){
       email: req.body.email,
       suggestion: req.body.suggestion
     }), (err, suggcr)=>{
-      req.flash('success','Thank you for your feedback!')
+      req.flash('success','Mulțumim pentru sugestie!')
       res.redirect('/scents/men')
     })
   })

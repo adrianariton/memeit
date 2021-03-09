@@ -1963,7 +1963,13 @@ body {
 
 .grcolor {
   background: gray !important;
-  border-radius: 10px;
+  border-radius: 10px !important;
+}
+
+.ggcolor {
+  background: gray !important;
+  width: calc(100% - 20px) !important;
+  border-radius: 10px !important;
 }
 
 .andu .cartcont .cart-q .cart-tab-bar, .andu .cartcont .cart-a .cart-tab-bar, .andu .cartcont .cart-l .cart-tab-bar {

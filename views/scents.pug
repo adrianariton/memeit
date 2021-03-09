@@ -2,12 +2,12 @@ extends layout
 
 block content
   .scentsbody.sc.andu.andu-unfix
-    h1.input #{input}
+    h1.input #{input == "men" ? "Bărbați" : "Femei"} 
     if !user
       .logintobuy 
-        span You need to&nbsp;
-        a(href='/users/login') Log in
-        span &nbsp;to buy!
+        span Trebuie&nbsp;
+        a(href='/users/login') sa vă autentificați
+        span &nbsp;ca să puteți cumpăra
       .storage 
         .grcolor.clearstorage(onclick = 'localStorage.clear();')
     .buddy

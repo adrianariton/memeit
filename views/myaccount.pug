@@ -10,17 +10,17 @@ block content
                             img(src='/images/user-alt.png')
                             .uinfo
                                 span.name #{user.name} #{user.vorname}
-                                span.datecreated Member since #{user.dateCreated ? user.dateCreated.toLocaleDateString() : ' - '}
+                                span.datecreated Membru din #{user.dateCreated ? user.dateCreated.toLocaleDateString("ro") : ' - '}
                     .body
                         .section.main 
                             .title 
-                                .title2#personal-data Data 
-                                .title2#my-addresses Addresses 
-                                .title2#other Other 
-                                .title2#my-orders Orders
+                                .title2#personal-data Info
+                                .title2#my-addresses Adrese
+                                .title2#other Parolă
+                                .title2#my-orders Comenzi
                             .content.personal-data
                                 .form-group 
-                                    label Login Method 
+                                    label Metodă de Login
                                     input.form-control(disabled name='loginmethod', type='text', placeholder='Method', value=user.userType)
                                 .form-group
                                     label Nume
@@ -29,18 +29,18 @@ block content
                                     label Prenume
                                     input.form-control(disabled name='vorname', type='text', placeholder='Prenume', value= user.vorname)
                                 .form-group
-                                    label Data Nasterii
+                                    label Data Nașterii
                                     input.form-control(disabled name='birthdate', type='text', class="datepicker", placeholder='Data Nasterii', value = user.birthdate)
                                 .form-group
                                     label Username
                                     input.form-control(disabled name='username', type='text', placeholder='Username', value = user.username)
                                 form(method='post', action='/users/myaccount', enctype='multipart/form-data')
-                                    span(style='color: gray !important;') If you use Google to log in, you won't be able to change your email!
+                                    span(style='color: gray !important;') Dacă folosiți Google pentru log in, nu o să puteți să vă schimbați e-Mailul
                                     if user.userType != 'google'
                                         .form-group
                                             label E-mail
                                             input.form-control(required,name='email', type='email', placeholder='E-mail', value= user.email)
-                                        input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                                        input.btn.btn-prymary(type='submit', name ='submit', value='Salvați modificările!')
                             .content.my-addresses
                                 if user.status == 'verified'
                                     - var i = 0
@@ -49,14 +49,14 @@ block content
                                         .addresscontainer
                                             form.removeaddressform(method='post', action='/users/removeaddress', enctype='multipart/form-data')
                                                 .form-group
-                                                    label Address #{i}
+                                                    label Adresa #{i}
                                                     input.form-control(disabled, id=user.addresses[i-1] name='Address #{i}', type='text', placeholder='Address #{i}', value=JSON.parse(user.addresses[i-1]).street +", "+JSON.parse(user.addresses[i-1]).city+ ", "+JSON.parse(user.addresses[i-1]).county+ ", "+JSON.parse(user.addresses[i-1]).country+ ", Zip Code: " + JSON.parse(user.addresses[i-1]).zip)
                                                 .form-group(style='display: none !important;')
                                                     input.form-control(name='toremove', type='text', value=user.addresses[i-1])
-                                                input.btn.btn-prymary(type='submit', name ='submit', value='Remove')
+                                                input.btn.btn-prymary(type='submit', name ='submit', value='Ștergeți')
                                     form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
                                         .form-group
-                                            span(style='color: grey !important;') Exemplu: 23 Jordan Str.
+                                            span(style='color: grey !important;') Exemplu: Strada Vasile Ion nr. 123
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="autocomplete" 
@@ -79,17 +79,17 @@ block content
                                                     placeholder="Tara" name='country' value="Romania" required)
                                         input.btn.btn-prymary(type='submit', name ='submit', value='Adauga adresa!')
                                 else
-                                    .verif You need to verify your account!
+                                    .verif Trebuie să vă verificați contul!
                             .content.other
                                 if user.userType != 'google'
                                     if user.status == 'verified'
                                         form(method='post', action='/users/password', enctype='multipart/form-data')
                                             .form-group
                                                 label 
-                                                input.form-control(required,name='password', type='password', placeholder='Change Password', style='background-color: #0c0c0c !important; border: none !important; border-radius: 10px; padding-left: 10px; padding-right: 10px; width: calc(100% - 20px) !important')
-                                            input.btn.btn-prymary(type='submit', name ='submit', value='Save changes!')
+                                                input.form-control(required,name='password', type='password', placeholder='Schimbați-vă parola', style='background-color: #0c0c0c !important; border: none !important; border-radius: 10px; padding-left: 10px; padding-right: 10px; width: calc(100% - 20px) !important')
+                                            input.btn.btn-prymary(type='submit', name ='submit', value='Salvați modificările!')
                                     else
-                                        .verif You need to verify your account!
+                                        .verif Trebuie să vă verificați contul!
                             if false 
                                 .content
                                 .btn.togglesubs Show Subscriptions
@@ -111,5 +111,5 @@ block content
                                                     - i++
                                     .info Subscription id is used to identify your subscription if you have any problem with it.
                             .content.my-orders
-                                a.btn.gotoorders(href='/myaccount/orders', style='border-radius: 10px;') Go to my orders
+                                a.btn.gotoorders(href='/myaccount/orders', style='border-radius: 10px;') Mergeți la comenzile dvs.
             script(src='/javascripts/address.js')

@@ -34,6 +34,7 @@ html
     meta(name="google-site-verification" content="lHkfhuYX75GS_wCwflRhkDplr0yb7ANH2yKVBgeY1Gs")
 
   body
+    - var optionsdate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     link(rel='stylesheet', href='/stylesheets/index.css')
     .navbar-unfix.navbar
       .navbar-header.flex
@@ -59,49 +60,49 @@ html
               i(class='material-icons') menu
     .customsidenav.customsidenav-unfix
       .content.container
-        span Main
+        span Acasă
         li.home
-          a(href='/') Home
+          a(href='/') Acasă
         if !user
           li.register(class =(title == 'Register' ? 'active' : ''))
-            a(href='/users/register') Register
+            a(href='/users/register') Înregistrează-te
           li.login(class =(title == 'Login' ? 'active' : ''))
             a(href='/users/login') Log In
          
-        span Perfumes
+        span Parfumuri
         li
-          a(href='/scents/men') For men
+          a(href='/scents/men') Pentru bărbati
         li
-          a(href='/scents/women') For women
+          a(href='/scents/women') Pentru femei
 
         if user
-          span Shop & Cart
+          span Coș
           li.flex
-            a(href='/scents/cart').flex Shopping Cart
+            a(href='/scents/cart').flex Coșul de cumpărături
                 //-i(class="material-icons") shopping_cart
           li.flex
-            a(href='/myaccount/orders') My orders 
+            a(href='/myaccount/orders') Comenzile mele
           
 
         if user
-          span Account
+          span Cont
           li
-            a(href='/myaccount') My account
+            a(href='/myaccount') Contul meu
           li
             a(href='/users/logout') Log Out
         
         if user
           if user.status != 'verified'
-            span Verify your account!
+            span Verifică-ți contul!
             li
-              a.verify(href='/verify') Verify account
+              a.verify(href='/verify') Verifică-ți contul
     .messages(style='position: absolute;')
       if true
         != messages()
       if user
         if user.status != 'verified'
           li(style='  list-style: none !important;')
-            a.verify(href='/verify') Verify your account!
+            a.verify(href='/verify') Verifică-ți contul
     .fixed-action-btn
       a.btn-floating.btn-large(href='/scents/cart') 
         if !user
@@ -129,7 +130,7 @@ html
           div(class="col l6 s12")
             h5(class="white-text") Contactați-ne: <a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">ascent.romania.help@gmail.com</a>
           div(class="col l4 offset-l2 s12")
-            h5 Follow Us!
+            h5 Urmăriți-ne!
             ul
               li.followus
                 a(class="grey-text text-lighten-3" href="https://www.instagram.com/ascent.perfumes/") <i class="fa fa-instagram"></i>

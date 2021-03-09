@@ -1303,7 +1303,13 @@ body {
 }
 .grcolor {
   background: gray !important;
-  border-radius: 10px;
+  //width: calc(100% - 20px) !important;
+  border-radius: 10px !important;
+}
+.ggcolor {
+  background: gray !important;
+  width: calc(100% - 20px) !important;
+  border-radius: 10px !important;
 }
 .andu {
   .cartcont {

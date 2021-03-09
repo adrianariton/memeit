@@ -146,11 +146,11 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
               if(err3) throw err3
               console.log('user')
             })
-            req.flash('success', 'You are now registered and can login')
+            req.flash('success', 'Ați fost înregistrat și vă puteți autentifica!')
             res.location('/')
         res.redirect('/')
           } else {
-            req.flash('error', 'Email is already in use')
+            req.flash('error', 'Emailul este deja folosit!')
             res.location('/users/register')
             res.redirect('/users/register')
           }
@@ -159,7 +159,7 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
         
       } else {
-        req.flash('error', 'Username exists')
+        req.flash('error', 'Username-ul este deja folosit!')
         res.location('/users/register')
         res.redirect('/users/register')
       }
@@ -175,8 +175,8 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
   if(req.user){
     console.log(req.body, req.body.email)
     if(req.body.email){
-      req.checkBody('email', 'Email field is required').notEmpty();
-      req.checkBody('email', 'Email is not valid').isEmail();
+      req.checkBody('email', 'Câmpul Emailului trebuie completat!').notEmpty();
+      req.checkBody('email', 'Emailul nu e valid!').isEmail();
 
       var errors = req.validationErrors();
 
@@ -188,11 +188,11 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
         User.changeEmail(req.user.username,req.body.email,req, (result, err)=>{
           console.log(err, result);
           if(err){
-            req.flash('error', 'Something went wrong!')
+            req.flash('error', 'Ceva a mers rău!')
             res.redirect('/myaccount')
 
           } else {
-            req.flash('success', 'Email address changed! Please reverify your account.')
+            req.flash('success', 'V-ați schimbat adresa de Email cu succes! Trebuie să vă reverificați contul!')
             res.redirect('/myaccount')
           }
           
@@ -223,15 +223,15 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
             console.log(req.body.fromcart)
             if(req.body.fromcart){
               if(err){
-                res.json({error: true, message:'Something went wrong!'})
+                res.json({error: true, message:'Ceva a mers rău!'})
 
               } else {
-                res.json({error: false, message:'Successfully added!', address: req.body})
+                res.json({error: false, message:'Adresa a fost adăugată cu succes!', address: req.body})
 
               }
             } else {
               if(err){
-                req.flash('error', 'Something went wrong!')
+                req.flash('error', 'Ceva a mers rău!')
                 res.redirect(req.get('referer'));
     
               } else {
@@ -244,7 +244,7 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
         }
 
       } else {
-        req.flash('error', 'Something went wrong!')
+        req.flash('error', 'Ceva a mers rău!')
         res.redirect('/myaccount')
       }
     }
@@ -261,11 +261,11 @@ router.post('/removeaddress',upload.single('profileimage') , function(req, res, 
     User.removeAddress(req, (result, err)=>{
       console.log(err, result);
       if(err){
-        req.flash('error', 'Something went wrong!')
+        req.flash('error', 'Ceva a mers rău!')
         res.redirect('/myaccount')
 
       } else {
-        req.flash('success', 'Adress removed!')
+        req.flash('success', 'A fost ștearsă adresa!')
         res.redirect('/myaccount')
       }
       
@@ -285,7 +285,7 @@ router.post('/password',upload.single('profileimage') , function(req, res, next)
     User.changePwd(req, (result, err)=>{
       console.log(err, result);
       if(err){
-        req.flash('error', 'Password could not be changed!')
+        req.flash('error', 'Parola nu a putut fi schimbată!')
         res.redirect('/myaccount')
 
       } else {

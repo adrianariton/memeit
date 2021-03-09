@@ -42,11 +42,11 @@ router.get('/:orderid', function(req, res, next) {
                     })
         
                 } else {
-                    req.flash('error', `You don't have permission to view this order's info!`)
+                    req.flash('error', `Nu aveți permisiune să vedeți informațiile din comandă!`)
                     res.redirect('/myaccount')
                 }
             } else {
-                req.flash('error', `There exists no order with this id!`)
+                req.flash('error', `Nu există comandă cu acest ID!`)
                 res.redirect('/myaccount')
             }
             

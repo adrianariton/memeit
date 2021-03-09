@@ -9,16 +9,15 @@ router.get('/', function(req, res, next) {
         SecretCode.sendSecretUrlToUser(req.user._id, req.user.email, req, (err)=>{
             console.log('HEYO')
             if(err == 'already sent'){
-                req.flash('error', `Already sent verification mail to ${req.user.email}. Wait 2 minutes for it to arrive!`)
-
+                req.flash('error', `Deja am trimis emailul de verificare userului ${req.user.email}. Așteptați 2 minute ca să îl primiți!`)
                 res.redirect('/');
             } else if(err){
-                req.flash('error', `Failed to send verification mail to ${req.user.email}`)
+                req.flash('error', `Eșuare în trimitera mailului userului ${req.user.email}`)
 
                 res.redirect('/');
 
             } else {
-                req.flash( 'success',  `Sent verification mail to ${req.user.email}. <br> It may take 2 minutes for it to arrive!`)
+                req.flash( 'success',  `Am trimis emailul de verificare userului ${req.user.email}. <br> Va lua cam 2 minute ca să îl primiți.`)
                 res.redirect('/');
 
 
@@ -38,18 +37,18 @@ router.get('/:uid/:secret', function(req, res, next) {
             if(c){
                 if(c.code == req.params.secret){
                     User.verify(req.user._id, ()=>{
-                        req.flash( 'success',  `Verification complete!`)
+                        req.flash( 'success',  `Verificare completă`)
                         res.redirect('/');
                         //console.log('AAAAAA')
                     })
     
                 } else {
-                    req.flash( 'error',  `Verification failed!`)
+                    req.flash( 'error',  `Verificare eșuată`)
                     res.redirect('/');
                     //console.log('ERRVF')
                 }
             } else {
-                req.flash('error', `Failed verification.`)
+                req.flash('error', `Verificare eșuată.`)
                 //console.log('ERR')
 
                 res.redirect('/');
@@ -57,7 +56,7 @@ router.get('/:uid/:secret', function(req, res, next) {
             
         })
     } else {
-        console.log('MUIE STAEUA')
+        //console.log('MUIE STAEUA')
         res.redirect('/');
 
     }

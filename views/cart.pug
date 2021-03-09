@@ -22,12 +22,12 @@ block content
                         .cart-q.content
                             .cart-tab-bar
                                 .tab-item#put-account-info.done 
-                                    span Enter Account
+                                    span Contul dvs.
                                 .tab-item#start-order.highlig
-                                    span Start Order 
+                                    span Începeți comanda
                                 .tab-item#order-info
-                                    span Delivery
-                            h5 #{user.username}'s Shopping Cart:
+                                    span Livrare
+                            h5 Coșul lui #{user.username}
                             - var i = 0
                             while i <= cart.length-1
                                 //- data-stripe-id = stripe.find(element => element.name == cart[i].name).id
@@ -36,7 +36,7 @@ block content
                                     .image-cropper
                                         img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
                                     a.name(href='/scents/'+cart[i].mw, style='word-wrap: break-word; overflow-wrap: break-word;') #{cart[i].name}
-                                    label(for='quantity') Quantity
+                                    label(for='quantity') Cantitate
                                     .arrowgroup.first 
                                         .up 
                                             i.material-icons add
@@ -55,7 +55,7 @@ block content
                                 .image-cropper
                                     img(src = '/images/site/ruby.jpg' style='border-radius: 50% !important; margin: 5px;')
                                 a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Rosie
-                                label(for='quantity') Quantity
+                                label(for='quantity') Cantitate
                                 .arrowgroup.first 
                                     .up 
                                         i.material-icons add
@@ -68,7 +68,7 @@ block content
                                 .image-cropper
                                     img(src = '/images/site/silver.jpg' style='border-radius: 50% !important; margin: 5px;')
                                 a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Neagra
-                                label(for='quantity') Quantity
+                                label(for='quantity') Cantitate
                                 .arrowgroup.first 
                                     .up 
                                         i.material-icons add
@@ -81,44 +81,44 @@ block content
                             br
                             br
                             br
-                            .btn.cbutton.ndcolor.btn.largebtn(onclick = 'cClicked()') Start Order
+                            .btn.cbutton.ndcolor.btn.largebtn(onclick = 'cClicked()') începeți comanda
                             br
                             br
                             br
                         .cart-a
                             .cart-tab-bar 
                                 .tab-item#put-account-info.done
-                                    span Enter Account
+                                    span Contul dvs.
                                 .tab-item#start-order.done
-                                    span Start Order  
+                                    span Începeți comanda  
                                 .tab-item#order-info.highlig
-                                    span Delivery
+                                    span Livrare
                             if user.status == 'verified'
-                                h5 Fill in your delivery info!
+                                h5 Completați informatiile livrării
                                 if user.addresses != '' && user.addresses != [] && user.addresses!=null
                                     <form action="/scents/done" method="post" id="payment-form">
                                         <div class="form-row" style="border-radius: 10px !important; padding: 10px">
-                                            <label for="deliverymethod">Choose a delivery method:</label>
+                                            <label for="deliverymethod">Alegeți metoda de livrare:</label>
                                             .custom-select2
                                                 <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block; border: none !important; background-color: rgba(10,10,10,1) !important; border-radius: 10px;'>
                                                     <option value="postro">Posta Romana</option>
                                                     <option value="curier">Curier</option>
                                                 </select>
-                                            <label for="addressnr">Choose address:</label>
+                                            <label for="addressnr">Alegeți o adresă:</label>
                                             .custom-select2
                                                 <select  id="addressnr" name="addressnr" style='display: block; border: none !important; background-color: rgba(10,10,10,1) !important; border-radius: 10px;'>
                                                     - var i=0
                                                     for address in user.addresses 
-                                                        option(value=i) Address #{i+1}
+                                                        option(value=i) Adresa #{i+1}
                                                         - i++
                                                 </select>
                                             h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].county}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
                                         </div>
                                     </form>
-                                h5 Or add a new address!
+                                h5 Sau adăugați o adresă nouă
                                 form.addressform#addformcrt
                                     .form-group
-                                        span(style='color: grey !important;') Exemplu: 23 Jordan Str.
+                                        span(style='color: grey !important;') Exemplu: Strada Vasile Ion nr. 123
                                         input(type="text" 
                                                 class="form-control" 
                                                 id="autocomplete" 
@@ -139,7 +139,7 @@ block content
                                                 class="form-control" 
                                                 id="inputCountry" 
                                                 placeholder="Tara" name='country' value="Romania" required)
-                                    input.grcolor.btn.btn-prymary#addaddress(value='Adauga adresa!')
+                                    input.grcolor.ggcolor.btn.btn-prymary#addaddress(value='Adauga adresa!')
                                 .footer-a
                                     span.perfumes
                                     span.capsules
@@ -151,8 +151,8 @@ block content
                                         - discount = 15
                                     span#discount Discount: #{discount}%
                                     span.total(style='border-top: 1px solid grey !important;')
-                                    .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Finish Order
-                                    .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Back
+                                    .btn.donebutton.ndcolor.btn.largebtn(onclick = 'doneClicked()') Terminați comanda
+                                    .btn.backbutton.grcolor.btn.largebtn(onclick = 'backClicked()') Înapoi
                             else 
                                 .con
                                     span You have to be verified and to add an address to order! Go to <a href='/myaccount'> My Account</a>!
@@ -161,7 +161,7 @@ block content
                             br
                     else 
                         .con
-                            span Please add at least one item to your cart, and at least one perfume! 
+                            span Adăugați vă rugăm măcar un item in coșul de cumpărături.
                             .mw
                                 div(class="women split left")
                                     a(href='/scents/women') &#9792;
@@ -181,11 +181,11 @@ block content
                     .cart-l 
                         .cart-tab-bar 
                             .tab-item#put-account-info.highlig 
-                                span Enter Account 
+                                span Contul dvs.
                             .tab-item#start-order
-                                span Start Order 
+                                span Începeți comanda 
                             .tab-item#order-info
-                                span Delivery
+                                span Livrare
                         a.brand-logo(href='#')
                             img.logoimg(src='/images/logo.png')
                         form(method='post', action='/users/login', enctype='urlencoded', style="margin-right: 10px !important")
@@ -193,7 +193,7 @@ block content
                                 label Username
                                 input.form-control(name='username', type='text', placeholder='Username', style="background-color: rgb(10,10,10) !important; border-radius: 10px !important; border: none !important; padding-left: 10px;")
                             .form-group
-                                label Password
+                                label Parolă
                                 input.form-control(name='password', type='password',
                                     placeholder='Parola', style="background-color: rgb(10,10,10) !important; border-radius: 10px !important; border: none !important; padding-left: 10px;")
                             .form-group(style='display: none !important;')
@@ -207,4 +207,4 @@ block content
                                     .right
                                         img(width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 
                                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png")
-                                    span Login with &nbsp;
+                                    span Log in cu &nbsp;
