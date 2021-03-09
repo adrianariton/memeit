@@ -68,11 +68,11 @@ block content
                         .ab-group 
                             .quan 
                                 span 
-                                span Total: #{order.amount/100} -#{order.discountPercentage}% Discount
+                                span Total: #{order.amount/100} with #{order.discountPercentage}% Discount la parfumuri.
                 .section 
                     .title 
                     .content.ndcolor.total 
                         .ab-group 
                             .quan 
                                 span 
-                                span.ndtext Total: Lei#{(100-order.discountPercentage)/100 * order.amount/100}
+                                span.ndtext Total: Lei#{ order.afterDiscount ? order.afterDiscount/100 : (100-order.discountPercentage)/100 * order.amount/100}

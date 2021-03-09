@@ -117,6 +117,7 @@ module.exports = function(io){
           total+=doc.price * qs[doc._id];
         })
         console.log(req.body.capsulesNo)
+        var parfumespr = total;
         if(req.body.capsulesNo>=1){
           total+=(req.body.capsulesNo-1)*3000
         }
@@ -151,7 +152,8 @@ module.exports = function(io){
             capsulesType: {
               red: req.body.capsulaRed,
               black: req.body.capsulaBlack
-            }
+            },
+            afterDiscount: parfumespr*(100-discount)/100 + (total-parfumespr)
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{

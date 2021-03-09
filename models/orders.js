@@ -76,6 +76,9 @@ var OrdersSchema = mongoose.Schema({
     },
     capsulesType: {
         type: Object
+    },
+    afterDiscount: {
+        type: Number
     }
 })
 
