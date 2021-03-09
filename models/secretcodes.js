@@ -26,7 +26,7 @@ const SecretCodeSchema = mongoose.Schema({
         expireAfterSeconds: 3600*5,
     },
 });
-
+ 
 var SecretCode = module.exports = mongoose.model('SecretCode', SecretCodeSchema);
 
 
