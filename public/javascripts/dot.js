@@ -141,14 +141,7 @@ $(document).ready(()=>{
                 
             })
         })
-        $('#addressnr').change(()=>{
-            var addrennr = 1
-            $( "#addressnr option:selected" ).each(function() {
-                addrennr = $( this ).val();
-            });
-            $( "#selectedaddr" ).text(`${addresses[addrennr].street}, ${addresses[addrennr].city}, ${addresses[addrennr].state==''? addresses[addrennr].county: addresses[addrennr].state}, ${addresses[addrennr].country}; Zip: ${addresses[addrennr].zip}`);
-        })
-
+        
         if(localStorage.getItem('localcart') == ''||localStorage.getItem('localcart') == undefined || localStorage.getItem('localcart') == null){
             localStorage.setItem('localcart', JSON.stringify([]));
         }

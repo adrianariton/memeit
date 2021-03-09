@@ -37,15 +37,17 @@ block content
                                         img(src = '/images/'+ cart[i].image style='border-radius: 50% !important; margin: 5px;')
                                     a.name(href='/scents/'+cart[i].mw, style='word-wrap: break-word; overflow-wrap: break-word;') #{cart[i].name}
                                     label(for='quantity') Quantity
-                                    .arrowgroup 
+                                    .arrowgroup.first 
                                         .up 
-                                            i.material-icons keyboard_arrow_up
-                                        .down
-                                            i.material-icons keyboard_arrow_down
+                                            i.material-icons add
                                     input.q(type="number" name="quantity" min="1" max="100" value='1')
+                                    .arrowgroup
+                                        .down
+                                            i.material-icons remove
+                                
                                     .btn.btn-prymary.remove-cart-item
-                                        i.material-icons.large remove_circle
-                                    span(style="padding: 5px;") #{cart[i].price/100} Lei
+                                        i.material-icons.large(style='color: red !important;') close
+                                    span.pret(style="padding: 5px;") #{cart[i].price/100} x 1 Lei
                                 - i++
                             - i=0
                             span Prima capsula e gratis!
@@ -54,26 +56,27 @@ block content
                                     img(src = '/images/site/ruby.jpg' style='border-radius: 50% !important; margin: 5px;')
                                 a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Rosie
                                 label(for='quantity') Quantity
-                                .arrowgroup 
+                                .arrowgroup.first 
                                     .up 
-                                        i.material-icons keyboard_arrow_up
-                                    .down
-                                        i.material-icons keyboard_arrow_down
+                                        i.material-icons add
                                 input.qcap.red(type="number" name="quantity" min="0" max="100" value='1' style='background-color: #0a0a0a !important;')
-                                span.pr(style="padding: 5px;") 30 Lei
+                                .arrowgroup
+                                    .down
+                                        i.material-icons remove
+                                span.pr(style="padding: 5px; opacity: 0 !important;") 30 x 1 Lei
                             .r2.ab-group(data-item-id = 'capsulaBlack' data-name = 'capsulaBlack')
                                 .image-cropper
                                     img(src = '/images/site/silver.jpg' style='border-radius: 50% !important; margin: 5px;')
                                 a.name(style='word-wrap: break-word; overflow-wrap: break-word;') Capsula Neagra
                                 label(for='quantity') Quantity
-                                .arrowgroup 
+                                .arrowgroup.first 
                                     .up 
-                                        i.material-icons keyboard_arrow_up
-                                    .down
-                                        i.material-icons keyboard_arrow_down
+                                        i.material-icons add
                                 input.qcap.black(type="number" name="quantity" min="0" max="100" value='0'  style='background-color: #0a0a0a !important;')
-                                
-                                span.pr(style="padding: 5px;") 30 Lei
+                                .arrowgroup                                     
+                                    .down
+                                        i.material-icons remove                               
+                                span.pr(style="padding: 5px;") 30 x 1 Lei
                             
                             br
                             br
@@ -109,25 +112,21 @@ block content
                                                         option(value=i) Address #{i+1}
                                                         - i++
                                                 </select>
-                                            h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].state == '' ? user.addresses[0].county : user.addresses[0].state}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
+                                            h5#address-display #{user.addresses[0].street}, #{user.addresses[0].city}, #{user.addresses[0].county}, #{user.addresses[0].country}; Zip: #{user.addresses[0].zip}
                                         </div>
                                     </form>
                                 h5 Or add a new address!
                                 form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
                                     .form-group
-                                        span(style='color: grey !important;') 'Street' field example: 23 Jordan Street
+                                        span(style='color: grey !important;') Exemplu: 23 Jordan Str.
                                         input(type="text" 
                                                 class="form-control" 
                                                 id="autocomplete" 
-                                                placeholder="Street" name='street' required)
+                                                placeholder="Strada" name='street' required)
                                         input(type="text" 
                                                 class="form-control" 
                                                 id="inputCity" 
-                                                placeholder="City" name='city' required)                               
-                                        input(type="text" 
-                                                class="form-control" 
-                                                id="inputState" 
-                                                placeholder="State" name='state')                               
+                                                placeholder="Oras" name='city' required)                                                              
                                         input(type="text" 
                                                 class="form-control" 
                                                 id="inputZip" 
@@ -135,12 +134,12 @@ block content
                                         input(type="text" 
                                                 class="form-control" 
                                                 id="inputCounty" 
-                                                placeholder="County" name='county')                              
+                                                placeholder="Judet" name='county')                              
                                         input(type="text" 
                                                 class="form-control" 
                                                 id="inputCountry" 
-                                                placeholder="Country" name='country' required)
-                                    input.btn.grcolor.btn-prymary(type='submit', name ='submit', value='Add address!')
+                                                placeholder="Tara" name='country' value="Romania" required)
+                                    input.grcolor.btn.btn-prymary(type='submit', name ='submit', value='Adauga adresa!')
                                 .footer-a
                                     span.perfumes
                                     span.capsules

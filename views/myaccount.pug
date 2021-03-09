@@ -56,19 +56,15 @@ block content
                                                 input.btn.btn-prymary(type='submit', name ='submit', value='Remove')
                                     form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
                                         .form-group
-                                            span(style='color: grey !important;') 'Street' field example: 23 Jordan Street
+                                            span(style='color: grey !important;') Exemplu: 23 Jordan Str.
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="autocomplete" 
-                                                    placeholder="Street" name='street' required)
+                                                    placeholder="Strada" name='street' required)
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputCity" 
-                                                    placeholder="City" name='city' required)                               
-                                            input(type="text" 
-                                                    class="form-control" 
-                                                    id="inputState" 
-                                                    placeholder="State" name='state')                               
+                                                    placeholder="Oras" name='city' required)                                                              
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputZip" 
@@ -76,12 +72,12 @@ block content
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputCounty" 
-                                                    placeholder="County" name='county')                              
+                                                    placeholder="Judet" name='county')                              
                                             input(type="text" 
                                                     class="form-control" 
                                                     id="inputCountry" 
-                                                    placeholder="Country" name='country' required)
-                                        input.btn.btn-prymary(type='submit', name ='submit', value='Add address!')
+                                                    placeholder="Tara" name='country' value="Romania" required)
+                                        input.btn.btn-prymary(type='submit', name ='submit', value='Adauga adresa!')
                                 else
                                     .verif You need to verify your account!
                             .content.other

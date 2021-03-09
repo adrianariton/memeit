@@ -200,7 +200,7 @@ body {
   cursor: pointer !important;
 }
 
-input.q {
+input.q,input.qcap {
   border: none !important;
   background-color: rgb(10, 10, 10) !important;
   margin-right: 10px !important;
@@ -1402,12 +1402,22 @@ body {
     }
     .arrowgroup{
       @include max-width(600px) {
-       margin-left: auto;
-       margin-right: 1em;
+       &.first{
+        margin-right: 1em;
+        margin-left: auto;
+
+       }
       }
       
       @include min-width(600px) {
         margin-top: 5px;
+        .up{
+          transform: translate(-3.2em, 45px);
+        }
+        .down{
+          transform: translate(2.7em, -45px);
+
+        }
       }
     }
     input {

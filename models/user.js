@@ -125,7 +125,6 @@ module.exports.emptyCart = function(username, callback){
 module.exports.addAddress = function(req, callback){
     var street = req.body.street;
     var city = req.body.city;
-    var state = req.body.state;
     var zip = req.body.zip;
     var county = req.body.county;
     var country = req.body.country;
@@ -133,7 +132,6 @@ module.exports.addAddress = function(req, callback){
     var address = {
         street: street,
         city: city,
-        state: state,
         zip: zip,
         county: county,
         country: country

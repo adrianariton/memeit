@@ -242,7 +242,7 @@ body {
   cursor: pointer !important;
 }
 
-input.q {
+input.q, input.qcap {
   border: none !important;
   background-color: #0a0a0a !important;
   margin-right: 10px !important;
@@ -2119,10 +2119,10 @@ body {
 }
 
 @media screen and (min-width: 600px) {
-  .cartcont .r .arrowgroup,
-  .cartcont .r2 .arrowgroup {
-    margin-left: auto;
+  .cartcont .r .arrowgroup.first,
+  .cartcont .r2 .arrowgroup.first {
     margin-right: 1em;
+    margin-left: auto;
   }
 }
 
@@ -2130,6 +2130,16 @@ body {
   .cartcont .r .arrowgroup,
   .cartcont .r2 .arrowgroup {
     margin-top: 5px;
+  }
+  .cartcont .r .arrowgroup .up,
+  .cartcont .r2 .arrowgroup .up {
+    -webkit-transform: translate(-3.2em, 45px);
+            transform: translate(-3.2em, 45px);
+  }
+  .cartcont .r .arrowgroup .down,
+  .cartcont .r2 .arrowgroup .down {
+    -webkit-transform: translate(2.7em, -45px);
+            transform: translate(2.7em, -45px);
   }
 }
 
