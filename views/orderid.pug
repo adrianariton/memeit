@@ -22,7 +22,12 @@ block content
                             .title Status 
                             .content 
                                 .title2(style='color:red !important;') Comanda a fost livrată
-                
+                else if order.status == 'sentto'
+                        .section
+                            .title Status 
+                            .content 
+                                .title2(style='color:red !important;') Comanda a fost trimisă
+
                 .section
                     .title Informații despre user
                     .content 
