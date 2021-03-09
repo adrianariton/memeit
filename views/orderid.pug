@@ -17,6 +17,12 @@ block content
                         .title Status 
                         .content 
                             .title2(style='color:red !important;') Comanda a fost anulată
+                else if order.status == 'delivered'
+                        .section
+                            .title Status 
+                            .content 
+                                .title2(style='color:red !important;') Comanda a fost livrată
+                
                 .section
                     .title Informații despre user
                     .content 
