@@ -86,6 +86,9 @@ router.get('/callback', passport.authenticate('google', {
 ), (req,res)=>{
   console.log('\n\n\nREQRES\n\n\n\n\n')
    //req.flash('success', 'You are loggedin')
+   if(req.body.redirect == '/scents/cart'){
+    res.redirect('/scents/loggedinfromcart')
+  }
   res.redirect('/')
 })
 module.exports = router
