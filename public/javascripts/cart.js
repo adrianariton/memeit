@@ -49,8 +49,8 @@ $('#addaddress').click(()=>{
             Swal.fire({ 
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong! ' + data.error.message,
-                footer: '<a href>Contact us!</a>'
+                text: 'Ceva a mers rău! ' + data.error.message,
+                footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
             })
         } else {
             console.log(data.address)
@@ -293,15 +293,15 @@ function doneClicked() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Something went wrong! ' + data.error.message,
-                    footer: '<a href>Contact us!</a>'
+                    text: 'Ceva a mers rău! ' + data.error.message,
+                    footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
                 })
             } else {
                 console.log(data.order)
                 Swal.fire({
                     icon: 'success',
                     title: data.message,
-                    footer: `<a href='/myorders/${data.order._id}'>View my order!</a>`
+                    footer: `<a href='/myorders/${data.order._id}'>Accesați comanda!</a>`
                 })
             }
             
@@ -313,8 +313,8 @@ function doneClicked() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Please fill in all required fields!',
-            footer: '<a href>Contact us!</a>'
+            text: 'Completați toate câmpurile!',
+            footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
         })
     }
     
@@ -361,7 +361,7 @@ $(document).ready(()=>{
         updatePrices()
     })
 })
-function purchaseClicked() {
+/*function purchaseClicked() {
     var totalprice = 0;
     var i=0
     $('.buybutton').hide()
@@ -416,7 +416,7 @@ function purchaseClicked() {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Something went wrong! ' + result.error.message,
+                        text: 'Ceva a mers rău! ' + result.error.message,
                         footer: '<a href>Contact us!</a>'
                     })
                 } else {
@@ -435,7 +435,7 @@ function purchaseClicked() {
     }).catch(err=>{
         console.error(err)
     })
-}
+}*/
 $(document).ready(()=>{
 
     // Add an instance of the card UI component into the `card-element` <div>
