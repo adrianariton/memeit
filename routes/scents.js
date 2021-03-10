@@ -196,7 +196,7 @@ module.exports = function(io){
     }else {
       res.redirect('/')
     }
-  })
+  }) 
   /*router.post('/done', function(req,res,next){
     if(req.user){
       console.log('BODY')

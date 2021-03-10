@@ -24,6 +24,7 @@ block content
                                         .other1 Comanda va fi livrată în 2, 3 zile
                                     else if order.status == 'canceled'
                                         .date.canceled(style='color: red !important;') Anulată
-                                    else
+                                    else if order.status == 'delivered'
                                         .other1 A fost livrată comanda!
-                                    
+                                    else if order.status == 'sentto'
+                                        .other1 A fost trimisă comanda!
