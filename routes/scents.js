@@ -153,7 +153,8 @@ module.exports = function(io){
               red: req.body.capsulaRed,
               black: req.body.capsulaBlack
             },
-            afterDiscount: parfumespr*(100-discount)/100 + (total-parfumespr)
+            afterDiscount: parfumespr*(100-discount)/100 + (total-parfumespr),
+            phone: req.body.phone
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{

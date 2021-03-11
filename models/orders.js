@@ -79,6 +79,9 @@ var OrdersSchema = mongoose.Schema({
     },
     afterDiscount: {
         type: Number
+    },
+    phone: {
+        type: String
     }
 })
 

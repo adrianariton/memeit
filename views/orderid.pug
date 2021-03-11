@@ -10,7 +10,7 @@ block content
                         span.name Comanda: #{order.id}
                         span.datecreated Comandată la: #{order.createdAt.toLocaleDateString("ro", optionsdate)}
                         span.datedelivered Livrată la sau înainte de:  #{order.deliveryDate.toLocaleDateString("ro", optionsdate)}
-                        
+                        span +4#{order.phone}
             .body
                 if order.status == 'canceled'
                     .section

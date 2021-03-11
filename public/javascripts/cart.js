@@ -19,6 +19,14 @@ var capsulaRed= 0;
 var capsulaBlack =0;
 $('#addaddress').click(()=>{
     console.log(document.querySelector('#addformcrt'))
+    var ob = {
+        street: document.querySelector('#addformcrt')['street'].value,
+        city: document.querySelector('#addformcrt')['city'].value,
+        zip: document.querySelector('#addformcrt')['zip'].value,
+        county: document.querySelector('#addformcrt')['county'].value,
+        country: document.querySelector('#addformcrt')['country'].value,
+
+    }
     console.log({
         street: document.querySelector('#addformcrt')['street'].value,
         city: document.querySelector('#addformcrt')['city'].value,
@@ -27,57 +35,67 @@ $('#addaddress').click(()=>{
         country: document.querySelector('#addformcrt')['country'].value,
 
     })
-    fetch('/users/myaccount', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            street: document.querySelector('#addformcrt')['street'].value,
-            city: document.querySelector('#addformcrt')['city'].value,
-            zip: document.querySelector('#addformcrt')['zip'].value,
-            county: document.querySelector('#addformcrt')['county'].value,
-            country: document.querySelector('#addformcrt')['country'].value,
-            fromcart: true
+    if(ob.street!=''  &&ob.county!='' &&ob.zip!='' &&ob.city!='' &&ob.country!='' ){
+        fetch('/users/myaccount', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                street: document.querySelector('#addformcrt')['street'].value,
+                city: document.querySelector('#addformcrt')['city'].value,
+                zip: document.querySelector('#addformcrt')['zip'].value,
+                county: document.querySelector('#addformcrt')['county'].value,
+                country: document.querySelector('#addformcrt')['country'].value,
+                fromcart: true
+            })
+        }).then((res)=>{
+            
+            return res.json()
+        }).then(data=>{
+            if(data.error){
+                Swal.fire({ 
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ceva a mers rău! ' + data.error.message,
+                    footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
+                })
+            } else {
+                console.log(data.address)
+                Swal.fire({
+                    icon: 'success',
+                    title: data.message,
+                })
+                var i = addresses.length
+                addresses.push(data.address)
+                console.log(addresses)
+                console.log(document.querySelector('select#addressnr'))
+                document.querySelector('select#addressnr').innerHTML += `
+                <option value="${i}">Address ${i+1}</option>
+                `
+                document.querySelector('select#addressnr').value=i;
+                disc()
+                refr()
+                if($('#addressnr')){
+                    $('#address-display').text(`${addresses[i].street}, ${addresses[i].city}, ${addresses[i].county}, ${addresses[i].country}; Zip: ${addresses[i].zip}`)
+                  
+                  }
+            }
+            
+            
+        }).catch(err=>{
+            console.log(err)
         })
-    }).then((res)=>{
-        
-        return res.json()
-    }).then(data=>{
-        if(data.error){
-            Swal.fire({ 
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Ceva a mers rău! ' + data.error.message,
-                footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
-            })
-        } else {
-            console.log(data.address)
-            Swal.fire({
-                icon: 'success',
-                title: data.message,
-            })
-            var i = addresses.length
-            addresses.push(data.address)
-            console.log(addresses)
-            console.log(document.querySelector('select#addressnr'))
-            document.querySelector('select#addressnr').innerHTML += `
-            <option value="${i}">Address ${i+1}</option>
-            `
-            document.querySelector('select#addressnr').value=i;
-            disc()
-            refr()
-            if($('#addressnr')){
-                $('#address-display').text(`${addresses[i].street}, ${addresses[i].city}, ${addresses[i].county}, ${addresses[i].country}; Zip: ${addresses[i].zip}`)
-              
-              }
-        }
-        
-        
-    }).catch(err=>{
-        console.log(err)
-    })
+    } else {
+        Swal.fire({ 
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Completati toata adresa!',
+            footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
+        }) 
+    }
+    
 })
 $('.q').change(()=>{
     disc()
@@ -249,7 +267,7 @@ function doneClicked() {
     var totalprice = 0;
     var i=0
     $('.donebutton').hide()
-    $('.wariningafterclick').show()
+    //$('.wariningafterclick').show()
     cart.forEach(el=>{
         totalprice += el.price * document.querySelectorAll('.q')[i].value
         i++;
@@ -268,8 +286,10 @@ function doneClicked() {
         })
     
     })
-    
-    if($('#deliverymethod').val() != null &&  $('#addressnr').val() != null) {
+    console.log($('#phone').val(), $('#phone'))
+    var phoneNo = document.querySelector('#phone').value
+    console.log(phoneNo)
+    if($('#deliverymethod').val() && $('#phone').val() && /[0-9]{4}-[0-9]{3}-[0-9]{3}/.test($('#phone').val()) &&  $('#addressnr').val() ) {
         fetch('/scents/done', {
             method: 'POST',
             headers: {
@@ -282,8 +302,8 @@ function doneClicked() {
                 addressnr: $('#addressnr').val(),
                 capsulesNo: capsulaCount,
                 capsulaRed: capsulaRed,
-                capsulaBlack: capsulaBlack
-
+                capsulaBlack: capsulaBlack,
+                phone: $('#phone').val()
             })
         }).then((res)=>{
             
@@ -296,6 +316,8 @@ function doneClicked() {
                     text: 'Ceva a mers rău! ' + data.error.message,
                     footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
                 })
+                $('.donebutton').show()
+
             } else {
                 console.log(data.order)
                 Swal.fire({
@@ -313,9 +335,11 @@ function doneClicked() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Completați toate câmpurile!',
+            text: 'Completați toate câmpurile corect!',
             footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
         })
+        $('.donebutton').show()
+
     }
     
 }
