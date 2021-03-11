@@ -164,3 +164,13 @@ $(document).ready(function(){
   })
 
 });
+
+function toClip() {
+  var copyText = document.getElementById("myLinkInput");
+  copyText.focus();
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied link to clipboard!");
+}
