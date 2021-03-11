@@ -143,7 +143,11 @@ $(document).ready(function(){
   
   $('.fixed-action-btn').floatingActionButton();
 });
+$(document).ready(function(){
+  console.log('MASKED')
+  $('.phone-template').mask('0000-000-000')
 
+})
 $(document).ready(function(){
   $('.messages').click(()=>{
     $('#messages').hide(140)
