@@ -53,7 +53,6 @@ module.exports = function(io){
       var ids = []
         User.getCart(req.user.username, ( parfarr, abarr)=>{
           if(true){
-            console.log('\n\n\n\n\n\n pfar')
             parfarr.forEach(el=>{
               var cop = {};
               ids.push(el._id)
@@ -63,8 +62,6 @@ module.exports = function(io){
                   cop[key] = value
                 }
               }
-              console.log('\N\N\NNO ID:')
-              console.log(cop)
               
             })
            
@@ -72,7 +69,6 @@ module.exports = function(io){
               limit: product_number,
             }).then(data_stripe => {
               Parfumes.find({}, (err, allparfumes)=>{
-                  console.log(allparfumes)
                   res.render('cart', {allscents: allparfumes, stripePublicKey: stripePublicKey, cart: parfarr,ids: ids, stripe: data_stripe.data});
   
                 
@@ -91,15 +87,11 @@ module.exports = function(io){
   });
 
   router.post('/done', ensureVerified, function(req,res,next){
-    console.log(req.get('host'))
     var cando = process.env.NODE_ENV !=='production' ? true : (req.get('host') == 'www.ascentperfumes.com')
-    console.log(cando)
     if(req.user && cando){
-      console.log('BODY')
       let total = 0
       let cartids = []
       var qs = {}
-      console.log(req.body)
       var items = req.body.items
       var itemsnumber = 0;
       req.body.items.forEach(item=>{
@@ -107,22 +99,17 @@ module.exports = function(io){
         itemsnumber+=Number(item.quantity)
         qs[item.id] = item.quantity;
       })
-      console.log('ITEMCOUNT: '+ itemsnumber)
-      console.log(req.body)
-      //console.log(stripePublicKey, stripeSecretKey
       Parfumes.find({_id: {$in : cartids}}, (err, parfumes)=>{
         if(err) throw err;
         var i=0;
         parfumes.forEach(doc=>{
           total+=doc.price * qs[doc._id];
         })
-        console.log(req.body.capsulesNo)
         var parfumespr = total;
         if(req.body.capsulesNo>=1){
           total+=(req.body.capsulesNo-1)*3000
         }
         const chargeMe = ()=>{
-          //console.log(req.body.stripeTokenId)
           var discount = 0;
           if(itemsnumber == 2){
             discount = 10;
@@ -158,17 +145,12 @@ module.exports = function(io){
             
           }),(err,ordercr)=>{
             User.emptyCart(req.user.username, (err2, result)=>{
-              console.log(err)
               if(!err){
-                console.log('Charge Succesfull ')
                 Orders.sendThroughMail(ordercr, (errormail)=>{
                   console.log(errormail)
                 })
-                console.log(result)
                 res.json({error: false, message:'Comanda a fost procesată cu succes!', order: ordercr})
               } else {
-                console.log('Charge Failed ')
-                console.log(result)
                 res.json({error: true, message:'Ceva a mers rău!'})
               }
             })
@@ -382,12 +364,9 @@ module.exports = function(io){
         var men;
         Parfumes.getMen((err, data)=>{
           men = data
-          console.log('MEEEEN')
-          console.log(men)
             stripe.products.list({
               limit: product_number,
             }).then(data_stripe => {
-              console.log(data_stripe)
               res.render('scents', { input: req.params.query, title: 'Men', scents: men, stripe: data_stripe.data});
   
             });
@@ -438,15 +417,12 @@ module.exports = function(io){
   });
   mongoc.connect('mongodb+srv://root:Adrianecelmaiboss@cluster0-6ijeg.mongodb.net/ascent?retryWrites=true&w=majority', function(err, db){
     io.on('connection', socket =>{
-      console.log('wfefgqrgwe')
       socket.on('add-to-cart',(user, parfume) =>{
-        console.log('steau e numai unaa /n/n')
         User.addToCart(user, parfume, (res)=>{
           console.log(res)
         })
       })
       socket.on('remove-from-cart',(user, parfume) =>{
-        console.log('steau e numai unaa /n/n')
         User.removeFromCart(user, parfume, (res)=>{
           console.log(res)
         })
@@ -464,7 +440,6 @@ module.exports = function(io){
         })
       })*/
       socket.on('set-abonament',(user, parfume) =>{
-        console.log('steau e numai unaa /n/n')
         User.setAbonCart(user, parfume, (res)=>{
           console.log(res)
         })

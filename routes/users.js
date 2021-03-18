@@ -25,23 +25,16 @@ function ensureNotAuthenticated(req, res, next){
 
 router.get('/register',ensureNotAuthenticated, function(req, res, next) {
   res.render('register', {title:'Register'});
-  console.log('hi')
 });
 
 router.get('/login',ensureNotAuthenticated, function(req, res, next) {
   res.render('login', {title:'Login'});
 });
 passport.serializeUser((user, done)=>{
-  console.log('\n\n\n\n\n USER DESERIALIZE')
-  console.log(user)
-  console.log('\n\n\n\n\nUSER^^\n\n')
   done(null, user.id);
 })
 
 passport.deserializeUser((id, done)=>{
-  console.log('\n\n\n\n\n\n ID ')
-  console.log(id)
-  console.log('\n\n\n\n\n\n\n')
   User.getUserById(id, (err, user)=>{
     done(err, user)
   })
@@ -67,9 +60,6 @@ passport.use(new LocalStrategy({
   passwordField: 'password'
 },function(username,password,done){
   User.getUserByUsername(username, function(err, user){
-    console.log(username)
-    console.log(password)
-    console.log(user)
     if(err) throw err;
     if(!user) {
       return done(null,false,{
@@ -144,7 +134,6 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
           if(!euser){
             User.createUser(newUser, (err3, user)=>{
               if(err3) throw err3
-              console.log('user')
             })
             req.flash('success', 'Ați fost înregistrat și vă puteți autentifica!')
             res.location('/')
@@ -173,7 +162,6 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
 
 router.post('/myaccount',upload.single('profileimage') , function(req, res, next){
   if(req.user){
-    console.log(req.body, req.body.email)
     if(req.body.email){
       req.checkBody('email', 'Câmpul Emailului trebuie completat!').notEmpty();
       req.checkBody('email', 'Emailul nu e valid!').isEmail();
@@ -186,10 +174,6 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
         })
       } else {
         User.changeEmail(req.user.username,req.body.email,req, (result, err)=>{
-          console.log('\n\nEERRRRRREEESS\n')
-          
-          console.log(err, result);
-          console.log('\n\n\nENDERRERS')
           if(err){
             req.flash('error', 'Ceva a mers rău!')
             res.redirect('/myaccount')
@@ -204,12 +188,7 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
 
       
     } else {
-      console.log('lkfhfohe')
-      console.log('lkfhfohe')
-      console.log('lkfhfohe')
-      console.log(req.body)
       if(req.body){
-        console.log('lkfhfohe')
         req.checkBody('street', 'Street field cannot be empty!').notEmpty();
         req.checkBody('city', 'City field cannot be empty!').notEmpty();
         req.checkBody('zip', 'Zip field cannot be empty!').notEmpty();
@@ -222,8 +201,6 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
           res.redirect('/myaccount')
         } else {
           User.addAddress(req, (result, err)=>{
-            console.log(err, result);
-            console.log(req.body.fromcart)
             if(req.body.fromcart){
               if(err){
                 res.json({error: true, message:'Ceva a mers rău!'})
@@ -259,10 +236,8 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
 
 router.post('/removeaddress',upload.single('profileimage') , function(req, res, next){
   if(req.user){
-  //console.log(req.body, req.body.email)
     
     User.removeAddress(req, (result, err)=>{
-      console.log(err, result);
       if(err){
         req.flash('error', 'Ceva a mers rău!')
         res.redirect('/myaccount')
@@ -283,10 +258,8 @@ router.post('/removeaddress',upload.single('profileimage') , function(req, res, 
 })
 router.post('/password',upload.single('profileimage') , function(req, res, next){
   if(req.user){
-  //console.log(req.body, req.body.email)
     
     User.changePwd(req, (result, err)=>{
-      console.log(err, result);
       if(err){
         req.flash('error', 'Parola nu a putut fi schimbată!')
         res.redirect('/myaccount')

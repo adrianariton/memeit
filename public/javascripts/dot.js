@@ -11,7 +11,6 @@ $(document).ready(()=>{
         var removed = 0;
         var onceremoved = 0;
         var lllen = 0;
-        console.log(localStorage.getItem('localcart'))
         if (`${localStorage.getItem('localcart')}` != "null") {
             lllen = JSON.parse(localStorage.getItem('localcart')).length
             
@@ -23,12 +22,10 @@ $(document).ready(()=>{
         } else {
             $('.crt').addClass('cartnotempty')
         }
-  //      console.log(currentCartLength, sessionCart.length, JSON.parse(localStorage.getItem('localcart')).length)
         if(!currentuser){
             if(localStorage.getItem('localcart') == '' ||localStorage.getItem('localcart') == undefined || localStorage.getItem('localcart') == null){
                 localStorage.setItem('localcart', JSON.stringify([]));
             }
-            console.log('Cart:' + localStorage.getItem('localcart') + ':')
             var localCart =JSON.parse(localStorage.getItem('localcart'));
             if(localCart !=undefined && localCart!=null){
                 localCart.forEach(id=>{
@@ -39,8 +36,6 @@ $(document).ready(()=>{
         $(".buddy .card .addtocart").click((ev)=>{
 
             if(currentuser){
-                console.log(!$(ev.target).parent().hasClass('removefromcart'))
-                console.log($(ev.target).parent())
                 if(!$(ev.target).parent().hasClass('removefromcart')){
                     $(ev.target).parent().toggleClass('removefromcart')
                     socket.emit('add-to-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
@@ -68,7 +63,6 @@ $(document).ready(()=>{
                     sessionCart.push(item)
                     removed--;
                     localStorage.setItem('localcart', JSON.stringify(localCart));
-                    console.log('Local cart:' + localStorage.getItem('localcart'))
                 } else {
                     $(ev.target).parent().toggleClass('removefromcart')
                     const index = localCart.indexOf(item);
@@ -78,7 +72,6 @@ $(document).ready(()=>{
                     removed++;
                     onceremoved++;
                     localStorage.setItem('localcart', JSON.stringify(localCart));
-                    console.log('Local cart:' + localStorage.getItem('localcart'))
                     const index2 = sessionCart.indexOf(item);
                     if (index2 > -1) {
                         sessionCart.splice(index2, 1);
@@ -94,20 +87,17 @@ $(document).ready(()=>{
             var localCart =JSON.parse(localStorage.getItem('localcart'));
             var totallen = currentCartLength + 0 + JSON.parse(localStorage.getItem('localcart')).length -(currentuser ?removed: 0)
             $('.crt .before').text(totallen == 0 ? '+':totallen)
-            console.log(currentCartLength,0, JSON.parse(localStorage.getItem('localcart')).length, -removed,totallen)
 
             if(totallen==0){
                 $('.crt').removeClass('cartnotempty')
             } else {
                 $('.crt').addClass('cartnotempty')
             }
-            console.log(totallen)
             
              
         
         })
         $(".remove-cart-item i").click((ev)=>{
-            console.log('dhw')
             cartll--;
             var totallen = cartll
             $('.crt .before').text(totallen == 0 ? '+':totallen)
@@ -120,20 +110,15 @@ $(document).ready(()=>{
             }
             socket.emit('remove-from-cart', currentuser, $(ev.target).parent().parent().data('item-id').trim())
         
-            console.log($(ev.target).parent().parent().data('item-id').trim())
             $(ev.target).parent().parent().remove()
             //location.reload();
             var el=$(ev.target).parent().parent()
-            console.log($(el).data('name'))
                 const index2 = cart.find(item=> item.name = $(el).data('name'));
-                console.log(index2)    
                 if (index2 ) {
                         var ind = cart.indexOf(index2)
                         cart.splice(ind, 1);
-                        console.log('Found at: '+ind)    
 
                     }
-                    console.log(cart)
             var i=0;
             document.querySelectorAll('.cart-q .r.ab-group').forEach((el)=>{
                 i++;
@@ -154,13 +139,10 @@ $(document).ready(()=>{
             $('.crt .before').text(totallen == 0 ? '+':totallen)
         }        
         if(window.location.pathname == '/scents/loggedinfromcart'){
-            console.log('ewg')
             if(currentuser && localCart != [] && localCart != ''&& localStorage.getItem('localcart')!='null'){
-                console.log(localCart, localCart=='[]')
                 if(localCart!='[]'){
                     socket.emit('add-to-cart', currentuser, JSON.parse(localCart))
                 
-                    console.log('CART: ' +localCart + ' ADDED')
     
                 }
                 //localStorage.clear()

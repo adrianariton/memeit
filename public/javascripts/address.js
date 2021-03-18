@@ -26,7 +26,7 @@ function fillInAddress() {
 
   // Get place data from autocomplete object
   var place = autocomplete.getPlace();
-  console.log(place);
+  //console.log(place);
   
   // Enable each field, then fill them with the corresponding value from the place object
   for (var component in componentForm) {

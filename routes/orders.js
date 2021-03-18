@@ -34,7 +34,6 @@ router.get('/:orderid', function(req, res, next) {
                     Parfumes.find({}, (err, orderedproducts)=>{
                         Subscriptions.find({_id: {$in: subscriptionids}}, (err2, orderedsubs)=>{
                             Abonaments.find({}, (err3, abons)=>{
-                                console.log(orderedsubs, subscriptionids)
                                 res.render('orderid', { title: 'Ascent' , productArr: orderedproducts, subsArr: orderedsubs, abons: abons, order: order});
         
                             })

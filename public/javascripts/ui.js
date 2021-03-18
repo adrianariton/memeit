@@ -9,7 +9,6 @@ const sidenav = document.querySelector(".customsidenav")
 var navbar = document.querySelector(".navbar");
 var sticky = navbar.offsetTop;
 var andu = document.querySelectorAll(".andu");
-console.log(sticky)
 
 document.body.addEventListener('scroll', () => {
   
@@ -33,8 +32,8 @@ menu.addEventListener("click", ()=>{
 
 })
 $(".card .readmore").click((ev)=>{
-    console.log(ev.target)
-    console.log($(ev.target).parent().toggleClass('readmore-active'))
+   // console.log(ev.target)
+ //   console.log($(ev.target).parent().toggleClass('readmore-active'))
     
 
 })
@@ -144,7 +143,6 @@ $(document).ready(function(){
   $('.fixed-action-btn').floatingActionButton();
 });
 $(document).ready(function(){
-  console.log('MASKED')
   $('.phone-template').mask('0000-000-000')
 
 })

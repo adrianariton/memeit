@@ -18,7 +18,6 @@ var capsulaCount = 0;
 var capsulaRed= 0;
 var capsulaBlack =0;
 $('#addaddress').click(()=>{
-    console.log(document.querySelector('#addformcrt'))
     var ob = {
         street: document.querySelector('#addformcrt')['street'].value,
         city: document.querySelector('#addformcrt')['city'].value,
@@ -27,14 +26,7 @@ $('#addaddress').click(()=>{
         country: document.querySelector('#addformcrt')['country'].value,
 
     }
-    console.log({
-        street: document.querySelector('#addformcrt')['street'].value,
-        city: document.querySelector('#addformcrt')['city'].value,
-        zip: document.querySelector('#addformcrt')['zip'].value,
-        county: document.querySelector('#addformcrt')['county'].value,
-        country: document.querySelector('#addformcrt')['country'].value,
-
-    })
+    
     if(ob.street!=''  &&ob.county!='' &&ob.zip!='' &&ob.city!='' &&ob.country!='' ){
         fetch('/users/myaccount', {
             method: 'POST',
@@ -62,15 +54,13 @@ $('#addaddress').click(()=>{
                     footer: `<a href='mailto:ascent.romania.help@gmail.com' style="word-wrap: break-word !important;">Contactati-ne</a>`
                 })
             } else {
-                console.log(data.address)
+               // console.log(data.address)
                 Swal.fire({
                     icon: 'success',
                     title: data.message,
                 })
                 var i = addresses.length
                 addresses.push(data.address)
-                console.log(addresses)
-                console.log(document.querySelector('select#addressnr'))
                 document.querySelector('select#addressnr').innerHTML += `
                 <option value="${i}">Address ${i+1}</option>
                 `
@@ -135,12 +125,10 @@ $('.q').change(()=>{
 
 function disc(){
     
-    console.log('heeef')
     var itemCount = 0
     document.querySelectorAll('.q').forEach(q=>{
         itemCount += parseInt(q.value, 10)
     })
-    console.log('Itemcount: ' + itemCount)
     if(itemCount == 2){
         discount = 10
     }else if(itemCount == 3){
@@ -158,7 +146,6 @@ function disc(){
         $('.oferteavem span').text('No discounts available!')
 
     }
-    console.log(discount)
 }
 function refr(){
     disc()
@@ -167,7 +154,6 @@ function refr(){
         
         qu+=Number(q.value)
     })
-    console.log(qu)
     if(qu==0){
         document.querySelector('.qcap').value =1
         
@@ -188,7 +174,6 @@ function refr(){
 $('.arrowgroup .up').click((e)=>{
     var value = $(e.target).parent().parent().parent().find('input').val() 
     $(e.target).parent().parent().parent().find('input').val(Number(value)+1)
-    console.log($(e.target).parent().parent().parent().attr('class'))
     
     var qu = 0;
     document.querySelectorAll('.qcap').forEach(q=>{
@@ -209,7 +194,6 @@ $('.arrowgroup .down').click((e)=>{
         }
     })
     refr()
-    console.log($(e.target).parent().parent().parent().attr('class'))
 })
 $('.qcap').change(()=>{
     document.querySelectorAll('.q').forEach(q=>{
@@ -224,7 +208,6 @@ const updatePrices = ()=>{
     if(discount != null){
         $('span#discount').text(`Discount la parfumuri: ${discount}%`)
         var totalprice = 0;
-        console.log(totalprice)
         var i=0
         cart.forEach(el=>{
             totalprice += el.price * document.querySelectorAll('.q')[i].value
@@ -234,7 +217,6 @@ const updatePrices = ()=>{
         capsulaBlack = document.querySelectorAll('.qcap')[1].value
         capsulaCount = Number(capsulaRed)+Number(capsulaBlack)
         capsulaprice = 3000 * (capsulaCount-1)
-        console.log('Disount: ' + discount)
         if(capsulaprice<0){
             capsulaprice=0
             
@@ -273,7 +255,6 @@ function doneClicked() {
         i++;
     })
     var price = totalprice
-    console.log(totalprice)
     var items = []
     var cartcontainer = document.querySelector('.cartcont')
     var cartelems = document.querySelectorAll('.r')
@@ -286,9 +267,7 @@ function doneClicked() {
         })
     
     })
-    console.log($('#phone').val(), $('#phone'))
     var phoneNo = document.querySelector('#phone').value
-    console.log(phoneNo)
     if($('#deliverymethod').val() && $('#phone').val() && /[0-9]{4}-[0-9]{3}-[0-9]{3}/.test($('#phone').val()) &&  $('#addressnr').val() ) {
         fetch('/scents/done', {
             method: 'POST',
@@ -319,7 +298,7 @@ function doneClicked() {
                 $('.donebutton').show()
 
             } else {
-                console.log(data.order)
+               // console.log(data.order)
                 Swal.fire({
                     icon: 'success',
                     title: data.message,

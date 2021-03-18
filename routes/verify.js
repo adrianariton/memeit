@@ -7,7 +7,6 @@ var SecretCode = require('../models/secretcodes')
 router.get('/', function(req, res, next) {
     if(req.user && req.user.status !='verified'){
         SecretCode.sendSecretUrlToUser(req.user._id, req.user.email, req, (err)=>{
-            console.log('HEYO')
             if(err == 'already sent'){
                 req.flash('error', `Deja am trimis emailul de verificare userului ${req.user.email}. Așteptați 2 minute ca să îl primiți!`)
                 res.redirect('/');
