@@ -143,7 +143,7 @@ function disc(){
     } else if(itemCount == 3){
         $('.oferteavem span').text('Reducere 15%!')
     } else {
-        $('.oferteavem span').text('No discounts available!')
+        $('.oferteavem span').text('Nu exista reduceri!')
 
     }
 }
