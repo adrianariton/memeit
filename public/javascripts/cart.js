@@ -17,7 +17,9 @@ var capsulaprice = 0;
 var capsulaCount = 0;
 var capsulaRed= 0;
 var capsulaBlack =0;
-$('#addaddress').click(()=>{
+$('#addaddress').click((e)=>{
+    e.preventDefault()
+    console.log('CLICKED')
     var ob = {
         street: document.querySelector('#addformcrt')['street'].value,
         city: document.querySelector('#addformcrt')['city'].value,
