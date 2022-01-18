@@ -8,7 +8,7 @@ var componentForm = {
   inputZip: 'postal_code',
   inputCounty: 'administrative_area_level_2',
   inputCountry: 'country'
-};
+}; 
 
 // Create autocomplete object based on the autocomplete ("street") field
 // Location type restricted to geocode
