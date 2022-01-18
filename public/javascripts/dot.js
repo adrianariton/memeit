@@ -13,7 +13,7 @@ $(document).ready(()=>{
         var lllen = 0;
         if (`${localStorage.getItem('localcart')}` != "null") {
             lllen = JSON.parse(localStorage.getItem('localcart')).length
-            
+             
         }
         var totallen = currentCartLength + (false?  sessionCart.length:0 )+ lllen;
         $('.crt .before').text(totallen == 0 ? '+':totallen)
