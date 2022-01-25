@@ -87,8 +87,8 @@ module.exports = function(io){
   });
 
   router.post('/done', ensureVerified, function(req,res,next){
-    var cando = process.env.NODE_ENV !=='production' ? true : (req.get('host') == 'www.ascentperfumes.com')
-    if(req.user && cando){
+    //var cando = process.env.NODE_ENV !=='production' ? true : (req.get('host') == '')
+    if(req.user){
       let total = 0
       let cartids = []
       var qs = {}
