@@ -11,7 +11,7 @@ block content
     if user
         if true
             .andu.andu-unfix
-                .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
+                .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px;  border-radius: 30px !important; margin-bottom: 50px !important;')
                     if cart && cart!=[] && cart!=''
                         if cart.length == 1
                             .oferteavem 
@@ -46,7 +46,7 @@ block content
                                             i.material-icons remove
                                 
                                     .btn.btn-prymary.remove-cart-item
-                                        i.material-icons.large(style='color: red !important;') close
+                                        i.material-icons.large(style='color: white !important;') close
                                     span.pret(style="padding: 5px;") #{cart[i].price/100} x 1 Lei
                                 - i++
                             - i=0
@@ -59,7 +59,7 @@ block content
                                 .arrowgroup.first 
                                     .up 
                                         i.material-icons add
-                                input.qcap.red(type="number" name="quantity" min="0" max="100" value='1' style='background-color: #0a0a0a !important;')
+                                input.qcap.red(type="number" name="quantity" min="0" max="100" value='1' )
                                 .arrowgroup
                                     .down
                                         i.material-icons remove
@@ -72,7 +72,7 @@ block content
                                 .arrowgroup.first 
                                     .up 
                                         i.material-icons add
-                                input.qcap.black(type="number" name="quantity" min="0" max="100" value='0'  style='background-color: #0a0a0a !important;')
+                                input.qcap.black(type="number" name="quantity" min="0" max="100" value='0'   )
                                 .arrowgroup                                     
                                     .down
                                         i.material-icons remove                               
@@ -100,7 +100,7 @@ block content
                                         <div class="form-row" style="border-radius: 10px !important; padding: 10px">
                                             <label for="deliverymethod">Alegeți metoda de livrare:</label>
                                             .custom-select2
-                                                <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block; border: none !important; background-color: rgba(10,10,10,1) !important; border-radius: 10px;'>
+                                                <select class='custom-select' id="deliverymethod" name="deliveymethod" style='display: block; border: none !important; background-color: rgb(242,242,247) !important; border-radius: 10px;'>
                                                     <option value="postro">Posta Romana</option>
                                                     <option value="curier">Curier</option>
                                                 </select>
@@ -109,7 +109,7 @@ block content
                                                 <input class="phone-template" type="tel" id="phone" name="phone" placeholder="0723-456-678" required>
                                             <label for="addressnr">Alegeți o adresă:</label>
                                             .custom-select2
-                                                <select  id="addressnr" name="addressnr" style='display: block; border: none !important; background-color: rgba(10,10,10,1) !important; border-radius: 10px;'>
+                                                <select  id="addressnr" name="addressnr" style='display: block; border: none !important; background-color: rgb(242,242,247) !important; border-radius: 10px;'>
                                                     - var i=0
                                                     for address in user.addresses 
                                                         option(value=i) Adresa #{i+1}
@@ -185,7 +185,7 @@ block content
         script(src='/javascripts/addressdisplay.js')
     else 
         .andu.andu-unfix
-                .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border: 20px solid rgb(27,27,27); border-radius: 30px !important; margin-bottom: 50px !important;')
+                .container.cartcont(style='top: 65px !important; position: relative; word-wrap: break-word; overflow-wrap: break-word; padding: 10px; border-radius: 30px !important; margin-bottom: 50px !important;')
                     .cart-l 
                         .cart-tab-bar 
                             .tab-item#put-account-info.highlig 

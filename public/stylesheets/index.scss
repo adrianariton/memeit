@@ -1,18 +1,20 @@
 :root {
-  --container-bg-color: #333;
-  --left-bg-color: rgba(223, 39, 39, 0.7);
-  --left-bg-color-clean: rgba(223, 39, 39);
-  --left-button-hover-color: rgba(161, 11, 11, 0.3);
-  --right-bg-color: rgba(43, 43, 43, 0.8);
+  --container-bg-color: rgb(243, 243, 243);
+  --left-bg-color: rgb(202, 39, 223);
+  --left-bg-color-clean: rgb(202, 39, 223);
+  --left-button-hover-color: rgba(161, 11, 148, 0.3);
+  --right-bg-color: rgb(242,242,247);
   --right-button-hover-color: rgba(92, 92, 92, 0.3);
   --hover-width: 10em;
   --other-width: 0em;
   --speed: 300ms;
+  --sysgray1: rgb(242,242,247);
+  --sysgray2: rgb(229,229,234);
 }
 //new pwd 4 Radianeleven: Adiadi
 body::-webkit-scrollbar {
   display: none !important;
-  background-color: black !important;
+  background-color: rgba(199, 199, 199, 0.397) !important;
 }
 h1,
 h2,
@@ -34,7 +36,7 @@ h9 {
 }
 .verify {
   text-decoration: underline !important;
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,800,700,900);
@@ -62,7 +64,7 @@ h9 {
   }
 }
 @mixin bcg {
-  background: linear-gradient(#111111, #111111), url(../images/texturepainting.jpg);
+  background: linear-gradient(#ffffff, #ffffff);
   background-position: center;
   background-size: cover;
 }
@@ -135,11 +137,11 @@ body {
 }
 
 .swal2-modal {
-  background-color: rgba(20, 20, 20, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
   backdrop-filter: blur(40px);
-  color: white;
+  color: rgb(0, 0, 0);
   * {
-    color: white;
+    color: rgb(0, 0, 0);
   }
 }
 
@@ -149,7 +151,7 @@ body {
 }
 h1 {
   font-size: 4rem;
-  color: #fff;
+  color: rgb(0, 0, 0);
   position: absolute;
   overflow: visible !important;
   padding: 0 !important;
@@ -189,7 +191,7 @@ body {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(#000000, #00000000);
+    background: linear-gradient(#ffffff, #ffffff00);
   }
 }
 .bl {
@@ -202,8 +204,12 @@ body {
 
 input.q,input.qcap {
   border: none !important;
-  background-color: rgb(10, 10, 10) !important;
+  background-color: var(--sysgray1) !important;
   margin-right: 10px !important;
+}
+.qcap{
+  background-color: var(--sysgray1) !important;
+
 }
 
 @media (max-width: 800px) {
@@ -226,7 +232,7 @@ input.q,input.qcap {
 }
 .navbar {
   position: fixed !important;
-  background-color: rgba(30, 30, 30, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
   top: 0;
 }
 /*
@@ -246,7 +252,7 @@ input.q,input.qcap {
  }
  */
 div.top-oferta {
-  background-color: rgb(20, 20, 20) !important;
+  background-color: rgb(250, 250, 250) !important;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -270,7 +276,7 @@ div.top-oferta {
   @include flex-row();
   * {
     font-size: large;
-    color: #fff !important;
+    color: rgb(0, 0, 0) !important;
   }
   justify-content: space-between;
   .navbar-header {
@@ -302,7 +308,7 @@ div.top-oferta {
       padding-right: 1em;
       &:hover {
         a {
-          color: rgb(187, 187, 187) !important;
+          color: rgb(32, 32, 32) !important;
         }
       }
       @include min-width(600px) {
@@ -324,7 +330,7 @@ div.top-oferta {
   justify-content: center;
   span {
     font-size: 4em;
-    color: whitesmoke !important;
+    color: rgb(0, 0, 0) !important;
     letter-spacing: 0.5rem;
     font-weight: 600;
   }
@@ -340,7 +346,7 @@ div.top-oferta {
   overflow: hidden;
 }
 .gradbottom {
-  background: linear-gradient(transparent, #000000);
+  background: linear-gradient(transparent, #ffffff);
   height: 10em !important;
   position: absolute;
   min-width: 100%;
@@ -348,7 +354,7 @@ div.top-oferta {
 }
 .con {
   display: flex;
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
   width: 100%;
   height: 40em !important;
   @include flex-column();
@@ -394,7 +400,7 @@ div.top-oferta {
     text-align: center;
     line-height: 100% !important;
     font-size: 3em !important;
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
     font-weight: 900 !important;
     padding: 1em;
     padding-top: 0 !important;
@@ -425,7 +431,7 @@ div.top-oferta {
     &.hover-left .left {
       min-width: var(--hover-width);
       a {
-        color: rgb(187, 187, 187) !important;
+        color: rgb(58, 58, 58) !important;
       }
     }
     &.hover-left .right {
@@ -435,7 +441,7 @@ div.top-oferta {
     &.hover-right .right {
       min-width: var(--hover-width);
       a {
-        color: rgb(187, 187, 187) !important;
+        color: rgb(24, 24, 24) !important;
       }
     }
     &.hover-right .left {
@@ -445,11 +451,11 @@ div.top-oferta {
   .separe {
     width: 2px;
     height: 3em;
-    background-color: white;
+    background-color: black;
   }
 }
 .gradtop {
-  background: linear-gradient(#000000, transparent);
+  background: linear-gradient(#ffffff, transparent);
   height: 10em !important;
   position: absolute;
   min-width: 100%;
@@ -480,7 +486,7 @@ div.top-oferta {
     position: relative;
     margin: 0 0 0 0 !important;
     &:nth-child(odd) {
-      background-color: #0e0e0e !important;
+      background-color: var(--sysgray1) !important;
     }
     @include min-width(800px) {
       height: unset;
@@ -529,10 +535,10 @@ div.top-oferta {
       height: auto;
       flex-grow: 5;
       * {
-        color: white !important;
+        color: rgb(0, 0, 0) !important;
       }
       span {
-        color: white !important;
+        color: rgb(0, 0, 0) !important;
       }
       padding-left: 0.5em;
       padding-right: 0.5em;
@@ -554,7 +560,7 @@ div.top-oferta {
         position: absolute;
         top: 0;
         left: 0;
-        background-color: rgba(8, 8, 8, 0.7);
+        background-color: rgba(224, 224, 224, 0.7);
         backdrop-filter: blur(40px);
         border-radius: 10px;
         margin: 0;
@@ -565,7 +571,7 @@ div.top-oferta {
       }
     }
     .more {
-      color: white !important;
+      color: rgb(0, 0, 0) !important;
       cursor: pointer;
       transition: all 0.3s ease;
       margin: 2em;
@@ -615,12 +621,11 @@ div.top-oferta {
     padding-bottom: 2em;
 
     span {
-      float: left;
-      color: grey;
+      text-align: center;
+      color: var(--left-bg-color-clean);//la
       width: calc(300px - 20px);
-      background-color: rgba(8, 8, 8, 0.3);
+      background-color: var(--sysgray1);
       padding: 3px;
-      padding-left: 1em;
       border-radius: 10px;
       margin-top: 20px;
       margin-bottom: 7px;
@@ -634,13 +639,13 @@ div.top-oferta {
       }
       &:hover {
         a {
-          color: rgb(187, 187, 187) !important;
+          color: var(--left-bg-color-clean) !important;
         }
       }
       a {
         font-size: larger;
         &:hover {
-          color: rgb(187, 187, 187) !important;
+          color: var(--left-bg-color-clean) !important;
         }
       }
     }
@@ -650,15 +655,15 @@ div.top-oferta {
     list-style: none;
     align-items: center;
     a {
-      color: white !important;
+      color: rgb(0, 0, 0) !important;
       //padding: 10px;
     }
   }
   &.active {
     transform: translateX(0vw);
   }
-  background-color: rgba(30, 30, 30, 0.6) !important;
-  border-left: 1px solid black !important;
+  background-color: rgba(255, 255, 255, 0.911) !important;
+  border-left: 1px solid rgb(255, 255, 255) !important;
   backdrop-filter: blur(40px) !important;
 }
 
@@ -667,12 +672,12 @@ div.top-oferta {
     .error {
       background-color: rgba(255, 24, 24, 0.438);
 
-      color: white;
+      color: black;
     }
     .success {
       background-color: rgba(70, 255, 24, 0.452);
 
-      color: white;
+      color: black;
     }
   }
 }
@@ -680,7 +685,7 @@ div.top-oferta {
 .succes {
   background-color: rgba(70, 255, 24, 0.452) !important;
 
-  color: white !important;
+  color: black !important;
 }
 
 .messages {
@@ -692,7 +697,7 @@ div.top-oferta {
   justify-content: center;
   margin: auto;
   position: fixed !important;
-  background-color: rgba(27, 27, 27, 0.4);
+  background-color: rgba(235, 235, 235, 0.4);
   cursor: pointer;
   #messages {
     li {
@@ -714,18 +719,18 @@ div.top-oferta {
         position: absolute;
         content: "\00d7";
         display: block;
-        color: white !important;
+        color: black !important;
       }
     }
     .error {
       background-color: rgba(255, 24, 24, 0.438);
 
-      color: white;
+      color: black;
     }
     .success {
       background-color: rgba(70, 255, 24, 0.452);
 
-      color: white;
+      color: black;
     }
   }
 }
@@ -735,7 +740,7 @@ div.top-oferta {
   @include flex-column();
   justify-content: center;
   span {
-    color: white;
+    color: rgb(0, 0, 0);
   }
 }
 .form-container {
@@ -759,23 +764,25 @@ div.top-oferta {
     form {
       overflow-x: hidden !important;
       input {
-        background-color: rgb(12, 12, 12);
-        color: white;
+        background-color: var(--sysgray1);
+        color: rgb(0, 0, 0);
         width: 100%;
         border-bottom: none !important;
       }
       input[type="submit"] {
         background: var(--left-bg-color) !important;
+        color: white !important;
         border-radius: 10px;
         &:hover {
-          background: rgb(31, 31, 31) !important;
+          color: black !important;
+          background: rgb(255, 255, 255) !important;
         }
       }
       input.form-control {
         align-self: center;
         padding-left: 10px !important;
         padding-right: 10px !important;
-        background-color: rgb(12, 12, 12) !important;
+        background-color: var(--sysgray1) !important;
         border-radius: 10px;
         border: none !important;
         border-bottom: none !important;
@@ -789,7 +796,7 @@ div.top-oferta {
   margin-top: 5px;
   background-color: rgba(255, 24, 24, 0.438);
 
-  color: white !important;
+  color: black !important;
 }
 
 .footer {
@@ -799,13 +806,17 @@ div.top-oferta {
   @include flex-column();
   justify-content: center;
   background-color: transparent;
+  .footerdiv2{
+    @include flex-row();
+    justify-content: space-between;
+  }
   span {
-    color: white !important;
+    color: rgb(255, 255, 255) !important;
     font-size: large;
   }
   h5, a {
     font-size: 20px;
-    color: white !important;
+    color: rgb(255, 255, 255) !important;
   }
   a{
     text-decoration: none;
@@ -816,12 +827,17 @@ div.top-oferta {
   form {
     max-width: 20em;
     input {
-      background-color: rgb(12, 12, 12);
-      color: white !important;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0) !important;
     }
     input[type="submit"] {
       background: var(--left-bg-color) !important;
-      border: none !important;
+      color: white !important;
+      border-radius: 10px;
+      &:hover {
+        color: black !important;
+        background: rgb(255, 255, 255) !important;
+      }
     }
   }
 }
@@ -846,7 +862,7 @@ div.top-oferta {
     margin-bottom: 3em !important;
     .title {
       span {
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 20px;
         font-weight: bold;
       }
@@ -857,7 +873,7 @@ div.top-oferta {
       margin-top: 0px !important;
       margin-bottom: 1em !important;
       span {
-        color: #fff;
+        color: rgb(0, 0, 0);
         font-size: 2em;
         text-align: center;
         font-size: medium !important;
@@ -913,7 +929,7 @@ div.top-oferta {
         }
         background-color: var(--left-bg-color) !important;
         backdrop-filter: blur(4px);
-        color: white !important;
+        color: black !important;
         padding: 10px;
         transition: all 0.2s ease-in-out;
         &:hover {
@@ -943,13 +959,13 @@ div.top-oferta {
   width: 100%;
   @include flex-row();
   justify-content: space-between;
-
+  background-color: black !important;
   flex-wrap: wrap;
 }
 .footer {
-  margin-top: 65px !important;
+  padding-top: 65px !important;
   padding: 10px 0 0 0 !important;
-  background-color: rgb(10, 10, 10);
+  background-color: rgb(5, 5, 5);
   .followus {
     @include flex-row();
     justify-content: flex-start;
@@ -959,6 +975,10 @@ div.top-oferta {
       i {
         cursor: pointer;
         font-size: x-large;
+        color: rgb(255, 255, 255);
+        &:hover{
+          color: var(--left-bg-color-clean);
+        }
       }
     }
   }
@@ -992,8 +1012,8 @@ input[type="radio"]:not(:checked),
     position: relative;
   }
   option {
-    background-color: rgb(24, 24, 24) !important;
-    color: white !important;
+    background-color: rgb(231, 231, 231) !important;
+    color: black !important;
     font-size: large !important;
   }
   .r3 {
@@ -1006,10 +1026,10 @@ input[type="radio"]:not(:checked),
   .form-row {
     padding: 7px;
     * {
-      color: white !important;
+      color: black !important;
       opacity: 1 !important;
     }
-    background-color: rgb(24, 24, 24);
+    background-color: rgb(255, 255, 255);
     margin-bottom: 10px;
     margin-top: 4px;
     h4 {
@@ -1117,7 +1137,7 @@ body {
     margin-top: 30px !important;
   }
   .card {
-    background-color: rgba(27, 27, 27, 1) !important;
+    background-color: var(--sysgray1) !important;
     min-height: 100%;
     height: 700px !important;
     padding: 10px;
@@ -1139,7 +1159,7 @@ body {
     span,
     h1 {
       text-align: center !important;
-      color: white !important;
+      color: black !important;
     }
     @include flex-row();
     justify-content: center;
@@ -1232,7 +1252,7 @@ body {
           width: 0%;
           display: block;
           position: absolute;
-          background-color: white;
+          background-color: black;
         }
         cursor: pointer !important;
         &:hover {
@@ -1252,7 +1272,7 @@ body {
         padding: 3px;
         cursor: pointer;
         background: transparent;
-        color: white;
+        color: black;
         transition: all 0.3s ease;
         &:hover {
           background: #fff;
@@ -1291,25 +1311,31 @@ body {
 }
 .ndcolor {
   background: var(--left-bg-color) !important;
-  border-radius: 10px;
+      color: white !important;
+      border-radius: 10px;
+      &:hover {
+        color: black !important;
+        background: rgb(255, 255, 255) !important;
+      }
 }
 .bordered{
   border-radius: 10px;
   border: 2px solid white;
   background-color: transparent !important;
-  color: white;
+  color: black;
   @include flex-column();
   justify-content: center;
 }
 .grcolor {
-  background: gray !important;
+  background: var(--sysgray2) !important;
   //width: calc(100% - 20px) !important;
   border-radius: 10px !important;
 }
 .ggcolor {
-  background: gray !important;
+  background: var(--sysgray2) !important;
   width: calc(100% - 20px) !important;
   border-radius: 10px !important;
+  
 }
 .andu {
   .cartcont {
@@ -1317,7 +1343,7 @@ body {
       .cart-tab-bar {
         position: relative;
         top: 0;
-        background-color: rgb(27, 27, 27);
+        background-color: var(--sysgray1);
         border-radius: 10px;
         padding: 10px;
         width: 100%;
@@ -1332,7 +1358,7 @@ body {
           justify-content: center;
           span {
             text-align: center;
-            color: white !important;
+            color: black !important;
             padding: 5px;
             
           }
@@ -1340,6 +1366,10 @@ body {
         .highlig {
           background-color: var(--left-bg-color) !important;
           border-radius: 10px;
+          span{
+            color: white !important;
+
+          }
           
         }
 
@@ -1371,11 +1401,21 @@ body {
     border-radius: 10px;
     margin-bottom: 10px;
     span {
-      color: white;
+      color: white !important;
     }
   }
   * {
+    color: black !important;
+  }
+  .ndcolor {
+    background: var(--left-bg-color) !important;
+    border-radius: 10px;
     color: white !important;
+    transition: all 0.1s ease;
+    &:hover{
+      background-color: white !important;
+      color: black !important;
+    }
   }
   * {
     opacity: 1 !important;
@@ -1387,7 +1427,7 @@ body {
     &.r {
       justify-content: center !important;
       * {
-        color: white !important;
+        color: black !important;
       }
     }
     @include min-width(600px) {
@@ -1513,18 +1553,52 @@ body {
 tbody * {
   color: black !important;
 }
+.ndcolor{
+  transition: all 0.1s ease !important;
+  color: white !important;
+}
+.total.ndcolor{
+  transition: all 0.1s ease !important;
+  .ndtext{
+    color: white !important;
+    transition: all 0.1s ease !important;
+
+  }
+  &:hover{
+    .ndtext{
+      color: black !important;
+    }
+  }
+}
+.cmds .section{
+
+  align-items: center;
+  .content{
+    background-color: var(--sysgray1) !important;
+
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    &.ndcolor{
+      background: var(--left-bg-color) !important;
+      color: white !important;
+      border-radius: 10px;
+      
+    }
+  }
+}
 .myacc {
-  margin-top: 65px !important;
+  margin-bottom: 65px !important;
   padding-bottom: 65px !important;
   position: relative;
   padding: 5px;
   span {
-    color: white !important;
+    color: black !important;
   }
   top: 65px;
   .header,
   .section {
     //border-top: 1px solid grey;
+    background-color: white;
     padding: 5px;
     margin-bottom: 5px;
   }
@@ -1540,7 +1614,7 @@ tbody * {
           .form-control {
             float: left;
             width: calc(100% - 20px) !important;
-            background-color: rgb(12, 12, 12) !important;
+            background-color: var(--sysgray1) !important;
             border-radius: 10px !important;
             border: none !important;
             padding-left: 10px !important;
@@ -1556,7 +1630,7 @@ tbody * {
       justify-content: center;
 
       .content {
-        background-color: rgb(19, 19, 19);
+        background-color: white;
         border-radius: 10px;
         padding-bottom: 10px;
         padding-top: 10px;
@@ -1575,7 +1649,7 @@ tbody * {
             .form-control {
               float: left;
               width: calc(100% - 20px) !important;
-              background-color: rgb(12, 12, 12) !important;
+              background-color: var(--sysgray1) !important;
               border-radius: 10px !important;
               border: none !important;
               padding-left: 10px !important;
@@ -1594,7 +1668,7 @@ tbody * {
         text-align: center !important;
         .title2 {
           cursor: pointer !important;
-          color: white !important;
+          color: black !important;
           padding: 10px;
           &.active {
             color: white !important;
@@ -1602,7 +1676,7 @@ tbody * {
             border-radius: 10px;
           }
           &:hover {
-            background-color: rgb(77, 77, 77);
+            background-color: rgb(199, 199, 199);
             border-radius: 10px;
           }
         }
@@ -1610,7 +1684,7 @@ tbody * {
     }
     @include min-width(400px) {
       .content {
-        background-color: rgb(19, 19, 19);
+        background-color: rgb(255, 255, 255);
         border-radius: 10px;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -1624,10 +1698,10 @@ tbody * {
         text-align: center !important;
         .title2 {
           cursor: pointer !important;
-          color: white !important;
+          color: black !important;
           padding: 5px;
           &.active {
-            color: white !important;
+            color: black !important;
             background-color: var(--left-bg-color) !important;
             border-radius: 10px;
           }
@@ -1662,17 +1736,21 @@ tbody * {
   }
   .body {
     * {
-      color: white;
+      color: rgba(0, 0, 0, 0.884);
     }
-    background-color: rgb(27, 27, 27) !important;
+    background-color: rgb(255, 255, 255) !important;
     border-radius: 10px;
     input {
-      color: white !important;
+      color: rgb(0, 0, 0) !important;
     }
     input[type="submit"] {
       background: var(--left-bg-color) !important;
-      border: none !important;
-      border-radius: 10px !important;
+      color: white !important;
+      border-radius: 10px;
+      &:hover {
+        color: black !important;
+        background: rgb(255, 255, 255) !important;
+      }
     }
     .section {
       font-size: large;
@@ -1688,7 +1766,10 @@ tbody * {
     }
   }
 }
+.form-control {
+  background-color: var(--sysgray1) !important;
 
+}
 .addressform {
   display: flex;
   flex-direction: column;
@@ -1727,6 +1808,8 @@ tbody * {
   }
   @include max-width(600px) {
     .form-control {
+      background-color: var(--sysgray1) !important;
+
     }
 
     .form-group {
@@ -1734,7 +1817,7 @@ tbody * {
         float: left;
         padding-left: 10px !important;
         padding-right: 10px !important;
-        background-color: rgb(12, 12, 12) !important;
+        background-color: var(--sysgray1) !important;
         border-radius: 10px !important;
         border: none !important;
         border-bottom: none !important;
@@ -1787,8 +1870,17 @@ tbody * {
 }
 
 .remove-cart-item {
-  background-color: transparent !important;
+  background-color: red !important;
+  color: white !important;
+  font-weight: bolder !important;
+  border-radius: 40px !important;
+  padding:  0 8px 0 8px !important;
+  transform: translateY(-4px);
+  i{
+    color: white !important;
+  }
   overflow: visible !important;
+  box-shadow: none !important;
 }
 .sc .addtocart.removefromcart {
   i {
@@ -1800,7 +1892,7 @@ tbody * {
   margin-top: 40px;
 
   * {
-    color: white !important;
+    color: rgb(3, 3, 3) !important;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -1814,8 +1906,12 @@ tbody * {
 .ab-group {
   padding-bottom: 7px;
   margin-top: 5px;
+  margin-bottom: 5px;
   &:nth-child(even) {
-    background: rgba(27, 27, 27, 1) !important;
+    background: var(--sysgray1) !important;
+    .q, .qcap{
+      background-color: white !important;
+    }
   }
   padding: 15px;
   border-radius: 10px;
@@ -1853,7 +1949,7 @@ tbody * {
   .titleimg-n {
     @include flex-row();
     &:nth-child(even) {
-      background: rgba(27, 27, 27, 1) !important;
+      background: rgb(236, 236, 236) !important;
       border-radius: 10px;
     }
     img {
@@ -1880,8 +1976,8 @@ tbody * {
       height: 20px;
       line-height: 12px;
       background-color: var(--left-bg-color-clean) !important;
-      border-bottom: 1px solid black;
-      border-left: 1px solid black;
+      border-bottom: 1px solid rgb(255, 255, 255);
+      border-left: 1px solid rgb(255, 255, 255);
   
       border-radius: 50%;
   
@@ -1901,8 +1997,8 @@ tbody * {
       height: 20px;
       line-height: 12px;
       background-color: var(--left-bg-color-clean) !important;
-      border-bottom: 1px solid black;
-      border-left: 1px solid black;
+      border-bottom: 1px solid rgb(255, 255, 255);
+      border-left: 1px solid rgb(255, 255, 255);
   
       border-radius: 50%;
       text-align: center;
@@ -1922,11 +2018,10 @@ tbody * {
 .cancelorder {
   background-color: gray !important;
 }
-.gotoorders {
-  background-color: gray !important;
-}
+
 .oauth-container {
-  margin-top: 2em;
+  margin-top: 10px;
+  margin-bottom: 2em;
   * {
     color: black !important;
   }
@@ -1944,7 +2039,7 @@ tbody * {
 
 .logintobuy {
   * {
-    color: white;
+    color: rgb(22, 22, 22);
   }
   a {
     color: gray;
@@ -1966,7 +2061,7 @@ body {
   min-height: 100vh !important;
   position: relative;
 }
-
+label{}
 #subs {
   .perfumes {
     width: 100%;
@@ -1986,7 +2081,7 @@ body {
   h3,
   h4,
   h5 {
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
   }
   margin-bottom: 100px !important;
   position: relative;
@@ -2040,10 +2135,10 @@ body {
         width: 100%;
         .custom-select2 {
           #deliverymethod {
-            background-color: rgba(8, 8, 8, 0.7) !important;
+            background-color: rgba(245, 245, 245, 0.089) !important;
             border: none !important;
             border-radius: 10px;
-            color: white !important;
+            color: rgb(0, 0, 0) !important;
             &:active {
               border: none !important;
             }
@@ -2053,10 +2148,10 @@ body {
             }
           }
           #addressnr {
-            background-color: rgba(8, 8, 8, 0.7) !important;
+            background-color: rgba(255, 255, 255, 0.103) !important;
             border: none !important;
             border-radius: 10px;
-            color: white !important;
+            color: rgb(0, 0, 0) !important;
             &:active {
               border: none;
             }
@@ -2066,7 +2161,7 @@ body {
       .radio {
         margin-top: 1em;
         label {
-          color: white;
+          color: rgb(0, 0, 0);
           font-size: medium;
         }
         @include flex-row();
@@ -2075,7 +2170,7 @@ body {
   }
   top: 130px !important;
   .aboncard {
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(255, 255, 255);
     border-radius: 10px !important;
     padding-bottom: 1em;
     img {
@@ -2106,4 +2201,15 @@ body {
 .btn-floating {
   background-color: var(--left-bg-color-clean) !important;
   overflow: visible !important;
+}
+.gotoorders {
+  color: white !important;
+
+  background: var(--left-bg-color) !important;
+  color: white !important;
+  border-radius: 10px;
+  &:hover {
+    color: black !important;
+    background: rgb(255, 255, 255) !important;
+  }
 }

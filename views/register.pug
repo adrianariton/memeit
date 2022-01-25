@@ -4,8 +4,6 @@ block content
     .form-container.register.andu.andu-unfix
         .modal-form(style='z-index: 2;')
             .content.container
-                a.brand-logo(href='../') 
-                    img.logoimg(src='../images/logo.png')
                 form(method='post', action='/users/register', enctype='multipart/form-data')
                     .form-group
                         label Nume
@@ -33,19 +31,21 @@ block content
                     .form-group.imageupload(style='display: none !important;')
                         label Profile Image
                         input.form-control(name='profileimage', type='file')
-                    input.btn.btn-prymary(id="submit" type='submit', name ='submit', value='Creeaza cont')
+                    input.btn.btn-prymary(id="submit" type='submit', name ='submit', value='Creeaza cont',  style='margin-top: 1em;')
                     .form-group#termsagree 
                         label
                             input(class='form-control' class="filled-in" type="checkbox" name="terms" id="terms" required onchange="activateButton(this)")  
-                            span(style='color: white !important;') I agree to the <a href='/privacypolicy'>Terms & Conditions</a>
+                            span(style='color: black !important;') I agree to the <a href='/privacypolicy'>Terms & Conditions</a>
                     .loginre
-                        span Esti deja membru?
-                        a(href='/users/login').grcolor.btn Autentificare
                         a(href='/google' class="oauth-container btn darken-4 white black-text" style="text-transform:none; color: black !important; overflow: visible !important;")
                             .right
                                 img(width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 
                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png")
                             span Login with &nbsp;
+                        
+                        span Esti deja membru?&nbsp;
+                        a(href='/users/login') Autentificare
+                        
 
             .error-content
                 if errors
