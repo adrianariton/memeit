@@ -2,7 +2,7 @@
 $(document).ready(()=>{
     var cartll = currentCartLength
     if(true){
-        const url = 'https://ascentro.herokuapp.com/'
+        const url = 'https://guarded-retreat-42306.herokuapp.com/'
         //const url = 'http://localhost:3000/'
         const socket = io.connect(url);
         $('.modal').modal();
