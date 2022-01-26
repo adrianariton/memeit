@@ -11,6 +11,8 @@ block content
                         span.datecreated Comandată la: #{order.createdAt.toLocaleDateString("ro", optionsdate)}
                         span.datedelivered Livrată la sau înainte de:  #{order.deliveryDate.toLocaleDateString("ro", optionsdate)}
                         span +4#{order.phone}
+                        if order.status != 'canceled'
+                            a(href='../scents/cancelorder/' + order.id) Anulati
             .body
                 if order.status == 'canceled'
                     .section
@@ -68,7 +70,7 @@ block content
                             .ab-group 
                                 .titleimg 
                                     .image-cropper
-                                        img(src = '/images/site/blackdiamond.jpg' style='border-radius: 50% !important; margin: 5px;')
+                                        img(src = '/images/site/ruby.jpg' style='border-radius: 50% !important; margin: 5px;')
                                     .title2 Capsule
                                 .quan 
                                     span Cantitate: #{order.capsulesType.red} Red + #{order.capsulesType.black} Black = #{order.capsulesCount} 

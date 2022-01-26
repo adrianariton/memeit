@@ -1,7 +1,7 @@
 :root {
   --container-bg-color: rgb(243, 243, 243);
-  --left-bg-color: rgb(202, 39, 223);
-  --left-bg-color-clean: rgb(202, 39, 223);
+  --left-bg-color: rgba(132, 0, 255, 0.795);
+  --left-bg-color-clean: rgba(132, 0, 255);
   --left-button-hover-color: rgba(161, 11, 148, 0.3);
   --right-bg-color: rgb(242,242,247);
   --right-button-hover-color: rgba(92, 92, 92, 0.3);
@@ -26,6 +26,11 @@ h7,
 h8,
 h9 {
   overflow: visible !important;
+}
+.imagebuy img{
+  box-shadow: 3px 3px 1px white;
+  -webkit-box-shadow: 3px 3px 1px white;
+  -moz-box-shadow: 3px 3px 1px white;
 }
 .logoimg {
   max-height: 55px;
@@ -339,7 +344,7 @@ div.top-oferta {
   position: relative;
   height: 40em !important;
   min-width: 100vw;
-  background: url(../images/site/submf.jpg);
+  background: url(../images/dabadee.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

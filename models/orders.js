@@ -96,7 +96,7 @@ module.exports.getOrdersByUID = function(id, callback){
 module.exports.create = function(newP, callback){
     newP.save(callback)
 }
-/*
+
 module.exports.cancelOrder = function(id, callback){
     Orders.updateOne({_id: id}, {
         $set: {status: 'canceled'}
@@ -111,7 +111,7 @@ module.exports.cancelOrder = function(id, callback){
         })
     })
     
-}*/
+}
 
 module.exports.sendThroughMail = function(order, callback){
     var transporter = nodemailer.createTransport({
