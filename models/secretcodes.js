@@ -49,9 +49,9 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
     var mailOptions = {
       from: process.env.EMAIL_NAME,
       to: email,
-      subject: `Ascent E-mail verification`,
+      subject: `Cre8 E-mail verification`,
       html: `
-        <h2>Ascent-Perfumes</h2>
+        <h2>Cre8-Perfumes</h2>
         <span>Trebuie sa fii logat pentru a deschide linkul!</span>
         <a href='${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}'>Verificati-va adresa!</a>`
       
