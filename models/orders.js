@@ -136,8 +136,8 @@ module.exports.sendThroughMail = function(order, callback){
 
             <div style='width: 100% !important;display:table; flex-direction: column; justify-content: center; align-items: center;'>
             
-                <h1 style='display:table-row;'>Ascent</h1>
-                <h2 style='display:table-row;'>Salut ${order.shipping.name}, iti multumim pentru comanda si speram ca ti-a placut sa descoperi universul Ascent!</h2>
+                <h1 style='display:table-row;'>Cre8</h1>
+                <h2 style='display:table-row;'>Salut ${order.shipping.name}, iti multumim pentru comanda si speram ca ti-a placut sa descoperi universul Cre8!</h2>
             </div>
             <div style='margin-top:5em;width: 100% !important;display:table; flex-direction:row; justify-content: space-between; align-items: center;'>
                 <div style='display:table-cell; flex-direction:column; justify-content: center; align-items: center;'>
@@ -165,14 +165,12 @@ module.exports.sendThroughMail = function(order, callback){
             <div style='width: 100%;margin-top:5em;display:table; flex-direction:column; justify-content: center; align-items: center;'>
                 <h3 style='display:table-row;'>Ce ati comandat...</h3>
                 <span style='display:table-row;'>Id-ul comenzii: ${order._id}</span>
-                <a style='display:table-row;' href='https://www.ascentperfumes.com/myorders/${order._id}'>Accesati comanda!</a>
+                <a style='display:table-row;' href='https://guarded-retreat-42306.herokuapp.com/myorders/${order._id}'>Accesati comanda!</a>
             </div>
             
             <div style='width: 100%;margin-top:5em;display:table; flex-direction:column; justify-content: center; align-items: center;'>
                 <h3 style='display:table-row;'>Metoda de plata...</h3>
                 <span style='display:table-row;'>Ramburs</span>
-                <h4 style='display:table-row;'>In cazul in care doriti sa anulati comanda, sunati-ne la 0775 203 553 sau lasati un email la ascent.romania.help@gmail.com</h4>
-                <span style='display:table-row;'>Comanda se poate anula in cel mult o ora de la plasare!</span>
             </div>
         </div>
 

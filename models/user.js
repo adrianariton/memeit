@@ -127,8 +127,8 @@ module.exports.sendWelcomeMail = function(user, callback){
 
             <div style='width: 100% !important;display:table; flex-direction: column; justify-content: center; align-items: center;'>
             
-                <h1 style='display:table-row;'>Ascent</h1>
-                <h2 style='display:table-row;'>Salut ${user.name}. Bine ai venit, universul Ascent!</h2>
+                <h1 style='display:table-row;'>Cre8</h1>
+                <h2 style='display:table-row;'>Salut ${user.name}. Bine ai venit, universul Cre8!</h2>
             </div>
             
             <div style='width: 100%;margin-top:5em;display:table; flex-direction:column; justify-content: center; align-items: center;'>

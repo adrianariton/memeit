@@ -277,7 +277,7 @@ router.post('/password',upload.single('profileimage') , function(req, res, next)
         var mailOptions = {
           from: process.env.EMAIL_NAME,
           to: req.user.email,
-          subject: `Ascent E-mail verification`,
+          subject: `Cre8 E-mail verification`,
           text: `Your password for: ${req.protocol+"://"+req.headers.host} has been changed!`
         };
         transporter.sendMail(mailOptions, function(error, info){
