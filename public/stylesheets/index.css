@@ -2677,7 +2677,7 @@ tbody * {
   .addressform .form-group input[type="text"] {
     float: left;
     width: calc(100% - 20px) !important;
-    background-color: #0c0c0c !important;
+    background-color: var(--sysgray1) !important;
     border-radius: 10px !important;
     border: none !important;
     padding-left: 10px !important;
