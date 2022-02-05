@@ -1801,7 +1801,7 @@ tbody * {
       input[type="text"] {
         float: left;
         width: calc(100% - 20px) !important;
-        background-color: rgb(12, 12, 12) !important;
+        background-color: var(--sysgray1) !important;
         border-radius: 10px !important;
         border: none !important;
         padding-left: 10px !important;
