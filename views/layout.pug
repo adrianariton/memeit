@@ -47,7 +47,8 @@ html
         a.navbar-brand(href='../').flex
           img.logoimg(src='/images/logo.png')
       .navbar-center
-        a(style='font-weight: 700 !important;' href='../') MEMEIT
+        a(style='font-weight: 700 !important;' href='../')
+          img(src="/images/logo2.png", style="max-height: 50px !important;")
       .navbar-body
         ul.nav.navbar-nav
           if !user
@@ -99,7 +100,7 @@ html
           li(style='  list-style: none !important;')
             a.verify(href='/verify') Verifică-ți contul
     .fixed-action-btn
-      a.btn-floating.btn-large(href='/memes') Hello
+      a.btn-floating.btn-large(href='/memes') Memeit!
     block content
     div(class="page-footer footer")
       div.container
