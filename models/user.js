@@ -41,41 +41,15 @@ var UserSchema = mongoose.Schema({
     profileimage: {
         type: String
     },
-    cart: {
-        type: [String]
-    },
-    abonamentsCart: {
-        type: [String],
-        default: []
-    },
-    m_abonamentCart: {
-        type: String,
-        default: null,
-    },
-    status: {
-        type: String,
-        default: "pending",
-    },
-    marketprocessing: {
-        type: Boolean
-    },
     dateCreated: {
         type: Date,
         default: Date.now()
-    },
-    addresses: {
-        type: [String],
-        default: []
     },
     stripeCustomerID: {
         type: String,
         default: null
     },
     emailAliases:{
-        type: [String],
-        default: null
-    },
-    stripeCustomerIDAliases: {
         type: [String],
         default: null
     },
@@ -127,8 +101,8 @@ module.exports.sendWelcomeMail = function(user, callback){
 
             <div style='width: 100% !important;display:table; flex-direction: column; justify-content: center; align-items: center;'>
             
-                <h1 style='display:table-row;'>Cre8</h1>
-                <h2 style='display:table-row;'>Salut ${user.name}. Bine ai venit, universul Cre8!</h2>
+                <h1 style='display:table-row;'>MEMEIT</h1>
+                <h2 style='display:table-row;'>Salut ${user.name}. Bine ai venit, universul MEMEIT!</h2>
             </div>
             
             <div style='width: 100%;margin-top:5em;display:table; flex-direction:column; justify-content: center; align-items: center;'>
@@ -163,46 +137,7 @@ module.exports.changeEmail = function(username, newmail,req, callback){
     })
     
 }
-module.exports.emptyCart = function(username, callback){
-    User.updateOne({username: username}, {
-        $set: {cart: []}
-    }).then(callback)
-}
 
-module.exports.addAddress = function(req, callback){
-    var street = req.body.street;
-    var city = req.body.city;
-    var zip = req.body.zip;
-    var county = req.body.county;
-    var country = req.body.country;
-
-    var address = {
-        street: street,
-        city: city,
-        zip: zip,
-        county: county,
-        country: country
-    }
-
-    var addressStr = JSON.stringify(address);
-
-    console.log(addressStr)
-
-    User.updateOne({username: req.user.username}, {
-        $addToSet: {addresses: addressStr}
-    }).then(callback)
-
-}
-module.exports.removeAddress = function(req, callback){
-    var addressStr = req.body.toremove;
-    console.log('body')
-    console.log(req.body)
-    console.log(addressStr)
-    User.updateOne({username: req.user.username}, {
-        $pull: {addresses: {$in: [ addressStr, addressStr ]}}
-    }).then(callback)
-
-}
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, function(err, ismatch){
       callback(null, ismatch)
@@ -267,45 +202,7 @@ module.exports.changePwd = function(req, callback){
     
 }
 
-module.exports.addToCart = function(username, parfume, callback, cartfull){
-    
-    if(Array.isArray(parfume)){
-        User.findOne({username: username}, (err, doc)=>{
-            User.update({username: username}, { $addToSet: { cart: {$each: parfume} } }).then(res =>{
-                callback(res, parfume)
-            })
-        })
-    } else {
-        User.findOne({username: username}, (err, doc)=>{
-            User.update({username: username}, { $addToSet: { cart: parfume } }).then(res =>{
-                callback(res, parfume)
-            })
-        })
-    }
-    
-    console.log(parfume)
-
-    
-    //{ $addToSet: { colors: "c" } }
-}
-
-module.exports.removeFromCart = function(username, parfume, callback){
-    if(Array.isArray(parfume)){
-        User.update({username: username}, { $pull: { cart: {$each: parfume} } },
-            { multi: true }).then(res =>{
-                console.log(res)
-            callback(res)
-        })
-    } else {
-        User.update({username: username}, { $pull: { cart: parfume } },
-            { multi: true }).then(res =>{
-                console.log(res)
-            callback(res)
-        })
-    }
-    
-    //{ $addToSet: { colors: "c" } }
-}
+ 
 /*module.exports.addToAbonCart = function(username, parfume, callback){
     console.log(parfume)
     
@@ -333,30 +230,5 @@ module.exports.verify = function(uid, callback){
         $set: {status: "verified"}
     }).then(callback)
 }
-module.exports.getCart = function(username, callback){
-    User.getUserByUsername(username, (err, user)=>{
-        if(err) throw err
-        if(user){
-            var parfarr = []
-            console.log('\n\n\n\n\n\n cart:')
-            console.log(user.cart)
-            const ids = [];
-            var abonids =[]
-            user.cart.forEach(id => {
-                ids.push(id)
-            })
-            user.abonamentsCart.forEach(id => {
-                abonids.push(id)
-            })
-            Parfumes.find({ _id : { $in: ids } },(err2, parfumes)=>{
-                if(err2) throw err2
-                console.log('\nParfumes: ')
-                callback(parfumes, null)
-                
-            })
-            
-        }
-        
-    })
-}
+ 
 

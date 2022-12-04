@@ -13,9 +13,9 @@ html
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-    <scrip src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <scrip src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></scrip>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     script.
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -42,12 +42,12 @@ html
   body
     - var optionsdate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     link(rel='stylesheet', href='/stylesheets/index.css')
-    .navbar-unfix.navbar
+    .navbar-unfix.navbar.paddinggg
       .navbar-header.flex
         a.navbar-brand(href='../').flex
           img.logoimg(src='/images/logo.png')
       .navbar-center
-        a(style='font-weight: 700 !important;' href='../') cre8
+        a(style='font-weight: 700 !important;' href='../') MEMEIT
       .navbar-body
         ul.nav.navbar-nav
           if !user
@@ -75,20 +75,9 @@ html
           li.login(class =(title == 'Login' ? 'active' : ''))
             a(href='/users/login') Log In
          
-        span Parfumuri
+        span Memes
         li
-          a(href='/scents/men') Pentru bărbati
-        li
-          a(href='/scents/women') Pentru femei
-
-        if user
-          span Coș
-          li.flex
-            a(href='/scents/cart').flex Coșul de cumpărături
-                //-i(class="material-icons") shopping_cart
-          li.flex
-            a(href='/myaccount/orders') Comenzile mele
-          
+          a(href='/memes') See what's new!
 
         if user
           span Cont
@@ -110,27 +99,8 @@ html
           li(style='  list-style: none !important;')
             a.verify(href='/verify') Verifică-ți contul
     .fixed-action-btn
-      a.btn-floating.btn-large(href='/scents/cart') 
-        if !user
-          i.material-icons.crt shopping_cart
-            .before +
-        else if user.cart.length>0
-          i.material-icons.crt.cartnotempty shopping_cart
-            .before +
-        else 
-          i.material-icons.crt shopping_cart
-            .before +
-    if user 
-      script.
-        const currentuser = '#{user.username}'
-        const currentCartLength = !{user.cart.length}
-    else 
-      script.
-        const currentuser = null
-        const currentCartLength = 0
-
+      a.btn-floating.btn-large(href='/memes') Hello
     block content
-
     div(class="page-footer footer")
       div.container
         div.row

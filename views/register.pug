@@ -3,6 +3,8 @@ extends layout
 block content
     .form-container.register.andu.andu-unfix
         .modal-form(style='z-index: 2;')
+            .memesticker 
+                img.square.mem(src="/images/memes/ez-bg.png").dropimg
             .content.container
                 form(method='post', action='/users/register', enctype='multipart/form-data')
                     .form-group

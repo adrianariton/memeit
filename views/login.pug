@@ -1,26 +1,31 @@
 extends layout
 
 block content
-    
-    .form-container.login.andu.andu-unfix
-        .modal-form.row(style='z-index: 2;')
-            .content.container
-                form(method='post', action='/users/login', enctype='urlencoded')
-                    .form-group
-                        label Username
-                        input.form-control(name='username', type='text', placeholder='Username')
-                    .form-group
-                        label Parola
-                        input.form-control(name='password', type='password',
-                         placeholder='Parola')
-                    input.btn.btn-prymary(type='submit', name ='submit', value='Autentificare', style='margin-top: 1em;')
-            .loginre
-                a(href='/google' class="oauth-container btn darken-4 white black-text" style="text-transform:none; color: black !important; overflow: visible !important;")
-                    .right
-                        img(width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png")
-                    span Log in cu &nbsp; 
-                .row
-                    span Client nou? &nbsp;
-                    a(href='/users/register') Creeaza cont
+        .andu.andu-unfix
+            .mainmyacc
+                .modal-form(style='z-index: 2;')
+                    .tr.sur.container.content
+                        .meme-form.paddinggg.round.flex-column.jcenter.acenter
+                            .funneh.paddinglr
+                                h3.title Ai talent si ai valoare?
+                                span Da-i cu autentificare!
+                            form.flex-column.sec.dec(method='post', action='/users/login', enctype='urlencoded')
+                                .form-group
+                                    label Username
+                                    input.form-control(name='username', type='text', placeholder='Username')
+                                .form-group
+                                    label Parola
+                                    input.form-control(name='password', type='password',
+                                    placeholder='Parola')
+                                input.btn.btn-primary.purple(type='submit', name ='submit', value='Autentificare', style='margin-top: 1em;')
+                    .loginre
+                        a(href='/google' class="oauth-container btn darken-4 white black-text" style="text-transform:none; color: black !important; overflow: visible !important;")
+                            .right
+                                img(width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png")
+                            span Log in cu &nbsp; 
+                        .row
+                            span Client nou? &nbsp;
+                            a(href='/users/register') Creeaza cont
+            
                 

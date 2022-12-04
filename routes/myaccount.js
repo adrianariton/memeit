@@ -4,36 +4,20 @@ var Parfumes = require('../models/parfumes')
 var Abonaments = require('../models/abonaments')
 var Subscriptions = require('../models/subscriptions')
 var Orders = require('../models/orders');
+var Meme =  require('../models/meme');
 
 var User = require('../models/user')
 /* GET home page. */
 router.get('/', function(req, res, next) {
     if(req.user){
-        Subscriptions.find({userID: req.user._id}, (err, subs)=>{
-            Abonaments.find({}, (err, abons)=>{
-                Parfumes.find({}, (err3, parfumes)=>{
-                    res.render('myaccount', { title: 'My Account',parfumes: parfumes,abons: abons, subs: subs });
-
-                })
-
-            })
+        Meme.find({userID: req.user._id}, (err, memes)=>{
+            res.render('myaccount', { title: 'My Account', memes: memes }); 
 
         })
 
     } else {
-        res.redirect('/')
+        res.redirect('/memes')
     }
 });
-router.get('/orders', function(req, res, next) {
-    if(req.user){
 
-        Orders.find({userID: req.user._id}, (err, orders)=>{
-            res.render('orders', { title: 'My Orders' , orders: orders});
-
-        })
-
-    } else {
-        res.redirect('/')
-    }
-});
 module.exports = router;

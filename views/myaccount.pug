@@ -15,9 +15,8 @@ block content
                         .section.main 
                             .title 
                                 .title2#personal-data Info
-                                .title2#my-addresses Adrese
                                 .title2#other Parolă
-                                .title2#my-orders Comenzi
+                                .title2#my-memes Memes
                             .content.personal-data
                                 .form-group 
                                     label Metodă de Login
@@ -41,45 +40,6 @@ block content
                                             label E-mail
                                             input.form-control(required,name='email', type='email', placeholder='E-mail', value= user.email)
                                         input.btn.btn-prymary(type='submit', name ='submit', value='Salvați modificările!')
-                            .content.my-addresses
-                                if user.status == 'verified'
-                                    - var i = 0
-                                    for address in user.addresses
-                                        - i++;
-                                        .addresscontainer
-                                            form.removeaddressform(method='post', action='/users/removeaddress', enctype='multipart/form-data')
-                                                .form-group
-                                                    label Adresa #{i}
-                                                    input.form-control(disabled, id=user.addresses[i-1] name='Address #{i}', type='text', placeholder='Address #{i}', value=JSON.parse(user.addresses[i-1]).street +", "+JSON.parse(user.addresses[i-1]).city+ ", "+JSON.parse(user.addresses[i-1]).county+ ", "+JSON.parse(user.addresses[i-1]).country+ ", Zip Code: " + JSON.parse(user.addresses[i-1]).zip)
-                                                .form-group(style='display: none !important;')
-                                                    input.form-control(name='toremove', type='text', value=user.addresses[i-1])
-                                                input.btn.btn-prymary(type='submit', name ='submit', value='Ștergeți')
-                                    form.addressform(method='post', action='/users/myaccount', enctype='multipart/form-data')
-                                        .form-group
-                                            span(style='color: grey !important;') Exemplu: Strada Vasile Ion nr. 123
-                                            input(type="text" 
-                                                    class="form-control" 
-                                                    id="autocomplete" 
-                                                    placeholder="Strada" name='street' required)
-                                            input(type="text" 
-                                                    class="form-control" 
-                                                    id="inputCity" 
-                                                    placeholder="Oras" name='city' required)                                                              
-                                            input(type="text" 
-                                                    class="form-control" 
-                                                    id="inputZip" 
-                                                    placeholder="Zip" name='zip' required)                              
-                                            input(type="text" 
-                                                    class="form-control" 
-                                                    id="inputCounty" 
-                                                    placeholder="Judet" name='county')                              
-                                            input(type="text" 
-                                                    class="form-control" 
-                                                    id="inputCountry" 
-                                                    placeholder="Tara" name='country' value="Romania" required)
-                                        input.btn.btn-prymary(type='submit', name ='submit', value='Adauga adresa!')
-                                else
-                                    .verif Trebuie să vă verificați contul!
                             .content.other
                                 if user.userType != 'google'
                                     if user.status == 'verified'
@@ -110,6 +70,19 @@ block content
                                                             img(src = '/images/'+ parfumes.find(el=>el.id==cart[i]).image style='border-radius: 50% !important; margin: 5px; position: relative;')
                                                     - i++
                                     .info Subscription id is used to identify your subscription if you have any problem with it.
-                            .content.my-orders
-                                a.btn.gotoorders(href='/myaccount/orders', style='border-radius: 10px;') Mergeți la comenzile dvs.
+                            .content.my-memes
+                                h4.wide.head.subtitle(style="margin-bottom: 50px;") Thou memes:
+                                - var i = 0
+                                .posts.flex-row.wrap.jcenter
+                                    while i < memes.length
+                                        .meme-card.flex-column
+                                            .overlay-h.round
+                                                h5.title.wht.maw #{memes[memes.length - 1 - i].title}
+                                                h7.wht.maw.min #{memes[memes.length - 1 - i].desc}
+                                                if user
+                                                    if user.id == memes[memes.length - 1 - i].userID
+                                                        form.delet(method='post', action='/memes/d/'+memes[memes.length - 1 - i]._id, enctype='multipart/form-data')
+                                                            input.btn.purple.btn-prymary.round(id="submit" type='submit', name ='submit', value='Delet!',  style='margin-top: 1em;')
+                                            img.square.round(src=memes[memes.length - 1 - i].image)
+                                        - i++
             script(src='/javascripts/address.js')

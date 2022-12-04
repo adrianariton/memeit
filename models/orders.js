@@ -136,8 +136,8 @@ module.exports.sendThroughMail = function(order, callback){
 
             <div style='width: 100% !important;display:table; flex-direction: column; justify-content: center; align-items: center;'>
             
-                <h1 style='display:table-row;'>Cre8</h1>
-                <h2 style='display:table-row;'>Salut ${order.shipping.name}, iti multumim pentru comanda si speram ca ti-a placut sa descoperi universul Cre8!</h2>
+                <h1 style='display:table-row;'>MEMEIT</h1>
+                <h2 style='display:table-row;'>Salut ${order.shipping.name}, iti multumim pentru comanda si speram ca ti-a placut sa descoperi universul MEMEIT!</h2>
             </div>
             <div style='margin-top:5em;width: 100% !important;display:table; flex-direction:row; justify-content: space-between; align-items: center;'>
                 <div style='display:table-cell; flex-direction:column; justify-content: center; align-items: center;'>

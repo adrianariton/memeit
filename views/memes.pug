@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    .andu.andu-unfix
+        .mainmyaccc
+            .header.paddingg
+                .dd.flex-row.jspace-around.container
+                    .text.flex-column
+                        h4.title.head Partajarea de meme-uri n-a fost niciodata mai simpla
+                        h6.head.min Platforma cea mai cea pentru rasete si cafelutze si plansete pentru ca esti student la Politehnica.
+                    .memesticker 
+                        img.square(src="/images/memes/itsfine.png")
+            .purple.posts.drop
+                .container.boody.tr.sur
+                    .meme-form.paddinggg.round.dropimgsmall.flex-row.jspace-around
+                        form.flex-column.sec.dec(method='post', action='/memes', enctype='multipart/form-data')
+                            .form-group
+                                label Title
+                                input.form-control(name='title', type='text', placeholder='Title')
+                            .form-group
+                                label Description
+                                input.form-control(name='desc', type='text', placeholder='Le best meme...')
+                            .form-group.imageupload
+                                label Meme
+                                input.form-control(name='memeimage', type='file')
+                            if user
+                                input.btn.purple.btn-prymary(id="submit" type='submit', name ='submit', value='Send it to the internet!',  style='margin-top: 1em;')
+                            if !user
+                                a.btn.purple.btn-prymary(href='/users/login',  style='margin-top: 1em;') Login to meme!
+                        .memesticker.abs#s1
+                            img.square.minf.mem(src="/images/memes/jazz-bg.png").dropimgsmall
+                        .funneh.paddinglr
+                            h3.title Ai amuzant?
+                            span Uimeste-ne cu meme-urile tale ca sa murim de ras!
+                .body.white.paddingg.flex-column.jcenter
+                    h4.wide.head.subtitle(style="margin-bottom: 50px;") What's new in the shire:
+                    - var i = 0
+                    .posts.flex-row.wrap.jcenter
+                        while i < memes.length
+                            .meme-card.flex-column.marginn
+                                .overlay-h.round
+                                    h5.title.wht.maw #{memes[memes.length - 1 - i].title}
+                                    h7.wht.maw.min #{memes[memes.length - 1 - i].desc}
+                                    if user 
+                                        a.amor.letoggle.delet()
+                                            i.fa.fa-solid.fa-heart
+                                img.square.round(src=memes[memes.length - 1 - i].image)
+                            - i++
+                

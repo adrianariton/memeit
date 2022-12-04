@@ -274,7 +274,7 @@ div.top-oferta {
 .navbar-unfix {
   width: 100%;
   // position: fixed;
-  height: 65px !important;
+  height: 95px !important;
   z-index: 1000;
 
   backdrop-filter: blur(40px) !important;
@@ -756,10 +756,8 @@ div.top-oferta {
     height: 150vh;
   }
   &.register {
-    height: 150vh;
-    @include min-height(600px) {
-      height: 200vh;
-    }
+    height: max-content !important;
+    padding: 10vh;
   }
   @include flex-column();
   justify-content: center;
@@ -2217,4 +2215,233 @@ label{}
     color: black !important;
     background: rgb(255, 255, 255) !important;
   }
+}
+
+
+
+img.square {
+  object-fit: cover !important;
+  width: 430px;
+  height: 430px;
+  max-width: 90vmin;
+  max-height: 90vmin;
+  border-radius: 50px !important;
+}
+
+img.square.minf {
+  object-fit: cover !important;
+  width: 230px;
+  height: 230px;
+  max-width: 40vmin;
+  max-height: 40vmin;
+  border-radius: 50px !important;
+  mix-blend-mode: multiply;
+}
+.abs{
+  position: absolute;
+}
+.meme-form {
+  background-color: white;
+  color: black;
+  
+}
+
+.purple {
+  background-color: var(--left-bg-color) !important;
+}
+.overlay-h{
+  border-radius: 50px !important;
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.254);
+  transform: translateY(0px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.meme-card{
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+  .overlay-h{
+    opacity: 0;
+    pointer-events: none;
+  }
+  &:hover{
+    .overlay-h{
+      transform: translateY(0px);
+
+      opacity: 1;
+      pointer-events:all;
+    }
+  }
+}
+.round{
+  border-radius: 20px;
+}
+.margin{
+  margin: 10px;
+}
+.marginn{
+  margin: 30px;
+}
+.red{
+  background-color: red !important;
+}
+.padding{
+  padding: 10px;
+}
+
+.paddingg{
+  padding: 20px;
+}
+
+.tr{
+  background-color:transparent !important;
+}
+
+.paddinggg{
+  padding: 30px;
+}
+
+.header{
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.sec{
+  padding-top: 50px;
+}
+.dec{
+  padding-bottom: 50px;
+}
+.posts{
+
+}
+
+.header{
+  position: sticky !important;
+}
+
+.drop{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.btn-primary{
+  background-color: vaer((--left-bg-color))  !important;
+}
+
+.white{
+  background-color: #fff !important;
+}
+
+.sur{
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.title{
+  color: var(--left-bg-color-clean);
+  font-weight: bolder !important;
+  width: 400px;
+}
+
+.head{
+  width: 600px !important;
+  text-align: center;
+}
+
+.min{
+  width: 400px !important;
+}
+
+.funneh{
+  width: 55%;
+}
+
+.paddinglr{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.meme-form{
+  position: relative;
+  align-items: flex-start;
+  input, .form-group{
+    min-width: 100%;
+  }
+}
+
+.danielcafelutza{
+  transform: scale(1.0);
+}
+
+.wide{
+  width: 100% !important;
+}
+
+.wrap{
+  flex-wrap: wrap !important;
+}
+
+.subtitle{
+  text-align: start !important;
+  font-weight: bolder !important;
+}
+
+.wht{
+  color: white !important;
+}
+
+.maw{
+  max-width: fit-content;
+}
+
+.delet{
+  position: absolute;
+  bottom: 30px;
+  right: 30px !important;
+
+}
+
+.amor{
+  i{
+    font-size :xx-large !important;
+    color: rgba(255, 89, 155, 0.32);
+  }
+}
+
+.amor.active{
+  i{
+    font-size :xx-large !important;
+    color: rgb(255, 89, 155);
+  }
+}
+
+.acenter{
+  align-items: center !important;
+}
+
+.mem{
+  mix-blend-mode: multiply;
+}
+
+#s1{
+  position: absolute;
+  bottom: 0 !important;
+  right:  0 !important;
+  transform: translate(80%, 2%);
+}
+
+.dropimg{
+  filter: drop-shadow(0 0 1rem rgb(0, 0, 0));
+}
+
+.dropimgsmall{
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.534));
 }

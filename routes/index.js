@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Cre8' });
+  res.redirect('/memes');
 });
 router.get('/privacypolicy', function(req, res, next){
   res.render('privacypolicy')

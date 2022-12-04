@@ -2,6 +2,14 @@
 const menu = document.querySelector("li.menu")
 const sidenav = document.querySelector(".customsidenav")
 
+const toggleders = document.querySelectorAll(".letoggle");
+
+toggleders.forEach(togg=>{
+  togg.addEventListener('click', (e)=>{
+    console.log('CLICKCKCKCK', e.target);
+    $(e.target).parent().toggleClass('active')
+  })
+})
 
 
 //window.onscroll = function() {myFunction()};

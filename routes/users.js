@@ -136,8 +136,8 @@ router.post('/register',upload.single('profileimage') , function(req, res, next)
               if(err3) throw err3
             })
             req.flash('success', 'Ați fost înregistrat și vă puteți autentifica!')
-            res.location('/')
-        res.redirect('/')
+            res.location('/memes')
+        res.redirect('/memes')
           } else {
             req.flash('error', 'Emailul este deja folosit!')
             res.location('/users/register')
@@ -230,7 +230,7 @@ router.post('/myaccount',upload.single('profileimage') , function(req, res, next
     }
     
   } else {
-    res.redirect('/')
+    res.redirect('/memes')
   }
 })
 
@@ -252,7 +252,7 @@ router.post('/removeaddress',upload.single('profileimage') , function(req, res, 
 
     
   } else {
-    res.redirect('/')
+    res.redirect('/memes')
 
   }
 })
@@ -277,7 +277,7 @@ router.post('/password',upload.single('profileimage') , function(req, res, next)
         var mailOptions = {
           from: process.env.EMAIL_NAME,
           to: req.user.email,
-          subject: `Cre8 E-mail verification`,
+          subject: `MEMEIT E-mail verification`,
           text: `Your password for: ${req.protocol+"://"+req.headers.host} has been changed!`
         };
         transporter.sendMail(mailOptions, function(error, info){
@@ -296,7 +296,7 @@ router.post('/password',upload.single('profileimage') , function(req, res, next)
 
     
   } else {
-    res.redirect('/')
+    res.redirect('/memes')
 
   }
 })

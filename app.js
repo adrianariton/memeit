@@ -34,10 +34,9 @@ mongoose.connection.on('connected', ()=>{
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var scentsRouter = require('./routes/scents')(app.io);
 var verifyRouter = require('./routes/verify');
 var myaccountRouter = require('./routes/myaccount');
-var ordersRouter = require('./routes/orders');
+var memesRouter = require('./routes/memes');
 var googleAuthRouter = require('./routes/auth');
 
 console.log(googleAuthRouter)
@@ -119,10 +118,9 @@ app.get('*', function(req,res,next){
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/scents', scentsRouter);
 app.use('/verify', verifyRouter);
 app.use('/myaccount', myaccountRouter);
-app.use('/myorders', ordersRouter);
+app.use('/memes', memesRouter);
 app.use('/google', googleAuthRouter);
 //app.use('/chat', chatsRouter);
 // catch 404 and forward to error handler
