@@ -3,7 +3,6 @@ var bcrypt = require('bcryptjs');
 const { Double } = require('mongodb');
 var crypto = require("crypto");
 var nodemailer = require('nodemailer');
-const { db } = require('./parfumes');
 
 mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
@@ -51,7 +50,7 @@ module.exports.sendSecretUrlToUser = function(uid, email,req, callback){
       to: email,
       subject: `MEMEIT E-mail verification`,
       html: `
-        <h2>MEMEIT-Perfumes</h2>
+        <h2>MEMEIT</h2>
         <span>Trebuie sa fii logat pentru a deschide linkul!</span>
         <a href='${req.protocol+"://"+req.headers.host}/verify/${uid}/${secretcode}'>Verificati-va adresa!</a>`
       

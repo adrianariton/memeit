@@ -50,26 +50,6 @@ block content
                                             input.btn.btn-prymary(type='submit', name ='submit', value='Salvați modificările!')
                                     else
                                         .verif Trebuie să vă verificați contul!
-                            if false 
-                                .content
-                                .btn.togglesubs Show Subscriptions
-                                .subs#subs
-                                    for sub in subs
-                                        .ab-group
-                                            .title2 #{abons.find(element => element.id==sub.abonamentID).name}
-                                            .date #{sub.createdAt}
-                                            if sub.status == 'canceled'
-                                                .date.canceled(style='color: red !important;') Canceled
-                                            .subid Subscription id: #{sub.id}
-                                            .perfumes
-                                                - var cart = sub.parfumes
-                                                - var i=0
-                                                while i <= cart.length-1
-                                                    .r
-                                                        .image-cropper.tooltipped(data-position="left" data-tooltip=parfumes.find(el=>el.id==cart[i]).name )
-                                                            img(src = '/images/'+ parfumes.find(el=>el.id==cart[i]).image style='border-radius: 50% !important; margin: 5px; position: relative;')
-                                                    - i++
-                                    .info Subscription id is used to identify your subscription if you have any problem with it.
                             .content.my-memes
                                 h4.wide.head.subtitle(style="margin-bottom: 50px;") Thou memes:
                                 - var i = 0

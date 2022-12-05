@@ -5,7 +5,4 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.redirect('/memes');
 });
-router.get('/privacypolicy', function(req, res, next){
-  res.render('privacypolicy')
-})
 module.exports = router;

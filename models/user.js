@@ -102,7 +102,7 @@ module.exports.sendWelcomeMail = function(user, callback){
             <div style='width: 100% !important;display:table; flex-direction: column; justify-content: center; align-items: center;'>
             
                 <h1 style='display:table-row;'>MEMEIT</h1>
-                <h2 style='display:table-row;'>Salut ${user.name}. Bine ai venit, universul MEMEIT!</h2>
+                <h2 style='display:table-row;'>Salut ${user.name}. Bine ai memuit!</h2>
             </div>
             
             <div style='width: 100%;margin-top:5em;display:table; flex-direction:column; justify-content: center; align-items: center;'>
@@ -203,24 +203,6 @@ module.exports.changePwd = function(req, callback){
 }
 
  
-/*module.exports.addToAbonCart = function(username, parfume, callback){
-    console.log(parfume)
-    
-    User.update({username: username}, { $addToSet: { abonamentsCart: parfume } }).then(res =>{
-        callback(res, parfume)
-    })
-    //{ $addToSet: { colors: "c" } }
-}
-
-module.exports.removeFromAbonCart = function(username, parfume, callback){
-    console.log(parfume)
-    User.update({username: username}, { $pull: { abonamentsCart: parfume } },
-        { multi: true }).then(res =>{
-            console.log(res)
-        callback(res)
-    })
-    //{ $addToSet: { colors: "c" } }
-}*/
 
 
 

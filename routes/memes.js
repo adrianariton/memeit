@@ -40,6 +40,21 @@ router.post('/d/:memeid', function(req, res, next) {
         res.redirect('/')
     }
 });
+
+/*** Not working:(
+router.delete('/:memeid', function(req, res, next) {
+    if(req.user){
+        Meme.deleteOne({_id: req.params.memeid}, () => {
+            console.log("DELET");
+
+            res.redirect('/memes');
+        })
+            
+    } else {
+        res.redirect('/')
+    }
+});
+ */
 router.post('/', upload.single('memeimage'), function(req, res, next) {
     if(req.user){
         var memeimage = req.file.path;
