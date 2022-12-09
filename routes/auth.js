@@ -70,9 +70,7 @@ router.get('/callback', passport.authenticate('google', {
   failureRedirect:'/users/login'
 }
 ), (req,res)=>{
-   //req.flash('success', 'You are loggedin')
-       res.redirect('/scents/loggedinfromcart')
-  
+   
   res.redirect('/')
 })
 module.exports = router

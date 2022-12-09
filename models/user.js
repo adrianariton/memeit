@@ -1,15 +1,11 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var Parfumes = require('../models/parfumes')
 //var crypto = require("crypto");
 //var algorithm = "aes-192-cbc"; //algorithm to use
 //var password = process.env.CRYPTO_PASS;
 //const key = crypto.scryptSync(password, 'salt', 24); //create key
 var SecretCode = require('../models/secretcodes')
 var nodemailer = require('nodemailer');
-
-var Abonaments = require('../models/abonaments')
-var Subscriptions = require('../models/subscriptions')
 mongoose.connection.on('connected', ()=>{
     console.log('Connecred to mongo~~~~~~~~~~~~~~')
 })

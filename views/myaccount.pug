@@ -7,7 +7,7 @@ block content
                 .container.myacc
                     .header
                         .header-head
-                            img(src='/images/user-alt.png')
+                            img(src=user.profileimage)
                             .uinfo
                                 span.name #{user.name} #{user.vorname}
                                 span.datecreated Membru din #{user.dateCreated ? user.dateCreated.toLocaleDateString("ro") : ' - '}

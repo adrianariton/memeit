@@ -20,7 +20,7 @@ html
     - var optionsdate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     link(rel='stylesheet', href='/stylesheets/index.css')
     .navbar-unfix.navbar.paddinggg
-      .navbar-header.flex
+      .navbar-header.flex.hideon-sw
         a.navbar-brand(href='../').flex
           img.logoimg(src='/images/logo.png')
       .navbar-center
@@ -77,7 +77,8 @@ html
           li(style='  list-style: none !important;')
             a.verify(href='/verify') Verifică-ți contul
     .fixed-action-btn
-      a.btn-floating.btn-large(href='/memes') Memeit!
+      a.btn-floating.btn-large(href='/memes')
+        i.fa.fa-solid.fa-plus
     block content
     div(class="page-footer footer")
       div.container
@@ -96,7 +97,7 @@ html
                 a(class="grey-text text-lighten-3" href="#!help") Help
               li
                 a( onclick='toClip()') Invită un prieten!
-      input#myLinkInput(style='opacity: 0; max-width: 2px; max-height: 2px !important;' value='www.ascentperfumes.com')
+      input#myLinkInput(style='opacity: 0; max-width: 2px; max-height: 2px !important;' value='memeit.com')
       div.footer-copyright
         div.container © 2022 Adrian Ariton
           

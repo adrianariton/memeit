@@ -27,13 +27,33 @@ router.get('/:memeid', function(req, res, next) {
     }
 });
 
-
+/***
+ * Delete meme
+ */
 router.post('/d/:memeid', function(req, res, next) {
     if(req.user){
         Meme.deleteOne({_id: req.params.memeid}, () => {
             console.log("DELET");
 
             res.redirect('/memes');
+        })
+            
+    } else {
+        res.redirect('/')
+    }
+});
+/***
+ * Change description
+ */
+router.post('/c/:memeid', function(req, res, next) {
+    if(req.user){
+        Meme.updateOne({_id: req.params.memeid}, {$set: {desc: req.body.desc}}, (err, result)=>{
+            if(err){
+                req.flash('error', 'Descrierea nu a putut fi schimbata!')
+                res.location("/memes")
+            }
+
+            else    res.redirect('/memes');
         })
             
     } else {
@@ -48,6 +68,21 @@ router.delete('/:memeid', function(req, res, next) {
             console.log("DELET");
 
             res.redirect('/memes');
+        })
+            
+    } else {
+        res.redirect('/')
+    }
+});
+router.pack('/:memeid', function(req, res, next) {
+    if(req.user){
+        Meme.updateOne({_id: req.params.memeid}, {$set: {desc: req.body.desc}}, (err, result)=>{
+            if(err){
+                req.flash('error', 'Descrierea nu a putut fi schimbata!')
+                res.location("/memes")
+            }
+
+            else    res.redirect('/memes');
         })
             
     } else {

@@ -220,7 +220,7 @@ input.q, input.qcap {
 
 .navbar {
   position: fixed !important;
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgb(255, 255, 255) !important;
   top: 0;
 }
 
@@ -725,7 +725,7 @@ div.top-oferta span {
   z-index: 1;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  bottom: 60px;
+  bottom: 0px;
   width: 100% !important;
   display: flex;
   flex-direction: column;
@@ -733,7 +733,7 @@ div.top-oferta span {
   justify-content: center;
   margin: auto;
   position: fixed !important;
-  background-color: rgba(235, 235, 235, 0.4);
+  background-color: rgb(235, 235, 235);
   cursor: pointer;
 }
 .messages #messages li {
@@ -2474,6 +2474,12 @@ img.square.minf {
   width: 55%;
 }
 
+@media screen and (max-width: 400px) {
+  .funneh {
+    width: 99vw;
+    text-align: center;
+  }
+}
 .paddinglr {
   padding-left: 20px;
   padding-right: 20px;
@@ -2509,9 +2515,9 @@ img.square.minf {
 }
 
 .maw {
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
+  max-width: -webkit-fit-content !important;
+  max-width: -moz-fit-content !important;
+  max-width: fit-content !important;
 }
 
 .delet {
@@ -2551,4 +2557,8 @@ img.square.minf {
 
 .dropimgsmall {
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.534));
+}
+
+.title, h1, h2, h3, h4, h5, h6, h7, .head {
+  max-width: 90vw;
 }/*# sourceMappingURL=index.css.map */
