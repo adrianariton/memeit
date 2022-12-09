@@ -55,6 +55,9 @@ var UserSchema = mongoose.Schema({
     },
     googleId: {
         type: String
+    },
+    status: {
+        type: String
     }
 })
 
